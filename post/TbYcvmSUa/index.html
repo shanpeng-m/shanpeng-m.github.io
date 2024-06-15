@@ -1,0 +1,474 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JS学习日记【7】基础数据操作 - Map - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JS学习日记【7】基础数据操作 - Map - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="23-07-02 Map对象
+Map对象
+Map对象是一种有序的键值对集合，可以通过键来访问值，键不能重复。
+创建Map对象
+let data = new Map([
+    [&#39;1st&#39;, &#39;a&#39;],
+    [&#39;2nd&#39;, &#39;b&#39;],
+..." />
+  <meta property="og:title" content="JS学习日记【7】基础数据操作 - Map - 小马的世界">
+  <meta property="og:description" content="23-07-02 Map对象
+Map对象
+Map对象是一种有序的键值对集合，可以通过键来访问值，键不能重复。
+创建Map对象
+let data = new Map([
+    [&#39;1st&#39;, &#39;a&#39;],
+    [&#39;2nd&#39;, &#39;b&#39;],
+..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/TbYcvmSUa/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="JS学习日记【7】基础数据操作 - Map - 小马的世界">
+  <meta name="twitter:description" content="23-07-02 Map对象
+Map对象
+Map对象是一种有序的键值对集合，可以通过键来访问值，键不能重复。
+创建Map对象
+let data = new Map([
+    [&#39;1st&#39;, &#39;a&#39;],
+    [&#39;2nd&#39;, &#39;b&#39;],
+...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/TbYcvmSUa/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          JS学习日记【7】基础数据操作 - Map
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-07-02 · 5 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h1 id="23-07-02-map对象">23-07-02 Map对象</h1>
+<h2 id="map对象">Map对象</h2>
+<p>Map对象是一种有序的键值对集合，可以通过键来访问值，键不能重复。</p>
+<h2 id="创建map对象">创建Map对象</h2>
+<pre><code class="language-javascript">let data = new Map([
+    ['1st', 'a'],
+    ['2nd', 'b'],
+    ['3rd', 'c'],
+]);
+
+console.log(data); // Map { '1st' =&gt; 'a', '2nd' =&gt; 'b', '3rd' =&gt; 'c' }
+</code></pre>
+<pre><code class="language-javascript">let keys = ['1st', '2nd', '3rd'];
+let values = ['a', 'b', 'c'];
+
+let data = new Map(
+    keys.map(function (key, index) {
+        return [key, values[index]];
+    })
+);
+
+console.log(data); // Map { '1st' =&gt; 'a', '2nd' =&gt; 'b', '3rd' =&gt; 'c' }
+</code></pre>
+<pre><code class="language-javascript">console.log(map.size); // 3
+</code></pre>
+<h2 id="map对象的getset方法">Map对象的get,set方法</h2>
+<pre><code class="language-javascript">let data = new Map();
+data.set('1st', 'a').set('2nd', 'b').set('3rd', 'c');
+
+console.log(data.get('1st')); // a
+console.log(data.get('2nd')); // b
+console.log(data.get('3rd')); // c
+</code></pre>
+<h2 id="map对象的has方法">Map对象的has方法</h2>
+<pre><code class="language-javascript">let data = new Map();
+data.set('1st', 'a').set('2nd', 'b').set('3rd', 'c');
+console.log(data.has('1st')); // true
+console.log(data.has('2nd')); // true
+console.log(data.has('3rd')); // true
+console.log(data.has('4th')); // false
+</code></pre>
+<p>注意：has方法使用=<mark>比较，比较的是键。NaN</mark>=NaN是True。</p>
+<pre><code class="language-javascript">let data = new Map();
+data.set(NaN, 'a');
+console.log(data.get(NaN)); // a
+console.log(data.has(NaN)); // true
+</code></pre>
+<h2 id="map对象的delete方法">Map对象的delete方法</h2>
+<pre><code class="language-javascript">let data = new Map();
+data.set('1st', 'a').set('2nd', 'b').set('3rd', 'c');
+console.log(data.delete('1st')); // true
+console.log(data.delete('2nd')); // true
+console.log(data.delete('4th')); // false
+console.log(data) // Map { '3rd' =&gt; 'c' }
+</code></pre>
+<p>clear方法可以清空Map对象。</p>
+<pre><code class="language-javascript">let data = new Map();
+data.set('1st', 'a').set('2nd', 'b').set('3rd', 'c');
+console.log(data.clear()); // undefined
+console.log(data); // Map {}
+</code></pre>
+<h2 id="map对象的foreach方法">Map对象的forEach方法</h2>
+<pre><code class="language-javascript">let data = new Map();
+data.set('1st', 'a').set('2nd', 'b').set('3rd', 'c');
+for (let key of data.keys()) {
+    console.log(key); // 1st 2nd 3rd
+}
+for (let value of data.values()) {
+    console.log(value); // a b c
+}
+for (let [key, value] of data.entries()) {
+    console.log(`${key} : ${value}`); // 1st : a 2nd : b 3rd : c
+}
+</code></pre>
+<p>forEach方法的回调函数的参数依次为键值对、键、值。</p>
+<pre><code class="language-javascript">let data = new Map();
+data.set('1st', 'a').set('2nd', 'b').set('3rd', 'c');
+data.forEach(function (value, key) {
+    console.log(`${key} : ${value}`); // 1st : a 2nd : b 3rd : c
+});
+</code></pre>
+<p>Object和Map互换</p>
+<pre><code class="language-javascript">let map = new Map([
+    ['name', '张三'],
+    ['title', 'Author']
+]);
+console.log(Object.fromEntries(map)); // { name: '张三', title: 'Author' }
+
+let obj = {
+    name: '张三',
+    title: 'Author'
+};
+let map = new Map(Object.entries(obj));
+console.log(map); // Map { 'name' =&gt; '张三', 'title' =&gt; 'Author' }
+</code></pre>
+<p>WeakMap对象: WeakMap对象只接受对象作为键名（null除外），不接受其他类型的值作为键名。</p>
+<pre><code class="language-javascript">let obj = {};
+let data = new WeakMap();
+data.set(obj, 'a');
+console.log(data.get(obj)); // a
+</code></pre>
+<p>在JavaScript中，<code>WeakMap</code>是一种特殊的Map（映射）类型。它是ECMAScript 6（ES6）中引入的一种数据结构，用于存储键值对。与普通的Map不同，<code>WeakMap</code>的键必须是对象，并且对键的引用是弱引用。</p>
+<p><code>WeakMap</code>的主要特点如下：</p>
+<ol>
+<li>
+<p>弱引用键：<code>WeakMap</code>中的键是弱引用的，这意味着如果没有其他地方引用该键对象，垃圾回收机制可能会自动删除该键及其关联的值。这是与普通<code>Map</code>最大的区别之一。因此，<code>WeakMap</code>通常用于存储临时数据或者不需要长期保留的数据。</p>
+</li>
+<li>
+<p>仅支持对象作为键：由于<code>WeakMap</code>的键是弱引用的，使用原始类型（例如字符串或数字）作为键是不允许的。键必须是对象。</p>
+</li>
+<li>
+<p>无迭代和枚举：<code>WeakMap</code>没有提供像<code>Map</code>中的<code>keys()</code>、<code>values()</code>和<code>entries()</code>方法，也不能使用<code>for...of</code>循环迭代。这是为了保护键的弱引用特性。</p>
+</li>
+<li>
+<p>没有公开的迭代器：<code>WeakMap</code>没有提供直接访问其所有键或值的方法。因为键的弱引用特性，无法保证在遍历过程中键仍然存在。</p>
+</li>
+</ol>
+<p><code>WeakMap</code>的主要用途是在某些场景下存储临时数据或与对象关联的私有数据。常见的应用包括缓存、事件处理程序、私有属性等。</p>
+<p>以下是<code>WeakMap</code>的基本用法示例：</p>
+<pre><code class="language-javascript">const wm = new WeakMap();
+
+const obj1 = {};
+const obj2 = {};
+
+wm.set(obj1, 'value1');
+wm.set(obj2, 'value2');
+
+console.log(wm.get(obj1)); // 输出：value1
+console.log(wm.get(obj2)); // 输出：value2
+
+wm.delete(obj1);
+console.log(wm.get(obj1)); // 输出：undefined
+</code></pre>
+<p>请注意，由于键的弱引用特性，当不再使用键对象时，它们会被自动清除，并且在<code>WeakMap</code>中无法遍历或访问已删除的键。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#23-07-02-map%E5%AF%B9%E8%B1%A1">23-07-02 Map对象</a>
+<ul>
+<li><a href="#map%E5%AF%B9%E8%B1%A1">Map对象</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BAmap%E5%AF%B9%E8%B1%A1">创建Map对象</a></li>
+<li><a href="#map%E5%AF%B9%E8%B1%A1%E7%9A%84getset%E6%96%B9%E6%B3%95">Map对象的get,set方法</a></li>
+<li><a href="#map%E5%AF%B9%E8%B1%A1%E7%9A%84has%E6%96%B9%E6%B3%95">Map对象的has方法</a></li>
+<li><a href="#map%E5%AF%B9%E8%B1%A1%E7%9A%84delete%E6%96%B9%E6%B3%95">Map对象的delete方法</a></li>
+<li><a href="#map%E5%AF%B9%E8%B1%A1%E7%9A%84foreach%E6%96%B9%E6%B3%95">Map对象的forEach方法</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

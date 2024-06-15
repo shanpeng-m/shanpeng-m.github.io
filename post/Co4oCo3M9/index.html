@@ -1,0 +1,685 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js学习日记【11】组合式 API（Composition API）的方法 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Vue.js学习日记【11】组合式 API（Composition API）的方法 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="Reactive
+Vue 的 reactive 函数是 Vue 3 中的一个核心功能，用于创建响应式对象。这个概念是基于 JavaScript 的 Proxy 功能，允许 Vue 跟踪一个对象的属性访问和修改。这样，当对象的属性改变时，Vu..." />
+  <meta property="og:title" content="Vue.js学习日记【11】组合式 API（Composition API）的方法 - 小马的世界">
+  <meta property="og:description" content="Reactive
+Vue 的 reactive 函数是 Vue 3 中的一个核心功能，用于创建响应式对象。这个概念是基于 JavaScript 的 Proxy 功能，允许 Vue 跟踪一个对象的属性访问和修改。这样，当对象的属性改变时，Vu..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/Co4oCo3M9/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Vue.js学习日记【11】组合式 API（Composition API）的方法 - 小马的世界">
+  <meta name="twitter:description" content="Reactive
+Vue 的 reactive 函数是 Vue 3 中的一个核心功能，用于创建响应式对象。这个概念是基于 JavaScript 的 Proxy 功能，允许 Vue 跟踪一个对象的属性访问和修改。这样，当对象的属性改变时，Vu...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/Co4oCo3M9/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Vue.js学习日记【11】组合式 API（Composition API）的方法
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-12-30 · 15 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/vuejs/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vuejs
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="reactive">Reactive</h2>
+<p>Vue 的 <code>reactive</code> 函数是 Vue 3 中的一个核心功能，用于创建响应式对象。这个概念是基于 JavaScript 的 Proxy 功能，允许 Vue 跟踪一个对象的属性访问和修改。这样，当对象的属性改变时，Vue 可以自动更新 DOM，这是实现数据驱动视图的关键。</p>
+<p>下面是一个使用 <code>reactive</code> 的例子：</p>
+<pre><code class="language-javascript">import { reactive, watchEffect } from 'vue';
+
+// 创建一个响应式对象
+const state = reactive({
+  count: 0
+});
+
+// watchEffect 函数用于监听响应式对象的变化
+watchEffect(() =&gt; {
+  console.log(`count is: ${state.count}`);
+});
+
+// 修改 state.count 的值，watchEffect 会自动执行
+state.count++;
+</code></pre>
+<p>在这个例子中：</p>
+<ol>
+<li>我们首先通过 <code>reactive</code> 函数创建了一个响应式对象 <code>state</code>。</li>
+<li><code>state</code> 对象有一个属性 <code>count</code>。</li>
+<li>使用 <code>watchEffect</code> 函数监听 <code>state</code> 对象。任何对 <code>state</code> 的修改都会触发 <code>watchEffect</code> 内的回调函数执行。</li>
+<li>当我们修改 <code>state.count</code> 的值时，由于 <code>state</code> 是响应式的，所以 <code>watchEffect</code> 的回调函数会被触发，打印出新的 <code>count</code> 值。</li>
+</ol>
+<p>在 Vue 应用中，这种机制允许数据（<code>state</code>）和视图（模板）紧密绑定，从而当数据变化时，视图能够自动更新。这就是 Vue 中响应式系统的基本工作原理。</p>
+<p>Vue 的响应式系统并不是通过不断查询值是否改变来实现的，而是采用了一种更高效的机制，主要基于 JavaScript 的 Proxy 特性。下面是 Vue 响应式系统的大致工作原理：</p>
+<ol>
+<li>
+<p><strong>使用 Proxy 封装对象：</strong> 当你使用 <code>reactive</code> 函数创建一个响应式对象时，Vue 内部实际上是用 Proxy 封装了你的原始对象。Proxy 可以拦截对象的多种操作，包括属性读取、属性赋值、删除属性等。</p>
+</li>
+<li>
+<p><strong>跟踪依赖（Dependency Tracking）：</strong> 当响应式对象的某个属性被读取时，Vue 的响应式系统会记录这个操作，这个过程被称为“依赖收集”。例如，如果你在某个组件的渲染函数中读取了响应式对象的某个属性，这个渲染函数就成为了该属性的依赖。</p>
+</li>
+<li>
+<p><strong>触发更新（Triggering Updates）：</strong> 当响应式对象的某个属性被修改时，Proxy 的拦截器会被触发。Vue 会查找所有依赖于这个属性的依赖（如渲染函数、计算属性、观察者等），并重新执行它们，从而更新视图或执行相关的副作用。</p>
+</li>
+</ol>
+<p>这个机制的关键点在于，Vue 不需要定时检查数据是否变化，而是通过 Proxy 的拦截能力，在数据变化的那一刻立即知晓，并触发相应的更新。这样，Vue 可以以非常高效和响应快速的方式来处理数据变化和视图更新，同时避免了不必要的性能开销。</p>
+<h2 id="computed">Computed</h2>
+<p>Vue 的 <code>computed</code> 方法用于定义计算属性。计算属性是基于它们的响应式依赖进行缓存的。只有当它们依赖的响应式属性发生变化时，它们才会重新计算。这使得计算属性非常适合执行成本较高的计算，同时避免在每个渲染周期中不必要地重新计算。</p>
+<p>下面是一个使用 <code>computed</code> 的例子：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Original message: &quot;{{ message }}&quot;&lt;/p&gt;
+    &lt;p&gt;Reversed message: &quot;{{ reversedMessage }}&quot;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, computed } from 'vue';
+
+export default {
+  setup() {
+    // 创建一个响应式引用
+    const message = ref('Hello Vue');
+
+    // 使用 computed 创建一个计算属性
+    const reversedMessage = computed(() =&gt; {
+      return message.value.split('').reverse().join('');
+    });
+
+    return {
+      message,
+      reversedMessage
+    };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中：</p>
+<ol>
+<li>我们首先使用 <code>ref</code> 创建了一个响应式引用 <code>message</code>。</li>
+<li>然后使用 <code>computed</code> 创建了一个计算属性 <code>reversedMessage</code>。这个计算属性依赖于 <code>message</code> 的值，并返回 <code>message</code> 的反转字符串。</li>
+<li>在模板中，我们显示原始的 <code>message</code> 和计算后的 <code>reversedMessage</code>。</li>
+</ol>
+<p>关键点：</p>
+<ul>
+<li>当 <code>message</code> 的值改变时，<code>reversedMessage</code> 会自动重新计算。如果 <code>message</code> 没有改变，那么对 <code>reversedMessage</code> 的访问将返回上一次计算的结果，而不会重新执行计算函数。</li>
+<li>这种机制在处理复杂或计算成本较高的场景时非常有用，因为它可以避免不必要的计算，提高应用的性能。</li>
+</ul>
+<h2 id="watch-and-watcheffect">watch and watchEffect</h2>
+<p>在 Vue 中，<code>watch</code> 和 <code>watchEffect</code> 是两种用于观察和响应 Vue 实例数据变化的方法，它们都是 Vue 3 的响应式系统的一部分，但它们在使用方式和应用场景上有所不同。</p>
+<h3 id="watch-方法">watch 方法</h3>
+<p><code>watch</code> 方法用于观察一个特定的数据源，并在数据源变化时运行一个回调函数。它非常适合于在数据变化时执行异步或开销较大的操作。</p>
+<p><strong>例子</strong>：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;input v-model=&quot;inputText&quot; placeholder=&quot;Type here&quot;&gt;
+  &lt;p&gt;Input text: {{ inputText }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, watch } from 'vue';
+
+export default {
+  setup() {
+    const inputText = ref('');
+
+    watch(inputText, (newValue, oldValue) =&gt; {
+      console.log(`Input text changed from ${oldValue} to ${newValue}`);
+      // 可以在这里执行更复杂的操作，例如异步请求
+    });
+
+    return { inputText };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中，我们使用 <code>watch</code> 来观察 <code>inputText</code>。每当 <code>inputText</code> 的值变化时，都会执行 <code>watch</code> 里的回调函数。</p>
+<h3 id="watcheffect-方法">watchEffect 方法</h3>
+<p>与 <code>watch</code> 相比，<code>watchEffect</code> 更加自动和智能。它会自动收集其内部所依赖的所有响应式引用，并在它们变化时重新执行。</p>
+<p><strong>例子</strong>：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;input v-model=&quot;inputText&quot; placeholder=&quot;Type here&quot;&gt;
+  &lt;p&gt;Computed text: {{ computedText }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, watchEffect, computed } from 'vue';
+
+export default {
+  setup() {
+    const inputText = ref('');
+    const computedText = computed(() =&gt; inputText.value.toUpperCase());
+
+    watchEffect(() =&gt; {
+      console.log(`Computed text is now: ${computedText.value}`);
+      // 每当 computedText 改变时，这里的代码会重新执行
+    });
+
+    return { inputText, computedText };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中，我们使用 <code>watchEffect</code> 来自动观察 <code>computedText</code>。每当 <code>inputText</code> 的值改变时，由于 <code>computedText</code> 是依赖于 <code>inputText</code> 的，<code>watchEffect</code> 内的回调函数会自动重新执行。</p>
+<h3 id="区别">区别</h3>
+<ul>
+<li><code>watch</code> 需要明确指定要观察的数据源，更适合于对特定数据的变化做出响应。</li>
+<li><code>watchEffect</code> 会自动追踪其函数体内的所有响应式状态的变化，适合于那些对多个响应式状态变化做出响应的场景。</li>
+</ul>
+<p>使用 <code>watch</code> 和 <code>watchEffect</code> 可以使你的 Vue 应用更加响应式和动态，这对于构建复杂的交互和响应式数据流非常有帮助。</p>
+<h2 id="setup">setup</h2>
+<p>在 Vue 3 中，<code>setup()</code> 函数是一个新引入的组件选项，它是 Vue 组件的一个入口点，在组件实例被创建和初始化时被调用。<code>setup()</code> 函数是 Composition API（组合式 API）的核心，它使得我们能夠使用 Vue 3 的响应式特性来组织和管理组件的逻辑。</p>
+<h3 id="主要特点和用法">主要特点和用法：</h3>
+<ol>
+<li>
+<p><strong>生命周期</strong>：<code>setup()</code> 函数在组件的 <code>beforeCreate</code> 和 <code>created</code> 生命周期钩子之间执行。这意味着在 <code>setup()</code> 函数中，组件尚未创建 DOM，因此无法访问组件的 DOM 元素或子组件。</p>
+</li>
+<li>
+<p><strong>响应式状态和逻辑</strong>：在 <code>setup()</code> 函数内，你可以使用 Vue 3 的响应式系统（如 <code>ref</code>, <code>reactive</code>, <code>computed</code>, <code>watch</code>, <code>watchEffect</code> 等）来创建和管理响应式的数据和逻辑。</p>
+</li>
+<li>
+<p><strong>返回值</strong>：<code>setup()</code> 函数可以返回一个对象，该对象的属性和方法将被暴露给组件的其他部分（如模板、计算属性、方法等）和组件的上下文。这使得在模板中可以直接使用 <code>setup()</code> 函数返回的响应式状态和方法。</p>
+</li>
+<li>
+<p><strong>Props 和 Context</strong>：<code>setup()</code> 函数接收两个参数：<code>props</code> 和 <code>context</code>。<code>props</code> 是组件接收的属性，而 <code>context</code> 提供了一个包含了组件的 <code>attrs</code>（属性）、<code>slots</code>（插槽）和 <code>emit</code>（用于触发事件）的对象。</p>
+</li>
+</ol>
+<h3 id="例子">例子：</h3>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;button @click=&quot;increment&quot;&gt;Count is: {{ count }}&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    // 创建响应式变量
+    const count = ref(0);
+
+    // 定义方法
+    function increment() {
+      count.value++;
+    }
+
+    // 暴露给模板
+    return {
+      count,
+      increment
+    };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中：</p>
+<ul>
+<li>使用 <code>ref</code> 创建了一个响应式变量 <code>count</code>。</li>
+<li>定义了一个方法 <code>increment</code> 来更新 <code>count</code> 的值。</li>
+<li>在 <code>setup()</code> 函数的返回对象中暴露了 <code>count</code> 和 <code>increment</code>，使它们在模板中可用。</li>
+</ul>
+<h2 id="组合式-apicomposition-api">组合式 API（Composition API）</h2>
+<p>组合式 API（Composition API）是 Vue 3 中引入的一组新的 API，旨在提供一种更灵活、更有组织的方式来构建和管理 Vue 组件的逻辑。与 Vue 2 中的选项式 API（Options API）相比，组合式 API 提供了更好的逻辑复用和代码组织能力，特别是在处理复杂组件时更为显著。</p>
+<h3 id="组合式-api-的关键特性">组合式 API 的关键特性：</h3>
+<ol>
+<li>
+<p><strong>更好的逻辑组织和复用</strong>：组合式 API 使得将相关功能的代码组织在一起变得更加容易，无论它们属于数据、方法、计算属性还是生命周期钩子。这对于维护和理解代码非常有帮助，尤其是在处理大型和复杂的组件时。</p>
+</li>
+<li>
+<p><strong><code>setup()</code> 函数</strong>：组合式 API 的核心是 <code>setup()</code> 函数，它是每个使用组合式 API 的组件的入口点。在 <code>setup()</code> 函数中，你可以定义响应式状态、计算属性、方法和生命周期钩子。</p>
+</li>
+<li>
+<p><strong>响应式引用（<code>ref</code>）和响应式对象（<code>reactive</code>）</strong>：组合式 API 提供了 <code>ref</code> 和 <code>reactive</code> 函数来创建响应式数据。<code>ref</code> 用于定义一个响应式的值，而 <code>reactive</code> 用于创建一个响应式的对象。</p>
+</li>
+<li>
+<p><strong>计算属性（<code>computed</code>）和观察者（<code>watch</code>、<code>watchEffect</code>）</strong>：与 Vue 2 类似，组合式 API 也提供了 <code>computed</code>、<code>watch</code> 和 <code>watchEffect</code> 函数，但它们现在可以直接在 <code>setup()</code> 函数中使用。</p>
+</li>
+<li>
+<p><strong>生命周期钩子</strong>：Vue 3 的组合式 API 提供了与生命周期相关的函数（如 <code>onMounted</code>, <code>onUpdated</code>, <code>onUnmounted</code> 等），它们可以直接在 <code>setup()</code> 函数中使用。</p>
+</li>
+</ol>
+<h3 id="例子-2">例子：</h3>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;button @click=&quot;increment&quot;&gt;Count is: {{ count }}&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, onMounted } from 'vue';
+
+export default {
+  setup() {
+    const count = ref(0);
+
+    function increment() {
+      count.value++;
+    }
+
+    onMounted(() =&gt; {
+      console.log('Component is mounted!');
+    });
+
+    return { count, increment };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中，我们在 <code>setup()</code> 函数中使用了 <code>ref</code> 来创建一个响应式变量 <code>count</code>，定义了一个方法 <code>increment</code> 来更新 <code>count</code> 的值，并使用了 <code>onMounted</code> 生命周期钩子。</p>
+<h2 id="provide-和-inject">provide 和 inject</h2>
+<p>在 Vue 中，<code>provide</code> 和 <code>inject</code> 是一对用于跨组件传递数据的 API，特别适用于深层嵌套的组件或者当你需要在多个组件之间共享状态时。这种模式允许一个祖先组件（provider）向其所有子孙组件（consumers）提供数据，而无需通过所有层级的 <code>props</code> 逐层传递。</p>
+<h3 id="provide-函数">provide 函数</h3>
+<p><code>provide</code> 函数用于定义一个可以被下游组件使用的数据或方法。它通常在祖先组件的 <code>setup</code> 函数内调用。<code>provide</code> 接受两个参数：第一个是一个唯一的标识符（通常是一个字符串或 Symbol），第二个是要提供的数据或方法。</p>
+<h3 id="inject-函数">inject 函数</h3>
+<p><code>inject</code> 函数用于在子组件或后代组件中接收由祖先组件提供的数据或方法。它在子组件的 <code>setup</code> 函数中调用，并接受 <code>provide</code> 中使用的相同标识符作为参数。</p>
+<h3 id="例子-3">例子</h3>
+<p>假设有一个场景，其中一个根组件需要向多个深层嵌套的子组件提供一些共享数据：</p>
+<p><strong>根组件（提供数据）</strong>:</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;child-component /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { provide, ref } from 'vue';
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: { ChildComponent },
+  setup() {
+    const sharedData = ref('Hello from parent');
+
+    provide('sharedKey', sharedData);
+
+    return {};
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p><strong>子组件（接收数据）</strong>:</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;{{ sharedData }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { inject } from 'vue';
+
+export default {
+  setup() {
+    const sharedData = inject('sharedKey');
+
+    return { sharedData };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中：</p>
+<ul>
+<li>祖先组件使用 <code>provide</code> 函数提供了一个名为 <code>sharedKey</code> 的响应式引用 <code>sharedData</code>。</li>
+<li>子组件通过 <code>inject</code> 函数注入 <code>sharedKey</code> 并能够访问到由祖先组件提供的 <code>sharedData</code>。</li>
+</ul>
+<p><code>provide</code> 和 <code>inject</code> API 在 Vue 应用程序中用于实现跨组件通信，特别是在需要避免繁琐的 <code>props</code> 传递时。它们使得状态共享和数据流在组件树中更加灵活和高效。不过，应当谨慎使用这种模式，因为它可能会使得组件之间的依赖关系变得不那么明显。</p>
+<h2 id="插件plugins">插件（Plugins）</h2>
+<p>在 Vue 中，插件（Plugin）是一种用于增强和扩展 Vue 功能的资源。插件可以添加全局功能、组件、指令等，它们通常用于为 Vue 应用程序提供特定的功能或集成外部库。</p>
+<p>插件的主要特点是它们可以影响全局范围内的 Vue 行为。这包括添加全局方法和属性、添加全局指令、过滤器、混入（mixins）、甚至添加全新的自定义功能，例如路由管理、状态管理等。</p>
+<h3 id="示例插件element-plus-和-vue-i18n">示例插件：Element Plus 和 Vue I18n</h3>
+<ol>
+<li>
+<p><strong>Element Plus</strong>：这是一个基于 Vue 3 的 UI 组件库，它提供了一套完整的高质量组件和工具，使开发者能够快速搭建美观、响应式的界面。安装 Element Plus 后，可以在 Vue 应用中全局使用这些组件，无需在每个组件中单独导入。</p>
+</li>
+<li>
+<p><strong>Vue I18n</strong>：这是一个国际化插件，用于实现 Vue 应用的多语言支持。它允许你定义多种语言的翻译，并在应用中轻松切换，实现内容的本地化。</p>
+</li>
+</ol>
+<h3 id="如何使用插件">如何使用插件</h3>
+<p>使用插件通常涉及以下步骤：</p>
+<ol>
+<li>
+<p><strong>安装插件</strong>：首先，你需要安装插件。这通常通过 npm 完成，例如 <code>npm install element-plus</code> 或 <code>npm install vue-i18n</code>。</p>
+</li>
+<li>
+<p><strong>注册插件</strong>：在 Vue 应用中，你需要使用 <code>Vue.use()</code> 方法来注册插件。</p>
+</li>
+</ol>
+<pre><code class="language-javascript">import { createApp } from 'vue';
+import App from './App.vue';
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+
+const app = createApp(App);
+app.use(ElementPlus);
+app.mount('#app');
+</code></pre>
+<p>在这个例子中，我们注册了 Element Plus 插件，使其在整个 Vue 应用中可用。</p>
+<ul>
+<li>当使用插件时，需要注意它们可能对全局环境产生影响，因此应当谨慎选择和配置。</li>
+<li>一些插件可能需要额外的配置或初始化步骤来完全启用它们的功能。</li>
+<li>选择那些活跃维护并与 Vue 版本兼容的插件非常重要。</li>
+</ul>
+<p>插件是 Vue 生态系统的重要部分，它们使得 Vue 应用程序可以轻松集成各种功能和外部库，提高开发效率和应用质量。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#reactive">Reactive</a></li>
+<li><a href="#computed">Computed</a></li>
+<li><a href="#watch-and-watcheffect">watch and watchEffect</a>
+<ul>
+<li><a href="#watch-%E6%96%B9%E6%B3%95">watch 方法</a></li>
+<li><a href="#watcheffect-%E6%96%B9%E6%B3%95">watchEffect 方法</a></li>
+<li><a href="#%E5%8C%BA%E5%88%AB">区别</a></li>
+</ul>
+</li>
+<li><a href="#setup">setup</a>
+<ul>
+<li><a href="#%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9%E5%92%8C%E7%94%A8%E6%B3%95">主要特点和用法：</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子：</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%84%E5%90%88%E5%BC%8F-apicomposition-api">组合式 API（Composition API）</a>
+<ul>
+<li><a href="#%E7%BB%84%E5%90%88%E5%BC%8F-api-%E7%9A%84%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7">组合式 API 的关键特性：</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90-2">例子：</a></li>
+</ul>
+</li>
+<li><a href="#provide-%E5%92%8C-inject">provide 和 inject</a>
+<ul>
+<li><a href="#provide-%E5%87%BD%E6%95%B0">provide 函数</a></li>
+<li><a href="#inject-%E5%87%BD%E6%95%B0">inject 函数</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90-3">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8F%92%E4%BB%B6plugins">插件（Plugins）</a>
+<ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E6%8F%92%E4%BB%B6element-plus-%E5%92%8C-vue-i18n">示例插件：Element Plus 和 Vue I18n</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6">如何使用插件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

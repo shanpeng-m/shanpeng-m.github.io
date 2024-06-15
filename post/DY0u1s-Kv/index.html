@@ -1,0 +1,408 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-7-2】拆分工作 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-7-2】拆分工作 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+拆分工作
+需要完成的工作越容易，估计所需..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-7-2】拆分工作 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+拆分工作
+需要完成的工作越容易，估计所需..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/DY0u1s-Kv/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-7-2】拆分工作 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+拆分工作
+需要完成的工作越容易，估计所需...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/DY0u1s-Kv/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-7-2】拆分工作
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-06-09 · 15 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="拆分工作">拆分工作</h2>
+<p>需要完成的工作越容易，估计所需时间也就越容易。将工作细分为小部分，然后挑战自己将它们再细分！这样做有助于更好地组织工作流程，提高工作效率。</p>
+<p><strong>不要害怕增加、删除和修改任务</strong><br>
+有些开发者倾向于仅仅按照既定任务来工作，即使他们在中途意识到需要新的工作，或者有些任务不再合理。<br>
+不要成为这样的人！记住，目标是构建解决客户问题的软件，而不仅仅是完成任务。<br>
+任务只是组织工作的一种工具；不要忘记这一点。利用这个工具，但要在需要的时候毫不留情地改变、增加任务，或者删除多余的任务。如果遇到新的工作或者遇到阻碍和新的限制条件，那么你的原计划可能需要重新修订。在这种情况下，大刀阔斧地整理任务！<br>
+不要忘记任务或者其他组织工作的方式必须提升生产力。不要把更多时间花在处理任务上，而忽视了编写代码。</p>
+<h2 id="估计你的工作用时">估计你的工作用时</h2>
+<p>许多软件开发人员害怕被问到“这需要多长时间？”。尽管如此，这个问题还是会被提出。企业需要计划，不管你喜不喜欢，你都会被要求估计任务所需的时间长度。唯一能提升这方面能力的方法就是去做。<br>
+有一些开发人员认为准确估计是不可能的，他们主张采用无估算方法。然而，我认识的可靠工程师是出色的估计者：他们给出准确的估计并清楚地说明“未知因素”和延迟。<br>
+估算是一种可以学会的技能，但是随着手头工作类型的不同，挑战也会有所不同。</p>
+<h3 id="对先前类似工作进行估算">对先前类似工作进行估算</h3>
+<p>这是最容易进行的类型估算。假设你需要添加一个新功能，这个功能与之前做过的工作非常相似。这可能是为网站添加一个新页面，或者为API添加一个新的端点。你可以根据上一次完成类似任务所花费的时间，合理地估计新任务所需的时间。</p>
+<h3 id="估算你以前从未做过的工作">估算你以前从未做过的工作</h3>
+<p>这是一个更有趣的地方，因为你没有经验可以作为基准。然而，有很多方法可以根据工作类型来准确估算时间。以下是七种常见的工作类别，以及如何精确估算它们。</p>
+<p>#1：与同事类似的工作。</p>
+<p>通常会有团队成员已经编写过与你第一次尝试的工作类似的代码。你不是从零开始！已经编写过类似代码的开发人员可以估计完成该工作应该花费多长时间。唯一的区别是你肯定会花更多时间来完成工作，因为你需要了解一些背景。如果向他们咨询并分解他们的方法，你可以得出一个现实的估计。由于是第一次尝试，可以把估算时间延长一点。</p>
+<p>#2：重构。</p>
+<p>你改变代码结构，但不添加新功能。如果你以前做过重构，即使现在要做的重构类型是新的，也可以利用那种经验来得到“基准时间估计”。或者，问问团队成员他们是否做过类似的重构工作，以及他们是否能分享工作的难易程度。你也可以简单地对工作进行时间限制。时间限制意味着为任务指定一段时间，并且只在这段时间内工作，不再超时。</p>
+<p>#3：使用你熟悉的技术进行的全新工作。</p>
+<p>在这种情况下，技术风险不大，你不太可能卡在语言或框架的一些bug上。最大的风险是业务需求不清晰。但是如果任务很明确，就可以得出足够好的估计。</p>
+<p>#4：与你不太熟悉的系统集成，使用一个你熟悉的技术。</p>
+<p>当你需要在一个你不熟悉的系统上构建或集成时，估算就会变得更加困难。这可能是与另一个团队或第三方拥有的端点集成。最大的风险是打开一个被标记为“未知”的潘多拉魔盒，里面充满了关于系统如何运作的未知因素。它可能与文档所述不同，可能存在一些你没有考虑或记录的边缘情况，也可能缺少文档。在这种情况下，考虑先做原型，当你建立了一个简单的概念验证来测试其他系统或API之后再给出估计。如果无法建立原型，你可以给出一个“理想估计”，假设系统没有问题。还要提供一个“最坏情况”估计，假设系统的行为异常，并且需要解决方法。最糟糕情况下的时间估计从定义上就是高的。如果有压力要给出一个估计，就提供一个最坏情况的估计。会有一些不解的眼神，但这将有助于为原型的时间限制提出理由，这样你就可以给出更准确的估计。我的建议总是先构建原型，因为它能让你提供一个准确的估计。</p>
+<p>#5：使用你不太熟悉的成熟技术构建简单项目。</p>
+<p>假设你正在使用一种你经验较少的稳定技术进行项目开发。在这里，学习新技术——语言或框架——是最大的努力。获取一个现实的估计的最佳方法是询问使用过这种技术的工程师。他们可以指导你从何处开始，帮助你估计学习这方面可能需要多久。要对他们的估计持谨慎态度，因为他们可能低估了掌握这项技能的难度。如果可能的话，与熟悉这种技术的开发人员一起工作，因为这将缩短实施工作所需的时间，并加快你的学习过程。如果无法与开发人员合作，你可以使用一个时间限制的估计来迅速掌握这项技术。要确保这个时间段足够长，能浏览一些教程，做编码，并查看你的前几次迭代代码是否需要比通常更多的调试。</p>
+<p>#6：使用你不太熟悉的新技术构建简单项目。</p>
+<p>新的框架或语言比成熟的技术带来更多的风险。学习材料更少，可以回答问题的人也更少。此外，新的语言或框架很可能会有bug。在没有进行一些原型设计的情况下，很难估计使用新技术需要多长时间。因此，请先构建一个新技术的概念验证，直到你能自信地使用它之前不要做估计。</p>
+<p>#7：构建复杂系统并集成到你不太熟悉的系统中，同时使用一个陌生的新技术。</p>
+<p>在这种情况下，要做出明智的估计有太多未知因素。你不了解的东西有：</p>
+<ul>
+<li>你要集成的系统</li>
+<li>技术</li>
+<li>不确定因素要准确估计，必须减少未知因素的数量。</li>
+<li>可以通过两种方式做到：</li>
+</ul>
+<ol>
+<li>原型设计。可以从原型设计中获得估计。</li>
+<li>将工作拆分更小！将其分解为较小的部分，每个部分包含一个未知因素。</li>
+</ol>
+<h2 id="寻找导师">寻找导师</h2>
+<p>导师是经验丰富的工程师，你可以在遇到问题和疑惑时信任地寻求帮助。一些公司拥有正式的导师计划，但在大多数情况下，你需要自己找导师，这并不会形成一种“正式”的关系。</p>
+<p>在导师指导方面，不要仅限于一个个人导师，而应考虑一个人群。</p>
+<p>每个人的经历和见解都是独特多样的。充分利用这一点是学习和职业成长的好方法。这就是为什么我相信建立一个技术部落的导师团队是非常重要的。</p>
+<ol>
+<li>**专注的导师：**我喜欢与一个专注的导师建立良好关系，并且感觉舒适地与他分享我的挑战和成就。定期互动设定明确的目标，并激励我们不断提升。要找到一个专注的导师，最好是联系之前已经互动过的人，或者是那些你钦佩的、与你的目标一致的人。</li>
+<li>**临时导师：**有时候，安排与那些与你的职业道路有交集但并不密切合作的人进行一对一的交流是很有意义的。例如，我可能会安排与一位架构师进行一对一的交流，了解如何更好地设计一个新的服务，分享我的想法并获得反馈。又如，会见一位资深领导，了解他们的职业经历并获取一些建议。</li>
+<li>**互联网导师：**听起来可能有点奇怪，但我确实有互联网导师。我的意思是那些在他们的博客、书籍、播客等上分享他们职业历程和经验的个人/领导者。随着时间的推移，我已经确定了一些写作风格和想法与我产生共鸣的人，并且他们提出的建议/想法是可行尝试的。并不是每个建议/想法在你的情境下都能说得通。</li>
+</ol>
+<h2 id="保持你的友好值">保持你的“友好值”</h2>
+<p>每个人都有一个友好度余额。当你帮助别人时，你的友好度余额会增加。当你请求帮忙时，它可能会减少。当你没有正当理由地打断别人时，它肯定会降低。</p>
+<p>在团队中，如果你是较新或较年轻的成员，那么你的友好度余额会更高。人们愿意帮助你；事实上，他们期望这样做。但是如果你不花时间自己解决问题，问太多琐碎的问题或经常打断别人，这个余额会很快减少。</p>
+<p>避免过快用尽你的友好度余额。在寻求帮助之前，先尝试最常见的调试和信息收集步骤。如果可以找到解决方案，可在线或在公司内部知识库寻求帮助。当遇到框架或技术问题时，首先要仔细阅读相关文档。</p>
+<p>在处理团队拥有的代码时，请查阅源代码历史和最近的提交记录。如果你在调试一个bug，需要逐步检查代码、记录变量值、注意假设，并结构化分析出错的地方。如果以上方法都不奏效，找到可以帮助你的人并向他们请教。向同事寻求帮助时要做好充分的准备。清晰地解释问题，总结一下你已尝试过的方法，以及如果他们无法帮助你，你的下一步计划。如果他们很忙，请尊重他们的时间，因为他们可能有其他优先事项。在这种情况下，可以向他们请教一个快速的指引。定期为自己的善意“存款”加油。如何建立你的善意“存款”？通过做一些增加友好值的活动：</p>
+<ul>
+<li>为他人提供帮助。坐在一起帮助解决他们的问题。</li>
+<li>分享你的专业知识，让他人的工作更轻松。</li>
+<li>当有人帮助你解决问题时，请感谢他们，甚至更多。</li>
+</ul>
+<p><strong>尽量避免单独工作</strong><br>
+作为一名工程经理，我很少看到经验较少的开发人员或新人独立工作几个星期或几个月取得好结果。通常，他们的工作要花费更长的时间，人们告诉我他们感觉没有效率，也感到更孤独。为了解决这个问题，在回顾会上我们决定给他们分配一个**“项目伙伴”**。但如果你的主管没有这样做，作为开发者，你可以采取什么措施呢？</p>
+<p>采取措施解决独自工作的问题。例如，向团队中的另一位工程师请求成为你项目的伙伴，每天通过快速沟通与你对计划进行审查以及进行代码审核。如果工程师客气地拒绝了，与你的经理或主管沟通，并试图说服他们关于对团队生产力带来的益处。当然，经验丰富的开发者将需要花费一点时间与你在一起。然而，作为回报你会更快地完成工作，也更快地成长。很快，你就能够帮助团队中的其他人。</p>
+<p>此外，增加你在团队中的信誉度余额。其他人对你的好感度越高，他们就越有可能愿意在项目上成为你的伙伴。</p>
+<h2 id="主动出击">主动出击</h2>
+<p>我见过一些最高效的工程师，他们总是主动去承担一些较小或较大的工作，即使这些工作并不是要求他们做的。这就是所谓的主动性。<br>
+许多这样的工程师会研究一项新技术，用于项目中，无论是内部系统还是开源组件。他们与队友交流，参与了解其他项目，并主动提出帮助完成一些较小的任务。他们往往是第一个自愿承担任何出现的机会的人。</p>
+<p>在快速发展的科技公司中，主动承担责任并参与那些并非直接分配给你的任务往往会对职业生涯产生重大影响。比如，在Uber，我看到一位初级工程师在自行调查和原型设计了一个新的微服务部署系统后，成为了团队在部署方面的负责人。其余团队成员都太忙，没有意识到这项新服务将使他们的工作变得更容易。</p>
+<p>主动承担责任的方法以下是您可以主动承担责任来帮助团队和自己的方式，而又不会花费太多时间：</p>
+<ul>
+<li>记录不清楚的事情，与团队分享这些文档。“记录会加深你的理解，向同事展示你在帮助团队，也可能在未来帮助团队中的某位同事或新人。</li>
+<li>自愿进行调查。这可能包括试用新的框架或技术，原型设计如何整合新服务或组件等。如果您经验较少，可以提出与某人搭档，或者请某人与您搭档。</li>
+<li>调查团队可以使用的有趣工具或框架，与团队分享您的学习。在工作任务之余，调查一下公司中可用的工具和框架，或其他团队使用的工具和框架。例如，可以尝试新的前端框架、新的文档工具、日志框架、新的构建或部署系统等。试试看，并为团队做一个演示，陈述您的看法。即使结果是“我们不应该使用这个”，您的团队也会认识到您在努力超越自己的角色学习更多。</li>
+<li>与您的经理讨论即将到来的项目。在这个过程中，表达您对感兴趣工作的兴趣。通过向经理询问即将发生的事情，您将更好地了解工作的优先级和未来任务。通过告知经理您对某些项目感兴趣，您更有可能参与到您感兴趣的项目中。您还可能了解需要提前调查的内容。</li>
+</ul>
+<p>作为一种警告：确保在承担许多新任务前完成您“期望”的工作。新任务有助于他人看到您是一个高效的人，前提是您首先要完成您最重要和分配的工作。如果您必须在做某事新的和完成您当前的工作之间选择，我建议您先完成最需要的工作。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%8B%86%E5%88%86%E5%B7%A5%E4%BD%9C">拆分工作</a></li>
+<li><a href="#%E4%BC%B0%E8%AE%A1%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%94%A8%E6%97%B6">估计你的工作用时</a>
+<ul>
+<li><a href="#%E5%AF%B9%E5%85%88%E5%89%8D%E7%B1%BB%E4%BC%BC%E5%B7%A5%E4%BD%9C%E8%BF%9B%E8%A1%8C%E4%BC%B0%E7%AE%97">对先前类似工作进行估算</a></li>
+<li><a href="#%E4%BC%B0%E7%AE%97%E4%BD%A0%E4%BB%A5%E5%89%8D%E4%BB%8E%E6%9C%AA%E5%81%9A%E8%BF%87%E7%9A%84%E5%B7%A5%E4%BD%9C">估算你以前从未做过的工作</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%BB%E6%89%BE%E5%AF%BC%E5%B8%88">寻找导师</a></li>
+<li><a href="#%E4%BF%9D%E6%8C%81%E4%BD%A0%E7%9A%84%E5%8F%8B%E5%A5%BD%E5%80%BC">保持你的“友好值”</a></li>
+<li><a href="#%E4%B8%BB%E5%8A%A8%E5%87%BA%E5%87%BB">主动出击</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

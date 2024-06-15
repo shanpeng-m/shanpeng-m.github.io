@@ -1,0 +1,441 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-7-1】做有能力的程序员 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-7-1】做有能力的程序员 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件开发的能力并非天生具备，而是需要几年..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-7-1】做有能力的程序员 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件开发的能力并非天生具备，而是需要几年..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/pulGBUnFf/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-7-1】做有能力的程序员 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件开发的能力并非天生具备，而是需要几年...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/pulGBUnFf/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-7-1】做有能力的程序员
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-06-06 · 16 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>软件开发的能力并非天生具备，而是需要几年的时间去掌握。所有的工程师领导者也会意识到这一点。一般软件开发工程师的职业路径如下：</p>
+<ul>
+<li>Software Engineer（SWE），SWE 2（大型科技企业和许多初创）</li>
+<li>Developer，Software Developer（SDE），SDE 2（传统公司和一些初创）</li>
+<li>Member of Technical Staff（MTS），这是一个上世纪企业中的头衔，最近OpenAI开始重启这一头衔</li>
+</ul>
+<p>作为一名软件工程师，每个人都希望做好工作，成为值得信赖的工程师。这意味着你将被赋予更大的项目或任务，从而加快你的成长速度。</p>
+<p>那么，如何才能做好工作呢？</p>
+<h2 id="1-只专注工作中最重要的部分">1. 只专注工作中最重要的部分</h2>
+<p>在初创公司或大公司中，你可能会有很多项目、会议、任务、代码审查和邮件需要处理。这种情况会让你感觉整天在忙碌，但却没有实质性进展，即使你每天都在加班。因此，最好简化你的工作生活，问问自己，当前最重要的事情是什么？如果你只能做一件事情，你会选择做什么？把事情简化至只专注于最重要的一项工作。</p>
+<h3 id="养成优先处理第一重要事项的习惯"><strong>养成优先处理第一重要事项的习惯</strong></h3>
+<p>只有完成了第一重要事项，别人才会认定你完成了自己的工作。参加其他会议或完成其他任务都只能证明你没有完成你应该做的事情。即使你把这些其他事情做得再完美，也会被视为不可靠。因此，养成优先处理第一重要事项的习惯至关重要。</p>
+<h3 id="学会拒绝"><strong>学会拒绝</strong></h3>
+<p>拒绝有时也是一种重要的技能。如果你很幸运，你的上级会帮你拒绝一些不必要的额外工作，但如果没有，你就需要学会自己说不。这也是一个技能。</p>
+<p>在拒绝时，直接说不可能会让同事无法接受。最好说：“I'd like to help, BUT…”。例如，产品经理让你立即修复一个 Bug，但你正在忙着更紧急的任务，你可以这样说：</p>
+<blockquote>
+<p>&quot;Yes, I'd like to help, BUT I'm working on implementing the Zeno feature, which is my #1 priority. I can either look at this when I’ve finished my pull request, or I will have to push back on my commitment to get the Zeno feature done on time because I can’t do both.&quot;</p>
+</blockquote>
+<p>同样的，如果其他团队邀请你参加会议，但你没有时间，可以这样说：</p>
+<blockquote>
+<p>“Yes, I’d like to go, BUT I am swamped with work I need to finish. Would you mind spending over the meeting notes afterward so I can catch up? I’d be grateful. Thanks a lot.”</p>
+</blockquote>
+<h2 id="解除阻碍">解除阻碍</h2>
+<p>软件开发是一个复杂而全面的任务，在开发过程中可能会遇到无法通过谷歌搜索解决的各种问题。一个可信赖的软件工程师总是能够迅速识别自己面临的障碍，并迅速想出解决方法。</p>
+<h3 id="知道你何时被阻碍了">知道你何时被阻碍了</h3>
+<p>解除阻碍的第一步，就是知道你何时被阻碍了。你有没有这样的感觉，你感觉自己马上就要成功了！但是你花费了6个小时，但是没有任何进展。简单来说，如果你在30min到1h没有任何进展，就意味着你被阻碍了。</p>
+<h3 id="尝试各种不同的解决问题的方案">尝试各种不同的解决问题的方案</h3>
+<p>当你遇到问题时，最直接的做法是向他人寻求建议。但如果没有人能帮你怎么办呢？以下是一些解决编程问题的方法：</p>
+<ol>
+<li>进行橡皮鸭调试。向一个”橡皮鸭”（可以是一个物体或者你自己）解释问题以及你尝试过的方法。口头表达问题有时会启发新的思路，最终带来解决方案。</li>
+<li>在纸上画图。在纸上勾勒出问题的草图。通过可视化可能会激发新的尝试思路。</li>
+<li>阅读技术文档和参考资料。如果在使用特定语言特性、框架或库时出现问题，查阅相关文档和代码示例，也许会找到解决问题的线索。</li>
+<li>在线搜索相关问题。用不同的方式描述你的问题，因为其他人可能用不同的术语描述相同的问题。</li>
+<li>在编程问答网站发帖。如果公司内有问答平台，可以在上面提问。此外，也可以在类似 Stack Overflow 的网站上查找答案。</li>
+<li>寻求帮助。在网络上搜索相关信息或在相关论坛上寻求帮助。解释你遇到的问题也有助于获得解决问题的新思路！</li>
+<li>使用人工智能工具。输入你遇到的问题以及已经尝试过的解决方法，看看人工智能工具会给出什么样的建议。也许你会找到一些有用的指导意见。</li>
+<li>休息一下。出去散步或者转换一下注意力去做其他事情。当你回来继续解决问题时，也许会从新的角度看待问题，或者发现之前忽略的细节。</li>
+<li>从头开始，或者撤销所有变更。如果你卡在了一个经过多次修改的有问题的代码上，可以回到代码最后一次正常运行的状态，然后一次只做出小的改动重新开始。这可能意味着要放弃大部分工作，但换来的是更专注于整个过程并可能发现问题破坏的原因。</li>
+</ol>
+<h3 id="获取来自他人的协助">获取来自他人的协助</h3>
+<p>有些阻碍源于之前未见过的问题导致缺乏知识，而其他阻碍则源于无法接触到正确的人。无论哪种情况，联系其他开发人员以寻求帮助是明智的选择；他们可能会分享你所不具备的知识，或者与可以帮助你的同事取得联系。解决阻塞问题的最简单方式是告诉你的团队：“嘿，我遇到了这个问题。有人能帮忙吗，或者和我一起解决吗？”有时候，你会因为等待某人而受阻。一种特殊的阻碍是知道该做什么，但由于某种原因无法做到。例如，你可能想将代码推送到生产环境，但首先必须通过代码审查得到某人的批准。或者你需要一些依赖项对其API进行更改，但拥有API端点的团队还未回复你的邮件或工单。因此，你被困在等待中，什么也做不了。这真的很令人沮丧。工作场所越大，越有可能因为等待别人而受阻。如果你与时区不同的团队合作，等待消息和邮件、代码审查以及设计文档反馈，都属于这种情况。</p>
+<h3 id="学会如何在不惹恼他人的情况下升级">学会如何在不惹恼他人的情况下升级</h3>
+<p>在出现阻塞情况的环境中，升级的技巧至关重要。同事可能会忽略你的消息，并非因为他们不想帮忙，而是可能认为你的消息比起他们其他的任务而言优先级较低。<br>
+在这个背景下，升级是什么意思呢？它意味着请求你的经理或者更高层级的人士，以其职位的权威传达你的消息。这也可能涉及联系其他有权威的人，例如，对于不回应你的请求的人的经理进行联系。<br>
+升级可以加快事情的进展，但如果使用不当也可能会损害人际关系。想象一下你的经理告诉你：“我听说你忽视了市场工程团队的吉姆。现在他给主管发送消息说你在阻碍新的广告活动。”<br>
+你可能一无所知，因为你整天都在编码。于是你检查聊天记录，果然，吉姆在四小时前发了一条你错过的消息。让我们退一步考虑一下吉姆对你的沉默作何反应。</p>
+<p>在处理升级问题时，我的方法如下：</p>
+<p>**解释。**首先，我会解释为什么需要帮助，提供相关背景信息让对方理解重要性。例如：“Joe，我真的需要你尽快查看这份代码审查，因为这正阻碍了Zeno项目的最后工作。这个项目的截止日期是下周，如果明天代码还没合并，我们就会错过截止日期。”</p>
+<p>**询问。**如果没有任何反应，我会询问原因。“Joe，请告诉我你在代码审查方面的进展如何？我知道你手头有很多事情要做。你能告诉我你计划何时处理吗？再次强调，这个问题影响了Zeno项目，对我很重要。”</p>
+<p>**警告。**如果仍然没有反应，我会提出升级的可能性：“Joe，我还没有收到任何消息。我们需要继续进行Zeno项目。如果你今天结束前无法完成代码审查，我将联系你的经理，请求不经过你团队的审查合并代码。”</p>
+<p>**升级。**如果依然没有结果，我会升级，牵涉到我的经理、他人的经理或者双方经理。</p>
+<p>你可能在一家公司工作，去找经理澄清优先事项是很常见的，工程师也不会在意。在其他地方，这可能会被视为过分主动，且会让同事看起来不好。</p>
+<p>目标是让升级达到双赢。当不得不采取升级手段时，试着委婉一些，这样对方不会感觉被你“出卖”。当对方按照你的要求行事时，一定要表示感谢，让相关人员知道他们的帮助。可以简单地在私信、邮件或向经理传达信息表示感谢，描述一下Joe为帮助你额外付出的努力。要在解决问题的同时，保持与团队之外的同事之间的良好关系。</p>
+<h3 id="帮帮忙我被卡住了速查表">“帮帮忙！我被卡住了！”——速查表</h3>
+<p>以下是一些常见情况，表明您被阻止了，以及处理这些情况的一些方法。</p>
+<p><strong>计划阶段：</strong></p>
+<ul>
+<li>不清楚要做什么（“缺少信息”阻止器）。明确缺少哪些信息，并向可以帮助的同事寻求支援。
+<ul>
+<li>不知道应该咨询哪位关于某个领域的信息（“缺少信息”阻止器）。请领导或经理帮忙识别这些人，然后列出联系人列表。考虑与团队分享。</li>
+</ul>
+</li>
+</ul>
+<p><strong>构建阶段：</strong></p>
+<ul>
+<li>新语言或框架（再次是“缺少信息”阻止器）。您需要学习它，这是一个提升技能的绝佳机会。如果是一种语言或框架，请寻求推荐的学习资源。如果是内部框架，请找到文档、源代码以及创建它的同事。在深入研究之前，“学会足够解决问题的知识”可以先从小处着手。
+<ul>
+<li>无法理解的错误消息，谷歌也找不到解决方法（“缺少信息”阻止器）。在自己尝试解决后，考虑与队友合作解决。如果错误消息与内部组件有关，请联系构建该组件的团队。如果陷入困境，请向您的团队寻求帮助和新思路。</li>
+<li>困惑于某些工作原理（“缺少信息”阻止器），比如工具、框架或编码构造。尝试通过绘图、查看源代码和进行一些研究来拆分它。如果没有取得进展，请向经验更丰富的同事寻求帮助，并解释您目前已经做了什么。如果您的团队中没有足够有经验的人，尝试扩大范围：联系您认识的人，或询问您的经理应该联系谁。</li>
+<li>构建问题（“缺少信息”或“等待他人”阻止器），比如构建失败、错误奇怪或速度异常缓慢。如果您有勇气，可以阅读有关构建“工具”的内容，看看能否找到解决方法。更安全的方法是联系设置构建的人或团队，并请求有关调试此问题的指导。如果有专门负责构建的人或团队，他们可能需要处理工作，因此请询问并在必要时升级。或者自愿进行调查和修复实际工作，只需寻求合作意见。您将不仅扩展技能范围到工具领域，同时帮助您的人也会对您的主动性表示感激。</li>
+<li>任务进行中突然需要另一个团队或服务的依赖（“等待他人”阻止器）。这可能是 API 无法按需运行，或者组件或系统尚未准备就绪。除了通知其他团队他们是阻碍因素、升级和暂停此工作流程之外，您无法做太多事情，或尝试寻找解决方法。最好将您的经理纳入讨论，或至少通知他们。</li>
+<li>访问问题（“等待他人”或“缺少信息”阻止器）。无法访问日志、配置或在某些系统上进行部署，这在大公司很常见。您的经理是您最佳的联系人，因为几乎总是需要通过他们获得访问权限。解释问题及为何需要访问权限。您还可以联系更有经验的同事，他们可能以前遇到同样的问题，应该能告诉您谁可以授予权限。如果没有消息回来，向您的经理升级。</li>
+<li>误导性文档（“缺少信息”阻止器）。在构建某些内容时，框架或系统表现与文件中描述的不一样。哦，太好了！您浪费了大量时间。联系拥有该文档的团队，并提出修复建议。如果您可以修改文档并进行更改，请告诉文档所有者，然后执行。如果您需要帮助继续进行，文档所有者是很好的指导来源。</li>
+<li>停电或系统崩溃，阻止您工作或验证“您构建的东西正常工作（“等待他人”阻止器）。标记故障并升级它；您有可能是第一个注意到的人。一旦得到确认，除了等待并处理其他事项外，没有太多可做的。</li>
+</ul>
+</li>
+</ul>
+<p><strong>测试阶段：</strong></p>
+<ul>
+<li>测试失败不确定性（“缺少信息”阻止器）。这些问题比较棘手，需要调试来了解发生了什么以及为什么。尝试与团队成员合作或在聊天中询问是否有人遇到类似问题。
+<ul>
+<li>缺少测试数据，例如重现测试用例的数据或类似生产数据（“缺少信息”阻止器）。找出如何获取这些数据；可能只是查找正确的日志，也可能需要请求访问生产数据，这可能意味着等待或升级。</li>
+<li>测试速度太慢（“等待机器”阻止器）。从长远来看，这可能是一个负担，而且通常并不是一个紧迫的阻止器。不过，这是一个寻找方法使测试更快，以及对慢下来的地方进行性能分析的好机会。</li>
+</ul>
+</li>
+</ul>
+<p><strong>审查阶段：</strong></p>
+<ul>
+<li>等待代码审查（“等待他人”阻止器）：以上已讨论了此情况。直接联系审阅者请求审查，并在合理时间内未得到回应时升级。寻求团队成员和经理在如何处理这些情况方面的支持。
+<ul>
+<li>合并冲突：这些往往耗时，无法避免。解决冲突后，明智的做法是重新测试您的工作以及之前的更改，以确保没有任何问题。保持拉取请求的精简，使合并冲突变得更少麻烦，并加快迭代速度。</li>
+</ul>
+</li>
+</ul>
+<p><strong>部署阶段：</strong></p>
+<ul>
+<li>权限/访问问题（“等待他人”阻碍）：找出能够提供访问权限的同事，如果需要的话进行升级处理。在较大的工作场所，通常都会有专门的团队或审批流程。</li>
+<li>部署过程太慢（“等待机器”阻碍）。类似于缓慢的测试，这个问题不应该被忽视。如果有专门负责部署工具的团队，可以联系他们看是否能够优先考虑加快部署速度。如果可以调整部署设置，可以尝试动手去缩短部署完成的等待时间。如果无法加快部署速度，是否可以添加健康检查，以便在部署后无需手动验证事物是否正常运行？</li>
+</ul>
+<p><strong>操作系统和维护：</strong></p>
+<ul>
+<li>无法重现的错误（“等待他人”阻碍）。对于很难重现的客户反馈bug，需要寻找更多信息。这可能意味着在代码中添加额外的日志记录，并要求客户再次尝试，或者向他们请求更多信息。无论哪种方式，你很可能都需要等待回复，无法进行升级处理。</li>
+<li>系统问题缺乏足够的日志记录（“缺少信息”阻碍）。可能无法调试客户问题，或者监控和警报问题。问题在于系统没有足够的调试信息满足您的需求，因此需要添加更多日志、监控或警报，并部署它们，然后再尝试调试生产问题。根据问题的复杂程度，和队友一起合作可能是明智的选择。</li>
+<li>系统中断（“缺少信息”或“等待他人”阻碍）。团队负责的系统出现故障，可能是由于系统中断或者在您这一端出现问题。及时告知经理和团队，如果可能，立即采取措施减轻系统中断。问题解决后，通常会对根本原因进行调查，并进行事后总结。</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E5%8F%AA%E4%B8%93%E6%B3%A8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E9%83%A8%E5%88%86">1. 只专注工作中最重要的部分</a>
+<ul>
+<li><a href="#%E5%85%BB%E6%88%90%E4%BC%98%E5%85%88%E5%A4%84%E7%90%86%E7%AC%AC%E4%B8%80%E9%87%8D%E8%A6%81%E4%BA%8B%E9%A1%B9%E7%9A%84%E4%B9%A0%E6%83%AF"><strong>养成优先处理第一重要事项的习惯</strong></a></li>
+<li><a href="#%E5%AD%A6%E4%BC%9A%E6%8B%92%E7%BB%9D"><strong>学会拒绝</strong></a></li>
+</ul>
+</li>
+<li><a href="#%E8%A7%A3%E9%99%A4%E9%98%BB%E7%A2%8D">解除阻碍</a>
+<ul>
+<li><a href="#%E7%9F%A5%E9%81%93%E4%BD%A0%E4%BD%95%E6%97%B6%E8%A2%AB%E9%98%BB%E7%A2%8D%E4%BA%86">知道你何时被阻碍了</a></li>
+<li><a href="#%E5%B0%9D%E8%AF%95%E5%90%84%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E7%9A%84%E6%96%B9%E6%A1%88">尝试各种不同的解决问题的方案</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%9D%A5%E8%87%AA%E4%BB%96%E4%BA%BA%E7%9A%84%E5%8D%8F%E5%8A%A9">获取来自他人的协助</a></li>
+<li><a href="#%E5%AD%A6%E4%BC%9A%E5%A6%82%E4%BD%95%E5%9C%A8%E4%B8%8D%E6%83%B9%E6%81%BC%E4%BB%96%E4%BA%BA%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E5%8D%87%E7%BA%A7">学会如何在不惹恼他人的情况下升级</a></li>
+<li><a href="#%E5%B8%AE%E5%B8%AE%E5%BF%99%E6%88%91%E8%A2%AB%E5%8D%A1%E4%BD%8F%E4%BA%86%E9%80%9F%E6%9F%A5%E8%A1%A8">“帮帮忙！我被卡住了！”——速查表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>
