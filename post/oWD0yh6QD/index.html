@@ -1,0 +1,401 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-8-1】编写代码 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-8-1】编写代码 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+多练习编程！
+成为一名优秀的软件工程师始..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-8-1】编写代码 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+多练习编程！
+成为一名优秀的软件工程师始..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/oWD0yh6QD/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-8-1】编写代码 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+多练习编程！
+成为一名优秀的软件工程师始...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/oWD0yh6QD/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-8-1】编写代码
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-06-15 · 16 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="多练习编程">多练习编程！</h2>
+<p>成为一名优秀的软件工程师始于成为一名优秀的编程人员；这是本书讨论的一切基础。当然，具备扎实编程技能是优秀软件工程师必备的特质之一，因为你需要将自己的想法和观点尽可能高效、无缝地转化为可运行的代码。<br>
+为此，你需要经常进行编程练习，深入学习一门编程语言，并不断解决真实世界中的问题。<br>
+经常练习编程就好比进行体育训练。你可以阅读一切关于如何写出优秀代码以及哪些技巧可以提高编码效率的资源。</p>
+<p>要变得更强、更优秀。但你取得进步最大的因素始终是你练习的次数。</p>
+<p>对编程也是如此。图书和在线资源可以帮助你开始扩展知识。但最终，你必须通过编写大量的代码来应用这些知识。</p>
+<p>每天编程是一个很好的习惯，因为从学习编程到熟练需要很长时间和努力。因此，致力于每天解决用代码解决的有意义的任务和问题。</p>
+<p>作为开发人员的早期阶段，大多数科技公司普遍期望的是每天编程。如果由于某些原因你没有这样做，请想办法。这可能涉及在工作中接手额外的项目，转移到一个进行大量编程的团队，甚至是致力于锻炼编程技能的副业项目。</p>
+<p>你需要每天编程才能不断成长为一名胜任的软件工程师。我所知道没有任何替代方法。</p>
+<h2 id="寻求代码审查">寻求代码审查</h2>
+<p>写出能够运行的代码是编程熟练的基础之一。另一个则是编写其他人能够阅读和理解的代码。</p>
+<p>撰写能正常运行的代码是编程熟练度的基石之一。另一个基石是编写易读易懂的代码，遵循常见的编码规范。在写完代码后，应该获取反馈意见，以便进一步改进。要进行代码审查。</p>
+<p>大多数技术组织都会进行代码审查；实际上，在许多地方，在未经过代码审查的情况下无法将代码推送到生产环境。不过，在刚开始学习编程时，你可能会写很多不会用于生产的代码。例如，你可能会进行原型设计，编写实用工具或工具，开展实验性项目，或发现自己是在独自工作。</p>
+<p>无论是否需要代码审查，都应该努力获取所有你编写代码的反馈意见。如果身边有更有经验的人，你可以向他们寻求额外的反馈以帮助你“快速成长”。大多数人都乐意花点额外的时间帮助初级同事。</p>
+<p>如果很难获得额外的代码审查，可以请一位同事与你一起合作，让他们深入了解你的代码，并询问他们发现的改进方向。如果没有人可以一起工作，可以尝试找一位外部团队之外熟悉该技术或领域的人，他们可以给予有意义的反馈。</p>
+<p>人工智能（AI）工具也是获取编码反馈的有用来源。但要注意，并非所有由AI生成的反馈都是准确的，这些工具可能不会考虑额外的上下文情况，而你的团队会考虑到。AI工具总比没有强，但没有什么能比得上彻底的同行审查。</p>
+<p><strong>学会从代码审查中学习。</strong> 记下你收到的反馈意见。如果你发现反复出现的评论，考虑对其进行解决。例如，审阅者是否经常指出你的函数做了太多事情，或者你忘记添加测试了？通过解决审阅者的评论来不断改进你的编码方式，这样你就不会重复收到相同的反馈。<br>
+如果你不理解某个评论背后的理由，通过与给出审查意见的开发人员交谈来弄清楚。<br>
+<strong>如何处理那些让人感到严厉的代码审查呢？</strong> 事实上，会有那种让你感到受伤的代码审查：它们的语气缺乏同情心，或者你不认同一位资深工程师提出的建议。<br>
+Angie Jones 是 Block 公司的开发者关系副总裁，是一位 Java Champion，曾任 Twitter 的高级软件工程师（现已更名为 X）。她写了一篇名为《在代码审查中的10条戒律》的文章，回答了这个问题，这是我读过的最详尽的回答之一。她写道：<br>
+在我的软件开发多年里，我总结出了十条戒律，我遵循这些戒律来进行代码审查。无论我参与过的团队如何，这些戒律都像魔法一样有效。</p>
+<p>在我职业编程的15年里，我早就决定不把代码审查的评论当成个人攻击。相信我，当加入一个新团队时，我确实收到过很多粗鲁或傲慢的评论。然而，这种情况从来没有持续太久，因为我学会了如何处理代码审查，并改变它们的语气，无论潜在问题是什么。想知道为什么会收到粗鲁的评论只会让我感到更加焦虑，所以我做出了有意识的决定，给予每位评论者怀疑的空间，假设评论是针对代码而非我个人的。</p>
+<h2 id="阅读的量不亚于写代码">阅读的量不亚于写代码</h2>
+<p>在提高编码能力方面，写代码是最快的方法，但阅读代码同样重要。如果只专注于写代码，可能会养成别人不用的风格和规范。后期可能难以理解别人的代码。同时，一旦养成了“坏习惯”，就很难改掉。<br>
+通常，阅读代码最简单的方式是及早参与团队或代码库中的代码审查。即使你不是该语言的专家，或对代码库不太熟悉，也要养成这个习惯。每次同事进行更改时都要仔细阅读，了解其作用，并记录所采取的方法。当有不清楚的地方时，要与编写代码的人交流，学习更多。<br>
+阅读团队或公司之外编写的代码也很有好处。如果可以访问工作场所中的其他项目，开始关注那些你依赖的团队代码库的代码更改和代码审查。团队和公司通常遵循特定于其环境的约定。</p>
+<p>阅读开源代码同样是了解他人代码、深入了解公司外部情况的绝佳途径。尝试找到一个与你所使用的语言相似的活跃开源项目。GitHub是最容易找到这类项目的地方。浏览一个项目，熟悉它是如何运作的，然后开始关注其变化。试着理解正在发生的事情，关注写入的代码类型，以及代码审阅者所提供的反馈。</p>
+<p>在写代码和阅读代码之间找到平衡，不要偏向其中任何一方。</p>
+<p>多写一些代码除了在工作项目中编程外，你还可以通过其他方式进行编程实践。以下是一些建议：</p>
+<ol>
+<li>开发一个副业项目。为自己、朋友或家人解决一个小问题的小副业项目，是增加编程经验的好方法，甚至可以学习新的技术栈。副业项目让你有机会尝试新的方法，你的目标是写出可运行的代码，但你也可以大胆尝试并利用以往不曾使用过的语言特性，让事情变得更加复杂。</li>
+<li>完成教程/培训并做编程练习。教程和培训提供结构化的内容，你只需跟着进行，而不用自己思考要做什么。这类培训对于深入研究特定编程语言或技术非常有帮助。教程和培训的最大挑战在于花时间和保持动力来完成它们。如果你的公司支持或提供面对面的培训，一定要好好利用。这是深入学习技术的一个很有用的途径。</li>
+<li>参加编程挑战。在网站类似Leetcode、Project Euler等上挑战编程问题，是练习所使用编程语言的好机会，也有助于提升算法解决问题的能力。</li>
+<li>定期进行编程练习。这有助于熟悉编程语言，提升解决问题和算法的能力。在网上搜索每日编程练习题。编程练习应当是短暂的时间投资。最好定期进行，最好是每天坚持几周，直到练习不再有挑战性。</li>
+</ol>
+<p>支付获取资源可以提高注意力。深入学习一门编程语言是耗时的，很容易把这项任务搁置在一边。</p>
+<p>在学习编程时，只要变得“足够好”就可以了。总会有需要解决的真实问题，你不需要复杂的语言特性。</p>
+<p>在学习过程中，我发现的一个诀窍是通过投资购买想要学习的资源来保持专注，不中途放弃。这样做的好处是，我知道如果我没完成学习，我投入的金钱就会白白浪费。虽然很多免费资源的质量与付费资源相似，但是通过金钱投入购买书籍、在线课程或线下培训会激励我不轻易放弃，也不会让我的投资打水漂。</p>
+<h2 id="可读性代码">可读性代码</h2>
+<p>对于所有代码来说，可读性是最重要的特征之一。它和正确性以及按预期运行功能一样重要。<br>
+然而，验证代码是否具有可读性要比验证代码是否正确要困难得多。这是因为代码的正确性可以通过测试来确定：可以得出“是正确的”或“不正确”的二元答案。针对难以阅读的代码没有等效的方法。<br>
+不正确的代码无法长时间隐藏，但难以阅读的代码可能会长时间不被察觉。它悄然存在于代码库中，直到一名开发人员尝试理解它的功能以修复错误或添加新功能时。他们想要理解这段难以阅读的代码是做什么的，并确定是否需要修改它。<br>
+<strong>如果代码不易读，后续进行更改的工程师将会花费大量时间处理本应该非常简单的工作。</strong> 他们可能会误解代码并以意想不到的方式使用它，然后花费多次迭代来完成变更。或者他们可能会更改代码，无意间破坏其他功能。如果为功能编写了自动化测试，这只是一个轻微的烦恼。如果没有，这意味着会出现更多问题，并且会花费更多时间来正确进行更改。<br>
+在某些情况下，开发人员可能会花费大量时间尝试并且无法理解代码，最终决定完全重写它；删除原始代码并“编写新实现”。然而，这种重写可能无法涵盖所有边缘案例；最终可能导致花费在重写上的时间比在原始代码上花的时间更多。<br>
+<strong>难以阅读的代码最大的风险在于它启动了低可读性螺旋。</strong> 进行更改的工程师花费大量时间弄清楚代码的工作原理。但他们可能只做出最小的更改，从而导致代码更不易读。接下来的人将花费更多时间理解代码，可能会破坏系统，或者干脆放弃、删除代码并重新发明轮子。<br>
+难以阅读的代码是技术债务的主要贡献者，技术债务会因各种原因不断积累，包括缺乏自动化测试、缺少像持续集成（CI）或持续部署（CD）这样的流程，以及拥有不完善的入职培训和文档。技术债务是导致团队放缓速度的重要因素。<br>
+这就是为什么代码可读性和彻底的测试是务实工程师的两个最重要原则。可读性强、经过充分测试的代码使得重构、扩展和修改代码库变得尽可能简单。可读性强、经过充分测试的代码是稳固代码库的基础，使工程师有信心进行更改。</p>
+<h3 id="什么是可读性代码"><strong>什么是可读性代码？</strong></h3>
+<p>“可读性代码”在不同团队、公司和编程语言中有略微不同的含义。判断代码是否易读的两个重要标准是你自己和所有阅读它的人。</p>
+<p><strong>可读性代码从你自己觉得容易阅读的代码开始。</strong> 编码结束后，休息片刻让大脑清晰。然后，像是第一次看到代码一样重新阅读它，想象你对更改一无所知。</p>
+<p>你能够理解自己的代码吗？变量和方法的命名是否有助于你理解它们的作用？代码中是否有足够的注释来解释不清晰的地方？代码的风格在整个更改中是否保持一致？</p>
+<p>考虑一下如何使代码更易读。也许你会发现有些函数功能过于复杂且过长。也许你会发现重命名某个变量可以使其用途更清晰。进行修改，直到你觉得代码表达清晰、简洁、整洁。<br>
+<strong>可读性代码的测试很简单：别人能否理解？</strong> 通过代码审查获取反馈。询问代码的清晰程度。鼓励别人提出问题，如果有什么不明白的地方。代码审查，尤其是全面的审查，是最好的反馈来源。<br>
+<strong>易读的代码不会引起过多的解释性问题，审阅者也不会误解。</strong> 因此，当有人不理解你为什么写某段代码或者提出澄清问题时要多加注意。每一个问题和误解都提示代码可以更易读。<br>
+获取关于代码清晰度的更多反馈的一个好方法是请一个不熟悉代码库的人。明确询问你的代码易读程度的反馈。由于你的同事不是专家，他们将专注于是否能理解你的代码。他们大多数的评论都会涉及可读性。</p>
+<p>如果你对代码的清晰度感到满意，并且其他开发人员也觉得可读性好，那么你就走在了正确的道路上。有许多方法可以使代码更易读更清晰。但在深入讨论这些方法之前，首先要关注代码的基本要求，确保自己和同事容易读懂。</p>
+<p>需要注意的事项在编写代码时，你应该始终考虑两个主要目标：</p>
+<p>代码应该是正确的，也就是当执行时能产生期望的结果。<br>
+其他开发人员应该能轻松阅读和理解代码。</p>
+<p>编程是一项社交活动。你的代码并不是独立进行某个任务的，它存在的目的是为了被其他开发者阅读，理解或修改。所以你写的代码需要足够简单，以便其他工程师能够维护。而这一切始于代码的可读性。有几个要注意的事项：</p>
+<ul>
+<li><strong>命名。</strong> 使用自解释、简洁的命名。遵循代码库中一致的命名约定。</li>
+<li><strong>结构清晰。</strong> 代码库易于浏览，因为函数、类和模块都遵循着逻辑结构。格式在类和代码库中保持一致。</li>
+<li><strong>保持代码简单（KISS）</strong> 。KISS代表“Keep it simple, stupid.保持简单，傻瓜！”。代码越简单，阅读和理解就变得越容易。因此，应该追求小而不致过大的函数和类。避免为了炫技而引入复杂的编码解决方案，当可以更简单地完成任务时。</li>
+<li><strong>“单一职责”。</strong> 函数应只负责一件事情，类也应有主要职责。专注于单一目标使得测试正确性更容易，同时也使测试可被重复使用。</li>
+<li><strong>“DRY”原则：</strong> 不要重复自己。避免复制粘贴代码。如果需要重复使用，考虑重构代码以遵循单一职责原则。=</li>
+<li><strong>注释。</strong> 关于注释有两种思潮；有些工程师强调代码应该自我说明，而另一些人认为注释是为代码添加无法传达的上下文的必要手段。建立自己对注释的方法，记住最终目标是让其他人能搞懂你写的代码。一般而言，在注释中解释“为什么”，而不是“怎么做”。这可能包括一个增加异常情况的业务原因，或者存在一个推广看似奇怪代码路径的故障链接。</li>
+<li><strong>持续重构以保持可读性。</strong> 代码库在不断增长。当一个简单的类拥有更多的职责时，它会变得越来越庞大和复杂。新的复杂类可能会被拆分为多个部分或以其他方式进行更改，以确保代码易于理解。</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%A4%9A%E7%BB%83%E4%B9%A0%E7%BC%96%E7%A8%8B">多练习编程！</a></li>
+<li><a href="#%E5%AF%BB%E6%B1%82%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5">寻求代码审查</a></li>
+<li><a href="#%E9%98%85%E8%AF%BB%E7%9A%84%E9%87%8F%E4%B8%8D%E4%BA%9A%E4%BA%8E%E5%86%99%E4%BB%A3%E7%A0%81">阅读的量不亚于写代码</a></li>
+<li><a href="#%E5%8F%AF%E8%AF%BB%E6%80%A7%E4%BB%A3%E7%A0%81">可读性代码</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E8%AF%BB%E6%80%A7%E4%BB%A3%E7%A0%81"><strong>什么是可读性代码？</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

@@ -1,0 +1,505 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【3-11】高效完成任务 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【3-11】高效完成任务 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+高级软件工程师的工作负荷与初级职位相比,..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【3-11】高效完成任务 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+高级软件工程师的工作负荷与初级职位相比,..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/KX1fyE5XX/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【3-11】高效完成任务 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+高级软件工程师的工作负荷与初级职位相比,...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/KX1fyE5XX/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【3-11】高效完成任务
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-21 · 24 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>高级软件工程师的工作负荷与初级职位相比,有着明显的区别。他们通常需要处理更多的入站请求、频繁的上下文切换,以及更为复杂的工作内容。</p>
+<p>要成为一名被视为”能够完成任务”的工程师,不仅仅局限于第二部分中讨论的”如何完成任务”。当然,该部分提到的许多方法在这里同样适用,例如:</p>
+<ul>
+<li>专注于最重要的工作</li>
+<li>主动解决阻碍</li>
+<li>将工作分解为小任务</li>
+<li>寻找可以学习的导师</li>
+</ul>
+<h2 id="完成工作认知与现实">完成工作:认知与现实</h2>
+<p>你认为你的经理会如何描述你和你的同事中谁是”能够把事情做好”的工程师?是你自己,还是那个看似轻松自在的同事?</p>
+<p>对你来说,你可能清楚地知道自己在完成工作,但你的经理能看到多少?如果你在沟通工作方面做得不好,而你的同事在这方面很擅长,那么很可能你的经理会认为他们更善于完成工作。</p>
+<h3 id="认知和现实可能存在差异">认知和现实可能存在差异</h3>
+<p>“把事情做好”的要求可能与通过解决难题来完成工作的过程不同。你的经理看不到你为了在重要项目的截止日期前完成工作所做的努力,比如你采取的步骤来追踪和修复棘手的bug,或者你使用的创造性变通方法和捷径。有时,没有知识渊博的同事可以配对观察和协助你的努力,所以你独自工作以完成任务。</p>
+<p>要被视为一个能把事情做好的高级工程师,需要两个条件:</p>
+<ol>
+<li>以务实的方式解决复杂工程问题的能力</li>
+<li>与同事和经理沟通工作情况,包括进展、遇到的障碍、解决障碍的方法以及工作的复杂性</li>
+</ol>
+<h3 id="沟通你的工作">沟通你的工作</h3>
+<p>随着资历的增加,沟通你的工作变得越来越重要。不要假设你的同事或经理理解你的工作中什么是”容易”或”困难”的。相反,在状态更新、一对一讨论和团队会议中明确表达这些内容。例如,如果你解决了一个复杂的问题,在每周会议上告诉你的团队:</p>
+<p>&quot;上周,在进行迁移脚本的进一步验证时,我发现约2%用户的支付请求的影子输出与预期不符。这些差异主要出现在巴西的货币转换中。如果我们直接推出这个变更,就会导致那里的客户被多收费。</p>
+<p>在调查差异原因时,发现新的货币转换系统漏掉了几个国家,包括巴西。我与负责该系统的团队合作,添加了这些国家,并帮助他们设置了警报,以防出现未设置转换的货币请求。我相信这项工作将大大提高新服务的可靠性。</p>
+<p>虽然新的货币服务不是我们团队负责的,但我还是用Go语言帮助实现了这个变更,并审核了该团队的代码。变更完成后,我编写了两个集成测试来验证这个功能。</p>
+<p>通过多花一两天时间,我们现在有了一个安全网 - 包括单元测试和两个集成测试,同时也帮助新的货币服务变得比以前更可靠。</p>
+<p>我一直在监控影子系统和生产系统,现在已经没有输出差异了:在过去4天里,我们的响应100%一致。&quot;</p>
+<p>这个描述比原来的更加详细和具体,清楚地解释了工作内容、遇到的挑战、解决方案以及最终结果。它展示了你的专业能力,以及你如何超出预期地完成任务。</p>
+<h3 id="少承诺多交付多沟通">少承诺,多交付,多沟通</h3>
+<p>关于&quot;少承诺,多交付,多沟通&quot;的建议也很重要。要善于判断自己能确保完成的工作量,避免过度承诺。同时,当你超出预期完成任务时,别忘了告诉同事和经理。这不是炫耀,而是让他们知道你付出了额外的努力。例如,在完成项目并构建了一个可能在将来有用的工具时,你可以这样说:</p>
+<p>&quot;我已经完成了PayPal集成。我还创建了一个可能在将来有用的工具。&quot;</p>
+<h3 id="更好的版本">更好的版本</h3>
+<p>&quot;我在上周完成了PayPal集成，符合之前一周的估计时间。然而，在开发过程中，我发现自己花费了太多时间手动测试功能是否正常，这让我思考：'我们能否将部分测试自动化？'</p>
+<p>因此，我开发了一个简单的脚本，使用UI自动化来验证支付方式是否有效。最初是为PayPal开发的，实际上这加快了开发速度，因为测试变得更加容易。现在我们有了这个工具，很容易就能修改它来测试其他类型的支付方式，比如银行卡。我已经创建了一个wiki页面，详细说明了如何使用这个工具以及如何修改它。&quot;</p>
+<h3 id="及早沟通障碍并提供替代方案">及早沟通障碍并提供替代方案</h3>
+<p>软件开发过程中经常会遇到意外问题，例如库不能按预期工作、需要长时间修复的奇怪bug、突然出现的新依赖项阻碍进展等等。</p>
+<p>被认为不可靠的工程师通常不会沟通新出现的障碍。相反，他们试图自己解决问题，但往往进展缓慢，直到其他工程师介入帮助才能取得进展。</p>
+<p>相比之下，高效的工程师善于自我解困（正如第二部分”完成工作”中所讨论的），同时也能识别可能延误项目的障碍。</p>
+<p>当意外工作出现时，应与团队、经理和项目负责人分享这一情况。但不要只是分享障碍，还要提供其他可能的替代方案，而不是简单地推迟工作。例如：</p>
+<ol>
+<li>缩小项目范围，暂时避开障碍。</li>
+<li>采用临时解决方案或捷径来短期解决问题，之后再进行proper修复。本质上是建议承担技术债务以提高当前速度。</li>
+<li>寻求他人解决障碍：例如，平台团队或第三方供应商是否能做出解决问题的更改？</li>
+</ol>
+<p>要在提供替代方案时发挥创意。通过强迫自己考虑各种选择，你可能会找到更聪明、更快速的解决方法。</p>
+<h3 id="高效处理各种请求">高效处理各种请求</h3>
+<p>高级工程师通常会收到大量的各种请求,例如:</p>
+<ul>
+<li>“下周能否参加一个规划评审会议?”</li>
+<li>“明天有个面试,原定面试官生病了,你能代替一下吗?”</li>
+<li>“能否担任我的绩效评估同行评审员?”</li>
+<li>“下个月有个校园招聘活动,你愿意做个演讲嘉宾吗?”</li>
+<li>“你两年前创建的一个组件出现了一个奇怪的bug,需要你帮忙看看。”</li>
+</ul>
+<p>作为高级工程师,如何妥善处理这些源源不断的请求,是一项重要的能力。这不仅关系到个人工作效率,也影响团队整体的运转。合理安排时间、设定优先级、学会适度拒绝,都是应对这种情况的有效方法。同时,培养和指导其他工程师也能帮助分担一些工作。高效处理各种请求既是一种挑战,也是展现领导力和影响力的机会。</p>
+<p>这些都是合理的请求，你的经验对此很有帮助。然而，它们也可能分散你对更重要工作的注意力。</p>
+<p>来自他人的请求和需求总是源源不断。随着时间推移，这些请求的数量可能会变得令人不知所措。虽然没有一种最佳的应对方法，但以下是一些经验丰富的工程师成功使用的策略：</p>
+<ol>
+<li><strong>为深度工作预留不受打扰的时间。</strong> 安排一段时间专注于自己的工作，不去帮助他人。在日历上标记这段时间，拒绝会议和其他打扰。将其视为高优先级会议。当然，不要过度封锁时间！</li>
+<li><strong>在工作状态最佳时说”现在不行”。</strong> 当你正处于工作状态并取得良好进展时，推迟处理打扰。关闭聊天通知，如果有人直接找你，告诉他们你稍后会回复。</li>
+<li><strong>限制帮助他人的时间。</strong> 当有人请求帮助时，将花费的时间限制在5-10分钟内。这会迫使你更有效率地给出建议，而不是直接帮对方解决问题。</li>
+<li><strong>将同步请求转为异步。</strong> 例如，与其参加一个你几乎没有发言的会议，不如要求他们发送会议总结，让你在自己方便的时候阅读。这将同步请求（会议）转变为异步请求（会后笔记）。你可以将许多需要你时间的请求转化为异步方式，以便稍后提供反馈。</li>
+<li><strong>将请求重定向给可能受益的同事。</strong> 让经验较少的工程师承担一些请求可能会促进他们的成长，同时减轻你的负担。</li>
+<li><strong>时刻明确你的”首要任务”。</strong> 如果今天只能完成一件事，那会是什么？如果本周只能交付一个成果，最重要的是什么？</li>
+</ol>
+<p>根据任务的紧急程度和重要性，我们可以将任务分为四类，并采取不同的处理方式：</p>
+<ol>
+<li><strong>紧急且重要：</strong> 应立即处理，或在你不再处于工作状态时处理。例如，协助处理系统故障（你了解情况的），或帮助同事解决阻碍其工作进展的问题。</li>
+<li><strong>重要但不紧急：</strong> 记录下来，稍后处理。比如对设计文档提供反馈，进行必要的代码重构等。注意，这类任务可能随着时间推移变成”紧急且重要”。</li>
+<li><strong>紧急但不重要：</strong> 这类工作不一定需要你亲自完成。例如，已经有人批准的代码审查，已有足够人员参与的故障处理，或回复新收到的邮件（通常可以稍后处理）。如果任务不重要，请抵制立即行动的冲动，避免分散注意力影响主要工作。可以考虑将这些任务交给他人，或直接说”不”。</li>
+<li><strong>既不紧急也不重要：</strong> 直接拒绝。例如，参加你几乎没有发言机会且不关心的会议，阅读与你无关项目的状态更新邮件等。但请注意，参与这类工作也可能有价值，前提是你能从中受益，而不仅仅是因为被要求而参与。</li>
+</ol>
+<p>对于重要但不紧急的工作，创建一个记录系统很有必要。你可以尝试以下方法：</p>
+<ul>
+<li>使用简单的文档</li>
+<li>创建待办事项列表</li>
+<li>在你喜欢的编辑器或笔记工具中记录</li>
+<li>使用实体笔记本</li>
+<li>使用手机的备忘录应用</li>
+</ul>
+<p>尝试找出最适合你的方法，不要害怕改变。</p>
+<p>对于不重要的事情，学会说”不”。你可以用以下方式礼貌地拒绝：</p>
+<p>• “我很想帮忙，但很遗憾我必须完成最高优先级的工作，所以无法参与。”<br>
+• “很抱歉，我已经有太多工作要做，无法接受这个任务。如果你有正在进行的项目列表，最好展示一下。</p>
+<p>通过合理安排任务优先级，你可以更有效地管理时间和精力，专注于真正重要的工作。</p>
+<p>工程师应该学会适时清理待办事项清单。许多工程师在清除”不紧急但重要”的任务时会感到挫败,但我建议将这种做法视为一种 <strong>重置</strong> 的方式。</p>
+<p>实际上,对你来说重要的事情会随时间变化。你创建的任何重要工作清单最终都会过时。当这种情况发生时,你有两个选择:</p>
+<ol>
+<li>浏览现有清单,删除已不再重要的工作</li>
+<li>从头开始,制定一个更短的”当前真正重要”的任务清单</li>
+</ol>
+<p>第二种方法更快,它迫使你通过只记录最重要的任务来重新确定工作的优先级。它还能减少对其他任务的压力,并减轻未来的心理负担。只是不要忘记通知那些请求未能进入你新的精简清单的相关同事。</p>
+<p>要知道感到不知所措是正常的。高级及以上工程师常见的抱怨是,无论采取哪种方法,他们最终都会感到工作负荷过重,没有足够的时间做”重要”的工作。这种情况很普遍。如果你遇到这种情况,以下几点可能会有所帮助:</p>
+<ul>
+<li>列出所有你应该做的事情,并与你的经理和导师(如果有的话)讨论这个清单。哪些是你真正需要做的?哪些可以交给同事?在经理的支持下,哪些任务你可以直接说”不”?很可能你的经理并不了解你一直在做的所有事情,他们会帮你确定什么对团队真正重要。</li>
+<li>在你的清单缩小之前,对新的请求说”不”。或者,只有在你能从清单上删除其他事项的情况下,才接受新的请求。看看当你以目前工作负荷过重为由拒绝时会发生什么。</li>
+<li>请一两天假。回来后,清空你的清单,重新开始。如果你经常这样做,考虑其他替代方案。</li>
+</ul>
+<p>当事情完成时,要确保它是真正完成的。有些软件工程师能够”正确地”完成工作,这是值得一提的。有很多工程师看似能快速完成工作,但后来发现他们发布的代码存在问题,如bug、未覆盖的边缘情况,或匆忙拼凑的用户体验。</p>
+<p>被认为高效的工程师并不一定是完成工作最快的,但他们的工作速度足够快,而且最关键的是,最终结果能如预期般运作。</p>
+<p>问问自己以下几点是否适用于你的工作:</p>
+<ul>
+<li>发布功能后,有时会出现bug</li>
+<li>很少为功能编写测试计划,以验证发布前的各种情况</li>
+<li>功能完成时,并不总是列出未支持的边缘情况和已知bug</li>
+<li>发布功能时,并不总是完成自动化测试、监控和警报</li>
+</ul>
+<p>很少有工程师能够做到以上几点都不适用。这是因为快速行动、部署到生产环境,然后在需要时修复问题是很自然的做法。由于许多人都是这样操作的,那些不会将问题部署到生产环境,并且能够很好地意识到边缘情况并在代码进入生产环境之前解决这些问题的工程师就会更加突出。</p>
+<p>那么,如何成为一个能够正确完成工作,并且工作成果能得到同事和利益相关者信任的工程师呢?以下是一些方法:</p>
+<p>制定详细的产品规格说明书对于软件开发至关重要。许多产品缺陷源于利益相关者的期望与工程师实际开发内容之间的误解。为避免这种情况,我们应该坚持制定一份描述功能工作原理、边界情况以及范围界定的规格说明书。在实施阶段之前,与产品经理和业务相关人员充分沟通,明确所有细节。</p>
+<p>在完全理解产品和客户的需求之前,不要轻易开始工作。将讨论结果以书面形式记录下来,以避免误解。规格说明书不必冗长,也不一定要由产品经理编写。如果没有现成的规格说明,可以与产品或业务人员讨论功能的预期工作方式,用一两页的要点总结,然后让他们确认。这个简短的过程可能会节省数天的工作时间。向产品人员展示书面规格时,他们很可能会指出错误、遗漏的细节或边界情况。</p>
+<p>在开始实施非平凡功能之前,先做好规划并草拟你的方法,例如要创建和修改哪些组件,如何修改架构,不同方法的权衡以及你的选择。</p>
+<p>你将如何测试实施的功能是否按预期工作?有哪些手动测试用例?哪些部分将通过单元测试、集成测试或端到端测试来自动化?哪些部分只能在生产环境中测试,在功能宣布就绪之前如何进行测试?</p>
+<p>许多工程师跳过前期的测试规划,因为直接进入实施阶段更令人兴奋和有动力。然而,考虑如何测试和测试什么的最佳时机是在规划阶段,而不是在实施过程中被带偏。</p>
+<p>当你有了测试计划后,与产品经理、业务相关人员、其他工程师或质量保证人员分享,征求反馈。你会惊讶于他们指出的被遗漏的边界情况或建议的替代测试方法!</p>
+<p>将测试、监控和警报作为估算的一部分。在处理较大的代码库或构建可能对业务产生严重影响的产品功能时,测试和监控应该是&quot;正确完成工作&quot;的一部分。</p>
+<p>然而,许多工程师忘记为功能添加自动化测试和监控/警报,或者在估算时没有将这部分工作考虑在内。将这部分工作视为单独的问题在于,产品人员和业务相关人员往往想跳过它,因为他们认为这是节省时间和加快进度的机会。</p>
+<p>正确完成工作与确保你的工作在生产环境中得到测试和监控之间存在联系。跳过测试和监控,你的工作将变得不可靠。因此,不要对这部分工作进行协商;直接去做。</p>
+<p>不要将工作&quot;扔给&quot;质量保证(QA)团队。如果你有幸在工作场所有专门的质量保证人员/团队,不要简单地将你的工作&quot;扔给&quot;他们。我观察到的一个反模式是,一些与QA人员合作的工程团队倾向于认为测试和质量保证完全是QA团队的责任。因此,他们倾向于构建功能然后将其传递给测试 - 将其扔过栅栏 - 而不考虑边界情况或如何测试,也不进行简单的手动测试。</p>
+<p>毫不奇怪,这意味着事情需要更长的时间。QA发现明显的问题 - 任何工程师通过基本测试就能发现的问题 - 并将其发回给工程师,工程师修复这些问题,然后再次交给QA。然后QA发现更微妙的bug,这些bug可能逃过了工程师的注意,并将它们交回修复。最后,在工程师解决这些问题后,QA进行第三轮测试,宣布功能按预期工作。</p>
+<p>从一开始就让QA人员参与规划,并与他们一起制定测试计划。QA工程师往往对特殊的边界情况和难以捕捉的问题有很好的感觉。</p>
+<h3 id="从错误中学习提升测试质量">从错误中学习,提升测试质量</h3>
+<p>要善于从bug中学习,理解它们如何”压力测试”系统,并利用这些知识来制定更完善的测试计划。不要简单地把工作”扔给”QA团队,而应该与他们并肩工作,避免在等待测试结果时闲置。</p>
+<p>同时,不要把QA视为理所当然。许多工程团队没有专门的QA人员。如果你有机会与QA合作,要充分利用这个机会学习,提升自己的QA技能。在未来的工作中,你可能需要自己承担QA的职责,掌握这些技能将帮助你交付更高质量的成果。</p>
+<h3 id="短周期迭代工作">短周期迭代工作</h3>
+<p>衡量你的工作效率:从构思到原型展示,从发现bug到修复上线,通常需要多长时间?如果答案是几周而不是几小时或几天,那么你可能不被视为高效的工程师。最好的情况下,你可能被认为是”慢而稳定”的;最坏的情况下,可能只剩下”慢”了。</p>
+<h3 id="每天都要有所产出">每天都要有所产出</h3>
+<p>高效的软件工程师几乎每天都能发布代码。这种情况在小公司和大公司都存在。以Google为例,平均每个工程师每天会有两次代码变更发布到生产环境。</p>
+<p>要实现如此频繁的发布,关键在于短周期迭代:</p>
+<ol>
+<li>将工作分解成小而独立的部分。可以是可直接发布的小迭代,也可以是将大型任务分解为逻辑步骤,如:搭建框架 → 实现核心业务逻辑 → 处理边缘情况 → 清理优化。</li>
+<li>提交小而精的代码变更/PR。这样更容易创建、审查和快速发布。</li>
+</ol>
+<p>鼓励团队成员也采用这种方式工作。小的变更意味着不会在单个代码审查上耗费太长时间。</p>
+<h3 id="长期任务">长期任务</h3>
+<p>虽然快速迭代通常是一种好方法,但并非适用于所有情况。以下是一些需要长期投入的任务例子:</p>
+<ol>
+<li>研究:探索新技术、框架或库时,目标是分享学习成果并给出使用建议。这个过程可能很耗时,短期迭代往往意义不大。</li>
+<li>改进工具或基础设施:这通常需要研究、原型设计和构建新方案。例如,决定将开发环境容器化是一个大工程,涉及长期的研究、概念验证和推广阶段。通常应该将研究和原型设计作为长期任务,而在推广阶段采用迭代方式。</li>
+<li>大规模重构:有些重构无法分块进行。经验丰富的工程师可能会对复杂的重构任务做出重大但必要的改变。大多数大型重构可以拆分成小部分以展示更明显的进展 - 如果你有这个意图的话。</li>
+<li>重写:类似于重构,但通常有特定目标,如解决性能问题。虽然重写可以分块进行,但工程师一次性完成整个变更通常更快。但要注意重写的风险;它们成本很高,可能无法带来预期的收益。</li>
+</ol>
+<p>长期任务通常是一系列短期迭代的集合,工程师决定不为每个迭代创建单独的PR。可能是因为在这些迭代中,产品的某些部分被刻意破坏,或者工程师认为短期迭代会打断他们的工作流。无论出于何种原因,这种工作方式总是有其道理的。</p>
+<p>长期任务意味着较少的反馈:</p>
+<ul>
+<li>如果你不在过程中提交PR进行代码审查,最终的PR会非常复杂,同事难以全面审查,可能会遗漏重要问题。</li>
+<li>如果你不分享每个步骤的概述,人们就无法及时给出反馈,指出遗漏之处或发现你走错了方向。如果这些反馈在最后才出现,可能需要重做大量工作。</li>
+</ul>
+<p>长期任务适用于不需要反馈的情况,如创建新公司、新产品或验证概念的原型。然而,大多数涉及团队合作、咨询产品人员、业务相关方或客户的情况都需要反馈。</p>
+<h2 id="你的团队">你的团队</h2>
+<p>作为高级工程师,你的关注点通常在项目层面。确保你理解整个项目需要完成的工作,并将其分解到必要的程度。这项工作与技术主管的职责有重叠,我们在第四部分”务实的技术主管”中会深入探讨这方面的方法。</p>
+<p>为他人编写文档是一项重要技能。当向同事解释某事时,考虑记录下关键信息,这样下次有人询问时,你可以直接指向这些笔记或图表。如果你的团队已经有wiki或内部知识库,就往里面添加文档。如果还没有,那就创建一个并带头添加内容。我们在第三部分”软件工程”中会详细讨论文档编写。</p>
+<p><strong>解决团队的阻碍也是高级工程师的重要职责。</strong> 你应该能够发现同事遇到的障碍并帮助他们解决。可以通过结对编程等方式提供帮助。在解决问题时,要避免直接给出答案,而是通过引导性问题帮助他们学会自己解决问题。对于外部阻碍,可以主动介入并解决,同时向团队成员解释处理流程。这不仅能解决问题,还能建立良好的跨团队关系。</p>
+<p><strong>“跳出框框”思考是富有成效的工程师的重要特质。</strong> 例如,Uber的移动平台团队发现Android应用内存泄漏问题日益严重,但逐个修复很困难。一名工程师提议将修复内存泄漏变成一场比赛,同时教育工程师如何发现、修复和避免内存泄漏。这个创新方法不仅解决了问题,还提高了整个团队的技能。</p>
+<p>要提高”跳出框框”的思考能力,可以尝试以下方法:</p>
+<ol>
+<li>拓宽经验,涉猎不同领域。</li>
+<li>深入学习,成为某些领域的专家。</li>
+<li>对一个问题提出多种潜在解决方案。</li>
+<li>向擅长创新解决问题的工程师学习。</li>
+</ol>
+<p>最富有成效的工程师不一定是编码最快或最了解计算机系统的人,而是那些工程能力足够好,同时对产品、客户和业务有深刻理解的人。要成为这样的工程师,可以考虑以下方法:</p>
+<ol>
+<li>了解公司的成功之道</li>
+<li>与产品经理建立良好关系</li>
+<li>参与用户研究、客户支持等活动</li>
+<li>提出有依据的产品建议</li>
+<li>在项目中权衡产品和工程的利弊</li>
+<li>向产品经理寻求频繁反馈</li>
+</ol>
+<p>作为软件工程师,我们的工作不仅仅是写代码,更重要的是为企业解决问题。要理解企业关心什么,以及你开发的软件如何帮助公司实现业务目标。我们在第五部分”理解业务”中会详细讨论这个主题。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%AE%8C%E6%88%90%E5%B7%A5%E4%BD%9C%E8%AE%A4%E7%9F%A5%E4%B8%8E%E7%8E%B0%E5%AE%9E">完成工作:认知与现实</a>
+<ul>
+<li><a href="#%E8%AE%A4%E7%9F%A5%E5%92%8C%E7%8E%B0%E5%AE%9E%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E5%B7%AE%E5%BC%82">认知和现实可能存在差异</a></li>
+<li><a href="#%E6%B2%9F%E9%80%9A%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C">沟通你的工作</a></li>
+<li><a href="#%E5%B0%91%E6%89%BF%E8%AF%BA%E5%A4%9A%E4%BA%A4%E4%BB%98%E5%A4%9A%E6%B2%9F%E9%80%9A">少承诺,多交付,多沟通</a></li>
+<li><a href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%89%88%E6%9C%AC">更好的版本</a></li>
+<li><a href="#%E5%8F%8A%E6%97%A9%E6%B2%9F%E9%80%9A%E9%9A%9C%E7%A2%8D%E5%B9%B6%E6%8F%90%E4%BE%9B%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88">及早沟通障碍并提供替代方案</a></li>
+<li><a href="#%E9%AB%98%E6%95%88%E5%A4%84%E7%90%86%E5%90%84%E7%A7%8D%E8%AF%B7%E6%B1%82">高效处理各种请求</a></li>
+<li><a href="#%E4%BB%8E%E9%94%99%E8%AF%AF%E4%B8%AD%E5%AD%A6%E4%B9%A0%E6%8F%90%E5%8D%87%E6%B5%8B%E8%AF%95%E8%B4%A8%E9%87%8F">从错误中学习,提升测试质量</a></li>
+<li><a href="#%E7%9F%AD%E5%91%A8%E6%9C%9F%E8%BF%AD%E4%BB%A3%E5%B7%A5%E4%BD%9C">短周期迭代工作</a></li>
+<li><a href="#%E6%AF%8F%E5%A4%A9%E9%83%BD%E8%A6%81%E6%9C%89%E6%89%80%E4%BA%A7%E5%87%BA">每天都要有所产出</a></li>
+<li><a href="#%E9%95%BF%E6%9C%9F%E4%BB%BB%E5%8A%A1">长期任务</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%A0%E7%9A%84%E5%9B%A2%E9%98%9F">你的团队</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>
