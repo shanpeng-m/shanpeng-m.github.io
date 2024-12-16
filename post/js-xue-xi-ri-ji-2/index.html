@@ -1,0 +1,566 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JS学习日记【2】基础知识 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JS学习日记【2】基础知识 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="2023.06.10
+script的位置
+
+放在body里的任意位置：基本上不这么用，因为会阻塞页面的渲染，影响用户体验。
+放在body结束标签之前：这是最常用的方式，因为可以保证页面的渲染不会被阻塞。这也是提高页面加载速度的一种方式。
+放..." />
+  <meta property="og:title" content="JS学习日记【2】基础知识 - 小马的世界">
+  <meta property="og:description" content="2023.06.10
+script的位置
+
+放在body里的任意位置：基本上不这么用，因为会阻塞页面的渲染，影响用户体验。
+放在body结束标签之前：这是最常用的方式，因为可以保证页面的渲染不会被阻塞。这也是提高页面加载速度的一种方式。
+放..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-2/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="JS学习日记【2】基础知识 - 小马的世界">
+  <meta name="twitter:description" content="2023.06.10
+script的位置
+
+放在body里的任意位置：基本上不这么用，因为会阻塞页面的渲染，影响用户体验。
+放在body结束标签之前：这是最常用的方式，因为可以保证页面的渲染不会被阻塞。这也是提高页面加载速度的一种方式。
+放...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-2/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          JS学习日记【2】基础知识
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-06-14 · 9 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/QcxVK42Jgh/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              工具
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h1 id="20230610">2023.06.10</h1>
+<h2 id="script的位置">script的位置</h2>
+<ul>
+<li>放在body里的任意位置：基本上不这么用，因为会阻塞页面的渲染，影响用户体验。</li>
+<li>放在body结束标签之前：这是最常用的方式，因为可以保证页面的渲染不会被阻塞。这也是提高页面加载速度的一种方式。</li>
+<li>放在head标签里：这种方式也是常用的。JavaScript函数必须在调用之前定义，所以如果JavaScript函数在页面的头部定义，而在页面的尾部调用，那么就可以把JavaScript代码放在head标签里。</li>
+</ul>
+<p>所以上面的第2种方式是最常用的。另外，script标签可以在页面中出现多次，这样可以把不同的JavaScript代码放在不同的script标签里，这样可以更好地组织代码。浏览器会按照script标签出现的顺序依次执行这些代码。</p>
+<p>script也可以放在外部文件中，然后通过src属性指定外部文件的位置，这样可以把JavaScript和HTML分离，便于维护。外部的JavaScript文件必须要有.js后缀名，而且最好放在与HTML文件同一个目录下，这样更方便管理。</p>
+<p>但是需要注意的是，外部的JavaScript文件不能包含<code>&lt;script&gt;</code>标签，只需要包含JavaScript代码即可。并且在页面中script标签指定了src属性后，标签内部的代码会被忽略。</p>
+<p>每句JavaScript代码（Statement）最后的分号可以省略，但是省略分号会导致某些情况下的代码不正常，所以建议不要省略分号。</p>
+<p>为了增强代码的可读性，还有下面一些规则：</p>
+<ul>
+<li>一行超过80个字符的代码需要换行</li>
+<li>换行的位置在左括号，逗号，运算符之后。</li>
+<li>如果是在一行代码中换行，新的一行需要缩进。</li>
+</ul>
+<p>JavaScript区分大小写，所以变量<code>abc</code>和变量<code>ABC</code>是两个不同的变量。</p>
+<h2 id="变量">变量</h2>
+<p>声明一个变量可以用<code>let</code>语句，比如：</p>
+<pre><code class="language-javascript">let a = 1, b = 2, c = 'hello';
+</code></pre>
+<p>也可以不指定值，这时变量的值为<code>undefined</code>：</p>
+<pre><code class="language-javascript">let x;  // x的值为undefined
+</code></pre>
+<p>但是，容易忘记初始化变量，所以建议在声明变量时，同时初始化变量。</p>
+<p><code>let</code>语句是JavaScript的新标准，它在旧版本的浏览器中无法运行，但是，在新版本的浏览器中，为了兼容旧版本的代码，仍然可以用<code>var</code>语句来声明变量。</p>
+<p><code>var</code>语句在全局作用域中声明的变量，依旧是全局变量，例如：</p>
+<pre><code class="language-javascript">var course = 'Learn JavaScript';
+alert(course);  // 'Learn JavaScript'
+alert(window.course);  // 'Learn JavaScript'
+</code></pre>
+<p>在函数内部使用<code>var</code>声明的变量则是局部变量，例如：</p>
+<pre><code class="language-javascript">function foo() {
+    var course = 'Learn JavaScript';
+    alert(course);  // 'Learn JavaScript'
+}
+foo();
+alert(course);  // Uncaught ReferenceError: course is not defined
+</code></pre>
+<p>当然也可以不用<code>var</code>语句声明变量，这时，变量的作用域是全局作用域：</p>
+<pre><code class="language-javascript">function foo() {
+    course = 'Learn JavaScript';
+    alert(course);  // 'Learn JavaScript'
+}
+foo();
+alert(course);  // 'Learn JavaScript'
+</code></pre>
+<p>在函数内部定义的变量，如果没有用<code>var</code>或者<code>let</code>声明，该变量就自动被视为全局变量：</p>
+<pre><code class="language-javascript">function foo() {
+    var course = 'Learn JavaScript';
+    alert(window.course);  // 'Learn JavaScript'
+}
+foo();
+</code></pre>
+<p>推荐通过<code>var</code>或者<code>let</code>声明变量，因为不声明就默认为全局变量容易造成难以发现的错误。</p>
+<h2 id="常量">常量</h2>
+<p>常量是指在程序运行中不可变的量。在JavaScript中，用<code>const</code>声明一个常量：</p>
+<pre><code class="language-javascript">const PI = 3.14;
+</code></pre>
+<p>但是用<code>const</code>声明的变量实际上仍然可以改变！例如：</p>
+<pre><code class="language-javascript">const PI = 3.14;
+PI; // 3.14
+PI = 3; // Uncaught TypeError: Assignment to constant variable.
+</code></pre>
+<p>但是，改变常量的值会导致运行时报错，而不是编译时报错，所以用<code>const</code>声明常量时需要保证编译时就能确定其值。</p>
+<h2 id="类型">类型</h2>
+<p>JavaScript是一种动态类型语言，也就是说，变量的类型没有限制，变量可以随时改变类型：</p>
+<pre><code class="language-javascript">var a = 123; // a是整数
+a = 'ABC'; // a变为字符串
+</code></pre>
+<p>这种灵活性有利有弊。如果变量本来是用来表示一个数字，结果给它赋了字符串，那么就会导致运行错误。所以，总是用<code>var</code>声明变量非常重要！</p>
+<p>JavaScript的数据类型，可以分为两大类：</p>
+<ul>
+<li>原始类型（Primitive data types）：包括<code>number</code>、<code>bigint</code>、<code>string</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>和<code>Symbol</code>。</li>
+<li>对象类型（Object types）：包括<code>Object</code>、<code>Array</code>、<code>Function</code>等。</li>
+</ul>
+<h3 id="boolean">boolean</h3>
+<p>下面的值都是<code>false</code>：</p>
+<ul>
+<li><code>undefined</code>，<code>null</code>，<code>NaN</code></li>
+<li>空字符串 <code>''</code></li>
+<li>零值 <code>0</code>，<code>-0</code>，<code>0n</code></li>
+</ul>
+<p>其他值都是<code>true</code>，包括所有对象、数组、字符串、空字符串<code>''</code>、空数组<code>[]</code>、空对象<code>{}</code>，甚至还有字符串<code>'false'</code>。</p>
+<h3 id="number">number</h3>
+<p>JavaScript不区分整数和浮点数，统一用<code>number</code>表示，以下都是合法的<code>number</code>类型：</p>
+<pre><code class="language-javascript">123; // 整数123
+0.456; // 浮点数0.456
+1.2345e3; // 科学计数法表示1.2345x1000，等同于1234.5
+-99; // 负数
+0xff00; // 十六进制表示的255
+-0xff00; // 十六进制表示的-255
+0o377; // 八进制表示的255
+0b11111111; // 二进制表示的255
+</code></pre>
+<h3 id="string">string</h3>
+<p>字符串是以单引号<code>'</code>或双引号<code>&quot;</code>括起来的任意文本，比如<code>'abc'</code>，<code>&quot;xyz&quot;</code>等等。请注意，<code>''</code>或<code>&quot;&quot;</code>本身只是一种表示方式，并不是字符串的一部分，因此，字符串<code>'abc'</code>只有a，b，c这3个字符。</p>
+<p>如果<code>'</code>本身也是字符串的一部分，那就用<code>&quot;&quot;</code>括起来，比如：</p>
+<pre><code class="language-javascript">var str = 'I\'m \&quot;OK\&quot;!'; // 'I'm &quot;OK&quot;!'
+</code></pre>
+<p>转义字符(escape sequence), 包含很多，例如</p>
+<ul>
+<li><code>\n</code> 换行</li>
+<li><code>\t</code> 制表符</li>
+<li><code>\b</code> 退格符</li>
+</ul>
+<p>等等。</p>
+<p>如果这行字符串很长，我们可以用\来换行：</p>
+<pre><code class="language-javascript">var str = 'Hello \
+World';
+</code></pre>
+<p>上面的代码实际上定义了一个多行字符串<code>'Hello World'</code>。</p>
+<h3 id="模板字符串">模板字符串</h3>
+<p>ES6标准引入了新的<code>Template String</code>功能，可以用反引号表示字符串：</p>
+<pre><code class="language-javascript">var name = '小明';
+var age = 20;
+var message = `你好, ${name}, 你今年${age}岁了!`;
+alert(message);
+</code></pre>
+<h3 id="array">array</h3>
+<p>数组是一组按顺序排列的集合，集合的每个值称为元素。JavaScript的数组可以包括任意数据类型。例如：</p>
+<pre><code class="language-javascript">[1, 2, 3.14, 'Hello', null, true];
+</code></pre>
+<p>数组用<code>[]</code>表示，元素之间用<code>,</code>分隔。</p>
+<p>数组的索引从0开始，也就是说，第一个元素的索引是0，第二个元素的索引是1，以此类推。</p>
+<p>要获取数组的长度，直接访问<code>length</code>属性：</p>
+<pre><code class="language-javascript">var arr = [1, 2, 3.14, 'Hello', null, true];
+arr.length; // 6
+</code></pre>
+<p>直接给<code>Array</code>的<code>length</code>赋一个新的值会导致<code>Array</code>大小的变化：</p>
+<pre><code class="language-javascript">var arr = [1, 2, 3];
+arr.length; // 3
+arr.length = 6;
+arr; // arr变为[1, 2, 3, undefined, undefined, undefined]
+arr.length = 2;
+arr; // arr变为[1, 2]
+</code></pre>
+<h3 id="object">object</h3>
+<p>JavaScript的对象是一组由键-值组成的无序集合，例如：</p>
+<pre><code class="language-javascript">var person = {
+    name: 'Bob',
+    age: 20,
+    tags: ['js', 'web', 'mobile'],
+    city: 'Beijing',
+    hasCar: true,
+    zipcode: null
+};
+</code></pre>
+<p>JavaScript对象的键都是字符串类型，值可以是任意数据类型。上述<code>person</code>对象一共定义了6个键值对，其中每个键又称为对象的属性，例如，<code>person</code>的<code>name</code>属性为<code>'Bob'</code>，<code>zipcode</code>属性为<code>null</code>。</p>
+<p>要获取一个对象的属性，我们用对象变量.属性名的方式：</p>
+<pre><code class="language-javascript">person.name; // 'Bob'
+person.zipcode; // null
+</code></pre>
+<p>也可以用<code>对象变量['属性名']</code>的方式来获取，这种方式的好处是，属性名还可以包含空格：</p>
+<pre><code class="language-javascript">person['name']; // 'Bob'
+person['zip code']; // null
+</code></pre>
+<p>如果属性名包含特殊字符，就必须用<code>''</code>括起来：</p>
+<pre><code class="language-javascript">var xiaohong = {
+    name: '小红',
+    'middle-school': 'No.1 Middle School'
+};
+</code></pre>
+<p><code>xiaohong</code>的属性<code>middle-school</code>不能写成<code>xiaohong.middle-school</code>，这是因为<code>-</code>会被JavaScript解释为减法。但是，<code>xiaohong['middle-school']</code>就可以正确取到<code>xiaohong</code>的<code>middle-school</code>属性，因为<code>'...'</code>字符串可以正确识别<code>-</code>。</p>
+<p>访问不存在的属性不报错，而是返回<code>undefined</code>：</p>
+<pre><code class="language-javascript">var xiaoming = {
+    name: '小明'
+};
+
+xiaoming.age; // undefined
+xiaoming.age = 18; // 新增一个age属性
+xiaoming.age; // 18
+delete xiaoming.age; // 删除age属性
+xiaoming.age; // undefined
+delete xiaoming['name']; // 删除name属性
+xiaoming.name; // undefined
+delete xiaoming.school; // 删除一个不存在的school属性也不会报错
+</code></pre>
+<p>如果我们要检测<code>xiaoming</code>是否拥有某一属性，可以用<code>in</code>操作符：</p>
+<pre><code class="language-javascript">var xiaoming = {
+    name: '小明',
+    birth: 1990,
+    school: 'No.1 Middle School',
+    height: 1.70,
+    weight: 65,
+    score: null
+};
+
+'name' in xiaoming; // true
+'grade' in xiaoming; // false
+</code></pre>
+<p>不过要小心，如果<code>in</code>判断一个属性存在，这个属性不一定是<code>xiaoming</code>的，它可能是<code>xiaoming</code>继承得到的：</p>
+<pre><code class="language-javascript">'toString' in xiaoming; // true
+</code></pre>
+<p>因为<code>toString</code>定义在<code>object</code>对象中，而所有对象最终都会在原型链上指向<code>object</code>，所以<code>xiaoming</code>也拥有<code>toString</code>属性。</p>
+<p>要判断一个属性是否是<code>xiaoming</code>自身拥有的，而不是继承得到的，可以用<code>hasOwnProperty()</code>方法：</p>
+<pre><code class="language-javascript">var xiaoming = {
+    name: '小明'
+};
+
+xiaoming.hasOwnProperty('name'); // true
+xiaoming.hasOwnProperty('toString'); // false
+</code></pre>
+<h3 id="function">function</h3>
+<p>JavaScript的函数也是一个对象。JavaScript把每个函数都视为对象，都可以自由地赋值给其他变量，所以，把一个函数赋值给变量，这个变量就是一个函数对象了：</p>
+<pre><code class="language-javascript">var sum = function (x, y) {
+    return x + y;
+};
+</code></pre>
+<p>函数名就是指向函数的变量：</p>
+<pre><code class="language-javascript">sum; // function (x, y) { return x + y; }
+sum(1, 2); // 3
+</code></pre>
+<p>由于函数是一个对象，所以，<code>x</code>和<code>y</code>都可以拥有属性：</p>
+<pre><code class="language-javascript">sum.name; // 'sum'
+sum.length; // 2
+</code></pre>
+<p>因为函数解释起来过于复杂，所以在这里先省略。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#20230610">2023.06.10</a>
+<ul>
+<li><a href="#script%E7%9A%84%E4%BD%8D%E7%BD%AE">script的位置</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a></li>
+<li><a href="#%E5%B8%B8%E9%87%8F">常量</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B">类型</a>
+<ul>
+<li><a href="#boolean">boolean</a></li>
+<li><a href="#number">number</a></li>
+<li><a href="#string">string</a></li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2">模板字符串</a></li>
+<li><a href="#array">array</a></li>
+<li><a href="#object">object</a></li>
+<li><a href="#function">function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

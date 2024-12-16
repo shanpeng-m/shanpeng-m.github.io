@@ -1,0 +1,848 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>【跟小马一起学OpenCV-Python】1-OpenCV简介和安装 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【跟小马一起学OpenCV-Python】1-OpenCV简介和安装 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="学习如何在你的电脑上设置OpenCV-Python。
+
+
+OpenCV-Python 教程简介
+
+OpenCV
+OpenCV-Python介绍
+OpenCV-Python教程
+OpenCV需要你!
+贡献者
+其他资源
+
+
+在Windows上安..." />
+  <meta property="og:title" content="【跟小马一起学OpenCV-Python】1-OpenCV简介和安装 - 小马的世界">
+  <meta property="og:description" content="学习如何在你的电脑上设置OpenCV-Python。
+
+
+OpenCV-Python 教程简介
+
+OpenCV
+OpenCV-Python介绍
+OpenCV-Python教程
+OpenCV需要你!
+贡献者
+其他资源
+
+
+在Windows上安..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/lQNglpfQQ/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="【跟小马一起学OpenCV-Python】1-OpenCV简介和安装 - 小马的世界">
+  <meta name="twitter:description" content="学习如何在你的电脑上设置OpenCV-Python。
+
+
+OpenCV-Python 教程简介
+
+OpenCV
+OpenCV-Python介绍
+OpenCV-Python教程
+OpenCV需要你!
+贡献者
+其他资源
+
+
+在Windows上安...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/lQNglpfQQ/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          【跟小马一起学OpenCV-Python】1-OpenCV简介和安装
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2021-08-02 · 23 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/otfz8kSte/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              OpenCV
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/tXbFmmUIVU/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Python
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/7vvVe5JuVE/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              计算机视觉
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>学习如何在你的电脑上设置OpenCV-Python。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li><a href="#opencv-python-%E6%95%99%E7%A8%8B%E7%AE%80%E4%BB%8B">OpenCV-Python 教程简介</a>
+<ul>
+<li><a href="#opencv">OpenCV</a></li>
+<li><a href="#opencv-python%E4%BB%8B%E7%BB%8D">OpenCV-Python介绍</a></li>
+<li><a href="#opencv-python%E6%95%99%E7%A8%8B">OpenCV-Python教程</a></li>
+<li><a href="#opencv%E9%9C%80%E8%A6%81%E4%BD%A0">OpenCV需要你!</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90">其他资源</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8windows%E4%B8%8A%E5%AE%89%E8%A3%85opencv-python">在Windows上安装OpenCV-Python</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87">目标</a></li>
+<li><a href="#%E4%BB%8E%E9%A2%84%E5%88%B6%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AE%89%E8%A3%85opencv">从预制的二进制文件中安装OpenCV</a></li>
+<li><a href="#%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BAopencv">从源代码构建OpenCV</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90-2">其他资源</a>
+<ul>
+<li><a href="#%E7%BB%83%E4%B9%A0">练习</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8fedora%E4%B8%8A%E5%AE%89%E8%A3%85opencv-python">在Fedora上安装OpenCV-Python</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87-2">目标</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E4%BB%8E%E9%A2%84%E7%BC%96%E8%AF%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AE%89%E8%A3%85opencv-python">从预编译二进制文件中安装Opencv-Python</a></li>
+<li><a href="#%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91opencv">从源代码编译OpenCV</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%BF%85%E9%A1%BB%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9">安装必须的依赖项</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%8F%AF%E9%80%89%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9">安装可选的依赖项</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BDopencv">下载OpenCV</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85">配置和安装</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90-3">其他资源</a>
+<ul>
+<li><a href="#%E7%BB%83%E4%B9%A0-2">练习</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85opencv-python">在Ubuntu上安装OpenCV-Python</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87-3">目标</a></li>
+<li><a href="#%E4%BB%8E%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85opencv-python">从预编译的二进制文件安装OpenCV-Python</a></li>
+<li><a href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91opencv">从源码编译OpenCV</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%BF%85%E9%A1%BB%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9-2">安装必须的依赖项</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%8F%AF%E9%80%89%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9-2">安装可选的依赖项</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BDopencv-2">下载OpenCV</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85-2">配置和安装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="opencv-python-教程简介">OpenCV-Python 教程简介</h1>
+<h2 id="opencv">OpenCV</h2>
+<p>OpenCV于1999年由Gary Bradsky在英特尔开始，第一个版本于2000年问世。Vadim Pisarevsky随后加入Gary Bradsky，管理英特尔的俄罗斯软件OpenCV团队。2005年，OpenCV被用在<em>斯坦利</em>上，该车赢得了2005年的DARPA挑战赛。后来，在Willow Garage的支持下，在Gary Bradsky和Vadim Pisarevsky的领导下，继续进行积极开发。现在，OpenCV支持与计算机视觉和机器学习有关的众多算法，并在日渐扩大。</p>
+<p>OpenCV支持多种编程语言，如C++、Python、Java等，并可在不同平台上使用，包括Windows、Linux、OS X、Android和iOS。基于CUDA和OpenCL的高速GPU操作的接口也在积极开发中。</p>
+<p>OpenCV-Python是OpenCV的Python API，结合了OpenCV C++ API和Python语言的最佳特性。</p>
+<h2 id="opencv-python介绍">OpenCV-Python介绍</h2>
+<p>OpenCV-Python是一个Python库，旨在解决计算机视觉问题。</p>
+<p>Python是一种通用的编程语言，由Guido van Rossum发起，很快就变得非常流行，主要是因为它非常简单和代码的可读性强。它使程序员能够在不降低可读性的情况下用较少的代码行来表达想法。</p>
+<p>但是与C/C++等语言相比，Python比较慢。但是，Python可以很容易地用C/C++进行扩展，这使得我们可以用C/C++编写计算密集型代码，并创建可以作为Python模块使用的Python包装器。这给我们带来了两个好处：第一，OpenCV代码的速度和原来的C/C++代码一样快（因为它是实际的C++代码在后台工作）；第二，用Python编码比C/C++更容易。OpenCV-Python是对原始的OpenCV C++实现的一个Python包装器。</p>
+<p>OpenCV-Python使用了Numpy，它是一个高度优化的数字运算库，具有MATLAB式的语法。所有的OpenCV数组结构都被转换为Numpy数组。这也使得它更容易与其他使用Numpy的库集成，如SciPy和Matplotlib。</p>
+<h2 id="opencv-python教程">OpenCV-Python教程</h2>
+<p>OpenCV推出了一套新的教程，它将引导你了解OpenCV-Python中的各种功能。本指南主要是针对OpenCV 3.x版本（尽管大部分教程也适用于OpenCV 2.x）。</p>
+<p>建议事先了解Python和Numpy的知识，因为本指南中不会涉及这些知识。为了使用OpenCV-Python编写优化的代码，熟练掌握Numpy是必须的。</p>
+<p>本教程最初是由Abid Rahman K.在Alexander Mordvintsev的指导下作为Google Summer of Code 2013项目的一部分而开始的。</p>
+<h2 id="opencv需要你">OpenCV需要你!</h2>
+<p>由于OpenCV是一个开源计划，我们欢迎所有人对库、文档和教程做出贡献。如果你在本教程中发现任何错误（哪怕是一个小的拼写错误，甚至代码或概念中的严重错误），请随时在GitHub中克隆OpenCV并提交一个request请求来纠正它。OpenCV的开发人员会检查你的拉动请求，给你重要的反馈，（一旦通过审查者的批准）它将被合并到OpenCV中。这样你就成为一个开源的贡献者 😃</p>
+<p>随着OpenCV-Python中新模块的加入，本教程可能会进行扩展。如果你熟悉某种特定的算法，并能写出包括该算法的基本理论和显示使用实例的代码在内的教程，请这样做。</p>
+<p>请记住，我们一起可以使这个项目获得巨大的成功！</p>
+<h2 id="贡献者">贡献者</h2>
+<p>以下是向OpenCV-Python提交教程的贡献者名单。</p>
+<blockquote>
+<p>Alexander Mordvintsev (GSoC-2013导师)<br>
+Abid Rahman K. (GSoC-2013实习生)</p>
+</blockquote>
+<h2 id="其他资源">其他资源</h2>
+<ol>
+<li>Python的快速指南-<a href="http://swaroopch.com/notes/python/">Python的一比特（英文外部）</a></li>
+<li><a href="https://numpy.org/devdocs/user/quickstart.html">NumPy 快速上手指南（英文外部）</a></li>
+<li><a href="https://numpy.org/devdocs/reference/index.html#reference">NumPy 参考（英文外部）</a></li>
+<li><a href="http://docs.opencv.org/">OpenCV 文档（英文外部）</a></li>
+<li><a href="https://forum.opencv.org/">OpenCV 论坛（英文外部）</a></li>
+</ol>
+<h1 id="在windows上安装opencv-python">在Windows上安装OpenCV-Python</h1>
+<h2 id="目标">目标</h2>
+<p>在本教程中我们将学习如何在Windows系统中设置OpenCV-Python。<br>
+下面的步骤在Windows 7 64位计算机上用Visual Studio 2010和Visual Studio 2012测试通过。屏幕截图显示的是VS2012。</p>
+<h2 id="从预制的二进制文件中安装opencv">从预制的二进制文件中安装OpenCV</h2>
+<ol>
+<li>下载下面的Python软件包并安装到它们的默认位置。<br>
+a. Python 3.x (3.4+) 或 Python 2.7.x 从<a href="https://www.python.org/downloads/">这里</a>下载。<br>
+b. Numpy软件包（例如，使用 <code>pip install numpy</code> 命令）。<br>
+c. Matplotlib (<code>pip install matplotlib</code>) (Matplotlib是可选的，但推荐使用，因为我们在教程中经常使用它)。</li>
+<li>将所有软件包安装到它们的默认位置。如果是Python 2.7，Python将被安装到<code>C:/Python27/</code>。</li>
+<li>安装后，打开Python IDLE。输入<code>import numpy</code>并确保Numpy工作正常。</li>
+<li>从GitHub或SourceForge网站下载最新的OpenCV版本，双击解压。</li>
+<li>转到<code>opencv/build/python/2.7</code>文件夹。</li>
+<li>将cv2.pyd复制到<code>C:/Python27/lib/site-packages</code>。</li>
+<li>打开Python IDLE，在Python终端输入以下代码。</li>
+</ol>
+<pre><code class="language-python">&gt;&gt;&gt; import cv2 as cv
+&gt;&gt;&gt; print( cv.__version__ )
+</code></pre>
+<p>如果打印出来的结果没有任何错误，恭喜你！你已经成功地安装了OpenCV-Python。</p>
+<h2 id="从源代码构建opencv">从源代码构建OpenCV</h2>
+<ol>
+<li>下载并安装Visual Studio和CMake。<br>
+a. <a href="http://go.microsoft.com/?linkid=9816768">Visual Studio 2012</a><br>
+b. <a href="https://cmake.org/download/">CMake</a></li>
+<li>下载并安装必要的Python软件包到其默认位置<br>
+a. Python<br>
+b. Numpy</li>
+</ol>
+<blockquote>
+<p><strong>注意</strong><br>
+在这种情况下，我们使用的是32位的Python软件包的二进制文件。但是如果你想使用OpenCV的x64版本，就必须安装64位的Python软件包。问题是，没有Numpy的官方64位二进制文件。你必须自己构建它。为此，你必须使用用于构建Python的同一个编译器。当你启动Python IDLE时，它会显示编译器的详细信息。所以你的系统必须有相同的Visual Studio版本，并从源代码构建Numpy。<br>
+另一种拥有64位Python包的方法是使用第三方提供的现成的Python发行版，如Anaconda、Enthought等。虽然发行版的安装包体积会比较大，但会有你需要的一切。所有的东西都在一个单独的Shell里。你也可以下载32位版本。</p>
+</blockquote>
+<ol start="3">
+<li>
+<p>确保Python和Numpy工作正常。</p>
+</li>
+<li>
+<p>下载OpenCV的源代码。可以从Sourceforge（官方发布版本）或Github（最新的源代码）。</p>
+</li>
+<li>
+<p>将其解压到一个文件夹中，opencv并在其中创建一个新的文件夹build。</p>
+</li>
+<li>
+<p>打开CMake-GUI（开始&gt;所有程序&gt;CMake-GUI)</p>
+</li>
+<li>
+<p>按如下方式填写字段（见下图）。<br>
+a. 点击浏览源代码...，找到opencv文件夹。<br>
+b. 点击浏览构建...并找到我们创建的构建文件夹。<br>
+c. 点击 &quot;配置&quot;。<br>
+<img src="https://docs.opencv.org/master/Capture1.jpg" alt="" loading="lazy"><br>
+d. 打开一个新的窗口来选择编译器。选择适当的编译器（这里是Visual Studio 11）并点击完成。<br>
+<img src="https://docs.opencv.org/master/Capture2.png" alt="" loading="lazy"><br>
+e. 等待直到分析结束。</p>
+</li>
+<li>
+<p>你会看到所有的字段都被标记为红色。点击WITH字段来展开它。它决定你需要哪些额外的功能。所以要标记适当的字段。如图：<br>
+<img src="https://docs.opencv.org/master/Capture3.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>现在点击BUILD字段来展开它。前面几个字段是配置构建方法。如图：<br>
+<img src="https://docs.opencv.org/master/Capture5.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>剩余的字段指定要构建的模块。由于OpenCV-Python还不支持GPU模块，你可以完全避免它以节省时间（但如果你与它们一起工作，请保留它）。如图：<br>
+<img src="https://docs.opencv.org/master/Capture6.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>现在点击<strong>ENABLE</strong>字段来展开它。确保<strong>ENABLE_SOLUTION_FOLDERS</strong>未被选中（Visual Studio Express版不支持解决方案文件夹）。如图：<br>
+<img src="https://docs.opencv.org/master/Capture7.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>还要确保在<strong>PYTHON</strong>字段中，所有的内容都被填满。(除了 <strong>PYTHON_DEBUG_LIBRARY</strong>) 如图：<br>
+<img src="https://docs.opencv.org/master/Capture80.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>最后点击 &quot;<strong>Generate</strong>&quot;按钮。</p>
+</li>
+<li>
+<p>现在去我们的<code>opencv/build</code>文件夹。在那里你会发现<strong>OpenCV.sln</strong>文件。用Visual Studio打开它。</p>
+</li>
+<li>
+<p>检查构建模式为<strong>Release</strong>而不是Debug。</p>
+</li>
+<li>
+<p>在解决方案资源管理器中，右击<strong>解决方案</strong>（或<strong>ALL_BUILD</strong>）并构建它。它将需要一些时间来完成。</p>
+</li>
+<li>
+<p>再次，右击<strong>INSTALL</strong>并构建它。现在OpenCV-Python将被安装。如下图：<br>
+<img src="https://docs.opencv.org/master/Capture8.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>最后打开Python IDLE 输入<code>import cv2 as cv</code> 。如果没有错误，则安装正确。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>注意：</strong><br>
+我们安装时没有安装其他支持，如TBB、Eigen、Qt、Document等。在这里我们很难解释为什么。更详细的视频将很快添加，或者你可以先自己查查。</p>
+</blockquote>
+<h2 id="其他资源-2">其他资源</h2>
+<h3 id="练习">练习</h3>
+<p>如果你有一台windows机器，请从源码上编译OpenCV。你可以做各种各样的尝试，如果遇到任何问题，请访问OpenCV论坛并解释你的问题。</p>
+<h1 id="在fedora上安装opencv-python">在Fedora上安装OpenCV-Python</h1>
+<h2 id="目标-2">目标</h2>
+<p>在本教程中我们将学习如何在你的Fedora系统中设置OpenCV-Python。下面的步骤是针对Fedora 18 (64-bit) 和Fedora 19 (32-bit)的测试。</p>
+<h2 id="简介">简介</h2>
+<p>OpenCV-Python可以通过两种方式在Fedora上安装：1) 从Fedora软件库中的预编译二进制文件中安装；2) 从源代码中编译。在本节中，我们将看到这两种方式。<br>
+另一件重要的事情是需要额外的库。OpenCV-Python只需要Numpy（除了其他的依赖性，我们将在后面看到）。但在本教程中，我们也使用了<strong>Matplotlib</strong>来实现一些简单而漂亮的绘图目的（与OpenCV相比，我觉得它好得多）。<strong>Matplotlib</strong>是可选的，但强烈推荐。同样，我们还将看到<strong>IPython</strong>，一个交互式Python终端，这也是强烈推荐的。</p>
+<h2 id="从预编译二进制文件中安装opencv-python">从预编译二进制文件中安装Opencv-Python</h2>
+<p>在root环境的终端中输入下面的命令安装：</p>
+<pre><code class="language-shell">$ yum install numpy opencv*
+</code></pre>
+<p>打开Python IDLE或者IPython在Python控制台中输入以下代码</p>
+<pre><code class="language-python">&gt;&gt;&gt; import cv2 as cv
+&gt;&gt;&gt; print( cv.__version__ )
+</code></pre>
+<p>如果打印出来的结果没有任何错误，恭喜你！你已经成功地安装了OpenCV-Python。</p>
+<p>这是很容易的。但是这里面有一个问题。Yum仓库可能并不总是包含OpenCV的最新版本。例如，在写这个教程的时候，Yum仓库包含2.4.5，而最新的OpenCV版本是2.4.6。就Python API而言，最新版本总是包含更好的支持。另外，在摄像头支持、视频播放等方面可能会出现问题，这取决于所存在的驱动程序、ffmpeg、gstreamer软件包等。</p>
+<p>所以我个人更倾向于下一个方法，即从源代码编译。另外，在某些时候，如果你想为OpenCV做出贡献，你将需要这个。</p>
+<h2 id="从源代码编译opencv">从源代码编译OpenCV</h2>
+<p>从源代码编译一开始可能看起来有点复杂，但一旦你成功了，就没有什么复杂的了。<br>
+首先，我们要安装一些依赖项。有些是必须的，有些是可选的。可选的依赖项，如果你不想要，你可以不安装。</p>
+<h3 id="安装必须的依赖项">安装必须的依赖项</h3>
+<p>我们需要CMake来配置安装，GCC来编译，Python-devel和Numpy来创建Python附加项：</p>
+<pre><code class="language-shell">yum install cmake
+yum install python-devel numpy
+yum install gcc gcc-c++
+</code></pre>
+<p>接下来我们需要GTK对GUI功能的支持，相机支持（libdc1394，v4l），媒体支持（ffmpeg，gstreamer）等。</p>
+<pre><code class="language-shell">yum install gtk2-devel
+yum install libdc1394-devel
+yum install ffmpeg-devel
+yum install gstreamer-plugins-base-devel
+</code></pre>
+<h3 id="安装可选的依赖项">安装可选的依赖项</h3>
+<p>以上的依赖项足以在你的Fedora机器上安装OpenCV。但根据你的要求，你可能需要一些额外的依赖。下面给出了这些可选依赖项的清单。你可以不安装它，也可以安装它，你自己决定:)</p>
+<p>OpenCV带有支持图像格式的文件，如PNG、JPEG、JPEG2000、TIFF、WebP等。但它可能有点旧。如果你想获得最新的库，你可以安装这些格式的开发文件。</p>
+<pre><code class="language-shell">yum install libpng-devel
+yum install libjpeg-turbo-devel
+yum install jasper-devel
+yum install openexr-devel
+yum install libtiff-devel
+yum install libwebp-devel
+</code></pre>
+<p>有几个OpenCV函数是用 <strong>英特尔的线程构件（TBB）</strong> 并行化的。但是如果你想启用它，你需要先安装TBB。( 在用CMake配置安装时，不要忘记传递 <strong>-D WITH_TBB=ON</strong> 。更多细节见下文。）</p>
+<pre><code class="language-shell">yum install tbb-devel
+</code></pre>
+<p>OpenCV使用另一个库<strong>Eigen</strong>来优化数学运算。所以如果你的系统中安装了Eigen，你可以利用它。( 在用CMake配置安装时，不要忘记传递 <strong>-D WITH_EIGEN=ON</strong> 。更多细节见下文。)</p>
+<pre><code class="language-shell">yum install eigen3-devel
+</code></pre>
+<p>如果你想建立文档（是的，你可以在你的系统中用HTML创建离线版本的OpenCV完整的官方文档，并具有完整的搜索功能，这样你就不需要总是访问互联网，如果有任何问题，它是相当快的！)，你需要安装Doxygen（一个文档生成工具）。</p>
+<pre><code class="language-shell">yum install doxygen
+</code></pre>
+<h3 id="下载opencv">下载OpenCV</h3>
+<p>接下来我们要下载OpenCV。你可以从<a href="http://sourceforge.net/projects/opencvlibrary/">sourceforge网站</a>下载OpenCV的最新版本。然后解压该文件夹。</p>
+<p>或者你可以从OpenCV的github repo下载最新的源代码。(如果你想为OpenCV做贡献，请选择这个。它总能使你的OpenCV保持最新状态。) 为此，你需要先安装Git。</p>
+<pre><code class="language-shell">yum install git
+git clone https://github.com/opencv/opencv.git
+</code></pre>
+<p>它将在主目录（或你指定的目录）下创建一个OpenCV文件夹。克隆可能需要一些时间，这取决于你的互联网连接。<br>
+现在打开一个终端窗口，导航到下载的OpenCV文件夹。创建一个新的build文件夹并导航到它。</p>
+<pre><code class="language-shell">mkdir build
+cd build
+</code></pre>
+<h3 id="配置和安装">配置和安装</h3>
+<p>现在我们已经安装了所有需要的依赖项，让我们来安装OpenCV。安装必须用CMake进行配置。它指定了要安装哪些模块，安装路径，要使用哪些额外的库，是否要编译文档和例子等等。下面的命令通常用于配置（从构建文件夹中执行）。</p>
+<pre><code class="language-shell">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+</code></pre>
+<p>它指定构建类型为 &quot;发布模式&quot;，安装路径为/usr/local。请注意每个选项前的-D和末尾的.。简而言之，就是这样的格式。</p>
+<pre><code class="language-shell">cmake [-D &lt;flag&gt;] [-D &lt;flag&gt;] ..
+</code></pre>
+<p>你可以指定任何你想要的标志，但每个标志前都应该有-D。</p>
+<p>所以在本教程中，我们安装的是支持TBB和Eigen的OpenCV。我们还建立了文档，但我们排除了性能测试和构建样本。我们还禁用了与GPU有关的模块（因为我们使用OpenCV-Python，我们不需要与GPU有关的模块。这为我们节省了一些时间）。)</p>
+<p>*(以下所有的命令都可以在一个cmake语句中完成，但为了更好地理解，在此将其分开。) *</p>
+<ul>
+<li>开启TBB和Eigen支持</li>
+</ul>
+<pre><code class="language-shell">cmake -D WITH_TBB=ON -D WITH_EIGEN=ON ..
+</code></pre>
+<ul>
+<li>启用文档并禁用测试和样本</li>
+</ul>
+<pre><code class="language-shell">cmake -D BUILD_DOCS=ON -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D BUILD_EXAMPLES=OFF ..
+</code></pre>
+<ul>
+<li>禁用所有GPU相关的模块</li>
+</ul>
+<pre><code class="language-shell">cmake -D WITH_OPENCL=OFF -D BUILD_opencv_gpu=OFF -D BUILD_opencv_gpuarithm=OFF -D BUILD_opencv_gpubgsegm=OFF -D BUILD_opencv_gpucodec=OFF -D BUILD_opencv_gpufeatures2d=OFF -D BUILD_opencv_gpufilters=OFF -D BUILD_opencv_gpuimgproc=OFF -D BUILD_opencv_gpulegacy=OFF -D BUILD_opencv_gpuoptflow=OFF -D BUILD_opencv_gpustereo=OFF -D BUILD_opencv_gpuwarping=OFF ..
+</code></pre>
+<ul>
+<li>设置安装路径和构建类型</li>
+</ul>
+<pre><code class="language-shell">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+</code></pre>
+<p>每次你输入cmake语句，它都会打印出结果的配置设置。在你得到的最终设置中，确保以下字段被填满（下面是我得到的配置的一些重要部分）。这些字段在你的系统中也应该被适当地填写。否则就会发生一些问题。所以请检查你是否正确执行了上述步骤。</p>
+<pre><code class="language-shell">...
+--   GUI:
+--     GTK+ 2.x:                    YES (ver 2.24.19)
+--     GThread :                    YES (ver 2.36.3)
+--   Video I/O:
+--     DC1394 2.x:                  YES (ver 2.2.0)
+--     FFMPEG:                      YES
+--       codec:                     YES (ver 54.92.100)
+--       format:                    YES (ver 54.63.104)
+--       util:                      YES (ver 52.18.100)
+--       swscale:                   YES (ver 2.2.100)
+--       gentoo-style:              YES
+--     GStreamer:
+--       base:                      YES (ver 0.10.36)
+--       video:                     YES (ver 0.10.36)
+--       app:                       YES (ver 0.10.36)
+--       riff:                      YES (ver 0.10.36)
+--       pbutils:                   YES (ver 0.10.36)
+--     V4L/V4L2:                    Using libv4l (ver 1.0.0)
+--   Other third-party libraries:
+--     Use Eigen:                   YES (ver 3.1.4)
+--     Use TBB:                     YES (ver 4.0 interface 6004)
+--   Python:
+--     Interpreter:                 /usr/bin/python2 (ver 2.7.5)
+--     Libraries:                   /lib/libpython2.7.so (ver 2.7.5)
+--     numpy:                       /usr/lib/python2.7/site-packages/numpy/core/include (ver 1.7.1)
+--     packages path:               lib/python2.7/site-packages
+...
+</code></pre>
+<p>还有许多其他的标记和设置。它留给你进一步探索。<br>
+现在你用make命令建立文件，用make install命令安装它。make install应该以root身份执行。</p>
+<pre><code class="language-shell">make
+su
+make install
+</code></pre>
+<p>安装结束了。所有的文件都安装在/usr/local/文件夹中。但是要使用它，你的Python应该能够找到OpenCV模块。对此你有两个选择。</p>
+<ol>
+<li><strong>将模块移到Python路径的任何文件夹中：</strong> Python的路径可以通过在Python终端输入 <code>import sys; print(sys.path)</code> 来找到。它将打印出许多位置。比如说将 <strong>/usr/local/lib/python2.7/Site-packages/cv2.so</strong> 移到这个文件夹中的任何一个。</li>
+</ol>
+<pre><code class="language-shell">su mv /usr/local/lib/python2.7/site-packages/cv2.so /usr/lib/python2.7/site-packages
+</code></pre>
+<p>但你每次安装OpenCV时都必须这样做。<br>
+2. <strong>将/usr/local/lib/python2.7/Site-packages添加到PYTHON_PATH中：</strong> 这只需要做一次。只要打开 <strong>/.bashrc</strong> 并添加以下一行，然后注销并重新登陆。</p>
+<pre><code class="language-shell">export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+</code></pre>
+<p>这样，OpenCV的安装就完成了。打开终端，试试<code>import cv2 as cv</code>。<br>
+要编译文档的话，就运行下面的命令：</p>
+<pre><code class="language-shell">make doxygen
+</code></pre>
+<p>然后打开<strong>opencv/build/doc/doxygen/html/index.html</strong> 并把他添加到浏览器书签。</p>
+<h2 id="其他资源-3">其他资源</h2>
+<h3 id="练习-2">练习</h3>
+<p>在你的Fedora电脑上从源码编译OpenCV。</p>
+<h1 id="在ubuntu上安装opencv-python">在Ubuntu上安装OpenCV-Python</h1>
+<h2 id="目标-3">目标</h2>
+<p>在本教程中，我们将学习如何在Ubuntu系统中设置OpenCV-Python。下面的步骤是针对Ubuntu 16.04和18.04（都是64位）的测试。</p>
+<p>OpenCV-Python可以通过两种方式安装在Ubuntu中。</p>
+<ul>
+<li>从Ubuntu软件库中的预建二进制文件中安装</li>
+<li>从源代码中编译。<br>
+另一件重要的事情是需要外部库。OpenCV-Python只需要 <strong>Numpy</strong> （除了其他的依赖，我们将在后面看到）。但在本教程中，我们也使用了 <strong>Matplotlib</strong> 来实现一些简单而漂亮的绘图目的（与OpenCV相比，我觉得它好得多）。 <strong>Matplotlib</strong> 是可选的，但强烈推荐。同样，我们还将用到 <strong>IPython</strong> ，一个交互式Python终端，这也是强烈推荐的。</li>
+</ul>
+<h2 id="从预编译的二进制文件安装opencv-python">从预编译的二进制文件安装OpenCV-Python</h2>
+<p>这种方法在只用于编程和开发OpenCV应用程序时效果最好。<br>
+用以下命令在终端安装<a href="https://packages.ubuntu.com/focal/python3-opencv">python3-opencv</a>包（以root用户身份）。</p>
+<pre><code class="language-shell">$ sudo apt-get install python3-opencv
+</code></pre>
+<p>打开Python IDLE（或者IPython）输入以下的命令：</p>
+<pre><code class="language-python">import cv2 as cv
+print(cv.__version__)
+</code></pre>
+<p>如果打印出来的结果没有任何错误，恭喜你你已经成功地安装了OpenCV-Python。</p>
+<p>这是很容易的。但是这里面有一个问题。apt软件库可能并不总是包含最新版本的OpenCV。例如，在写这个教程的时候，apt资源库包含2.4.8，而最新的OpenCV版本是3.x。</p>
+<p>所以要想获得最新的源代码，最好是采用下一个方法，即从源代码编译。另外，在某些时候，如果你想为OpenCV作出贡献，你会需要这个。</p>
+<h2 id="从源码编译opencv">从源码编译OpenCV</h2>
+<p>从源代码编译一开始可能看起来有点复杂，但一旦你成功了，就没有什么复杂的了。<br>
+首先，我们要安装一些依赖项。有些是必须的，有些是可选的。如果你不愿意，你可以跳过可选的依赖项。</p>
+<h3 id="安装必须的依赖项-2">安装必须的依赖项</h3>
+<p>我们需要CMake来配置安装，GCC来编译，Python-devel和Numpy来创建Python附加项：</p>
+<pre><code class="language-shell">sudo apt-get install cmake
+sudo apt-get install gcc g++
+</code></pre>
+<p>若为python2</p>
+<pre><code class="language-shell">sudo apt-get install python-dev python-numpy
+</code></pre>
+<p>若为python3</p>
+<pre><code class="language-shell">sudo apt-get install python3-dev python3-numpy
+</code></pre>
+<p>接下来我们需要GTK对GUI功能的支持，相机支持（libdc1394，v4l），媒体支持（ffmpeg，gstreamer）等。</p>
+<pre><code class="language-shell">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
+</code></pre>
+<p>若为gtk2:</p>
+<pre><code class="language-shell">sudo apt-get install libgtk2.0-dev
+</code></pre>
+<p>若为gtk3:</p>
+<pre><code class="language-shell">sudo apt-get install libgtk-3-dev
+</code></pre>
+<h3 id="安装可选的依赖项-2">安装可选的依赖项</h3>
+<p>以上的依赖性足以在你的Ubuntu机器上安装OpenCV。但是根据你的要求，你可能需要一些额外的依赖。下面给出了这些可选依赖项的清单。你可以不安装它，也可以安装它，你自己决定:)</p>
+<p>OpenCV带有支持图像格式的文件，如PNG、JPEG、JPEG2000、TIFF、WebP等。但它可能有点旧。如果你想得到最新的库，你可以安装这些格式的系统库的开发文件。</p>
+<pre><code class="language-shell">sudo apt-get install libpng-dev
+sudo apt-get install libjpeg-dev
+sudo apt-get install libopenexr-dev
+sudo apt-get install libtiff-dev
+sudo apt-get install libwebp-dev
+</code></pre>
+<blockquote>
+<p><strong>注意</strong><br>
+如果你使用的是Ubuntu 16.04，你也可以安装 <strong>libjasper-dev</strong> 来增加对JPEG2000格式的系统级支持。</p>
+</blockquote>
+<h3 id="下载opencv-2">下载OpenCV</h3>
+<p>从OpenCV的<a href="https://github.com/opencv/opencv">GitHub仓库</a>下载最新的源代码。(如果你想为OpenCV做贡献，请选择这个。为此，你需要先安装Git)</p>
+<pre><code class="language-shell">$ sudo apt-get install git
+$ git clone https://github.com/opencv/opencv.git
+</code></pre>
+<p>它将在当前目录下创建一个文件夹  <strong>opencv</strong> 。克隆可能需要一些时间，这取决于你的互联网连接。</p>
+<p>现在打开一个终端窗口，导航到下载的  <strong>opencv</strong> 文件夹。创建一个新的 <strong>build</strong> 文件夹并导航到它。</p>
+<pre><code class="language-shell">$ mkdir build
+$ cd build
+</code></pre>
+<h3 id="配置和安装-2">配置和安装</h3>
+<p>现在我们有了所有需要的依赖，让我们来安装OpenCV。安装必须用CMake进行配置。它指定了要安装哪些模块，安装路径，要使用哪些额外的库，是否要编译文档和例子等等。这些工作大部分都是通过配置好的默认参数自动完成的。</p>
+<p>以下命令通常用于配置OpenCV库的构建（从构建文件夹中执行）。</p>
+<pre><code class="language-shell">$ cmake ../
+</code></pre>
+<p>OpenCV默认为 <strong>Release</strong> 构建类型，安装路径为 <code>/usr/local</code>。关于CMake选项的其他信息请参考<a href="https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html">OpenCV C++编译指南</a>。<br>
+你应该在 CMake 的输出中看到这些行 (它们意味着已经正确找到了 Python)。</p>
+<pre><code class="language-shell">--   Python 2:
+--     Interpreter:                 /usr/bin/python2.7 (ver 2.7.6)
+--     Libraries:                   /usr/lib/x86_64-linux-gnu/libpython2.7.so (ver 2.7.6)
+--     numpy:                       /usr/lib/python2.7/dist-packages/numpy/core/include (ver 1.8.2)
+--     packages path:               lib/python2.7/dist-packages
+--
+--   Python 3:
+--     Interpreter:                 /usr/bin/python3.4 (ver 3.4.3)
+--     Libraries:                   /usr/lib/x86_64-linux-gnu/libpython3.4m.so (ver 3.4.3)
+--     numpy:                       /usr/lib/python3/dist-packages/numpy/core/include (ver 1.8.2)
+--     packages path:               lib/python3.4/dist-packages
+</code></pre>
+<p>现在你用<code>make</code>命令建立文件，用 <code>make install</code> 命令安装它。</p>
+<pre><code class="language-shell">$ make
+# sudo make install
+</code></pre>
+<p>安装已经结束。所有文件都安装在<code>/usr/local/</code>文件夹中。打开一个终端，尝试<code>import cv2</code>。</p>
+<pre><code class="language-python">import cv2 as cv
+print(cv.__version__)
+</code></pre>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#opencv-python-%E6%95%99%E7%A8%8B%E7%AE%80%E4%BB%8B">OpenCV-Python 教程简介</a>
+<ul>
+<li><a href="#opencv">OpenCV</a></li>
+<li><a href="#opencv-python%E4%BB%8B%E7%BB%8D">OpenCV-Python介绍</a></li>
+<li><a href="#opencv-python%E6%95%99%E7%A8%8B">OpenCV-Python教程</a></li>
+<li><a href="#opencv%E9%9C%80%E8%A6%81%E4%BD%A0">OpenCV需要你!</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90">其他资源</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8windows%E4%B8%8A%E5%AE%89%E8%A3%85opencv-python">在Windows上安装OpenCV-Python</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87">目标</a></li>
+<li><a href="#%E4%BB%8E%E9%A2%84%E5%88%B6%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AE%89%E8%A3%85opencv">从预制的二进制文件中安装OpenCV</a></li>
+<li><a href="#%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BAopencv">从源代码构建OpenCV</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90-2">其他资源</a>
+<ul>
+<li><a href="#%E7%BB%83%E4%B9%A0">练习</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8fedora%E4%B8%8A%E5%AE%89%E8%A3%85opencv-python">在Fedora上安装OpenCV-Python</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87-2">目标</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E4%BB%8E%E9%A2%84%E7%BC%96%E8%AF%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AE%89%E8%A3%85opencv-python">从预编译二进制文件中安装Opencv-Python</a></li>
+<li><a href="#%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91opencv">从源代码编译OpenCV</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%BF%85%E9%A1%BB%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9">安装必须的依赖项</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%8F%AF%E9%80%89%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9">安装可选的依赖项</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BDopencv">下载OpenCV</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85">配置和安装</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90-3">其他资源</a>
+<ul>
+<li><a href="#%E7%BB%83%E4%B9%A0-2">练习</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85opencv-python">在Ubuntu上安装OpenCV-Python</a>
+<ul>
+<li><a href="#%E7%9B%AE%E6%A0%87-3">目标</a></li>
+<li><a href="#%E4%BB%8E%E9%A2%84%E7%BC%96%E8%AF%91%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85opencv-python">从预编译的二进制文件安装OpenCV-Python</a></li>
+<li><a href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91opencv">从源码编译OpenCV</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%BF%85%E9%A1%BB%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9-2">安装必须的依赖项</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E5%8F%AF%E9%80%89%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9-2">安装可选的依赖项</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BDopencv-2">下载OpenCV</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%92%8C%E5%AE%89%E8%A3%85-2">配置和安装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

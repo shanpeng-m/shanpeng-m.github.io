@@ -1,0 +1,530 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【3-13】软件工程 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【3-13】软件工程 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+编程语言、平台和领域
+一个全面发展的高级..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【3-13】软件工程 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+编程语言、平台和领域
+一个全面发展的高级..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/C7dot_ciJ/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【3-13】软件工程 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+编程语言、平台和领域
+一个全面发展的高级...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/C7dot_ciJ/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【3-13】软件工程
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-22 · 26 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="编程语言-平台和领域">编程语言、平台和领域</h2>
+<p>一个全面发展的高级工程师应该精通几种编程语言和平台（如前端、后端、iOS、Android、原生桌面和嵌入式等），并至少在其中一个领域达到精通水平。我们将在第二部分”软件开发”中详细讨论如何掌握一门语言。</p>
+<p>然而，一个高效的工程师不会仅仅满足于精通少数几种技术；他们会持续扩展自己对框架、语言和平台的知识。</p>
+<p><strong>当你已经掌握一门编程语言时，学习另一门语言会变得更加容易。</strong> 这是因为大多数语言在表面上都相当相似。例如，如果你懂JavaScript，那么学习TypeScript就会相对轻松。同样，如果你懂Swift，那么你就能够通过阅读来理解大部分Java、Kotlin或C#的代码。</p>
+<p>当然，每种语言都有其独特的语法、特性、优势和劣势。通过使用这些语言并将它们与你已经熟悉的语言进行比较，你会逐渐发现这些细节。</p>
+<h3 id="深入学习命令式-声明式和函数式语言">深入学习命令式、声明式和函数式语言</h3>
+<p>编程语言主要分为三种类型：</p>
+<ol>
+<li><strong>命令式语言：</strong> 这是最常见的编程语言类型，它通过一系列命令向计算机提供逐步执行的指令。例如：“如果X，则执行这个；否则，执行那个。“C、C++、Go、Java、JavaScript、Swift、PHP、Python、Ruby、Rust、TypeScript以及大多数面向对象的语言都属于命令式语言。</li>
+<li><strong>声明式语言：</strong> 这类语言指定程序的预期结果，但不提供如何实现这个结果的具体指令。SQL、HTML和Prolog就是声明式语言的例子。</li>
+<li><strong>函数式语言：</strong> 这是声明式语言的一个子集，具有足够的特殊性，可以独立成类。在这类语言中，函数被视为”一等公民”，意味着函数可以作为参数传递给其他函数，或作为值返回。Haskell、Lisp、Erlang、Elixir和F#都是函数式语言的例子。函数式语言通常提供不可变状态和无副作用的纯函数。</li>
+</ol>
+<p>你的第一门（甚至是第二门）编程语言很可能是命令式语言。学习额外的命令式语言确实有用，但选择一种不同类型的语言会让你作为专业人士获得更大的成长。</p>
+<p>命令式、声明式和函数式语言各自需要不同的思维方式。从命令式语言切换到函数式或声明式语言可能具有挑战性，但通过这样做，你可以扩展你的理解和”工具箱”。</p>
+<p>函数式编程广泛应用于命令式语言中,因为遵循函数式模型可以保证不可变状态。一个很好的例子是响应式编程模式,它采用了函数式编程的思想,并为Java、Swift、C#、Scala等语言提供了更加函数式的模式。</p>
+<p>掌握了每个类别的一种语言后,学习其他语言就会容易得多。因为命令式语言和函数式语言(如Go和Elixir)之间的基本差异比两种命令式语言或两种函数式语言(如Go和Ruby,或Elixir和Haskell)之间的差异更大。</p>
+<h3 id="熟悉不同的平台">熟悉不同的平台</h3>
+<p>软件工程师通常会专注于某个平台,如后端、前端、移动端或嵌入式平台。但在开发新功能或解决问题时,工作往往会跨越多个平台。例如,开发新的支付流程可能需要在后端、前端甚至移动端进行修改。如果对相邻的技术栈一无所知,就很难调试更复杂的全栈问题,也难以领导全栈功能的开发和发布项目。</p>
+<h3 id="成为更全面的全栈工程师">成为更全面的全栈工程师</h3>
+<p>全栈工程已经成为科技行业高级工程师的基本要求。这是因为产品和业务相关人员并不关心嵌入式、后端和前端/Web之间的区别。一个全面的高级工程师应该能够处理任何问题,并弄清楚如何在不同平台之间分解问题。</p>
+<p>要建立这种理解,可以采取以下方法:</p>
+<ul>
+<li>获取其他平台的代码库访问权限</li>
+<li>阅读其他平台的代码审查</li>
+<li>自愿承担其他平台的小任务</li>
+<li>与在其他技术栈工作的工程师结对编程</li>
+<li>进行”交换月”,在另一个平台上工作一段时间</li>
+</ul>
+<h3 id="ai助手可以加快过渡">AI助手可以加快过渡</h3>
+<p>AI助手可以帮助在语言和平台之间过渡。像GitHub Copilot、ChatGPT、Sourcegraph Cody等工具可以更容易地学习新的编程语言或切换平台。这些助手可以:</p>
+<p>• 将代码从一种语言翻译成另一种语言<br>
+• 总结一种语言中如何声明函数和变量<br>
+• 总结两种语言之间的差异</p>
+<p>需要注意的是,许多AI助手存在幻觉问题,有时会编造不真实的内容。因此,有必要验证它们的输出。但对于熟悉新语言或平台的目的来说,AI助手是有帮助的,可以加速学习过程。</p>
+<h2 id="调试">调试</h2>
+<p>高级工程师和初级工程师在调试和追踪复杂bug方面的区别是很明显的。更有经验的工程师往往能更快地进行调试,并且能轻松地找出更具挑战性问题的根源。他们对问题可能出在哪里,以及从哪里着手调试和解决也有更好的直觉。他们是如何做到这一点的呢?</p>
+<p>部分原因在于实践和专业知识。你编写代码的时间越长,就越容易遇到意想不到的边缘情况和bug,从而开始建立一个”潜在问题根源的工具箱”。</p>
+<p>随着时间的推移,你还会扩展你的调试工具箱。在第二部分”软件开发”中,我们讨论了如何提高调试能力,包括:</p>
+<ul>
+<li>熟悉你的调试工具</li>
+<li>知道如何在没有工具的情况下进行调试</li>
+<li>熟悉高级调试工具</li>
+</ul>
+<p>高效调试的能力往往是区分有经验和经验较少的工程师的一个重要因素。以下是一些改进调试能力的方法。</p>
+<h3 id="了解应该查看哪些仪表板和日志系统">了解应该查看哪些仪表板和日志系统</h3>
+<p>特别是在大型科技公司,你调试生产问题的能力在很大程度上取决于你知道在哪里找到生产日志和生产指标,以及如何查询这些指标。即便如此,通常也需要几个月的时间,高级工程师才能真正体会到定位这些系统的重要性。</p>
+<p>在团队负责多个服务的公司中,找到正确的仪表板和日志门户可能特别具有挑战性,因为每个服务可能使用不同的日志记录方式,在各种系统中记录信息,或使用不同的日志格式。</p>
+<p>加入一家公司后以,要优先了解生产日志存储在哪里,以及在哪里可以找到系统健康仪表板。这些可能存在于Datadog、Sentry、Splunk、New Relic或Sumo Logic等系统中。或者存在于基于Prometheus、Clickhouse、Grafana或其他自定义解决方案构建的内部系统中。它们可能分布在多个地方。要弄清楚它们在哪里,获得访问权限,并学会如何查询它们。对你团队拥有的系统及与你交互的相关系统都要这样做。</p>
+<h3 id="为他人简化调试过程">为他人简化调试过程</h3>
+<p>作为高级工程师,你应该知道该查看哪些仪表板和日志系统。但如果这些系统不存在,那么你就有责任建立它们并使其易于使用。我们在第五部分”可靠系统”中会详细讨论这个话题。</p>
+<h3 id="理解代码库">理解代码库</h3>
+<p>彻底理解小型代码库。当处理一个规模适中的代码库时 - 通常不超过10万行,由不超过20人编写 - 你没有理由不能准确地知道每个部分的位置。仔细查看代码库的结构,阅读大量代码,并绘制出代码不同部分之间的连接方式。</p>
+<p>根据阅读代码绘制架构图,并请团队成员确认你的理解是否正确。达到你知道代码的哪个部分负责什么功能的程度。</p>
+<p>对于大型代码库,最好理解其结构并知道如何找到相关部分。在大公司,拥有超过100万行代码、由数百名工程师构建的代码库很常见。深入理解这种规模的代码库是不现实的,但合理的目标是对其有广泛的了解,以便能够深入研究你需要处理的部分。</p>
+<p>在使用单体仓库(monorepo)的公司,要了解其结构以及单体仓库的不同部分负责什么。系统的各个部分是如何构建的?测试是如何运行的?</p>
+<p>在使用独立存储库的公司,寻求获得这些存储库的访问权限。努力从高层次上理解与你的团队相关的系统如何工作。检查其中一些,构建它们,运行测试,并在本地运行服务或功能,这是一个很好的练习。</p>
+<p>找出如何搜索整个代码库,并学习有用的快捷方式。大多数公司都有某种”全局代码搜索”。这可能是一个自定义的内部解决方案,或者是像GitHub代码搜索或Sourcegraph这样的供应商。了解如何使用全局代码搜索工具及其支持的功能。例如,你如何搜索代码的特定文件夹?如何搜索测试用例?如何只搜索你的团队拥有的代码库?</p>
+<p>即使在大公司,工程师可以访问大部分代码库,但某些部分可能是禁止访问的。这通常是出于合规、监管或保密的原因。在大多数情况下,这不应该对你的日常工作产生实质性影响。但如果它确实减慢了你的工作速度,你可以申请访问权限。</p>
+<h3 id="了解足够的基础设施知识">了解足够的基础设施知识</h3>
+<p>一些生产问题是由基础设施问题引起的。弄清楚服务是如何部署到生产环境的,机密信息是如何存储的,以及证书是如何设置的。研究基础设施是如何管理的,以及基础设施配置存储在哪里。</p>
+<p>如果你在一家有专门的基础设施团队的公司工作,当你怀疑有基础设施问题时,可能会很容易跳过学习过程而直接求助于基础设施团队。然而,这种方法最终会拖慢你的速度。此外,学习基础设施如何在底层工作不仅本身就很有趣;这种深入的理解对于全面发展的高级工程师来说是基本要求。</p>
+<h3 id="从故障中学习">从故障中学习</h3>
+<p>在故障发生时进行调试,并重新阅读以往的故障调查报告。提高调试技能的一个好方法是在真正重要的时候进行调试,比如在故障发生时。如果你的团队遇到故障,主动提出帮助调查并找出原因,以便缓解问题。</p>
+<p>调试故障需要学会访问和分析生产日志,定位负责某些业务逻辑的代码,修改代码,验证更改并推广这些更改。所有这些都发生在紧急情况下,当及时行动很重要的时候。</p>
+<p>除了等待你的系统出现bug外,还有其他方法可以提高故障调试技能。如果你的公司发布事后分析报告,可以查看以往的故障报告。在阅读时,尝试通过定位指出问题的日志和找到故障背后的代码来”调试”。研究历史故障是学习你不熟悉的新仪表板和系统的好方法,也可以发现新的故障缓解步骤。</p>
+<h2 id="技术债务">技术债务</h2>
+<p>“技术债务”是一个经验丰富的软件工程师都非常熟悉的术语。它描述了随着时间推移,在系统上进行软件开发所累积的增量成本。技术债务是代码积累并使事情变得更加复杂时所产生的结果。</p>
+<p>技术债务的特点类似于借贷。如果使用得当,债务可以加速进展。但如果使用不当,维护成本可能会变得昂贵。技术债务导致的”破产”是真实存在的:当删除并重写整个代码库比继续维护和修复更便宜时,就到达了这个临界点。</p>
+<p>软件工程师/工程组织与技术债务之间关系的典型阶段如下:</p>
+<ol>
+<li>无知阶段:当软件工程师开始构建软件时,会有一段时间(通常很短)他们不知道技术债务的存在。</li>
+<li>否认阶段:作为初级工程师,很容易认为自己永远不会造成技术债务,或者认为所注意到的技术债务并不是什么大问题,因此忽视它也无妨。</li>
+<li>接受阶段:很快,大多数工程师就会意识到,编写代码和引入技术债务往往是并存的,尤其是在没有足够时间”正确”完成工作的情况下。公司的工程文化越好,工程师和工程领导就越善于承认技术债务的存在。</li>
+</ol>
+<p>虽然技术债务是不可避免的,但当遵循某些有助于可维护性和便于代码修改的健康工程实践时,技术债务的积累会大大减缓。这些实践包括编写可读性强的代码、测试、代码审查、CI/CD、文档编写、合理的架构决策等。</p>
+<h3 id="处理技术债务">处理技术债务</h3>
+<p>对于小规模的技术债务，最好的方法是在日常工作中逐步解决。遵循童子军露营的原则 - 在这里是指代码库而不是营地 - 让它比你发现时更整洁。</p>
+<p>对于大规模的技术债务，首先要进行清点，并量化它们的影响和消除所需的工作量。当存在大量技术债务时，你不可能一次性全部解决。</p>
+<p>如果没有关于大规模技术债务的数据，很难做出好的决策来处理它们。如果其中包含需要数周或数月才能修复的问题，团队必须进行优先级排序。偿还技术债务的价值与具有业务影响的工作相比如何？</p>
+<p><strong>为了有目的地解决技术债务，提出具有明确影响的项目。</strong> 是否有些技术债务亟待解决，因为它们的影响太明显？可靠性、成本节约、更快的开发周期和更少的bug，这些都是我见过人们在提议消除大规模技术债务或完成迁移项目时常常提到的影响类型。</p>
+<p>例如，将代码逻辑重复视为一种技术债务，代码的某些部分被复制粘贴到不同的地方。将重复的代码移到共享库中会产生什么影响，成本如何？对于经常使用的代码库，影响会更大。另一方面，对于即将废弃的代码库，可能会耗费大量精力却收效甚微。</p>
+<p>再比如构建时间过长的问题。如果许多工程师频繁地运行构建，那么偿还这项技术债务的影响可能会很大。只需将每次构建浪费的时间乘以工程师每天运行这个构建的次数，再乘以执行此操作的工程师数量即可。</p>
+<p>将技术债务的消除与高影响力的项目结合起来。这是被视为高效且能够消除技术债务的工程师的秘诀：不要请求许可。高效的工程师不会寻求批准来消除技术债务，而是将技术债务的消除与高影响力的项目捆绑在一起，作为项目的一部分来处理。</p>
+<p><strong>最高优先级的项目通常是雄心勃勃的，具有高可见度。</strong> 而要交付这些项目，往往需要频繁接触技术债务最多的系统。如果你需要修改一个技术债务严重的系统，这意味着你的工作会变慢。因此，如果你花时间修改技术债务严重的系统，顺便提出减少技术债务的建议是明智之举。</p>
+<h3 id="减少技术债务的积累">减少技术债务的积累</h3>
+<p>与其花费大量时间和精力来偿还技术债务,不如花较少的时间和精力来预防或减缓技术债务的积累。以下是一些实践方法:</p>
+<ol>
+<li>编写易读的代码。易读的代码更容易理解。如果以可理解的代码为目标,后续接触该代码的工程师就不太可能为了绕过他们不理解的部分而添加”黑客式”代码。</li>
+<li>抽出时间清理代码。一些技术债务之所以存在,是因为冗余的内容没有被清理。移除已完成的实验、未使用的功能标志、不再执行的代码路径以及未完成的代码添加。</li>
+<li>构建具有可扩展性的系统。当系统需要扩展(如添加新用例)但时间紧迫时,往往会引入大量技术债务。在构建系统时要考虑未来的用例,为解决方案创造明显的扩展方式。这时使用众所周知的设计模式(如策略模式、装饰器模式或工厂模式)以及使用配置文件来指定行为会很有帮助。</li>
+<li>记录技术债务,并不要寻求许可来移除小部分。在代码库中工作时,你会注意到一些让你变慢的东西。记下来,在有时间时解决它们。</li>
+</ol>
+<h3 id="恰到好处的技术债务">“恰到好处”的技术债务</h3>
+<p>是否存在技术债务过少的情况?如果你偿还了足够多的技术债务,你最终会意识到确实存在这种情况。它被称为”过早优化” - 可能会在关键时刻减慢团队和公司的速度。</p>
+<p>以创业公司为例。在启动时,速度和快速迭代是生存和取胜的关键。在这个时候,你是担心干净的API和漂亮的数据模型,还是只把所有东西都放在一个任何开发人员都可以修改的非结构化JSON中?我工作过的那些最终成功的创业公司,在早期阶段都采取了技术债务较重的方法。</p>
+<p>共享乘车应用Uber就是这样一家创业公司。当我加入时,有很多遗留的早期技术债务,短期决策困扰着代码库的某些部分。但这些技术债务发挥了作用,它让Uber在速度最重要的时候能够快速行动,实现产品市场契合。之后,Uber投资清理这些债务。</p>
+<p>在早期项目、一次性原型、最小可行产品(MVP)以及验证创业公司商业模式时,技术债务是你想要的东西。技术债务可以通过后期投入时间和开发人员来修复,就像Uber所做的那样。大多数处于后期且快速增长的创业公司通常都在忙于偿还早期的技术债务 - 因为到了这个阶段,这些创业公司通常有更多的人力和时间来解决这个问题。同样,如果一个拥有成熟产品的团队没有通过不时投资来控制技术债务,那么可能也有问题。</p>
+<p>务实的工程师不会将技术债务视为坏事;他们将其视为速度和质量之间的权衡。他们将其视为系统的一个特征。他们将技术债务置于项目目标的背景下,不会试图偿还超出需要的部分。他们还会跟踪债务,并在债务堆积之前采取措施减少它 - 必要时还要发挥创意。</p>
+<h2 id="文档">文档</h2>
+<p>“文档”可以指多个领域，并非所有类型的文档都适用于每个项目。以下是工程师常写的文档类型及其适用情况：</p>
+<ol>
+<li>设计文档/意见征询文档这类文档提供系统的高层次视图，可能包含图表以及技术选择和权衡的理由。设计文档在编码开始前编写并征求反馈时最有价值，其目的是帮助构建正确的系统，并及早发现误解。</li>
+<li>测试计划、发布计划、迁移计划项目规划完成后，以下文档有助于确保系统的高质量：</li>
+</ol>
+<ul>
+<li><strong>测试计划：</strong> 说明如何测试系统，哪些边缘案例必须测试，测试是一次性的、手动的还是自动的。如果有手动测试列表（通常称为”健全性测试”），则需要保持更新。</li>
+<li><strong>发布计划：</strong> 描述系统如何发布，使用哪些功能标志，实验如何运行，以及向哪些地区或用户群发布。这通常需要产品或数据科学人员的意见。</li>
+<li><strong>迁移计划：</strong> 从一个系统迁移到另一个系统时，采用什么方法？如何在转移流量前验证新系统的正确性？迁移的阶段是什么？</li>
+</ul>
+<p>这些文档在项目开始时编写最有价值。一旦项目发布或迁移完成，通常无需继续维护。</p>
+<h3 id="接口和集成文档">接口和集成文档</h3>
+<p>API或接口文档。在开发供其他软件工程师使用的API或接口时,这种文档需要解释以下内容:</p>
+<ul>
+<li>如何使用API</li>
+<li>端点列表,每个端点期望的输入和输出</li>
+<li>返回的错误代码和消息</li>
+<li>使用API的代码示例</li>
+</ul>
+<p>在修改代码时,需要及时更新API文档。可以探索自动生成文档的方法,例如使用代码注释生成。</p>
+<p>SDK(软件开发工具包)文档以及集成或插件文档,与API文档类似,这些指南帮助其他团队使用你的SDK、集成或插件。</p>
+<h3 id="发布说明">发布说明</h3>
+<p>一些工程团队仍然会为每个主要版本编写发布说明,尽管这种做法在业界似乎已经不太流行了。编写发布说明通常很简单,不会花太长时间。只需总结哪些客户会注意到你的工作的影响,或汇总所有已发布功能的影响。这可以使更新API、SDK和集成文档变得更加容易。</p>
+<p>发布说明是反思工作的好方法。它们也是与其他工程团队或非技术团队等利益相关者分享的绝佳参考。</p>
+<h3 id="入职文档">入职文档</h3>
+<p>新工程师如何了解你的团队负责的系统是如何工作的?答案是良好的入职文档,其中包括:</p>
+<ul>
+<li>系统如何融入大局的高层概述:其职责、与其他系统的交互等</li>
+<li>如何修改系统:检查代码,如何进行更改</li>
+<li>如何通过运行测试或检查某些部分来测试和验证更改</li>
+<li>如何部署到生产环境,可能通过CI/CD自动部署</li>
+<li>如何监控生产系统</li>
+<li>告警如何工作以及如何调整(如果需要)</li>
+<li>如何在生产事故中调试系统的提示</li>
+</ul>
+<p>入职文档对新加入的人非常有价值,有时对现有团队成员也很有用!不幸的是,通常很少有动力去编写或维护它,特别是如果没有新工程师加入团队的情况下。</p>
+<p>我建议投入精力编写这份文档,以备新同事加入时使用,并为每位新加入者更新。为什么不让新人在入职结束时编辑文档、修正不正确的细节并添加缺失的部分作为一项任务呢?</p>
+<h3 id="团队手册">团队”手册”</h3>
+<p>团队如何运作?团队的使命如何与业务目标联系起来?团队手册回答了这些问题,还涵盖了以下方面:</p>
+<ul>
+<li>工作如何优先排序</li>
+<li>团队成员如何提出问题,以及如何选择下一个要处理的事项</li>
+<li>团队使用的流程</li>
+<li>团队价值观</li>
+</ul>
+<p>如果你的团队还没有手册,可以与领导或经理讨论,并建议编写一份。如果你在团队中有足够的信任,你可以直接开始编写这样一份手册,并征求其他人的意见。</p>
+<h3 id="值班运行手册文档">值班运行手册文档</h3>
+<p>当值班工程师收到系统警报时,应该采取哪些步骤?在哪里可以找到相关的仪表板和日志?该系统对其他系统有哪些依赖关系?好的值班运行手册能回答这些问题。</p>
+<h3 id="用户手册和指南">用户手册和指南</h3>
+<p>如果你构建的软件有最终用户使用,那么他们需要解释其工作原理的手册。他们需要不同的编程语言来描述系统,而截图和视觉提示将非常有用。</p>
+<p>即使这些指南已经存在,也要确保在更改系统部分会改变用户行为时做出标记。如果可能,亲自更新用户指南;毕竟,你做了更改,最了解它!</p>
+<h3 id="文档是一项高杠杆活动">文档是一项高杠杆活动</h3>
+<p>编写文档最初可能很耗时,但这是一项非常高杠杆的活动。此外,一旦文档编写完成,保持更新就会变得更加简单。良好的文档,如入职文档,可以通过提供关于系统如何工作的教育来大大减少技术债务。</p>
+<h2 id="在团队中推广最佳实践">在团队中推广最佳实践</h2>
+<p>作为高级工程师,你要努力提供高质量的工作,并帮助团队做到同样的事情。一个显而易见的方法就是采用最佳实践。</p>
+<p>什么是”最佳实践”?它是一种在你的工作环境中经过验证的、非常有效的工程方法。遵循最佳实践的个人和团队通常能更快地完成工作,产生更少的缺陷,并产出更容易维护的代码。</p>
+<p>然而,这个术语可能会产生误导,因为每个团队和公司在技能和动态方面都有所不同。对一个团队非常有效的做法可能对另一个团队效率较低。</p>
+<p>我建议用”软件工程实践”这个术语来替代”最佳实践”。经过验证的软件工程实践适用于软件工程过程的几个部分,例如:</p>
+<ul>
+<li>书面计划流程。在开始编写非琐碎项目之前,先制定计划并征求反馈。这个计划可以是意见征求(RFC)、工程需求文档(EDD)、设计文档或架构决策记录(ADR)。</li>
+<li>自动化测试。编写单元测试、集成测试、端到端测试、性能测试、负载测试或其他类型的测试。这种方法通常可以提高质量和可维护性,通过更快地标记回归问题,通常能更快地发布软件。我们将在下一章详细讨论测试。</li>
+<li>测试驱动开发。自动化测试的一个子集,在编写代码之前先编写测试。</li>
+<li>代码审查。其他工程师在代码提交前审查并签字。</li>
+<li>提交后代码审查。在代码提交后进行代码审查。这种方法通常可以提高迭代速度,同时保留一些代码审查。权衡是可能会有更多的回归问题进入生产环境。这种做法最适合非常小的或经验丰富的团队。</li>
+<li>测试环境。将代码发布到中间环境进行进一步测试,而不是直接发布到生产环境。好处是对代码正确性有更高的信心。缺点是将东西发布到生产环境需要更长的时间,而且维护测试环境需要更多的工作。</li>
+<li>分阶段推出。分阶段发布新功能并收集反馈,而不是一次性向所有客户发布。功能标志、实验和A/B测试都是分阶段推出的工具。我们将在第四部分”发布到生产环境”中详细讨论这些内容。</li>
+<li>在生产环境中安全测试。直接发布到生产环境,而不是使用测试环境,并采用安全的测试方法,如租户、功能标志或分阶段推出。</li>
+</ul>
+<p>你应该为你的团队采用哪些实践?实际上,这不是一个好的起始问题。相反,你应该问的是:你的团队在发布方面面临的最大挑战是什么?</p>
+<p>问题是有太多的bug进入生产环境吗?考虑TDD、测试环境或生产环境测试等实践是否有帮助。是代码审查耗时太长吗?考虑是否有实践可以帮助解决这个问题:例如,专门分配时间进行审查、减少审查次数、缩小代码变更范围,或其他方法。</p>
+<p>你对工程实践越熟悉,就越能识别出某个特定实践何时可以帮助你的团队。熟悉这些实践的一种方法是学习它们。另一种方法是从有第一手经验的人那里获得意见。最有教育意义的方法是通过尝试它们来获得个人经验!</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-%E5%B9%B3%E5%8F%B0%E5%92%8C%E9%A2%86%E5%9F%9F">编程语言、平台和领域</a>
+<ul>
+<li><a href="#%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A4%E5%BC%8F-%E5%A3%B0%E6%98%8E%E5%BC%8F%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E8%AF%AD%E8%A8%80">深入学习命令式、声明式和函数式语言</a></li>
+<li><a href="#%E7%86%9F%E6%82%89%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B9%B3%E5%8F%B0">熟悉不同的平台</a></li>
+<li><a href="#%E6%88%90%E4%B8%BA%E6%9B%B4%E5%85%A8%E9%9D%A2%E7%9A%84%E5%85%A8%E6%A0%88%E5%B7%A5%E7%A8%8B%E5%B8%88">成为更全面的全栈工程师</a></li>
+<li><a href="#ai%E5%8A%A9%E6%89%8B%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%BF%AB%E8%BF%87%E6%B8%A1">AI助手可以加快过渡</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B0%83%E8%AF%95">调试</a>
+<ul>
+<li><a href="#%E4%BA%86%E8%A7%A3%E5%BA%94%E8%AF%A5%E6%9F%A5%E7%9C%8B%E5%93%AA%E4%BA%9B%E4%BB%AA%E8%A1%A8%E6%9D%BF%E5%92%8C%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F">了解应该查看哪些仪表板和日志系统</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%96%E4%BA%BA%E7%AE%80%E5%8C%96%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B">为他人简化调试过程</a></li>
+<li><a href="#%E7%90%86%E8%A7%A3%E4%BB%A3%E7%A0%81%E5%BA%93">理解代码库</a></li>
+<li><a href="#%E4%BA%86%E8%A7%A3%E8%B6%B3%E5%A4%9F%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%9F%A5%E8%AF%86">了解足够的基础设施知识</a></li>
+<li><a href="#%E4%BB%8E%E6%95%85%E9%9A%9C%E4%B8%AD%E5%AD%A6%E4%B9%A0">从故障中学习</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8A%80%E6%9C%AF%E5%80%BA%E5%8A%A1">技术债务</a>
+<ul>
+<li><a href="#%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF%E5%80%BA%E5%8A%A1">处理技术债务</a></li>
+<li><a href="#%E5%87%8F%E5%B0%91%E6%8A%80%E6%9C%AF%E5%80%BA%E5%8A%A1%E7%9A%84%E7%A7%AF%E7%B4%AF">减少技术债务的积累</a></li>
+<li><a href="#%E6%81%B0%E5%88%B0%E5%A5%BD%E5%A4%84%E7%9A%84%E6%8A%80%E6%9C%AF%E5%80%BA%E5%8A%A1">“恰到好处”的技术债务</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E6%A1%A3">文档</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%9B%86%E6%88%90%E6%96%87%E6%A1%A3">接口和集成文档</a></li>
+<li><a href="#%E5%8F%91%E5%B8%83%E8%AF%B4%E6%98%8E">发布说明</a></li>
+<li><a href="#%E5%85%A5%E8%81%8C%E6%96%87%E6%A1%A3">入职文档</a></li>
+<li><a href="#%E5%9B%A2%E9%98%9F%E6%89%8B%E5%86%8C">团队”手册”</a></li>
+<li><a href="#%E5%80%BC%E7%8F%AD%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C%E6%96%87%E6%A1%A3">值班运行手册文档</a></li>
+<li><a href="#%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C%E5%92%8C%E6%8C%87%E5%8D%97">用户手册和指南</a></li>
+<li><a href="#%E6%96%87%E6%A1%A3%E6%98%AF%E4%B8%80%E9%A1%B9%E9%AB%98%E6%9D%A0%E6%9D%86%E6%B4%BB%E5%8A%A8">文档是一项高杠杆活动</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8%E5%9B%A2%E9%98%9F%E4%B8%AD%E6%8E%A8%E5%B9%BF%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5">在团队中推广最佳实践</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

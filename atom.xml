@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ma.shanpeng.im</id>
+    <title>小马的世界</title>
+    <updated>2024-12-16T12:16:01.906Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ma.shanpeng.im"/>
+    <link rel="self" href="https://ma.shanpeng.im/atom.xml"/>
+    <subtitle>//Pony&apos;s World</subtitle>
+    <logo>https://ma.shanpeng.im/images/avatar.png</logo>
+    <icon>https://ma.shanpeng.im/favicon.ico</icon>
+    <rights>All rights reserved 2024, 小马的世界</rights>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件工程师指南【5-23】软件工程]]></title>
+        <id>https://ma.shanpeng.im/post/StmpKaclb4/</id>
+        <link href="https://ma.shanpeng.im/post/StmpKaclb4/">
+        </link>
+        <updated>2024-12-16T13:07:11.000Z</updated>
+        <summary type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件工程师指南【4-20】团队动态]]></title>
+        <id>https://ma.shanpeng.im/post/PiChgktAbq/</id>
+        <link href="https://ma.shanpeng.im/post/PiChgktAbq/">
+        </link>
+        <updated>2024-12-15T13:58:31.000Z</updated>
+        <summary type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件工程师指南【5-22】合作]]></title>
+        <id>https://ma.shanpeng.im/post/8GSVLKmwip/</id>
+        <link href="https://ma.shanpeng.im/post/8GSVLKmwip/">
+        </link>
+        <updated>2024-12-15T13:20:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件工程师指南【5-21】榜样型的资深工程师与首席工程师-理解业务]]></title>
+        <id>https://ma.shanpeng.im/post/v39OnU9QuD/</id>
+        <link href="https://ma.shanpeng.im/post/v39OnU9QuD/">
+        </link>
+        <updated>2024-12-15T11:59:23.000Z</updated>
+        <summary type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件工程师指南【4-19】团队架构]]></title>
+        <id>https://ma.shanpeng.im/post/S33iVfS04s/</id>
+        <link href="https://ma.shanpeng.im/post/S33iVfS04s/">
+        </link>
+        <updated>2024-12-14T16:12:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+]]></content>
+    </entry>
+</feed>
