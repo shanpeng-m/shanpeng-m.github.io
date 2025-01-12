@@ -1,0 +1,665 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【5-24】可靠的软件系统 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【5-24】可靠的软件系统 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+您的组织很可能隐含或明确地期望员工+工程..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【5-24】可靠的软件系统 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+您的组织很可能隐含或明确地期望员工+工程..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/cjE1lcyopN/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【5-24】可靠的软件系统 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+您的组织很可能隐含或明确地期望员工+工程...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/cjE1lcyopN/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【5-24】可靠的软件系统
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2025-01-08 · 36 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>您的组织很可能隐含或明确地期望员工+工程师领导使系统更可靠的工作。<br>
+在本章中，我们将介绍构建和维护可靠系统的常见方法，包括：</p>
+<h1 id="拥有可靠性">拥有可靠性</h1>
+<p>作为员工+工程师，您在可靠性方面扮演什么角色？在大型科技公司中，通常明确期望您在自己的影响范围内拥有可靠性，无论是在您自己的团队还是其他团队。这意味着您有责任确保可靠性被衡量，制定改进计划，并倡导额外的工程带宽以提高可靠性。<br>
+OKR通常是提高系统可靠性的有效方法。例如，您可以捕捉使系统更可靠、高效和性能更好的目标。然后，您可以定义可衡量的关键绩效指标（KPI），例如：</p>
+<ul>
+<li>将系统X的p95延迟提高10%</li>
+<li>在不增加硬件占用的情况下，将系统Y的吞吐量提高30%</li>
+<li>将系统Z的冷启动时间减少15%”</li>
+</ul>
+<p><strong>你几乎总是需要与工程经理合作，才能在可靠性方面取得实质性进展。</strong> 归根结底，工程经理对其团队的表现和系统的可靠性负有责任和义务。然而，作为一名资深工程师，你具备识别可靠性问题的能力，并能够采用多种方法来改进这一点。你可以——并且应该！——向工程经理提供数据，突出说明为什么投资于可靠性很重要，以及这种投资的回报是什么。</p>
+<h1 id="日志记录">日志记录</h1>
+<p>在我们深入讨论日志记录方法之前，先明确一下为什么它很重要。日志的目的是帮助工程团队调试生产问题，通过捕获丢失但必要的信息，为未来的故障排查提供参考。</p>
+<p>哪种日志记录策略可以帮助你的团队调试生产问题？这取决于你的应用程序、平台以及业务环境。</p>
+<p>以下是一个可以帮助决定如何记录日志以及记录什么内容的日志工具集：”</p>
+<ul>
+<li>
+<p>日志级别。大多数日志工具提供记录不同日志级别的方法，例如“调试（debug）”、“信息（info）”、“警告（warning）”和“错误（error）”。这些级别可用于过滤日志。如何使用这些级别取决于你的环境和团队实践。</p>
+</li>
+<li>
+<p>日志结构。日志捕获了哪些细节？是否记录了本地变量？日志是否捕获了时间戳——精确到毫秒或纳秒——以便轻松判断两个日志事件中哪个先发生？这些时间戳是否包含时区信息？</p>
+</li>
+<li>
+<p>自动化日志记录。系统的哪些部分是自动记录日志的，以免日志记录依赖于工程师的记忆？</p>
+</li>
+<li>
+<p>日志保留。日志在客户端设备上保留多长时间？在后端保留多长时间？保留日志的时间越长可能越有用，但会占用空间，并可能导致数据存储成本增加。</p>
+</li>
+<li>
+<p>切换日志级别。对于应用程序，通常的做法是使用“调试版本（debug builds）”输出所有日志级别，但在生产版本中只记录警告或错误级别的日志。具体细节取决于平台级实现和团队实践。”</p>
+</li>
+</ul>
+<h2 id="明确你的日志记录实践">明确你的日志记录实践</h2>
+<p>如果你所合作的团队没有任何日志记录实践，可以考虑引入相关实践。日志记录是一个领域，工程师们常常希望能够就日志记录的内容和方式达成一致，尤其是在试图从日志中查找信息却失败时。</p>
+<p>为团队制定一份简短的日志记录指南，只需与几位工程师沟通，并授权一名团队成员提出建议——或者由你自己完成。对于日志记录的基础部分，达成某种共识总比没有好，只要团队知道这份指南是由他们负责并且可以随时修改即可。</p>
+<h2 id="经受住时间考验的日志记录指南">经受住时间考验的日志记录指南</h2>
+<p>以下指南来自 2008 年，由当时担任 LogLogic 首席日志推广员的 Anton Chuvakin 提出。这份日志记录指南至今仍然适用，以下内容已获得 Anton 的同意：</p>
+<p>优秀的日志应具备以下特点：</p>
+<ul>
+<li>准确告诉你发生了什么：何时、何地、如何</li>
+<li>适合手动、半自动和自动化分析</li>
+<li>无需生成日志的应用程序也能进行分析</li>
+<li>不会降低系统性能</li>
+<li>如果用作证据，可以证明其可靠性</li>
+</ul>
+<p>需要记录的事件</p>
+<ul>
+<li>身份验证/授权决策（包括注销）</li>
+<li>系统访问、数据访问</li>
+<li>系统/应用程序的变更（尤其是权限变更）</li>
+<li>数据变更：添加/编辑/删除</li>
+<li>无效输入（可能的异常/威胁）</li>
+<li>资源（RAM、磁盘、CPU、带宽及其他硬性或软性限制）</li>
+<li>健康状况/可用性：启动/关闭、故障/错误、延迟、备份成功/失败</li>
+</ul>
+<p>每个事件需要记录的内容</p>
+<ul>
+<li>时间戳和时区（何时）</li>
+<li>系统、应用程序或组件（何处）；相关方的 IP 和同时期的 DNS 查询；涉及系统的名称/角色（我们在与哪些服务器通信？）、本地应用程序的名称/角色（这台服务器是什么？）</li>
+<li>用户（谁）</li>
+<li>操作（什么）</li>
+<li>状态（结果）</li>
+<li>优先级（严重性、重要性、等级、级别等）</li>
+<li>原因</li>
+</ul>
+<h2 id="拥有一个让正确日志记录变得简单的框架">拥有一个让正确日志记录变得简单的框架</h2>
+<p>你的团队是如何进行日志记录的？是否每个人都按照自己的方式调用日志？这种方法对小型团队且有资深工程师的情况下可能适用，但在较大的团队中，往往会导致临时性的日志记录方式：开发人员将日志记录到控制台，使用第三方日志记录供应商，或者调用内部日志记录解决方案。</p>
+<p>一个相对简单的方法来提高一致性是就日志记录方法达成一致——例如，使用哪种策略——然后通过引入一个轻量但有指导性的日志记录框架，让“错误”的日志记录方式变得非常困难。</p>
+<p>但为什么仅仅为了日志记录就要引入另一个框架？创建一个简单的接口可以帮助抽象当前使用的供应商，这在供应商更换频繁的大公司中尤其重要，因为它可以使迁移变得更加容易。这也有助于未来分析日志记录的使用情况。当然，不要为了框架而构建框架；只有在它能够解决临时性、不一致的日志记录以及不清楚该使用哪些框架的问题时才去做。</p>
+<h1 id="监控">监控</h1>
+<p>如何判断一个系统是否健康？最可靠的方法是监控关键特性，并在某个指标看起来不健康时触发警报。”</p>
+<h2 id="50th-95th-99th-百分位数">50th, 95th, 99th 百分位数</h2>
+<p>百分位数是监控和服务水平协议（SLAs）中的一个关键概念。在监控加载时间或响应时间等内容时，仅查看平均值是不够的。为什么？平均值可能掩盖了影响许多客户的最糟糕情况。为避免这种情况，可以考虑监控以下百分位数：</p>
+<ul>
+<li>p50：第 50 百分位数或中位数。50% 的数据点低于此值，50% 的数据点高于此值。这个值可以很好地代表“平均”使用场景。</li>
+<li>p95：第 95 百分位数。这代表表现最差的 5% 的数据点。在性能监控场景中，这个值尤其重要，因为表现最差的 5% 数据点可能对应于核心用户。</li>
+<li>p99：第 99 百分位数。这表示 1% 的客户或请求会经历更长的时间。在某些使用场景中，这个值可能是可接受的异常值。”</li>
+</ul>
+<h2 id="需要监控的内容">需要监控的内容</h2>
+<p>那么应该监控什么？有很多显而易见的选择可以提供有关系统或应用程序健康状况的信息，包括：”</p>
+<ul>
+<li>正常运行时间。系统或应用程序完全运行的时间百分比是多少？</li>
+<li>CPU、内存、磁盘空间。监控资源使用情况可以提供服务或应用程序可能变得不健康的有用指标。</li>
+<li>响应时间。系统或应用程序的响应时间有多长？中位数是多少？最慢的 5% 请求或用户（p95）的体验如何？最慢的 1%（p99）又如何？</li>
+<li>错误率。错误的频率是多少，例如抛出的异常、HTTP 服务中的 4XX 响应以及其他错误状态？所有请求中错误的百分比是多少？</li>
+</ul>
+<p>对于后端服务：</p>
+<ul>
+<li>HTTP 状态码响应。如果错误代码（如 5XX 或 4XX）激增，可能表明存在问题。</li>
+<li>延迟指标。服务器响应的 p50、p95 和 p99 延迟是多少？</li>
+</ul>
+<p>对于 Web 应用程序和移动应用程序，还值得监控以下指标：</p>
+<ul>
+<li>页面加载时间。网页加载需要多长时间？p50、p75 和 p95 的情况如何？</li>
+<li>核心 Web 指标。Google 于 2020 年发布了“Web Vitals”，它们是“提供卓越用户体验的质量信号”。这些指标可以捕捉 Web 性能的更详细图景。核心信号包括最大内容绘制时间（LCP）、首次输入延迟（FID）和累计布局偏移（CLS）。</li>
+</ul>
+<p>对于移动应用程序，还值得监控以下指标：</p>
+<ul>
+<li>启动时间。应用程序启动需要多长时间？启动时间越长，客户流失的可能性越大。</li>
+<li>崩溃率。有多少百分比的会话以应用程序崩溃结束？</li>
+<li>应用程序包大小。其随时间如何变化？这对应用程序很重要，因为更大的大小可能意味着更少的用户安装它。</li>
+</ul>
+<p>业务指标讲述了应用程序或服务健康状况的“真实”故事。上述指标更通用且基础设施化；它们指示基本问题。然而，即使上述指标看起来不错，服务或应用程序仍可能不健康。”</p>
+<h2 id="监控业务指标">监控业务指标</h2>
+<p>为了全面了解系统健康状况，你需要监控高度针对产品的业务指标。例如，在 Uber，Rides 产品的核心业务指标是生命周期事件：</p>
+<ul>
+<li>有多少人正在请求乘车？</li>
+<li>请求在“待处理”状态下停留了多长时间？</li>
+<li>这些请求中有多少被接受或拒绝？</li>
+</ul>
+<p>像乘车接受率骤降这样的指标变化可能表明系统故障。</p>
+<p>在我负责的 Rides 产品支付团队中，我们监控的业务指标包括：</p>
+<ul>
+<li>成功添加新支付方式（例如信用卡）的数量。</li>
+<li>添加支付流程中的错误数量。</li>
+<li>完成支付流程所需的时间——p50 数据。”</li>
+</ul>
+<p>我们测量了信用卡、PayPal、Apple Pay 等支付方式的业务指标。业务指标是针对你的业务部门的，但有些指标是普遍存在的，例如：</p>
+<ul>
+<li>客户注册。进入注册流程的客户数量是多少？成功退出的比例是多少？有多少人在某些步骤“卡住”？注册需要多长时间？</li>
+<li>业务特定操作的成功和错误率。业务特定操作的成功与失败比例是多少？例如，在 Uber 的支付团队中，这个操作是添加支付方式。</li>
+<li>每日/每周/每月活跃用户（DAU、WAU、MAU）。每天/每周/每月有多少用户活跃？</li>
+<li>收入。每天、每周和每小时的总收入是多少？每位用户的平均收入是多少？</li>
+<li>使用量。用户与应用程序或服务交互了多长时间，他们执行了多少操作？像 p50、p75 和 p90 这样的统计数据可以识别中位用户、频繁用户和核心用户。”</li>
+</ul>
+<p>支持票数量。总支持票的数量是多少？按类别划分的情况如何？按类别跟踪这些数据可能很有用，因为峰值可能表明存在错误或故障。</p>
+<ul>
+<li>留存率和流失率。每周、每月和每季度的用户留存率是多少？即，返回的用户百分比是多少？取消的用户比例是多少，例如通过删除账户？</li>
+</ul>
+<p>仅仅监控是不足以确保系统可靠的。当指标异常时需要触发警报，这些警报需要由值班工程师接收、调查并解决。”</p>
+<h1 id="警报">警报</h1>
+<p>决定哪些指标需要分配警报。有许多内容可以监控，但哪些具体指标需要设置警报，以便在它们趋势恶化时触发？</p>
+<p>回答这个问题的一种方法是从业务和产品入手。提出以下问题：</p>
+<ul>
+<li>什么是“健康”的表现？哪些指标表明系统运行良好？为那些表明系统运行不佳的指标添加警报。</li>
+<li>之前发生过哪些故障？哪些指标可以在未来表明存在问题？为那些可以预警之前故障的指标添加警报。</li>
+<li>当系统无法正常工作时，客户会注意到什么？添加监控和警报以捕捉这些问题。你可能需要查看 p95 等百分位数，以捕捉与长延迟相关的异常使用场景。</li>
+</ul>
+<p>仅通过明确说明什么是“健康”和“不健康”的状态，你就应该能够确定系统中需要监控和警报的区域。</p>
+<h2 id="警报的紧急程度">警报的紧急程度</h2>
+<p>并非所有警报都是一样的。系统对所有客户宕机听起来是一个非常重要的警报，而小功能对一小部分用户失效——例如票务系统的‘导入用户’功能——影响要小得多。因此，需要对警报的紧急程度进行分类。以下是一个简单但有效的系统：</p>
+<ul>
+<li>紧急警报：触发需要立即确认和处理的警报。这类警报会发送推送通知，尝试拨打电话，并在无人响应时沿着指挥链升级。</li>
+<li>非紧急警报：这类警报不会在非工作时间打扰人。这些警报很重要，但可以等到工作时间再检查。”</li>
+</ul>
+<h2 id="警报噪声">警报噪声</h2>
+<p>跟踪警报的“噪声”并采取行动。噪声警报是那些没有可操作性的警报。半夜被警报吵醒是很有压力的，更糟糕的是，这种警报可能没有实际意义。同时，由于警报未发送而错过故障也不是理想的情况。那么该如何找到正确的平衡？测量精准度和召回率是两个有帮助的概念。</p>
+<p><strong>精准度。</strong> 这衡量警报指示实际问题的百分比。一个精准度为 30% 的系统意味着 10 个警报中只有 3 个是故障，其余都是噪声。精准度百分比越高，噪声越少。一个 100% 精准度的系统只会触发表明故障的警报。”</p>
+<p><strong>召回率。</strong> 这衡量触发警报的故障百分比。一个召回率为 30% 的系统意味着 10 个故障中只有 3 个触发了警报。一个 100% 召回率的系统意味着所有故障都会触发警报。</p>
+<p>理想的值班系统具有 100% 的精准度，没有噪声警报，同时检测到 100% 的故障。但在现实世界中，往往需要权衡，例如：</p>
+<ul>
+<li>当你移除噪声警报时，可以提高精准度，但可能由于未触发警报而错过故障。这会降低召回率。</li>
+<li>为了改善故障的警报，通常会添加更多警报以提高召回率。但这可能会降低精准度。</li>
+</ul>
+<p>测量警报的精准度和召回率，以确定需要更多关注的领域。一种常见方法是：</p>
+<ul>
+<li>让值班工程师记录每个警报是否与故障相关，还是噪声。大多数值班工具都支持跟踪这些。如果没有，则需要构建或购买此功能。</li>
+<li>在事件回顾中，回顾所有最近的故障并回答问题：“是否有警报触发，表明正在发生故障？”这将显示召回率百分比。”</li>
+</ul>
+<p>测量精准度和召回率需要工程师执行上述两个手动步骤。工程师需要标记警报，以确认警报是否与故障相关；事件回顾人员应标记故障是否有警报先前触发。现有的值班系统可能已经能够捕获这些信息。如果没有，可能需要构建此功能或扩展值班系统。</p>
+<h2 id="静态阈值与异常检测">静态阈值与异常检测</h2>
+<p>如何决定何时为某个指标触发警报？有两种常见方法：</p>
+<ol>
+<li>静态阈值。手动定义触发警报的阈值。例如，设置一条规则：“如果该指标在 60 秒内降至零：触发警报”，或“如果该指标高于 500/分钟，而通常值为 100，则触发警报。”<br>
+静态阈值的优点是它们易于定义，并且可以轻松理解警报触发的原因。这些阈值也易于调整。缺点是很难提前预测设置哪些静态阈值，通常是在某个静态阈值警报可以捕获的故障发生后才设置静态阈值。</li>
+<li>异常检测。无需手动定义阈值，而是让机器学习系统检测与指标相关的流量模式中的异常。唯一的配置输入是警报的敏感度。</li>
+</ol>
+<p>异常检测的优点是它可以捕捉到比静态阈值更多的变化。在一个训练良好且配置良好的异常检测系统中，警报会在流量意外激增或下降时触发。假设有一个异常检测框架可用，异常检测在各种指标中部署的工作量也要小得多。</p>
+<p>缺点是，如果未经过良好训练或配置，异常检测可能会过于噪声化，甚至为正常流量模式触发过多警报。我记得当我们第一次在 Uber 的支付系统中部署异常检测时，在系统训练和配置的最初几周内，我们收到了太多警报，以至于不得不关闭实时警报。</p>
+<p>异常检测可能存在的另一个问题是对真实异常的检测过于不敏感。配置异常检测通常比看起来更复杂，你可能需要让系统考虑不同时间段的常规流量模式。它可能会触发对可预测低流量或高流量的警报——例如电子商务业务在黑色星期五期间的流量激增或下降。</p>
+<p>根据实际情况判断使用哪种类型的警报以及何时使用。如果你还没有使用过这两种警报类型，可以在不同项目中尝试两者！</p>
+<p>通常，最实用的方法是两者结合：对大多数指标使用异常检测，同时对预期的流量增加/下降使用静态阈值，并捕捉关键指标降至零的情况。”</p>
+<h1 id="值班">值班</h1>
+<p>直到2000年代，许多公司仍然采用运维模式，“运维”指的是操作。开发人员编写和测试代码，将其提交到“下一个版本”的分支中，经过数周或数月的时间，候选版本会被最终确定并测试。</p>
+<p>运维团队随后接管并通过将代码部署到服务器上以及应用数据库架构更新来发布版本。对于可下载的应用程序，运维团队更新二进制文件和更新脚本。然后由运维团队监控应用程序。</p>
+<p>如今，随着迭代周期的缩短，工程团队经常每天多次部署。监控代码已不再是运维团队的职责，而是由负责更改的工程团队承担，并定义值班轮换。”</p>
+<h2 id="典型的值班轮换">典型的值班轮换</h2>
+<p>在科技公司中，典型的值班设置如下：</p>
+<ul>
+<li>主值班：接收团队生产系统警报的工程师。</li>
+<li>呼叫通知应用：将警报路由到主值班人员的应用程序。最流行的呼叫通知应用供应商是PagerDuty，其他解决方案如ZenDuty、<a href="http://incident.io/">incident.io</a>、Jeli、FireHydrant和Spike也被使用。一些大型科技公司会构建内部呼叫通知应用程序。</li>
+<li>次级和三级值班：当警报发出时，值班工程师需要在规定时间内（例如10分钟）确认。如果没有确认，警报会升级并通知值班链中的下一个人，即次级值班。如果次级值班未及时确认，则会继续通知三级值班，以此类推。</li>
+</ul>
+<p>大多数科技公司定义了由团队成员组成的主值班和次级值班轮换。三级值班通常由工程经理担任，然后是工程管理链——例如工程组织中的总监和副总裁。”</p>
+<h2 id="专门的值班团队-vs-每个团队都参与值班">专门的值班团队 vs 每个团队都参与值班</h2>
+<p>在大多数大型科技公司中，工程团队通常负责自己的值班轮换，并定义和安排值班。在较小的科技公司中，通常会有一个专门的值班团队处理所有高优先级警报。这通常是一个虚拟值班团队，工程师通常会因额外的时间和努力而获得补偿。</p>
+<p>在较传统的公司或刚开始数字化转型的公司中，通常由DevOps团队处理警报，因为警报通常会附带运行手册。</p>
+<p>理想的值班团队规模是多少？</p>
+<p>无论值班团队如何配置，通常工程师会值班一周。这意味着如果每月不希望某位工程师值班超过一次，团队规模至少需要5人，因为一个月平均有4.5周。如果考虑到假期和病假，6人的团队规模是合理的；一个健康的值班轮换至少需要6人。</p>
+<p>如果工程师在完成主值班职责的同时还需要承担次级值班职责，那么一个健康的轮换需要10-12人，以避免成员过于频繁地值班。</p>
+<p>在只有一个值班团队的公司中，通常更容易确保团队规模合理。但在每个团队都参与值班的公司中，如果团队少于6人，那么成员每月值班超过一次是很常见的。在这种情况下，通常会将两个小团队合并为一个相关领域的值班团队，以创建更健康的值班节奏。”</p>
+<h2 id="值班运行手册">值班运行手册</h2>
+<p>当警报触发时，通常由值班工程师接收通知。然后他们采取行动以确定警报是否表明发生了故障。</p>
+<p>警报运行手册用于调试警报并采取措施缓解故障。“值班运行手册”是警报运行手册或“主”警报运行手册的统称。值班运行手册也可以称为“事件响应运行手册”。</p>
+<p>将警报运行手册附加到每个警报上可以大大提高值班效率。一个有用的警报运行手册应包含以下信息：</p>
+<ul>
+<li>诊断步骤：值班工程师如何判断警报是否表明发生了故障？他们应该访问哪些仪表盘、指标或其他资源？他们应该采取哪些步骤以明确判断是否存在故障？理想情况下，运行手册应包含指向诊断问题资源的直接链接。</li>
+<li>故障缓解指引：如果警报表明发生了故障，应采取哪些步骤来解决问题？大多数警报通常表明特定类型的故障，而运行手册包含关于这些故障的详细信息。</li>
+<li>相关的历史事件：该警报之前表明了哪些故障？指向故障文档的链接可以帮助回顾诊断步骤以及缓解措施，并在警报触发时提供便利。</li>
+</ul>
+<p>警报运行手册需要保持更新。不幸的是，不可能编写出一个永远不需要更新的“完美”警报运行手册！当新事件发生时，运行手册需要更新，包括如何诊断故障的细节，以及系统更改时的更新。”</p>
+<p>健康的事件回顾流程应包括在每次值班事件中更新值班运行手册，或者至少审查是否需要更新运行手册。</p>
+<p>编写代码文档和撰写警报运行手册之间有相似之处。两者都对未来参考非常有用——例如，当工程师想要了解系统状况时——但在当下很容易被优先级降低。这意味着那些因缺乏值班运行手册而受挫的工程师需要以身作则，主动撰写这些手册。</p>
+<p>作为资深工程师，定义一个“主”值班运行手册是提高值班效率的简单方法。尝试与工程团队合作，为常见警报创建运行手册，并将审查和更新警报运行手册作为事件响应流程的一部分。</p>
+<h2 id="值班补偿">值班补偿</h2>
+<p>值班是否有报酬取决于以下几个因素：</p>
+<ul>
+<li>法规：在西班牙和巴西等国家，值班报酬有明确规定，并适用于软件工程师。</li>
+<li>是否是唯一工作：一些公司——主要是传统公司——雇佣专职的DevOps或值班工程师，其唯一职责是参与值班轮换。在这些地方，值班没有额外补偿。</li>
+<li>值班是否自愿：在值班为自愿的地方，通常通过提供报酬来激励人们参与值班。</li>
+</ul>
+<p>在大型科技公司以及市场薪酬靠前的公司（根据本书第一部分“薪酬”章节中的分类为第3层或第2层薪酬包），值班通常是一种普遍做法，并且没有额外补偿。亚马逊、Meta、苹果和微软等公司都遵循这一模式。例外情况是那些强制要求值班补偿的国家。”</p>
+<p>谷歌是唯一一家为值班提供补偿的大型科技公司，同时限制值班时间。</p>
+<p>拥有更“集中化”值班轮换的公司，工程师可以自愿加入，几乎总是会提供值班补偿。有关提供补偿的公司及其金额的列表，请参阅我的文章《软件工程师的值班补偿》。</p>
+<p>薪酬处于市场中位或以下的公司，通常需要为值班支付报酬，因为这需要额外的时间投入，并且在正常工作时间之外会带来压力。在薪酬较高的公司，工程师通常会将额外的责任视为体面薪酬包的一部分。然而，如果工程师觉得值班没有得到足够的补偿，他们可能会寻找薪酬更高的工作，或者薪酬相似但没有值班压力的工作。”</p>
+<h2 id="值班期间工程师是否应进行正常工作">值班期间工程师是否应进行“正常”工作？</h2>
+<p>在某些团队中，值班工作就像一份全职工作，频繁的故障占用了人们的时间，用于清理和执行后续行动。但对于大多数团队来说，工作强度并不高，在“良好”的值班周期间几乎没有额外工作。那么，值班工程师是否应进行“正常”工作？</p>
+<p>最终，这取决于团队经理的决定。以下是定义值班工程师每周工作的一些常见方法：</p>
+<ul>
+<li>将值班与支持工程结合：如果团队面向客户，将会有大量来自客户的支持请求。许多团队将值班角色与支持工程结合起来，值班工程师处理可能是错误报告的请求、调查数据清理请求（涉及编写和运行脚本）等。在值班周期间，工程师暂停“正常”工作，值班成为首要任务。当没有值班工作时，他们会处理支持任务。</li>
+<li>假设只有值班工作：对于值班是主要工作来源的团队，值班工程师只处理与值班相关的任务，当没有故障时，他们可以改进值班系统，例如减少警报噪声、提高系统可靠性或编写和改进运行手册。</li>
+<li>假设工程师在值班期间没有项目工作能力：一种保守的方法是团队假设值班工程师整周都忙于值班，并据此进行计划。实际上，会有额外的时间用于项目工作，但严格基于“尽力而为”的原则。除非预计工程师将大部分时间用于项目工作，否则这种方法很有帮助。</li>
+<li>假设工程师有X%的工作能力：一些经理假设值班工程师会有一定的项目工作能力，当值班工作负载如预期时，这种方法是可行的。但问题在于，值班工作是不可预测的！</li>
+</ul>
+<p>作为资深工程师，你可能会对如何规划值班产生影响。在决定最佳方法时，需要考虑值班负载和团队动态。”</p>
+<h2 id="值班倦怠">值班倦怠</h2>
+<p>有一句常见的格言：“人们辞职是因为经理，而不是公司。”我有一个相关的观察：人们不仅辞职是因为经理，也因为糟糕的值班轮换。</p>
+<p>“值班倦怠”是真实存在的，我曾多次见过。它往往发生在以下两种或更多因素的组合下：</p>
+<ul>
+<li>工程师每月值班超过一次</li>
+<li>值班轮换噪声过多，大多数警报不可操作</li>
+<li>工程师在每次轮换期间每周被夜间唤醒超过一次</li>
+<li>发生了许多故障，需要处理大量紧急问题</li>
+<li>工程师在值班期间被期望完成“正常”工作”</li>
+</ul>
+<p>“人们对值班倦怠的反应各不相同。有些人意识到问题的存在，并采取措施通过换团队或离职来改变现状。另一些人则继续坚持，但他们的表现会受到负面影响，这可能连他们自己都没有意识到！压力大的值班带来的影响是显而易见的；它让人感到疲惫不堪。</p>
+<p>作为资深工程师，你可能是少数能让管理层认真倾听意见的个人贡献者之一。因此，如果你观察到某个团队或个人接近倦怠状态，请提出改善值班动态的建议。经理对团队健康负责，但如果经理比较放手，这可能需要你对值班状态进行诊断并提出改进建议。</p>
+<h1 id="事件管理">事件管理</h1>
+<p>当警报触发且值班工程师确认发生故障时，事件管理过程就开始了。事件管理的目标是尽快恢复系统的正常运行，并防止类似问题再次发生。</p>
+<p>关于事件管理有各种框架，你的工作场所可能已经在使用其中之一。典型的事件生命周期步骤包括：</p>
+<ul>
+<li>检测到事件</li>
+<li>修复问题</li>
+<li>事件后的跟进</li>
+</ul>
+<h2 id="1检测事件">1：检测事件</h2>
+<p>监控和警报是快速检测事件的关键方法，理想情况下可以在几分钟内完成。一旦警报触发，值班工程师需要评估是否发生了故障。</p>
+<p>声明事件是事件管理流程的第一步。这通常通过公司首选的事件管理工具创建一个新事件来完成。</p>
+<p>事件的分类和优先级通常在声明时确定。小范围客户受到影响的故障与所有客户系统宕机之间有很大的区别。</p>
+<p>大多数科技公司从早期阶段就已建立了事件分级和分类机制。一些公司选择通过不同级别定义事件。例如，亚马逊按严重性定义级别：SEV-0是影响最大、范围最广的级别，SEV-1、SEV-2、SEV-3依次降低优先级。在Uber，5级（L5）是最严重的，L4、L3、L2依次影响更小、受影响用户百分比更低。一些公司将事件分为两个部分：影响（高/中/低）和范围（高/中/低）。</p>
+<p>应有明确的标准来对事件进行分类，这些标准基于易于测量的指标，例如服务水平指标（SLI）。如果你发现公司在分类严重性方面模糊不清，这可能是改进这一领域的机会！</p>
+<h2 id="2修复事件">2：修复事件</h2>
+<p>从声明事件开始，事件管理的角色分工应明确。谁负责协调事件响应？谁负责更新相关方？“事件指挥官”通常是响应协调员。这可能不是检测到事件的人。大多数工程团队很快就会发现明确这一角色是非常有帮助的。</p>
+<p>大多数事件管理工具在声明事件时需要指定一名事件指挥官。与事件的严重性一样，这一角色可以后续更改。当故障从小范围发展到更严重时，事件指挥官发生变化并不罕见。</p>
+<p>在声明故障后，缓解是最紧迫的步骤。尽快修复事件有时很简单；例如，如果故障是由最近的代码更改引起的，那么回滚该更改可能是一个快速的解决方案。</p>
+<p>高效缓解通常涉及以下步骤：</p>
+<ul>
+<li>如果已知缓解步骤，则执行它们。这就是运行手册如此有价值的原因；它们使缓解变得更加容易。</li>
+<li>如果缓解步骤未知，则让相关领域的专家参与并开始缓解。这可能涉及通知或联系他们。知道谁是合适的人选会通过值班运行手册变得更容易。</li>
+<li>与相关方沟通。故障相关方包括对故障情况感兴趣的管理链人员、业务相关方或客户。</li>
+<li>验证缓解步骤是否有效。在尝试缓解后，验证其效果。故障可能很复杂，可能需要多个步骤才能解决。有时，缓解措施甚至可能使故障变得更糟。</li>
+</ul>
+<p>评估故障的根本原因并不是最大的优先事项。较少经验的工程师常犯的一个错误是试图先了解故障原因，然后再开始修复。虽然不在了解原因前修复问题看起来不合理，但这种做法可能会延缓尽快缓解故障的努力。</p>
+<p>如果有明显的缓解步骤可以立即开始，例如回滚代码更改或执行回滚计划，那么先执行这些步骤。一旦故障得到缓解，将有充足的时间去了解其原因。”</p>
+<h2 id="3事件后的跟进">3：事件后的跟进</h2>
+<p>一旦事件得到缓解，是时候喘口气了。如果缓解发生在工作时间之外，那么可以好好休息，等到下一个工作日再跟进。</p>
+<p>事件分析/事后总结通常是事件处理生命周期的下一步。常见的问题包括：是什么导致了事件？事件的确切时间线是什么？如何避免未来的类似事件？”</p>
+<p>“事件回顾会议是一个更大的团队审查高影响故障事件分析文档的会议。一些公司有专门的事件管理团队负责此事，另一些公司每周或每两周召开一次会议，有一些经理参与，而其他公司则是根据需要临时进行。</p>
+<p>事件跟进行动是团队认为有必要采取的措施，以避免未来发生类似事件。但在缓解后，这些行动很容易被降级优先级，特别是如果它们需要大量的工程工作。每个团队和公司都有不同的方式来跟踪这些事项并确保它们完成。作为资深工程师，你可以——也应该！——帮助团队腾出时间完成这些跟进工作，有时甚至需要以牺牲其他任务为代价。</p>
+<p>无责回顾是科技行业中常见的方法。在进行事件分析时，避免将其变成寻找责任人的“猎巫”过程。</p>
+<p>大多数故障是由某人进行的配置或代码更改引起的，很容易找到具体是谁导致的。但与其直接或间接地将责任归咎于某人，不如更深入地探讨为什么系统允许这些更改在没有反馈的情况下发生。如果未解决允许事件发生的条件，它们很容易在未来让其他人踩到同样的坑。</p>
+<p>一些人对无责事后总结的理念持抵触态度。他们会问：“这会导致缺乏问责吗？”但在我看来，问责和无责文化是可以并行的。问责意味着人们对自己的工作负责，当事情不可避免地出错时，他们会承担责任并修复问题。无责方法则认识到，责备某人做了一件他们不知道会导致故障的事情是无益的，尤其是在他们对解决问题的原因负起责任时。</p>
+<p>考虑你的事件回顾流程是否优先从事件中学习。在文章《事件回顾和事后总结最佳实践》中，我与John Allspaw——前Etsy CTO和Adaptive Capacity Labs创始人——进行了交流。John帮助公司改进事件管理流程，并分享了一个有趣的观察：</p>
+<p>我们一次又一次地发现，大多数事件报告是为了归档，而不是为了阅读或学习。团队经历了事件，他们提交了一份报告，为自己感到自豪，并认为他们已经从中学到了东西。但实际上，他们的学习只是一小部分。</p>
+<p>当前的事件处理方法仅仅触及了我们可以做的事情的表面。从某些方面来说，科技行业在如何构建可靠系统方面落后于其他几个行业。</p>
+<p>关于建立符合大多数科技公司处理事件方式的事件管理流程，有很多现成的手册和工具。但真正稀缺的是那些能够成功利用事件管理作为学习工具，以使团队和系统更具弹性的公司。</p>
+<p>作为资深工程师，你可以影响工作场所的事件管理流程如何演变。在此过程中，请记住，从事件中学习并将经验教训应用于整个组织应是任何事件管理系统的最终目标。这是领先公司的通用方法。”</p>
+<h1 id="构建弹性系统">构建弹性系统</h1>
+<p>如何构建一个可靠运行的系统？设计和编写具有弹性的系统是必须的。但弹性不仅仅来自于思考未来的故障和用例。以下是设计、构建、测试和操作弹性系统的方法：</p>
+<h2 id="规划阶段">规划阶段</h2>
+<p>弹性系统显然是为了表现出弹性而设计的。在规划阶段，请注意以下事项：</p>
+<ul>
+<li>服务水平指标（SLI）：确定系统的正常运行时间服务水平指标（SLI）。什么决定了系统是否“健康”？“正常运行时间”是什么意思？正常运行时间的目标是什么？尽可能精确地定义这些指标，因为这些定义将驱动架构决策、测试和操作选择。</li>
+<li>计划应对故障：可能会出什么问题？你将如何应对？</li>
+<li>计划负载：系统预计要处理的负载是多少？峰值负载是什么样的？系统需要具备什么样的容量来应对初始负载？</li>
+<li>计划冗余：冗余需求是什么？如何复制数据并确保冗余？</li>
+<li>计划监控和警报：系统健康的指标是什么？你希望提醒值班工程师注意哪些异常？”</li>
+</ul>
+<h2 id="编码阶段">编码阶段</h2>
+<p>在构建系统时，有几个领域值得以弹性为重点进行关注：</p>
+<ul>
+<li>防御性编码：显式处理边界情况，而不是隐式处理。</li>
+<li>注意错误状态和错误映射：系统中的错误由什么表示？这些可能是变量、API响应或状态。记录并记录这些错误，如果合理的话，可以对它们进行警报。注意系统之间如何映射错误状态。</li>
+<li>考虑状态管理：应用程序内如何处理状态？应用程序的哪些部分可以修改状态？可以修改状态的地方越少，出错的可能性就越小。这也是为什么提供不可变状态的框架和不支持通过变量处理状态的声明式语言往往更容易验证其正确性的原因。</li>
+<li>捕获未知状态：既非良好也非糟糕的状态往往是未来问题的温床。仔细搜索未知状态和响应，记录它们，并考虑对它们发出警报。”</li>
+</ul>
+<h2 id="模拟故障并测试系统响应">模拟故障并测试系统响应</h2>
+<p>有几种方法可以模拟故障并确认系统能够按预期处理它们。以下是一些示例：</p>
+<ul>
+<li>优雅降级：关闭系统的某个依赖项并验证它是否通过降级部分功能来响应。</li>
+<li>重试</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E6%8B%A5%E6%9C%89%E5%8F%AF%E9%9D%A0%E6%80%A7">拥有可靠性</a></li>
+<li><a href="#%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">日志记录</a>
+<ul>
+<li><a href="#%E6%98%8E%E7%A1%AE%E4%BD%A0%E7%9A%84%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E5%AE%9E%E8%B7%B5">明确你的日志记录实践</a></li>
+<li><a href="#%E7%BB%8F%E5%8F%97%E4%BD%8F%E6%97%B6%E9%97%B4%E8%80%83%E9%AA%8C%E7%9A%84%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E6%8C%87%E5%8D%97">经受住时间考验的日志记录指南</a></li>
+<li><a href="#%E6%8B%A5%E6%9C%89%E4%B8%80%E4%B8%AA%E8%AE%A9%E6%AD%A3%E7%A1%AE%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95%E5%8F%98%E5%BE%97%E7%AE%80%E5%8D%95%E7%9A%84%E6%A1%86%E6%9E%B6">拥有一个让正确日志记录变得简单的框架</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%91%E6%8E%A7">监控</a>
+<ul>
+<li><a href="#50th-95th-99th-%E7%99%BE%E5%88%86%E4%BD%8D%E6%95%B0">50th, 95th, 99th 百分位数</a></li>
+<li><a href="#%E9%9C%80%E8%A6%81%E7%9B%91%E6%8E%A7%E7%9A%84%E5%86%85%E5%AE%B9">需要监控的内容</a></li>
+<li><a href="#%E7%9B%91%E6%8E%A7%E4%B8%9A%E5%8A%A1%E6%8C%87%E6%A0%87">监控业务指标</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AD%A6%E6%8A%A5">警报</a>
+<ul>
+<li><a href="#%E8%AD%A6%E6%8A%A5%E7%9A%84%E7%B4%A7%E6%80%A5%E7%A8%8B%E5%BA%A6">警报的紧急程度</a></li>
+<li><a href="#%E8%AD%A6%E6%8A%A5%E5%99%AA%E5%A3%B0">警报噪声</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E9%98%88%E5%80%BC%E4%B8%8E%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B">静态阈值与异常检测</a></li>
+</ul>
+</li>
+<li><a href="#%E5%80%BC%E7%8F%AD">值班</a>
+<ul>
+<li><a href="#%E5%85%B8%E5%9E%8B%E7%9A%84%E5%80%BC%E7%8F%AD%E8%BD%AE%E6%8D%A2">典型的值班轮换</a></li>
+<li><a href="#%E4%B8%93%E9%97%A8%E7%9A%84%E5%80%BC%E7%8F%AD%E5%9B%A2%E9%98%9F-vs-%E6%AF%8F%E4%B8%AA%E5%9B%A2%E9%98%9F%E9%83%BD%E5%8F%82%E4%B8%8E%E5%80%BC%E7%8F%AD">专门的值班团队 vs 每个团队都参与值班</a></li>
+<li><a href="#%E5%80%BC%E7%8F%AD%E8%BF%90%E8%A1%8C%E6%89%8B%E5%86%8C">值班运行手册</a></li>
+<li><a href="#%E5%80%BC%E7%8F%AD%E8%A1%A5%E5%81%BF">值班补偿</a></li>
+<li><a href="#%E5%80%BC%E7%8F%AD%E6%9C%9F%E9%97%B4%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%98%AF%E5%90%A6%E5%BA%94%E8%BF%9B%E8%A1%8C%E6%AD%A3%E5%B8%B8%E5%B7%A5%E4%BD%9C">值班期间工程师是否应进行“正常”工作？</a></li>
+<li><a href="#%E5%80%BC%E7%8F%AD%E5%80%A6%E6%80%A0">值班倦怠</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86">事件管理</a>
+<ul>
+<li><a href="#1%E6%A3%80%E6%B5%8B%E4%BA%8B%E4%BB%B6">1：检测事件</a></li>
+<li><a href="#2%E4%BF%AE%E5%A4%8D%E4%BA%8B%E4%BB%B6">2：修复事件</a></li>
+<li><a href="#3%E4%BA%8B%E4%BB%B6%E5%90%8E%E7%9A%84%E8%B7%9F%E8%BF%9B">3：事件后的跟进</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9E%84%E5%BB%BA%E5%BC%B9%E6%80%A7%E7%B3%BB%E7%BB%9F">构建弹性系统</a>
+<ul>
+<li><a href="#%E8%A7%84%E5%88%92%E9%98%B6%E6%AE%B5">规划阶段</a></li>
+<li><a href="#%E7%BC%96%E7%A0%81%E9%98%B6%E6%AE%B5">编码阶段</a></li>
+<li><a href="#%E6%A8%A1%E6%8B%9F%E6%95%85%E9%9A%9C%E5%B9%B6%E6%B5%8B%E8%AF%95%E7%B3%BB%E7%BB%9F%E5%93%8D%E5%BA%94">模拟故障并测试系统响应</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

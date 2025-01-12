@@ -1,0 +1,302 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="//Pony's World" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About Ma
+      </a>
+    
+    <a href="https://ma.shanpeng.im/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      
+
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/ren-ji-jiao-hu-zhong-de-ren-de-yin-su/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          人机交互中的人的因素
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>这是我在实验室论讲中的稿件。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/ren-ji-jiao-hu-zhong-de-ren-de-yin-su/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/human-factor-in-human-computer-interaction/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Human Factor in Human-Computer Interaction
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        This is my Rinkou script in the 2023-06-20
+The Human Factor is crucial in researching fields such as human-computer inte...
+      </div>
+      <a href="https://ma.shanpeng.im/post/human-factor-in-human-computer-interaction/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-2/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【2】基础知识
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        2023.06.10
+script的位置
+
+放在body里的任意位置：基本上不这么用，因为会阻塞页面的渲染，影响用户体验。
+放在body结束标签之前：这是最常用的方式，因为可以保证页面的渲染不会被阻塞。这也是提高页面加载速度的一种方式。
+放...
+      </div>
+      <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-2/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-1-bei-jing/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【1】背景
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        背景
+引入
+JavaScript是由Netscape Communications公司开发，是面向浏览器的脚本语言。取名JavaScript就是为了碰瓷当时非常火的Java，但是和Java是完全不同的两个语言。JavaScript是一个历经...
+      </div>
+      <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-1-bei-jing/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-3-suan-shu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【3】算数
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        Chapter 3 算数
+使用decimal.js
+1. 为什么要使用decimal.js
+decimal.js是一个用于浮点数计算的JavaScript库，它可以解决JavaScript浮点数计算的精度问题。因为它内部采用10进制计算，所...
+      </div>
+      <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-3-suan-shu/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/ru-he-zai-ubuntu1804-shang-an-zhuang-vnc-server/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          如何在Ubuntu18.04上安装VNC Server
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-01-30</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>记录我安装vnc server的过程。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/ru-he-zai-ubuntu1804-shang-an-zhuang-vnc-server/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/zai-windows11-shang-an-zhuang-opencv470/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          在Windows11上安装OpenCV4.7.0
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-01-03</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>安装环境：Windows11 / VS2019</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/zai-windows11-shang-an-zhuang-opencv470/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/docker-bei-wang-luu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Docker备忘录
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2022-12-26</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>一些关于Docker的简单记录</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/docker-bei-wang-luu/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/anaconda-bei-wang-lu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Anaconda备忘录
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2022-12-26</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>最近想要学习OpenCV4，将OpenCV安装在Conda里，于是写了这篇文章，记录一些Conda的用法。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/anaconda-bei-wang-lu/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/ru-he-xi-hao-zhuan-chu-cmlink/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          如何MNP携号转出CMLink｜如何MNP携号入网Povo2.0
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2022-12-20</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>最近打算转出CMLink，写篇攻略给大家分享。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/ru-he-xi-hao-zhuan-chu-cmlink/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+      <a href="https://ma.shanpeng.im/page/5/" class="btn btn-white">
+        <i class="ri-arrow-left-line mr-4"></i>
+        上一页｜Last
+      </a>
+    
+    
+      <a href="https://ma.shanpeng.im/page/7/" class="btn btn-white">
+        下一页｜Next
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+</body>
+
+</html>

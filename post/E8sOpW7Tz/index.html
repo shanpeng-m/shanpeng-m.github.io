@@ -1,0 +1,520 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【3-14】测试 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【3-14】测试 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件测试是一种健康的软件工程实践，其重要..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【3-14】测试 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件测试是一种健康的软件工程实践，其重要..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/E8sOpW7Tz/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【3-14】测试 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件测试是一种健康的软件工程实践，其重要...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/E8sOpW7Tz/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【3-14】测试
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-23 · 23 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>软件测试是一种健康的软件工程实践，其重要性足以在本书中占据单独的一章。</p>
+<p>如何确保一个软件按预期工作？答案是测试。广义上讲，测试可以分为三种方式：</p>
+<ol>
+<li>手动验证所有场景和边界情况。例如，在宣布一个功能完成之前，手动测试各种使用场景。</li>
+<li>自动验证所有场景和边界情况。比如，将这些测试作为持续集成/持续部署（CI/CD）流程的一部分来运行。</li>
+<li>监控软件在生产环境中的表现，并检测故障。当发现问题时，团队会编写自动化测试并将其添加到CI/CD系统中。</li>
+</ol>
+<p>测试是任何科技公司工程文化的核心部分。问题不在于工程团队是否进行测试，而在于他们如何测试，以及使用哪些测试方法。</p>
+<h2 id="单元测试">单元测试</h2>
+<p>单元测试是最简单的自动化测试。它们用于测试一个独立的组件，即”单元”。大多数移动端单元测试针对的是一个类、一个方法或一个类的行为。</p>
+<p>随着代码库的增长，对具有多个依赖项的类进行单元测试变得具有挑战性且耗时，除非在代码库中引入依赖注入。虽然一开始这可能看起来有些繁琐，但它使代码库变得可单元测试，值得投入。同时，它还能使类的依赖关系更加明确，应用程序的架构更加模块化。</p>
+<p>代码库越大，单元测试具备以下特征就越重要：</p>
+<ol>
+<li><strong>快速：</strong> 测试执行迅速，所需设置尽可能少。是否使用轻量级的模拟对象，而非耗费资源的实际实现？</li>
+<li><strong>可靠：</strong> 测试结果是确定的，不会出现偶发性失败。测试不依赖于本地配置或地区设置，在任何环境下都能以相同方式运行。</li>
+<li><strong>聚焦：</strong> 测试是原子性的，即每个测试只关注尽可能少的内容。聚焦的测试执行快速，易于调试，从而保持可靠性。</li>
+</ol>
+<p>单元测试代码带来的好处是累积的，随着系统和开发团队的成长而增加。测试有助于验证代码变更，迫使开发者分离关注点，并帮助记录代码行为。它们还有助于减少代码库中的意外回归，在重构代码时充当安全网。</p>
+<h3 id="不写单元测试的高级工程师">不写单元测试的高级工程师</h3>
+<p>我曾在一个团队工作，其中一位最资深的开发人员不相信编写单元测试的必要性。我们暂且称他为”Sam”。他是一位C++大师，在游戏行业工作了十年，参与过多个大型热门游戏的开发，负责编写游戏引擎中最复杂的部分。Sam坚称他的代码几乎从不出现bug，即便出现，单元测试也无法检测到。基于这一点，Sam声称任何形式的单元测试都是浪费时间，他应该把精力放在更有生产力的任务上。</p>
+<p>这导致我们的团队分成两派：一派编写单元测试，另一派则认同Sam的观点，认为单元测试不值得花时间。</p>
+<p>一切正常，直到Sam对代码库进行了一次大规模重构。当他提交更改时，一切都乱了套。应用程序到处出现故障，花了两天时间才修复所有问题。Sam声称这些故障是不可避免的，并非他的错；实际上，他的代码变更暴露了已存在的问题。尽管如此，更多人开始质疑他”我的代码不会出bug”的说法。</p>
+<p>单元测试失败是因为Sam的更改引入了几个回归问题。当Jess和Sam一起分析这些变更的原因时，每一个问题都源于Sam的代码修改。Sam不情愿地一一修复了这些回归问题，并在测试套件通过后提交了代码。Jess向Sam指出了她得出的明显结论：“看来你确实会在代码中犯错，而单元测试确实能捕捉到这些错误。前提是要编写单元测试。”</p>
+<p>这次事件之后，Jess建立了一个运行单元测试套件的CI系统，团队决定工程师们要为自己的代码编写单元测试。由于Jess推动了整个团队的质量提升，bug数量显著减少，Sam的更改也不再经常破坏主分支，Jess很快被提升为团队领导。</p>
+<p>我从这次经历中吸取了两个教训。首先，没有单元测试也可以开发出优秀的软件。Sam确实在没有测试的情况下成功发布了十年的游戏。然而，在游戏开发工作室，有手动测试人员和其他特定于游戏的高级测试方法，比如AI玩游戏。基本上，在某些环境中，单元测试的意义较小，回归问题通过其他方式被捕获。</p>
+<p>第二个收获是，没有单元测试会使重构大型代码库变得困难，容易引入bug。如果Sam从一开始就编写单元测试，并在重构时也这样做，就会有一个安全网来验证代码是否按预期工作。这样可以节省大量时间，避免不必要的挫折。</p>
+<h2 id="集成测试">集成测试</h2>
+<p>集成测试是对多个单元进行同时测试的方法。它比单元测试更复杂，通常涉及多个类，测试它们如何协同工作。</p>
+<p>集成测试包括测试两个或更多”单元”的协同工作，例如同时测试业务逻辑”单元”和数据库”单元”。它也可能意味着测试两个服务之间的正确交互，同时模拟这些服务之外的其他依赖项。</p>
+<p>集成测试介于非常简单的单元测试和更复杂的端到端测试之间。因此，一些团队使用与单元测试相同的库来编写集成测试，只是他们不会模拟测试的所有依赖项。而有些团队则使用端到端测试中也会用到的框架来进行集成测试，但他们会为测试模拟一些组件。</p>
+<h2 id="ui测试">UI测试</h2>
+<p>UI测试(通常称为”端到端”测试)会启动应用程序,然后模拟用户输入来测试应用。这种测试不使用任何模拟;测试会运行网页或移动应用程序,并使用UI自动化来模拟用户输入,如点击、文本输入和其他操作。</p>
+<p>UI测试的最大优点是它最接近模拟应用程序的真实使用情况,通过经历用户体验的相同流程。然而,这种更强大的测试能力也有一个权衡:测试更容易出错,且速度较慢。</p>
+<ul>
+<li>
+<p>测试更容易出错:在单元测试和集成测试中,UI测试往往最容易出错。这是因为端到端测试可能会因为一些小问题而失败,比如按钮文本的改变导致测试无法定位它。</p>
+</li>
+<li>
+<p>速度慢:由于需要等待网络响应,这些测试的延迟更高。此外,某些场景可能难以模拟;例如,让服务器返回特定的错误消息。</p>
+</li>
+</ul>
+<p>一些工程师会构建不完全端到端的测试,模拟网络层。这样做是为了加快测试速度,并使测试特殊网络响应的边缘情况变得更容易。有些团队将这种测试称为集成测试,而其他团队仍然使用UI测试的名称。我的观点是,名称不是最重要的,关键是团队对集成测试和UI测试的含义达成共识。</p>
+<h2 id="自动化测试的思维模型">自动化测试的思维模型</h2>
+<p>以下是单元测试、集成测试和端到端测试的常见特征:</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/shanpeng-m/images@main/uPic/20240723-174155-XlNM6t.png" alt="image-20240723174154675" loading="lazy"></figure>
+<p>需要注意的是,这是一个概括,具体情况可能因平台、语言和环境而异。例如,某些平台上有一些端到端测试框架,使编写和维护端到端测试变得更容易,在某些环境中可能与编写或维护单元测试相当。</p>
+<p>假设表格是准确的,那么单元测试、集成测试和端到端测试的理想比例是多少?这里有两个流行的思维模型。</p>
+<h2 id="测试金字塔">测试金字塔</h2>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/shanpeng-m/images@main/uPic/20240723-174229-Frn9fH.png" alt="image-20240723174229683" loading="lazy"></figure>
+<p>测试金字塔:一个建议编写更简单、易于维护的测试(如单元测试)的思维模型</p>
+<p>测试金字塔由Mike Cohn在其2009年的著作《敏捷成功之道》中首次提出。测试金字塔的理念是尽可能多地用单元测试覆盖测试表面,尽可能少地使用UI测试,而集成测试则介于两者之间。这个模型很快被采纳,成为软件工程行业最常见的测试模型。</p>
+<p>对于几乎没有UI的后端系统,测试金字塔方法通常效果很好。对于一些难以进行端到端测试和集成测试的原生移动应用程序,它也很适用。</p>
+<p>测试金字塔在前端开发中的用处较小。在构建前端时,单元测试的作用往往较小,而集成测试的作用更大。</p>
+<h2 id="测试奖杯">测试奖杯</h2>
+<p>测试奖杯是软件工程师Kent C. Dodds在2019年提出的概念。这个想法受到Vercel创始人兼CEO Guillermo Rauch的见解启发:“编写测试。不要太多。主要是集成测试。”</p>
+<p>它看起来是这样的:</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/shanpeng-m/images@main/uPic/20240723-174255-MiuFWc.png" alt="image-20240723174255004" loading="lazy"></figure>
+<p>为什么会出现测试奖杯?这是因为自测试金字塔出现以来,许多事情发生了变化,尤其是在前端开发方面:</p>
+<ul>
+<li>代码变得更加模块化,许多bug发生在组件之间</li>
+<li>测试框架变得更强大,测试编写更容易</li>
+<li>单元测试框架可以相对容易地用于集成测试</li>
+<li>静态分析工具已经发展,可以指出运行时错误</li>
+</ul>
+<p>对于前端开发来说,集成测试确实能在编写时间和覆盖范围方面提供最佳的”投资回报”。对于全栈应用程序来说,这一点也越来越正确。你可以在Kent C. Dodds的文章《测试奖杯和测试分类》中阅读更多关于测试奖杯的内容。</p>
+<p>没有一种单一的最佳方法来投资测试。测试金字塔和测试奖杯是思考自动化测试类别的思维模型。但是,与其试图让你的测试方法适应一个模型,不如反过来做。</p>
+<p>思考什么样的自动化测试对你的系统最有利。然后选择你的方法并不断完善。如果它不符合某个模型,也不用担心。自动化测试实现其目标 - 即使在团队快速行动的情况下也能确保质量 - 比符合某个思维模型更重要。</p>
+<p>在寻求测试方法指导时,与处于相似阶段或相似行业的公司的工程师交流可能会有所帮助。例如,Meta是一家历来较少投资自动化测试,但更多投资于监控和自动化部署的公司,这得益于其数十亿用户使用其产品。银行和更传统的公司发布频率较低,往往更多投资于手动测试,而像Google或Uber这样的大型科技公司则大量投资于单元测试和集成测试。</p>
+<h2 id="专业测试">专业测试</h2>
+<p>除了单元测试、集成测试和UI测试这些通用类别外,还有几种更专业的自动化测试,在特定情况下可能会很有用。</p>
+<h3 id="性能测试">性能测试</h3>
+<p>这些测试用于衡量系统的延迟或响应能力。性能测试可以用于多种情况,例如验证代码更改:</p>
+<ul>
+<li>是否对移动应用的UI性能造成了退化</li>
+<li>是否增加了后端端点的延迟</li>
+</ul>
+<p>做好自动化性能测试很棘手,因为在捕获应用程序性能时有很多细微差别,比如其他进程影响被测目标代码的性能,非确定性事件影响测量,或者测量在不同机器上运行导致结果难以比较。</p>
+<h3 id="负载测试">负载测试</h3>
+<p>负载测试确保系统在特定负载下能够正常运行。例如,一家电商公司知道在黑色星期五时流量会是平时的10倍,想要测试其后端系统是否能以合理的延迟响应。这时就需要进行负载测试。</p>
+<p>负载测试专用于后端系统,有几种方法可以进行:</p>
+<ul>
+<li>专用测试基础设施:发送测试请求到被测系统。在这种情况下,需要设置一个生成请求的测试基础设施。</li>
+<li>批处理现有生产请求:在这种设置中,生产请求会被故意延迟。积累足够多的请求后,所有生产请求会以更高的速率发送到生产系统。这种方法适用于非时间敏感的请求。</li>
+<li>使用较小规模基础设施进行生产测试:与其测试当前基础设施是否能处理10倍的流量,一个有效的测试是检查1/10的基础设施是否能处理当前流量。</li>
+</ul>
+<h3 id="混沌测试">混沌测试</h3>
+<p>大约在2008年,Netflix将其架构从单体设置转变为分布在数百个小型服务上的架构。运行如此多的服务有助于减少单点故障,但它导致了看似随机的中断,其中一个小服务的异常或宕机会导致其他看似不相关的系统部分也出现故障。</p>
+<p>Netflix工程团队想出了一种非常规的方法来模拟这些中断。2010年的一篇博客文章解释道:</p>
+<p>“我们工程师在AWS中构建的第一个系统之一被称为’混沌猴子’。混沌猴子的工作是随机杀死我们架构中的实例和服务。如果我们不不断测试我们在失败情况下成功的能力,那么在最需要时 - 意外中断发生时 - 它可能就无法正常工作。”</p>
+<p>Netflix后来开源了其混沌猴子实现,这在运行大量服务的公司中很受欢迎。基础设施团队采用类似的方法,关闭服务或故意降低其性能,以观察系统如何响应。</p>
+<h3 id="快照测试">快照测试</h3>
+<p>快照测试将测试输出与预先记录的输出进行比较。它们在网页和移动开发中最为常见，“快照”通常是屏幕的图像。测试会比较网页或移动应用是否与快照完全一致。</p>
+<p>快照测试在移动应用的UI验证中特别流行。与移动UI测试相比，它们编写成本低、运行速度快。当测试失败时，可以直接比较测试生成的图像和参考图像，很容易进行调试。</p>
+<p>然而，使用快照测试套件进行UI验证的一个主要缺点是，用于比较的参考图像可能很快变得太大，无法与测试代码存储在同一个代码库中。对于拥有大量快照测试的公司来说，将参考图像存储在代码库之外是很常见的做法。</p>
+<h3 id="应用大小包大小测试">应用大小/包大小测试</h3>
+<p>对于移动应用和网页应用，应用的大小或初始加载的包的大小可能是一个关注点。一些团队会设置监控，当移动应用或网页包的大小超过给定大小时发出警报。</p>
+<h3 id="冒烟测试">冒烟测试</h3>
+<p>“冒烟测试”这个术语来源于电子硬件测试。在Cem Kaner、James Bach和Brett Pettichord合著的《软件测试中的经验教训》一书中，他们是这样定义这个术语的起源的：</p>
+<p>“‘冒烟测试’这个短语来自硬件测试。你插入一块新的电路板并打开电源。如果你看到电路板冒烟，就立即关闭电源。”</p>
+<p>电路板冒烟是不好的，因为这意味着电路板正在熔化。冒烟测试的理念是运行简单的测试（几乎总是自动化的），以验证产品是否存在明显的问题。</p>
+<p>冒烟测试是完整测试套件的一个子集，旨在频繁执行，并在任何生产发布之前执行。以下是一些常见的冒烟测试示例：</p>
+<ul>
+<li>应用是否能启动而不崩溃？</li>
+<li>应用中的页面是否能加载而不出错？</li>
+<li>基本连接是否正常：应用是否能成功连接到后端或数据库？</li>
+<li>核心功能是否正常：如登录或导航到应用中经常使用的部分？</li>
+</ul>
+<h3 id="手动测试和健全性测试">手动测试和健全性测试</h3>
+<p>健全性测试是一组手动测试，应在每次主要发布前运行，以确认应用按预期工作。这些测试可能由工程团队或专门的质量保证团队执行。</p>
+<p>健全性测试通常有详细的执行指南和预期输出说明。有了这些详细说明，当团队有更多资源投入自动化时，这些测试可以成为部分或完全自动化为UI测试或端到端测试的首选候选。</p>
+<p>但为什么不是所有的健全性测试都被自动化呢？可能是因为团队还没来得及这么做。在某些情况下，自动化可能不切实际 - 例如，如果某些健全性测试很少运行，团队可能认为构建和维护自动化测试不值得。还有一些测试可能难以自动化，比如查看用户界面并确认布局看起来是否合适。</p>
+<h3 id="其他测试">其他测试</h3>
+<p>自动化测试是一个不断发展的领域。最重要的是自动化测试能够帮助验证系统的正确功能。测试的名称不那么重要；重要的是它们能够测试系统的功能。</p>
+<p>其他一些类型的自动化测试包括：</p>
+<ul>
+<li>可访问性测试：特别适用于移动应用、网页应用和桌面应用。这类测试可能难以自动化。</li>
+<li>安全测试：其中一些可以自动化，而其他可能需要手动执行。</li>
+<li>兼容性测试：验证软件在各种硬件或操作系统上是否按预期工作。</li>
+</ul>
+<h2 id="在生产环境中进行测试">在生产环境中进行测试</h2>
+<p>长期以来，自动化和手动测试套件都是在专门的测试环境中运行的，比如暂存环境或用户验收测试（UAT）环境。</p>
+<p>如今，越来越流行的做法是在终端用户使用的生产环境中进行软件测试。虽然这种方法风险较高，但如果操作得当，相比在专用环境中测试，它具有显著的优势。</p>
+<p>如何安全地在生产环境中进行测试？以下是几种方法：</p>
+<ol>
+<li><strong>功能标志：</strong> 要在生产环境中测试新功能，可以将其置于功能标志之后。部署到生产环境后，为自动化测试和手动测试打开功能标志。当团队确信这种方法有效时，再将功能逐步推广给更多用户。我们在第四部分”部署到生产环境”中会详细讨论功能标志。</li>
+<li><strong>金丝雀部署：</strong> 将生产环境的变更先推送到少量服务器或用户（“金丝雀”组）。在这里运行测试，并监控可观察性结果。如果没有出现警告信号，就继续向所有用户和服务器推广。</li>
+<li><strong>蓝绿部署：</strong> 维护两个不同的环境：一个”蓝色”环境和一个”绿色”环境。任何时候只有一个环境是活跃的。将变更部署到空闲环境，运行所有测试，一旦对变更有信心，就将流量切换到该部署。</li>
+<li><strong>自动回滚：</strong> 结合金丝雀部署或蓝绿部署，配合自动监控设置。如果系统在推出功能时检测到异常，变更会自动回滚，供团队调查。</li>
+<li><strong>多租户环境：</strong> 多租户的理念是租户上下文随请求传播。接收请求的服务可以判断是生产请求、测试租户、测试版租户还是其他类型。服务内置了支持租户的逻辑，可能会以不同方式处理或路由请求。Uber在其博客文章中描述了其多租户方法。</li>
+</ol>
+<p>在生产环境中测试的最大优势：</p>
+<ol>
+<li><strong>信心：</strong> 测试在生产环境中运行，因此您可以更有信心它们按预期工作。</li>
+<li><strong>更直接的调试：</strong> 如果发现需要调试的问题，您应该有工具在生产环境中进行调试。一旦确定了问题，就可以使用生产数据为其编写测试用例！</li>
+<li><strong>更少的环境→更低的基础设施复杂性：</strong> 在生产环境中测试减少了需要维护的测试环境数量。维护测试环境在硬件成本和确保环境足够接近生产环境所投入的时间上都很昂贵。</li>
+</ol>
+<p>然而，在生产环境中进行测试也存在许多挑战：</p>
+<ol>
+<li><strong>基础设施投资：</strong> 团队必须做大量准备工作以确保在生产环境中安全测试。例如，转向多租户设置可能是一个漫长而痛苦的过程。同样，构建一个具有金丝雀部署功能并能自动回滚的系统是一项复杂、耗时的任务。</li>
+<li><strong>合规和法律挑战：</strong> 在生产环境中测试并不意味着工程师应该能够访问敏感的用户数据，如个人身份信息（PII）。在生产环境中进行调试和测试时，可能需要构建工具以确保遵守相关隐私法规。</li>
+</ol>
+<h2 id="自动化测试的优缺点">自动化测试的优缺点</h2>
+<p>编写自动化测试需要相当大的时间投入。那么，它对团队有哪些好处呢？以下是最常见的几点：</p>
+<ul>
+<li>
+<p>验证正确性。任何自动化测试的直接好处是验证代码按照测试指定的方式工作。如果在编写代码之前编写测试（即测试驱动开发，TDD），那么预期会被提前指定，而代码则被编写以满足测试要求。</p>
+</li>
+<li>
+<p>捕捉回归。通过自动化测试，可以及早发现回归问题。如果自动化测试套件集成到CI系统中，这可以在代码合并之前发生。如果集成到CD系统中，则可以在将代码部署到生产环境之前捕捉到回归问题。</p>
+</li>
+<li>
+<p>文档。测试可以帮助确立代码的预期功能，以及在边缘情况下的行为。但文档可能会过时，因此测试套件需要保持最新，否则测试将会失败。</p>
+</li>
+<li>
+<p>契约。测试可以作为验证正式契约的一种方式，比如接口或API应该如何表现，以确保它们完全按照向用户描述的方式运行。</p>
+</li>
+</ul>
+<p>进行大规模更改时的安全网。拥有全面自动化测试套件的代码库为工程师提供了额外的安全保障。由于有测试套件的存在，大规模的代码更改（如主要重构）可以更有信心地进行。</p>
+<p>自动化测试也有缺点：</p>
+<ul>
+<li>
+<p>编写时间。最大、最明显的缺点是测试需要时间来编写，这可能让人觉得在假定已经正确的代码上浪费时间。当然，测试的好处不仅仅是验证你的工作。另一个好处是测试可以捕捉到回归问题。</p>
+</li>
+<li>
+<p>测试速度慢。由于大量的自动化测试或测试运行速度慢，测试套件可能会随着时间的推移变得运行缓慢。缓慢的测试套件可能会减慢开发的节奏。</p>
+</li>
+<li>
+<p>不稳定的测试。某些类型的测试更容易出现不稳定性，在应用程序正常工作时也会失败。例如，当出现网络延迟时，UI测试可能会失败，但应用程序实际上运行正常。不稳定的测试会引入噪音并降低测试套件的实用性。</p>
+</li>
+<li>
+<p>维护成本。当更改代码时，相关的测试也必须更新。对于简单的测试（如单元测试）来说，这是直接的。但对于更复杂的测试，使其按预期工作可能比编写代码本身需要更多的努力！</p>
+</li>
+</ul>
+<p>测试是软件工程的核心部分，自软件开发的早期以来就一直如此。编写代码只是开发的第一部分；验证其工作方式、将其部署到生产环境以及维护代码都是后续步骤。自动化测试在代码编写后的所有阶段都有帮助。</p>
+<p>对于可维护且能在较长时间内得到支持的软件来说，自动化测试是一个基本要求，也有助于加快对代码库的迭代。因此，应该拥抱测试并尝试各种方法。这样，你就可以建立一个广泛的测试工具集，并为当前项目使用最佳类型的测试。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95">单元测试</a>
+<ul>
+<li><a href="#%E4%B8%8D%E5%86%99%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%9A%84%E9%AB%98%E7%BA%A7%E5%B7%A5%E7%A8%8B%E5%B8%88">不写单元测试的高级工程师</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95">集成测试</a></li>
+<li><a href="#ui%E6%B5%8B%E8%AF%95">UI测试</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%9E%8B">自动化测试的思维模型</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E9%87%91%E5%AD%97%E5%A1%94">测试金字塔</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E5%A5%96%E6%9D%AF">测试奖杯</a></li>
+<li><a href="#%E4%B8%93%E4%B8%9A%E6%B5%8B%E8%AF%95">专业测试</a>
+<ul>
+<li><a href="#%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">性能测试</a></li>
+<li><a href="#%E8%B4%9F%E8%BD%BD%E6%B5%8B%E8%AF%95">负载测试</a></li>
+<li><a href="#%E6%B7%B7%E6%B2%8C%E6%B5%8B%E8%AF%95">混沌测试</a></li>
+<li><a href="#%E5%BF%AB%E7%85%A7%E6%B5%8B%E8%AF%95">快照测试</a></li>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%A4%A7%E5%B0%8F%E5%8C%85%E5%A4%A7%E5%B0%8F%E6%B5%8B%E8%AF%95">应用大小/包大小测试</a></li>
+<li><a href="#%E5%86%92%E7%83%9F%E6%B5%8B%E8%AF%95">冒烟测试</a></li>
+<li><a href="#%E6%89%8B%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E5%81%A5%E5%85%A8%E6%80%A7%E6%B5%8B%E8%AF%95">手动测试和健全性测试</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E6%B5%8B%E8%AF%95">其他测试</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">在生产环境中进行测试</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9">自动化测试的优缺点</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【5-22】合作 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【5-22】合作 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为一名Staff+工程师，工作的大部分..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【5-22】合作 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为一名Staff+工程师，工作的大部分..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/8GSVLKmwip/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【5-22】合作 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为一名Staff+工程师，工作的大部分...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/8GSVLKmwip/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【5-22】合作
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-12-15 · 26 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>作为一名Staff+工程师，工作的大部分内容涉及与其他工程师、经理、产品人员、业务利益相关者以及其他人协作。在许多情况下，往往不是你主动发起协作，而是别人来找你。</p>
+<p>最具挑战性的项目很少是因为需要编写的代码而变得困难。通常，主要的痛点在于与他人合作，以及由此产生的“赶猫”（指一项难以组织或几乎不可能完成的任务）的感觉。</p>
+<p>当你与同事协作时，不可避免地会在某种程度上涉及到内部政治，或者被认为参与其中。为什么会这样？因为根据古希腊的一句智慧之言，人类天生就是“政治动物”。协作涉及到你网络中的人，而你的影响力为团队中的工程师创造了机会。这是职业成功中的一个区分点，这也是我们关注它的原因。</p>
+<h1 id="内部政治">内部政治</h1>
+<p>内部政治——也就是办公室政治——在许多软件工程师中名声不佳。如果一名个人贡献者（IC）或经理被认为是“政治化”的，这几乎总是带有负面含义。通常，这意味着某人几乎没有技术贡献，而是利用他人来实现自己的目标，有时甚至会为了个人利益而进行操控。</p>
+<p>那么，被视为“有影响力”是否与“政治化”有很大不同呢？影响力通常指的是一位具有强大技术能力的同事，他们还擅长为有利于团队或组织的倡议争取支持，而不是仅仅为了自己。</p>
+<p>实际上，政治和影响力往往是相辅相成的，尽管我们对“政治化”的同事和有影响力的同事的看法不同。影响力是内部政治的一种“良性”形式。这就是为什么如果你想支持你的团队并在软件工程师的职业生涯中取得进步，成为一个被视为有影响力但不政治化的人会很有帮助。</p>
+<h2 id="错误的政治类型">“错误”的政治类型</h2>
+<p>“政治化”这一标签之所以名声不好，是因为它通常用来描述那些被认为是自私自利、以他人或其他群体为代价谋取个人或小团体利益的行为。值得避免的是被同事认为你为了自己的利益或“圈内人”的利益而让他们的生活变得更加困难。</p>
+<p>当成功主要依赖于非正式的软技能和人际网络能力时，这种行为会让人感到不对劲。我认识的大多数开发者——包括我自己——都相信软件工程应该是客观的，并基于想法的优劣，这也是为什么许多工程师鄙视内部政治的原因。</p>
+<p><strong>感知很重要。</strong> 你可能做了一件无私的事情，但如果同事们不了解完整的背景，他们可能会误解你的动机，并将其解读为自私自利。</p>
+<p>以某位在晋升委员会中的Staff工程师为例，他们需要决定一名高级工程师的薪酬方案，而这名高级工程师正是该Staff工程师团队中的一员。在Staff工程师未对提案表示支持后，该提案被否决了。</p>
+<p>这位Staff工程师是否因为没有为团队成员挺身而出而表现得自私？他们的动机是什么？是否是政治性的？谁从中受益？显然不是那位没有加薪的高级工程师。那么，这位Staff工程师“是否以某种隐秘的方式成为了受益者？”这些问题在没有参与决策过程的情况下很难回答，这可能会导致人们假设他们的同事在玩“错误”的政治游戏。</p>
+<p>实际上，很可能委员会成员在涉及利益冲突的情况下必须回避（不参与）投票。而这位Staff工程师很可能正是这样做的，因为他们没有对团队成员的决策提供任何意见。</p>
+<p>然而，人们最容易假设的是，这位Staff工程师由于某种原因没有支持提案，从而破坏了提案。这种情况下，关于动机的关键问题被弄错了：这位Staff工程师为了保持公正性而选择不参与与自己有直接利益相关的决策。</p>
+<p>这个例子表明，在不了解完整背景的情况下，很难做出准确的判断。在实践中，人们会用假设来填补认知空白。这就是为什么感知和背景很重要！</p>
+<h2 id="问题性的感知">问题性的感知</h2>
+<p><strong>自私自利。</strong> 如果某人被认为只关心自己的项目和工作，他们可能会因为看起来专注于个人晋升而很少交到朋友。谁愿意与一个“不回馈他人，只利用他人来实现个人野心”的人合作或帮助他们呢？</p>
+<p><strong>排挤同事。</strong> 比赤裸裸的自私更糟糕的是，被认为是一个为了爬上职业阶梯而积极排挤他人的人。例如，一名工程师独占一个项目并阻止他人贡献，以便获得所有的功劳，那么当队友对他们的看法变得负面时，这位工程师不应该感到意外。</p>
+<p><strong>缺乏灵活性。</strong> 在讨论提案时毫无灵活性、只坚持自己的观点的工程师，可能会被认为是在追求个人议程。如果他们不是用理性论据，而是以“我是一名Staff工程师，所以应该按我说的来”这样的言辞来压制他人，这种情况尤其如此。</p>
+<p><strong>两面派。</strong> 在不同的人面前对同一话题说不同或矛盾的话，会让人觉得这个人具有操控性，并在追求个人议程。一旦有人被认为有这样的行为，同事们对他们的信任通常会迅速下降。</p>
+<p><strong>强行推进自己的意愿。</strong> 在亚马逊经常应用的一项领导原则是“有骨气；提出异议并承诺执行”。这鼓励同事们在决策过程中提出异议，但在决策做出后承诺并抛开分歧。这种“提出异议并承诺执行”的心态在许多公司中都存在。然而，当有人在没有达成共识的情况下强行推进承诺时，这种方法可能被“武器化”。强行推进倡议在短期内或“战时”模式下可能是高效的，但这种方法很少能赢得朋友。</p>
+<p><strong>不信任其他工程师。</strong> 一些经验丰富的工程师会将工程工作委派给经验较少的工程师。这很好！但是，如果他们发现经验较少的工程师以非传统方式完成任务时，就会把工作从他们手中夺回。这样做会让人觉得他们缺乏对同事的信任，并可能导致负面的感知，这意味着经验较少的工程师可能会避免向这些经验丰富的同事寻求建议和指导。</p>
+<p><strong>只说不做。</strong> 一种特殊类型的“政治动物”是那些从不编码的资深工程师。这是一种棘手的感知问题，因为随着工程师晋升到Staff及以上级别，他们的编码工作确实会大幅减少。他们由于其他优先事项而无法亲自参与具体工作。</p>
+<p>尽管如此，那些从不接触代码库、从不参与值班，并推动一些影响工程师但却与他们意见相左的变更的Staff及以上级别工程师，往往会被负面看待；被认为是脱离实际、不参与决策的工程师。</p>
+<h2 id="对糟糕政治行为提供反馈">对“糟糕”政治行为提供反馈</h2>
+<p>反馈很重要，因为缺乏反馈通常会让情况变得更糟。一个软件工程师不太可能在上班时想着：“我真的很期待表现得自私、脱离实际并操控我的同事。”然而，有些人却恰恰给人留下了这样的印象。那么，究竟发生了什么？</p>
+<p>缺乏反馈是工程师表现出让他人认为是政治化行为的一个常见原因。而且他们通常完全不知道自己被这样看待！</p>
+<p>但给出这种类型的反馈往往是有挑战的。然而，我认为作为队友，你可以——也应该！——尽量帮助某人了解他们的行为是如何被感知的：</p>
+<ul>
+<li><strong>如果你是政治化人员的同级：</strong> 直接向他们或你的经理提供反馈。选择取决于你与相关人员的关系。我的建议是尽可能直接提供反馈，但如果缺乏信任，这可能会很有挑战性。</li>
+<li><strong>如果你比政治化人员资历更高：</strong> 直接向他们提供反馈。尽量描述具体的行为或事件，并听取他们的说法。如果他们的意图与“被感知的方式”不同，可以建议他们如何改变行为。</li>
+<li><strong>如果你比政治化人员资历更低：</strong> 向你的经理提供反馈，因为直接提供反馈可能并不合适。但听取你的观察并决定如何处理是你的经理的职责。</li>
+</ul>
+<h1 id="影响他人">影响他人</h1>
+<p>避免被认为过于政治化是明智的。然而，影响工程师和管理者的能力往往很重要，同时这本身也是一种“良性”内部政治形式。以下是一些通过影响力可以发挥作用的情境：</p>
+<ul>
+<li><strong>让提案被采纳。</strong> 你提出了一个新系统的提案，与现有系统相比有许多优势。你确信这个提案会给组织带来巨大的好处，只要其他人能看到这一点。</li>
+<li><strong>抵制对组织有害的倡议。</strong> 从上级下达了一项迁移到新系统的指令。然而，你发现新系统存在太多漏洞，这意味着你的团队需要做大量额外工作来填补这些漏洞，或者客户将失去功能性。这两种选择都不可接受，因此你“必须向决策者说明情况”。</li>
+<li><strong>为队友的提案争取支持。</strong> 你的团队成员提出了一个非常好的提案，但没有获得支持，包括你的经理也不支持。你认为这个提案很有价值，鉴于其对业务的积极影响，应该在团队层面进行讨论。你可以利用你的影响力为同事的想法争取机会。</li>
+<li><strong>参与重要项目。</strong> 你了解到另一个团队启动了一个新项目，而你的专业知识可以帮助他们更快地取得进展。对组织来说，正确的做法是让你在这个新项目上投入时间。然而，你无法完成当前的工作并同时在新项目上投入足够的时间。因此，你需要说服你的经理，调整你的工作重点对组织来说是正确的选择。</li>
+</ul>
+<p>强大的组织网络和影响他人的能力是密不可分的。一般来说，人们听取你的意见是因为他们信任你，这意味着你已经付出了努力来建立这种信任。那么，如何赢得信任以让人们听取你的意见？在第三部分“协作与团队合作”中，我们会介绍对高级工程师有帮助的方法。而在这里，我们将讨论适用于Staff+级别的方法。</p>
+<h2 id="积累信任资本">积累“信任资本”</h2>
+<p>“信任资本”是许多事情的基础。那么，这种资产在你的组织中的来源是什么？可能包括：</p>
+<ul>
+<li>职位/权威。人们会关注那些拥有传递专业知识或权威的职位的同事，例如首席工程师、杰出工程师、总监、工程副总裁等。</li>
+<li>任期。如果某人在组织中工作了很长时间，并且被认为拥有深刻的理解力，即使没有职位或权威，人们也会认真对待他们的意见。</li>
+<li>专业知识。如果一位经验丰富的React Native工程师加入了一个组织，即使他们缺乏任期或权威，人们也很可能会向他们咨询React Native相关的问题。这适用于任何技术领域。</li>
+<li>过往成绩。即使缺乏任期和权威，如果某人有完成任务的良好记录，他们仍然可能拥有超出预期的影响力。</li>
+<li>工作的可见性。如果你完成了一项出色的工作，但没有人知道，那你真的完成了一项出色的工作吗？软件工程师常犯的一个错误是认为他们的工作会“自己说话”。事实往往并非如此。残酷的现实是，如果你的经理和团队成员不知道你完成了什么、如何完成的以及其影响是什么，那么好的工作就显得没那么重要。</li>
+</ul>
+<p>建立信任资本的显而易见的方法是，在较长的一段时间内完成任务，从而积累过往成绩和任期。以下是一些可能有助于加速信任建立过程的方法。</p>
+<p>eBay前产品总监Anne Raimondi提供的关于信任的另一种有用思考方式。她将信任定义为可信度、可靠性和真实性的总和，除以自我利益的感知。她在文章《用这个公式来确定、诊断和修复信任》中分享了更多增加信任的建议。</p>
+<h2 id="提出问题并积极倾听">提出问题并积极倾听</h2>
+<p>邀请同事分享他们的观点和专业知识，以便向他们学习。如果你缺乏信息或专业知识（例如刚加入新公司时），这种方法尤其有用。</p>
+<p>我在Skyscanner工作时的一位工程高级副总裁采用了这种方法进行入职。Bryan Dove告诉同事，他客观上是房间里最不了解情况的人，这样就设定了他会问很多问题的预期。他确实这样做了，并积极倾听回复，提出后续问题并添加评论。Bryan后来成为了Skyscanner的CTO，然后是CEO。</p>
+<p>我的观察是，Bryan在早期提出大量问题的方法，帮助他更快地学习，也让工程师们认为他是一个好奇、脚踏实地的领导者，而不是一个冷漠、专横、自以为是的领导者。</p>
+<h2 id="解释你的观点">解释你的观点</h2>
+<p>一旦你掌握了事情的运作方式，尝试养成向同事表达你对问题领域看法的习惯。这可以是在代码审查、站会、架构/设计讨论、计划文档（如RFC）等场景中进行。阅读更多关于RFC、设计文档和ADR的信息。</p>
+<p>对于代码审查，养成总结你解决的问题、值得注意的边界情况以及不在范围内的事项的习惯。如果更改是可视化的，考虑使用图片。</p>
+<p>对于初步提案，养成概述以下内容的习惯：</p>
+<ul>
+<li>你认为的问题</li>
+<li>你首选的解决方案</li>
+<li>“已知的未知”以及权衡</li>
+</ul>
+<p>可以考虑按照从问题开始、以权衡结束的顺序进行。你需要首先让人们对问题达成一致，然后在已知的未知和权衡的情况下争取对解决方案的支持。</p>
+<p>遵循这种方法，你将建立可信度和信任。解决方案是否是你提出的并不重要，重要的是选择最有效的方案。实际上，通过不选择自己的提案，而是鼓励或支持其他人更合适的选项，你往往可以建立更多的信任。</p>
+<h2 id="在设计讨论中表明立场并解释你的理由">在设计讨论中表明立场并解释你的理由</h2>
+<p>当你的团队在讨论设计或架构选择时，参与这个过程。与其像一个漠不关心的仲裁者一样保持沉默，不如表达你的偏好和理由？这样做能让你成为一个积极的参与者，同时也是一个很好的学习机会，可以锻炼你解释自己想法的能力。当然，你需要出现在这些讨论进行的场合。通过与团队成员、你的经理或两者交谈，争取被邀请参与这些讨论。</p>
+<h2 id="卷起袖子把事情做好">卷起袖子，把事情做好</h2>
+<p>为了与同事建立信任，你需要完成工作，同时倾听和解释。工作内容会因你的角色、级别和期望而有所不同。努力明确这些期望，并确保你的产出符合或超出这些期望。</p>
+<h2 id="让你的工作可见">让你的工作可见</h2>
+<p>将你的工作与经理、团队成员以及利益相关者分享。可以考虑开始记录一个工作日志文档，记录你的任务，并在1:1会议中与经理分享。习惯分享你的工作对业务的影响、面临的挑战以及学到的经验。</p>
+<p>如果你是领导者，可以考虑每周向你的管理链和团队发送5-15分钟的更新。这意味着花15分钟撰写一份文档，这份文档只需5分钟即可阅读，概述了上述内容。在大型组织中，这些笔记在让你的工作更具可见性以及获得反馈方面会非常有用，可能会让你感到惊讶。</p>
+<h2 id="带头推动项目">带头推动项目</h2>
+<p>随着你逐渐熟悉组织，主动寻找机会为你的团队、组织和公司提供帮助。评估一个机会为何重要，制定计划，并邀请支持它的人参与其中。</p>
+<p>你可能会发现自己在领导项目。每成功领导和完成一个项目，你都会建立更多的信任并积累信任资本。</p>
+<h2 id="无私地支持他人">无私地支持他人</h2>
+<p>如果你只专注于自己的工作，很难与他人建立信任。同样重要的是支持他人，即使表面上看起来你无法从中获益。</p>
+<p>当你支持同事正在做的事情或他们试图获得支持的事情时，可以在讨论、规划中帮助他们，并给予积极的反馈。你不需要一个高级职位来做到这一点；只需要真诚。</p>
+<p>当然，当你不同意某种方法时，也有提出纠正性反馈的空间，但如果可能的话，要谨慎行事，避免在公开场合给出负面反馈。当以正确的方式提供建设性反馈时，尤其是当明确你是出于好意并希望帮助某人和团队时，这种反馈可以建立信任。</p>
+<h2 id="成为更好的写作者">成为更好的写作者</h2>
+<p>尤其是在更大的组织中，写作在Staff级及以上级别变得至关重要，因为书面信息会被更多人阅读，而写作是你接触、交流并影响超出你直接团队范围的工程师的方式。</p>
+<p>在大型工作场所中，写作对于让你的想法清晰和决策具有持久性至关重要。为了让人们阅读并吸收你的内容，它必须写得好。你需要吸引人们的注意力，并清晰简洁地解释你的想法。</p>
+<p>通过良好的写作，你可以扩大自己与多个团队和组织有效沟通的能力。而超越直接团队进行沟通和影响的能力，是Staff+工程师的基本要求。</p>
+<h1 id="与经理合作">与经理合作</h1>
+<p>Staff+工程师往往与工程经理有一种独特的关系。这是因为Staff+工程师和工程经理通常在影响范围上相似，但关注点略有不同。以下是Staff+工程师和工程经理通常如何分配时间的可视化图：</p>
+<p>Staff+工程师和工程经理会花费大量时间在战略和对齐上。因此，与工程经理，尤其是那些你支持的团队的经理合作是合乎逻辑的目标！</p>
+<p>明确告诉工程经理你是他们团队的一员。对于那些你支持的团队的经理——包括你自己的经理——来说，你与他们合作支持他们的团队这一点应该是显而易见的。因此，花时间与他们交谈，了解他们的工作方式，并找出你们如何合作。</p>
+<p>避免踩到工程经理的“地盘”。Staff+工程师和工程经理都帮助团队对齐，你可能会遇到某些情况下你的决定覆盖了另一位经理的决定，或者感觉某位经理覆盖了你的决定。如果发生这种情况，采取与对待Staff+工程师同行类似的方法：私下讨论并探讨你们如何“朝着同一个方向划船”。避免在经验较少的工程师面前公开展示这些分歧是明智的。</p>
+<p>与其他经理建立信任。你需要达到这样一个程度：其他经理将你视为合作伙伴，反之亦然。实现这一点需要建立信任并证明他人可以依赖你。</p>
+<p>从与你自己的经理建立信任开始。与经理进行坦诚的讨论，明确职责，并找出你可以承担的一些工作，无论是协调工程工作、领导项目，还是解决团队的棘手依赖问题。告诉你的经理，你的目标是在工程相关事务中成为真正的盟友。</p>
+<h1 id="与staff同行合作">与Staff+同行合作</h1>
+<p>要成为一名高效的Staff+工程师，你需要与团队、业务利益相关者和其他经理合作，同时也需要与同行——其他Staff+工程师合作。</p>
+<p>与Staff+同行面对面交流。如果可以亲自介绍自己，那就去做吧！了解他们的工作，告诉他们你的情况，并讨论你们如何互相帮助。这种个人关系可以产生深远的影响。如果你处于远程环境中，尽量通过视频通话实现同样的效果。</p>
+<p>加入一个Staff+社区——或者创建一个！在一些公司，有Staff+社区，你可以定期与同行互动。例如，亚马逊以其强大的首席工程师社区而闻名，在早期，所有首席工程师每年都会参加一次线下活动，进行每周午餐会，并举办公司范围的技术讲座系列。</p>
+<p>如果你的公司还没有Staff+社区，可以考虑为你直接的同行组织一个。这可以简单到定期的讨论会。这样的社区对所有Staff+工程师都有帮助，因为这个角色会为组织中的其他人以及你自己带来许多问题。从亚马逊获取一些可以组织的活动创意。</p>
+<p>注意，与“Staff+原型”合作是不同的。工程高管和作家Will Larson在他的书《Staff Engineer》和《An Elegant Puzzle》中，识别了四种Staff+工程师原型：</p>
+<ul>
+<li>技术负责人（Tech Lead）：指导特定团队的方法和执行</li>
+<li>架构师（Architect）：负责关键领域的方向、质量和方法</li>
+<li>问题解决者（Solver）：深入研究复杂问题并找到前进的路径</li>
+<li>右手（Right Hand）：借用工程高管的范围和权威，在复杂的组织中运作</li>
+</ul>
+<p>与领导项目的技术负责人合作，与架构师或右手合作是不同的。因此，弄清楚你可能属于哪种Staff+原型，以及可以与你对齐的Staff+同行。</p>
+<h1 id="扩展你的网络">扩展你的网络</h1>
+<p>与你互相信任的人的网络会影响你寻找盟友和发挥影响力的效率。以下是一些扩展网络的方法。</p>
+<h2 id="在组织中找到一位导师">在组织中找到一位导师</h2>
+<p>即使作为一名Staff+工程师，你仍然应该寻找可以学习的人，他们可以在你需要完成任务时成为顾问或盟友。这些人不一定是工程师，他们可以是工程领导者、产品人员，甚至是像CTO这样的高管。</p>
+<p>导师关系可以是非正式的；例如，通过与一位更有经验的同事合作一个项目来实现。一些组织会运行正式的导师计划。</p>
+<h2 id="参与跨团队项目">参与跨团队项目</h2>
+<p>建立网络的最佳方式不是“刻意建立网络”，而是花时间与其他团队的人一起工作。这在参与共享项目时会自然发生。作为一名Staff+工程师，这类项目通常是工作的一部分。如果没有，寻找参与的方法！</p>
+<p>在与他人合作时，尝试花时间更好地了解他们，因为你可能会建立一个比任何项目持续时间都更长久的联系。</p>
+<h2 id="参加内部培训">参加内部培训</h2>
+<p>在较大的公司中，内部培训是建立网络的一种被低估的方式。对于管理者的管理培训和线下培训活动来说尤其如此。</p>
+<p>当我在Uber工作时，我在培训课程中遇到了许多非技术领域的管理者，与他们的交流让我开阔了眼界，了解了业务的其他部分是如何运作的。我也结识了一些可以在以后联系并分享想法的人。通常，内部培训将具有相似兴趣的人聚集在一起，并提供一种共享的体验，这为进一步的交流奠定了基础。</p>
+<h2 id="认识团队之外的人">认识团队之外的人</h2>
+<p>在公司活动和外出活动中，或者如果你在办公室工作时，甚至在午餐时与同事交谈。利用员工资源小组，参与跨组织的计划。你认识团队之外的人的越多，你建立持久联系的可能性就越大。随着你职业生涯的进步，这些联系变得越来越重要。</p>
+<h2 id="网络和影响力是相互关联的">网络和影响力是相互关联的</h2>
+<p>为了影响他人，他们首先必须信任你。这可以通过完成任务和帮助同事来实现。</p>
+<p>你的网络对你当前工作场所之外的职业生涯也有帮助。与你互相信任的人可以在未来提供介绍和推荐，帮助你获得未公开职位的面试机会，或者跳过初步面试。</p>
+<p>强大网络的挑战在于，它需要多年时间来建立。它是由积累的善意、信任以及投入到专业关系中的努力和工作构成的。今天建立强大网络的最佳方式是帮助他人，做好工作，并建立一种完成任务、帮助周围人，以及积极利用影响力的声誉。</p>
+<h1 id="帮助他人">帮助他人</h1>
+<p>作为一名Staff+工程师，你是组织中经验较为丰富的工程师之一。你拥有可以实质性帮助同事的知识和影响力，所以去做吧！</p>
+<h2 id="指导他人">指导他人</h2>
+<p>指导是关于引导某人，分享你的知识，并帮助他们成长。作为一名Staff+工程师，你拥有丰富的经验，可以帮助他人更快地成长。指导不需要是正式的，它可以像帮助新员工快速适应一样简单。</p>
+<p>通过养成帮助他人成长的习惯——而不期望任何回报——你将提升自己的教学和解释能力。如果你持续指导并帮助他人，你很可能会建立起一种声誉，即资深及以上的工程师可以向你寻求建议。</p>
+<p>我们在第三部分“协作与团队合作”以及文章《指导软件工程师》中详细介绍了指导。</p>
+<h2 id="支持他人">支持他人</h2>
+<p>支持比指导更进一步；它意味着为某人代言，并利用你的地位来促进他们的职业发展。</p>
+<p>作为一名Staff+工程师，你的影响力可以触及到经理和业务利益相关者。你可以——而且应该——利用这种影响力来支持那些你可以帮助其职业发展的工程师。支持可能包括：</p>
+<p>让优秀的工作被看见。你看到一名工程师在做出色的工作并超越职责范围，但他们的经理似乎没有注意到。你选择支持这个人并让他们的工作被看见；例如，邀请他们在小组会议上展示他们的项目。</p>
+<p>为晋升提供支持。你认为你支持的某人已经达到了下一个级别的能力，但看起来他们不会被考虑晋升。你可以与他们的经理以及其他经理交谈，强调这个人已经准备好迈出下一步，并为此提供你的支持。</p>
+<p>让他们“进入房间”。你参与了一个复杂项目的规划阶段。你本可以自己处理，但你意识到这是一个绝佳的机会，可以让你支持的同事参与其中。邀请他们加入，让他们能够出席并对关键决策发表意见。</p>
+<p>为项目代言。当你的经理在讨论哪个工程师应该负责哪个项目时，你可以为你支持的人争取一个领导角色。如果经理反对，可以尝试提出你自己部分参与来协助推进。</p>
+<p>发声。作为一名Staff+工程师，你可能会参加一些闭门会议，比如绩效校准。在这些会议中，确保你支持的人的工作和成就不会被忽视。</p>
+<p>指导和支持往往会有重叠。通常情况下，一名工程师的导师会随着时间的推移成为他们的支持者，但也有可能在没有成为导师的情况下支持某人。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E5%86%85%E9%83%A8%E6%94%BF%E6%B2%BB">内部政治</a>
+<ul>
+<li><a href="#%E9%94%99%E8%AF%AF%E7%9A%84%E6%94%BF%E6%B2%BB%E7%B1%BB%E5%9E%8B">“错误”的政治类型</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%80%A7%E7%9A%84%E6%84%9F%E7%9F%A5">问题性的感知</a></li>
+<li><a href="#%E5%AF%B9%E7%B3%9F%E7%B3%95%E6%94%BF%E6%B2%BB%E8%A1%8C%E4%B8%BA%E6%8F%90%E4%BE%9B%E5%8F%8D%E9%A6%88">对“糟糕”政治行为提供反馈</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BD%B1%E5%93%8D%E4%BB%96%E4%BA%BA">影响他人</a>
+<ul>
+<li><a href="#%E7%A7%AF%E7%B4%AF%E4%BF%A1%E4%BB%BB%E8%B5%84%E6%9C%AC">积累“信任资本”</a></li>
+<li><a href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98%E5%B9%B6%E7%A7%AF%E6%9E%81%E5%80%BE%E5%90%AC">提出问题并积极倾听</a></li>
+<li><a href="#%E8%A7%A3%E9%87%8A%E4%BD%A0%E7%9A%84%E8%A7%82%E7%82%B9">解释你的观点</a></li>
+<li><a href="#%E5%9C%A8%E8%AE%BE%E8%AE%A1%E8%AE%A8%E8%AE%BA%E4%B8%AD%E8%A1%A8%E6%98%8E%E7%AB%8B%E5%9C%BA%E5%B9%B6%E8%A7%A3%E9%87%8A%E4%BD%A0%E7%9A%84%E7%90%86%E7%94%B1">在设计讨论中表明立场并解释你的理由</a></li>
+<li><a href="#%E5%8D%B7%E8%B5%B7%E8%A2%96%E5%AD%90%E6%8A%8A%E4%BA%8B%E6%83%85%E5%81%9A%E5%A5%BD">卷起袖子，把事情做好</a></li>
+<li><a href="#%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8F%AF%E8%A7%81">让你的工作可见</a></li>
+<li><a href="#%E5%B8%A6%E5%A4%B4%E6%8E%A8%E5%8A%A8%E9%A1%B9%E7%9B%AE">带头推动项目</a></li>
+<li><a href="#%E6%97%A0%E7%A7%81%E5%9C%B0%E6%94%AF%E6%8C%81%E4%BB%96%E4%BA%BA">无私地支持他人</a></li>
+<li><a href="#%E6%88%90%E4%B8%BA%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%86%99%E4%BD%9C%E8%80%85">成为更好的写作者</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8E%E7%BB%8F%E7%90%86%E5%90%88%E4%BD%9C">与经理合作</a></li>
+<li><a href="#%E4%B8%8Estaff%E5%90%8C%E8%A1%8C%E5%90%88%E4%BD%9C">与Staff+同行合作</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95%E4%BD%A0%E7%9A%84%E7%BD%91%E7%BB%9C">扩展你的网络</a>
+<ul>
+<li><a href="#%E5%9C%A8%E7%BB%84%E7%BB%87%E4%B8%AD%E6%89%BE%E5%88%B0%E4%B8%80%E4%BD%8D%E5%AF%BC%E5%B8%88">在组织中找到一位导师</a></li>
+<li><a href="#%E5%8F%82%E4%B8%8E%E8%B7%A8%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE">参与跨团队项目</a></li>
+<li><a href="#%E5%8F%82%E5%8A%A0%E5%86%85%E9%83%A8%E5%9F%B9%E8%AE%AD">参加内部培训</a></li>
+<li><a href="#%E8%AE%A4%E8%AF%86%E5%9B%A2%E9%98%9F%E4%B9%8B%E5%A4%96%E7%9A%84%E4%BA%BA">认识团队之外的人</a></li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%92%8C%E5%BD%B1%E5%93%8D%E5%8A%9B%E6%98%AF%E7%9B%B8%E4%BA%92%E5%85%B3%E8%81%94%E7%9A%84">网络和影响力是相互关联的</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%AE%E5%8A%A9%E4%BB%96%E4%BA%BA">帮助他人</a>
+<ul>
+<li><a href="#%E6%8C%87%E5%AF%BC%E4%BB%96%E4%BA%BA">指导他人</a></li>
+<li><a href="#%E6%94%AF%E6%8C%81%E4%BB%96%E4%BA%BA">支持他人</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

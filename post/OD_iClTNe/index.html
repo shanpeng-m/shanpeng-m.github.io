@@ -1,0 +1,710 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js学习日记【13】Vue CLI - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Vue.js学习日记【13】Vue CLI - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="Vue CLI
+在Vue.js开发中，CLI（命令行界面）和CDN（内容分发网络）用于引入Vue库的方式有显著区别，各有优缺点，适用于不同的场景。
+
+
+Vue CLI（命令行界面）:
+
+描述: Vue CLI是一个基于命令行的工具，用于创建..." />
+  <meta property="og:title" content="Vue.js学习日记【13】Vue CLI - 小马的世界">
+  <meta property="og:description" content="Vue CLI
+在Vue.js开发中，CLI（命令行界面）和CDN（内容分发网络）用于引入Vue库的方式有显著区别，各有优缺点，适用于不同的场景。
+
+
+Vue CLI（命令行界面）:
+
+描述: Vue CLI是一个基于命令行的工具，用于创建..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/OD_iClTNe/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Vue.js学习日记【13】Vue CLI - 小马的世界">
+  <meta name="twitter:description" content="Vue CLI
+在Vue.js开发中，CLI（命令行界面）和CDN（内容分发网络）用于引入Vue库的方式有显著区别，各有优缺点，适用于不同的场景。
+
+
+Vue CLI（命令行界面）:
+
+描述: Vue CLI是一个基于命令行的工具，用于创建...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/OD_iClTNe/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Vue.js学习日记【13】Vue CLI
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-01-02 · 13 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/vuejs/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vuejs
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="vue-cli">Vue CLI</h2>
+<p>在Vue.js开发中，CLI（命令行界面）和CDN（内容分发网络）用于引入Vue库的方式有显著区别，各有优缺点，适用于不同的场景。</p>
+<ol>
+<li>
+<p><strong>Vue CLI（命令行界面）</strong>:</p>
+<ul>
+<li><strong>描述</strong>: Vue CLI是一个基于命令行的工具，用于创建和管理Vue.js项目。它提供了一套完整的构建工具，支持Webpack、Babel、ESLint等。</li>
+<li><strong>优点</strong>:
+<ul>
+<li><strong>项目结构</strong>: 自动创建一个标准的项目结构，有利于大型应用的开发。</li>
+<li><strong>模块打包和优化</strong>: 使用Webpack等工具，可以进行代码拆分和延迟加载，优化应用性能。</li>
+<li><strong>热重载</strong>: 开发时，代码更改后可以即时反映在浏览器上，无需手动刷新。</li>
+<li><strong>易于维护</strong>: 项目配置和依赖管理更加系统和规范。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>:
+<ul>
+<li><strong>学习曲线</strong>: 需要学习Webpack、Babel等构建工具的使用。</li>
+<li><strong>初始化时间较长</strong>: 创建项目和安装依赖可能需要一些时间。</li>
+<li><strong>资源消耗较大</strong>: 对系统资源的消耗比较大，特别是在低配置的机器上。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Vue CDN（内容分发网络）</strong>:</p>
+<ul>
+<li><strong>描述</strong>: 通过CDN直接在HTML文件中引入Vue.js，适用于小型项目或快速原型开发。</li>
+<li><strong>优点</strong>:
+<ul>
+<li><strong>快速上手</strong>: 只需在HTML中添加几行代码即可开始开发。</li>
+<li><strong>轻量级</strong>: 不需要安装任何构建工具或依赖管理。</li>
+<li><strong>适合小项目</strong>: 对于简单或体积较小的项目来说，这是一个快速有效的解决方案。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>:
+<ul>
+<li><strong>功能限制</strong>: 缺乏CLI提供的构建和优化工具。</li>
+<li><strong>性能优化受限</strong>: 难以进行代码拆分和延迟加载等高级优化。</li>
+<li><strong>不适合大型项目</strong>: 难以管理复杂的项目依赖和文件结构。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>哪种更好？</strong></p>
+<ul>
+<li>
+<p>这取决于你的项目需求。对于大型、复杂的应用程序，使用Vue CLI通常是更好的选择，因为它提供了更多的构建工具和优化选项。而对于小型项目或快速原型开发，使用CDN是一种快速且简便的方法。</p>
+</li>
+<li>
+<p>另外，随着你的项目从原型阶段过渡到生产阶段，可能会需要从CDN迁移到CLI以获得更好的性能和可维护性。</p>
+</li>
+</ul>
+<h2 id="webpack">Webpack</h2>
+<p>Webpack 是一个现代 JavaScript 应用程序的静态模块打包器（module bundler）。在 Webpack 处理应用程序时，它会递归地构建一个依赖关系图（dependency graph），其中包含应用程序需要的每个模块，然后将这些模块打包成一个或多个 bundle（捆包）。</p>
+<p>下面是 Webpack 的一些核心概念和功能：</p>
+<ol>
+<li>
+<p><strong>入口（Entry）</strong>: 定义了 Webpack 应用程序的入口点。Webpack 从这里开始构建依赖图。</p>
+</li>
+<li>
+<p><strong>输出（Output）</strong>: 告诉 Webpack 在哪里输出它所创建的 bundle，以及如何命名这些文件。通常是在项目的 <code>dist</code> 目录。</p>
+</li>
+<li>
+<p><strong>加载器（Loaders）</strong>: Webpack 只能理解 JavaScript 和 JSON 文件。加载器让 Webpack 能够处理其他类型的文件，并将它们转换为有效模块，以供应用程序使用以及被添加到依赖图中。</p>
+</li>
+<li>
+<p><strong>插件（Plugins）</strong>: 用于执行范围更广的任务。插件的范围包括打包优化、资源管理和环境变量注入等。与加载器不同，插件在整个构建过程中都可以被用到。</p>
+</li>
+<li>
+<p><strong>模式（Mode）</strong>: 通过选择 <code>development</code> 或 <code>production</code> 中的一个，可以启用 Webpack 相应模式下的内置优化。</p>
+</li>
+<li>
+<p><strong>模块（Module）</strong>: 在 Webpack 里，一切皆模块。一个模块对应一个文件。Webpack 会从配置的入口模块开始递归地构建出应用程序的依赖图。</p>
+</li>
+</ol>
+<p>Webpack 的主要优点是它可以改善前端资源的加载时间和性能，通过模块化的方法组织代码和资源。它支持代码分割（code splitting）、加载器转换、插件扩展等高级功能，非常适合用于构建复杂和大型的前端应用程序。</p>
+<h2 id="创建项目">创建项目</h2>
+<p>使用 Vue CLI 创建一个新的 Vue.js 项目。</p>
+<pre><code class="language-bash">vue create my-cli
+</code></pre>
+<p>创建后，目录如下：</p>
+<pre><code>my-cli
+├── README.md              # 项目说明
+├── babel.config.js        # Babel 的配置文件，用于设置代码转译的规则和插件。
+├── package-lock.json      # 锁定安装时的包的版本号，确保其他人在npm install时大家的依赖能保持一致。 自动生成，不要手动修改。
+├── package.json           # 定义项目的各种元信息，包括项目的依赖包、脚本、版本等信息。
+├── jsconfig.json          # JavaScript 的配置文件，用于配置代码编辑器或IDE的行为，如代码补全、模块解析等。
+├── vue.config.js          # Vue CLI 项目的配置文件，用于自定义Vue CLI的构建和开发行为。
+├── node_modules           # 存放项目所依赖的node模块。
+├── public                 # 静态资源目录
+│   ├── favicon.ico        # 网站图标
+│   └── index.html         # HTML 模板
+└── src                    # 源代码目录
+    ├── App.vue            # 根组件
+    ├── assets             # 静态资源目录
+    │   └── logo.png       # 图片
+    ├── components         # 组件目录
+    │   └── HelloWorld.vue # 示例组件
+    ├── main.js            # 应用入口文件
+    └── views              # 视图目录
+        └── Home.vue       # 示例视图
+</code></pre>
+<p>启动项目：</p>
+<pre><code class="language-bash">cd my-cli
+npm run serve
+</code></pre>
+<p>构建项目</p>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>构建后会在项目根目录下生成一个 <code>dist</code> 目录，里面包含了构建后的静态资源文件。</p>
+<p>部署项目：</p>
+<p>将 <code>dist</code> 目录下的文件部署到服务器上即可。</p>
+<h2 id="其他命令">其他命令</h2>
+<pre><code class="language-bash">vue add @vue/xxx # 添加vue插件
+vue add xxx      # 添加第三方插件
+vue add router   # 添加路由
+vue add vuex     # 添加状态管理
+
+npm install -g @vue/cli-service-global # 全局安装 @vue/cli-service-global，可以在命令行中使用 vue serve 和 vue build 命令
+vue serve        # 在开发环境中快速原型开发一个单文件组件
+
+vue ui           # 启动一个可视化的项目管理界面
+</code></pre>
+<h2 id="sfc-单文件组件">SFC 单文件组件</h2>
+<p>SFC（Single File Component）是 Vue.js 单文件组件的缩写，是 Vue.js 应用程序的基本组成部分。它由三部分组成：</p>
+<ol>
+<li><strong>模板（Template）</strong>: 用于声明组件的 HTML 结构。</li>
+<li><strong>脚本（Script）</strong>: 用于声明组件的 JavaScript 代码。</li>
+<li><strong>样式（Style）</strong>: 用于声明组件的 CSS 样式。</li>
+</ol>
+<p>SFC 的优点是它将组件的所有相关内容都放在一个文件中，便于组件的编写和维护。另外，SFC 还支持预处理器（如 Less、Sass、Stylus 等）和 CSS Modules。</p>
+<h2 id="export-关键词">export 关键词</h2>
+<p>在 JavaScript 中，<code>export</code> 关键字用于从一个模块中导出函数、对象、原始值或类，以便可以在其他模块中通过 <code>import</code> 语句使用它们。这是实现模块化 JavaScript 的一部分，使得代码可以分割成可重用的部分，有助于组织和维护大型代码库。</p>
+<h3 id="使用-export-的两种主要方式">使用 <code>export</code> 的两种主要方式：</h3>
+<ol>
+<li>
+<p><strong>命名导出（Named Exports）</strong>:</p>
+<ul>
+<li>可以导出多个值。</li>
+<li>每个值都有其名称，<code>import</code> 时需要使用相同的名称。</li>
+</ul>
+<pre><code class="language-javascript">// 导出单个特性
+export const myVariable = &quot;someValue&quot;;
+
+// 导出多个特性
+export function myFunction() { ... }
+export class MyClass { ... }
+</code></pre>
+<p>在导入时，你需要使用相同的名称：</p>
+<pre><code class="language-javascript">import { myVariable, myFunction, MyClass } from './myModule.js';
+</code></pre>
+</li>
+<li>
+<p><strong>默认导出（Default Exports）</strong>:</p>
+<ul>
+<li>每个模块只能有一个默认导出。</li>
+<li>导入时可以使用任意名称。</li>
+</ul>
+<pre><code class="language-javascript">// 默认导出
+export default function() { ... }  // 匿名函数
+// 或
+const myFunction = () =&gt; { ... }
+export default myFunction;
+</code></pre>
+<p>导入默认导出的值：</p>
+<pre><code class="language-javascript">import anyNameYouLike from './myModule.js';
+</code></pre>
+</li>
+</ol>
+<h3 id="使用-export-的好处">使用 <code>export</code> 的好处：</h3>
+<ul>
+<li><strong>可维护性</strong>：模块化代码更容易维护和理解。</li>
+<li><strong>重用性</strong>：可以在不同的文件或项目中重用模块。</li>
+<li><strong>命名空间</strong>：通过模块化可以避免全局命名空间污染。</li>
+<li><strong>依赖管理</strong>：明确地声明依赖关系，使得依赖管理更清晰。</li>
+</ul>
+<p>在现代 JavaScript 开发中，<code>export</code> 和 <code>import</code> 已成为组织和构建大型应用程序的基石。</p>
+<h2 id="script-setup-语法">script setup 语法</h2>
+<p>在 Vue 3 中，<code>&lt;script setup&gt;</code> 是一种新的组件编写方式，它提供了一种更简洁、声明式的语法来使用 Composition API。这种语法是 Vue 3.2 中引入的，旨在简化组件代码的组织方式，并使其更具可读性和易用性。</p>
+<h3 id="script-setup-的关键特性"><code>&lt;script setup&gt;</code> 的关键特性：</h3>
+<ol>
+<li>
+<p><strong>简化的 Composition API 语法</strong>:</p>
+<ul>
+<li>在 <code>&lt;script setup&gt;</code> 中，你可以直接使用 Composition API 的特性，如 <code>ref</code>, <code>reactive</code>, <code>computed</code>, <code>watch</code>, <code>onMounted</code> 等，而不需要在 <code>setup()</code> 函数中显式声明它们。</li>
+</ul>
+</li>
+<li>
+<p><strong>顶层 <code>import</code> 语法</strong>:</p>
+<ul>
+<li>允许你在顶层使用 <code>import</code> 语句导入所需的功能和组件，而不需要将它们包裹在 <code>setup()</code> 函数内。</li>
+</ul>
+</li>
+<li>
+<p><strong>直接定义组件的 props 和 emits</strong>:</p>
+<ul>
+<li>使用 <code>defineProps</code> 和 <code>defineEmits</code> 函数可以直接在顶层定义组件的 <code>props</code> 和 <code>emits</code>，无需额外的配置对象。</li>
+</ul>
+</li>
+<li>
+<p><strong>更紧凑的组件定义</strong>:</p>
+<ul>
+<li><code>&lt;script setup&gt;</code> 使得组件的代码更加紧凑和集中，避免了传统的 <code>options API</code> 中繁琐的配置和嵌套。</li>
+</ul>
+</li>
+</ol>
+<h3 id="示例">示例</h3>
+<p>以下是一个使用 <code>&lt;script setup&gt;</code> 的简单 Vue 3 组件示例：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;button @click=&quot;increment&quot;&gt;Count is: {{ count }}&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue';
+
+const count = ref(0);
+
+function increment() {
+  count.value++;
+}
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中，我们可以直接在 <code>&lt;script setup&gt;</code> 中使用 <code>ref</code> 从 Vue 引入，定义一个响应式的 <code>count</code> 变量，并定义一个 <code>increment</code> 方法来改变它的值。这个方法和变量可以直接在模板中使用，无需额外的 <code>setup()</code> 函数。</p>
+<h2 id="css-scoped-属性">css scoped 属性</h2>
+<p>在 Vue.js 中，<code>&lt;style&gt;</code> 标签的 <code>scoped</code> 属性用于将 CSS 样式限制在当前组件中，避免它们影响到其他组件。这是通过在编译时自动为选择器添加一个属性来实现的，该属性的值是组件的唯一 ID。</p>
+<pre><code class="language-vue">&lt;style scoped&gt;
+h1 {
+  color: red;
+}
+&lt;/style&gt;
+</code></pre>
+<p>在上面的例子中，<code>h1</code> 元素的样式只会应用到当前组件中的 <code>h1</code> 元素，而不会影响到其他组件中的 <code>h1</code> 元素。</p>
+<h2 id="deep-选择器">:deep() 选择器</h2>
+<p>在 Vue.js 中，<code>:deep()</code> 选择器用于选择组件内部的所有元素，包括子组件中的元素。</p>
+<pre><code class="language-vue">&lt;style scoped&gt;
+.parent :deep(.child) {
+  color: red;
+}
+&lt;/style&gt;
+</code></pre>
+<p>在上面的例子中，<code>.parent</code> 元素内部的所有 <code>.child</code> 元素都会应用 <code>color: red</code> 样式。</p>
+<h2 id="slotted-选择器">:slotted() 选择器</h2>
+<p>在 Vue.js 中，<code>:slotted()</code> 选择器用于选择插槽内容中的元素。</p>
+<pre><code class="language-vue">&lt;style scoped&gt;
+::slotted(span) {
+  color: red;
+}
+&lt;/style&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>在上面的例子中，插槽内容中的 <code>span</code> 元素会应用 <code>color: red</code> 样式。</p>
+<h2 id="global-选择器">:global() 选择器</h2>
+<p>在 Vue.js 中，<code>:global()</code> 选择器用于选择全局 CSS 样式。</p>
+<pre><code class="language-vue">&lt;style scoped&gt;
+:global(.container) {
+  width: 100%;
+}
+&lt;/style&gt;
+</code></pre>
+<p>在上面的例子中，<code>.container</code> 元素会应用 <code>width: 100%</code> 样式，即使它不在当前组件中。</p>
+<h2 id="css中的v-bind-函数">css中的v-bind 函数</h2>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;img alt=&quot;Vue logo&quot; src=&quot;./my-cli/src/assets/logo.png&quot;&gt;
+  &lt;p class=&quot;highlight&quot;&gt;Hello World!&lt;/p&gt;
+  &lt;input type=&quot;button&quot; :value=&quot;Change&quot; @click=&quot;onclick&quot;/&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: 'App',
+    data() {
+        return {
+            color: 'LightBlue'
+        }
+    },
+    methods: {
+        onclick() {
+            this.color = 'Yellow';
+        }
+    }
+};
+&lt;/script&gt;
+
+&lt;style scope&gt;
+.highlight {
+    boarder: 1px solid red;
+    background-color: v-bind(color);
+}
+&lt;/style&gt;
+</code></pre>
+<h2 id="css-模块化">css 模块化</h2>
+<p>在 Vue 中，<code>&lt;style module&gt;</code> 用于实现 CSS 模块化，这是一种封装和局部化组件样式的方法。当你在 <code>&lt;style&gt;</code> 标签中添加 <code>module</code> 属性时，Vue 会将其视为一个 CSS Module，为该组件内的所有类名生成唯一的哈希值，从而避免了全局样式污染。</p>
+<h3 id="使用方法">使用方法：</h3>
+<p>在 <code>.vue</code> 文件中，你可以这样定义一个 CSS Module：</p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div :class=&quot;$style.container&quot;&gt;
+    &lt;p :class=&quot;$style.text&quot;&gt;This is a component with CSS Modules&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'MyComponent'
+  // 组件的其他选项...
+};
+&lt;/script&gt;
+
+&lt;style module&gt;
+.container {
+  border: 1px solid #ddd;
+  padding: 16px;
+}
+
+.text {
+  color: blue;
+}
+&lt;/style&gt;
+</code></pre>
+<p>在这个例子中：</p>
+<ul>
+<li>CSS 类 <code>.container</code> 和 <code>.text</code> 在 <code>&lt;style module&gt;</code> 中定义。</li>
+<li>在 <code>&lt;template&gt;</code> 中，我们通过绑定 <code>:class=&quot;$style.container&quot;</code> 和 <code>:class=&quot;$style.text&quot;</code> 来应用这些样式。<code>$style</code> 是一个特殊的对象，它包含了所有 CSS Module 中定义的类名。</li>
+</ul>
+<h3 id="css-module-的特点">CSS Module 的特点：</h3>
+<ol>
+<li><strong>局部作用域</strong>：CSS 类名在当前组件内局部化，避免了与其他组件的类名冲突。</li>
+<li><strong>可组合性</strong>：CSS Module 支持类名的组合，可以很方便地重用和组合不同的样式。</li>
+<li><strong>可维护性和可读性</strong>：由于样式是与组件紧密绑定的，它提高了代码的可维护性和可读性。</li>
+<li><strong>与预处理器兼容</strong>：CSS Module 可以与诸如 SCSS、LESS 等 CSS 预处理器一起使用。</li>
+</ol>
+<h3 id="使用-css-module-的好处">使用 CSS Module 的好处：</h3>
+<ul>
+<li><strong>避免全局污染</strong>：避免了 CSS 类名在全局范围内冲突的问题。</li>
+<li><strong>模块化</strong>：有助于在大型应用中管理和维护样式。</li>
+<li><strong>清晰的依赖关系</strong>：组件和它的样式之间的依赖关系变得非常明确。</li>
+<li><strong>易于重构和修改</strong>：更改组件的样式不会影响到其他组件。</li>
+</ul>
+<p>CSS 模块化是一个非常有用的特性，尤其是在构建大型、复杂的应用程序时，它能够有效地提高代码的组织性和可维护性。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#vue-cli">Vue CLI</a></li>
+<li><a href="#webpack">Webpack</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE">创建项目</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4">其他命令</a></li>
+<li><a href="#sfc-%E5%8D%95%E6%96%87%E4%BB%B6%E7%BB%84%E4%BB%B6">SFC 单文件组件</a></li>
+<li><a href="#export-%E5%85%B3%E9%94%AE%E8%AF%8D">export 关键词</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8-export-%E7%9A%84%E4%B8%A4%E7%A7%8D%E4%B8%BB%E8%A6%81%E6%96%B9%E5%BC%8F">使用 <code>export</code> 的两种主要方式：</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-export-%E7%9A%84%E5%A5%BD%E5%A4%84">使用 <code>export</code> 的好处：</a></li>
+</ul>
+</li>
+<li><a href="#script-setup-%E8%AF%AD%E6%B3%95">script setup 语法</a>
+<ul>
+<li><a href="#script-setup-%E7%9A%84%E5%85%B3%E9%94%AE%E7%89%B9%E6%80%A7"><code>&lt;script setup&gt;</code> 的关键特性：</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B">示例</a></li>
+</ul>
+</li>
+<li><a href="#css-scoped-%E5%B1%9E%E6%80%A7">css scoped 属性</a></li>
+<li><a href="#deep-%E9%80%89%E6%8B%A9%E5%99%A8">:deep() 选择器</a></li>
+<li><a href="#slotted-%E9%80%89%E6%8B%A9%E5%99%A8">:slotted() 选择器</a></li>
+<li><a href="#global-%E9%80%89%E6%8B%A9%E5%99%A8">:global() 选择器</a></li>
+<li><a href="#css%E4%B8%AD%E7%9A%84v-bind-%E5%87%BD%E6%95%B0">css中的v-bind 函数</a></li>
+<li><a href="#css-%E6%A8%A1%E5%9D%97%E5%8C%96">css 模块化</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法：</a></li>
+<li><a href="#css-module-%E7%9A%84%E7%89%B9%E7%82%B9">CSS Module 的特点：</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-css-module-%E7%9A%84%E5%A5%BD%E5%A4%84">使用 CSS Module 的好处：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

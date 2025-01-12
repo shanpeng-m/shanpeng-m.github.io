@@ -1,0 +1,318 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="//Pony's World" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About Ma
+      </a>
+    
+    <a href="https://ma.shanpeng.im/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      
+
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/FwpHRDeui/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【10】Composition API
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-12-16</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        Vue 3 引入的 Composition API 是一个新的编写组件逻辑的方式，它旨在提高代码的组织性和可复用性。与 Vue 2 中的 Options API 相比，Composition API 提供了更灵活的组织组件逻辑的方法，尤其是...
+      </div>
+      <a href="https://ma.shanpeng.im/post/FwpHRDeui/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/Pf13kk4L6/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【9】内置组件 动画
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-12-11</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        2023-12-11
+5-1 内置组件
+5-1-1 component组件
+在 Vue.js 中，component 是一个特殊的内置组件，它用于动态地绑定到不同的组件。通过使用 component 组件，你可以在同一个挂载点上切换多个组件...
+      </div>
+      <a href="https://ma.shanpeng.im/post/Pf13kk4L6/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/-VA0YBWUm/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【8】slot插槽
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-12-10</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+4-3 slot插槽
+当然可以。Vue 中的 slot（插槽）是一种非常强大的特性，用于创建具有可定制内容的组件。它允许你在父组件中定义一些内容，然后将这些内容放入子组件的指定位置。这样做可以增加组件的灵活性和重用性。
+举个例子来说明：
+...
+      </div>
+      <a href="https://ma.shanpeng.im/post/-VA0YBWUm/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/x8V60oSqI/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【7】组件
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-12-06</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        4-1 组件的基本使用
+4-1-1 组件的定义
+javascript
+Vue.createApp({})
+    .component('my-component', {
+        template: '&lt;div&gt;{{na...
+      </div>
+      <a href="https://ma.shanpeng.im/post/x8V60oSqI/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/xnExTvzaZ/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【6】高级数据绑定
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-12-04</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+3-4 绑定数据的derective
+3-4-1 v-bind 把数据绑定到属性上
+&lt;div id=&quot;app&quot;&gt;
+    &lt;form&gt;
+        &lt;label for=&quot;m...
+      </div>
+      <a href="https://ma.shanpeng.im/post/xnExTvzaZ/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/XXF-fnAqu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习笔记【5】v-model，v-if，v-for
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-12-01</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        2023-12-01
+3-1-3 Event Object
+事件对象是一个包含事件有关信息的对象。
+在事件处理函数中，会自动传入一个事件对象作为参数。通常写成 e 或 event。
+例如
+&lt;div id=&quot;app&quot;...
+      </div>
+      <a href="https://ma.shanpeng.im/post/XXF-fnAqu/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/pl0CHMjse/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【4】指令v-on和v-error
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-27</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        Vue 中的指令（以 v- 开头的）。
+Vue 提供了一系列内置的指令，用于在模板中执行特定的操作。这些指令包括但不限于：
+
+v-bind: 动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+v-model: 在表单控件或组件上创...
+      </div>
+      <a href="https://ma.shanpeng.im/post/pl0CHMjse/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/fC7W485Ss/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【3】生命周期和异步特性
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-25</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        vue.js的生命周期
+什么是生命周期
+vue实例从创建到销毁的过程，就是生命周期。vue.js为了控制整个vue的生命周期提供了许多勾子函数也就是lifecycle hooks，这些勾子函数可以让我们在vue的每个生命周期中去执行我们自己...
+      </div>
+      <a href="https://ma.shanpeng.im/post/fC7W485Ss/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/pE-Rx5nCL/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【2】初见Vue.js
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-22</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1.使用vue.js的准备
+最简单的使用方法是直接在页面中引入vue.js的cdn文件
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global...
+      </div>
+      <a href="https://ma.shanpeng.im/post/pE-Rx5nCL/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/brOEnsqdp/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          Vue.js学习日记【1】基本概念
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-20</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        引入
+Vue.js是由Evan You在2014年开发的一套前端框架，它的目标是通过尽可能简单的API实现响应的数据绑定和组合的视图组件。
+SPA（Single Page Application）
+SPA正如名称所示，是指单页面应用，它是一...
+      </div>
+      <a href="https://ma.shanpeng.im/post/brOEnsqdp/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+      <a href="https://ma.shanpeng.im/page/3/" class="btn btn-white">
+        <i class="ri-arrow-left-line mr-4"></i>
+        上一页｜Last
+      </a>
+    
+    
+      <a href="https://ma.shanpeng.im/page/5/" class="btn btn-white">
+        下一页｜Next
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+</body>
+
+</html>

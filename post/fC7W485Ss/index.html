@@ -1,0 +1,593 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js学习日记【3】生命周期和异步特性 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Vue.js学习日记【3】生命周期和异步特性 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="vue.js的生命周期
+什么是生命周期
+vue实例从创建到销毁的过程，就是生命周期。vue.js为了控制整个vue的生命周期提供了许多勾子函数也就是lifecycle hooks，这些勾子函数可以让我们在vue的每个生命周期中去执行我们自己..." />
+  <meta property="og:title" content="Vue.js学习日记【3】生命周期和异步特性 - 小马的世界">
+  <meta property="og:description" content="vue.js的生命周期
+什么是生命周期
+vue实例从创建到销毁的过程，就是生命周期。vue.js为了控制整个vue的生命周期提供了许多勾子函数也就是lifecycle hooks，这些勾子函数可以让我们在vue的每个生命周期中去执行我们自己..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/fC7W485Ss/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Vue.js学习日记【3】生命周期和异步特性 - 小马的世界">
+  <meta name="twitter:description" content="vue.js的生命周期
+什么是生命周期
+vue实例从创建到销毁的过程，就是生命周期。vue.js为了控制整个vue的生命周期提供了许多勾子函数也就是lifecycle hooks，这些勾子函数可以让我们在vue的每个生命周期中去执行我们自己...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/fC7W485Ss/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Vue.js学习日记【3】生命周期和异步特性
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-11-25 · 8 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/vuejs/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vuejs
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="vuejs的生命周期">vue.js的生命周期</h2>
+<h3 id="什么是生命周期">什么是生命周期</h3>
+<p>vue实例从创建到销毁的过程，就是生命周期。vue.js为了控制整个vue的生命周期提供了许多勾子函数也就是lifecycle hooks，这些勾子函数可以让我们在vue的每个生命周期中去执行我们自己的代码。</p>
+<p>主要的生命周期是：生成组件-&gt;beforeCreate-&gt;准备数据-&gt;created-&gt;编译模板-&gt;beforeMount-&gt;挂载dom-&gt;mounted-&gt;数据更新-&gt;beforeUpdate-&gt;重新渲染-&gt;updated-&gt;销毁组件-&gt;beforeUnmount-&gt;销毁组件-&gt;unmounted</p>
+<p>经常会使用到的生命周期hook有：created、mounted、beforeUnmount</p>
+<p>一般在created中进行数据的初始化，mounted中进行dom的操作，beforeUnmount中进行一些清理操作。</p>
+<p>具体的写法如下：</p>
+<pre><code class="language-javascript">// javascript 例子
+const app = Vue.createApp({
+  data() {
+    return {
+      count: 0
+    }
+  },
+  created() {
+    console.log('created')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  beforeUnmount() {
+    console.log('beforeUnmount')
+  }
+})
+app.mount('#app')
+
+setTimeout(() =&gt; {
+  app.unmount()
+}, 2000)
+</code></pre>
+<pre><code class="language-html">&lt;!-- html 例子 --&gt;
+&lt;div id=&quot;app&quot;&gt;
+  &lt;p&gt;{{ count }}&lt;/p&gt;
+</code></pre>
+<p>还有一些用于debug的hook，renderTracked、renderTriggered、errorCaptured、activated、deactivated。</p>
+<h3 id="补充方法的简写和箭头函数">补充；方法的简写和箭头函数</h3>
+<pre><code class="language-javascript">// computed_simple.js
+Vue.createApp({
+  data() {
+    return {
+      count: 0
+    }
+  },
+  computed: {
+    double() {
+      return this.count * 2
+    }
+  }
+}).mount('#app')
+</code></pre>
+<pre><code class="language-javascript">// computed_arrow.js
+Vue.createApp({
+  data() {
+    return {
+      count: 0
+    }
+  },
+  computed: {
+    double: () =&gt; this.count * 2
+  }
+}).mount('#app')
+</code></pre>
+<p>例如要写一个计算圆的面积的函数，可以写成如下形式：</p>
+<pre><code class="language-javascript">// circle.js
+const circle = function(radius) {
+    return radius * radius * Math.PI;
+}
+
+// arrow_circle.js
+const circle = (radius) =&gt; {radius * radius * Math.PI;};
+</code></pre>
+<p>如果只有一行代码，可以省略大括号和return。如果只有一个参数，可以省略括号。</p>
+<p>箭头函数的注意点：</p>
+<ol>
+<li>
+<p><strong><code>this</code> 关键字的行为</strong>：箭头函数不绑定自己的 <code>this</code>，它会捕获其所在上下文的 <code>this</code> 值。这意味着在 Vue 组件方法中使用箭头函数时，<code>this</code> 可能不会按照预期指向 Vue 实例。</p>
+</li>
+<li>
+<p><strong>生命周期钩子</strong>：在 Vue 组件的生命周期钩子（如 <code>created</code>, <code>mounted</code> 等）中使用箭头函数是不推荐的，因为这将导致 <code>this</code> 无法正确地指向 Vue 实例。</p>
+</li>
+<li>
+<p><strong>方法定义</strong>：在定义 Vue 实例的方法时，推荐使用传统的函数定义而非箭头函数，以确保 <code>this</code> 正确指向。</p>
+</li>
+<li>
+<p><strong>事件处理</strong>：在事件处理中使用箭头函数可以避免使用 <code>.bind(this)</code> 或在构造器中绑定 <code>this</code>。但要注意，如果在模板中直接使用箭头函数，可能会导致性能问题，因为每次渲染都会创建一个新的函数实例。</p>
+</li>
+<li>
+<p><strong>回调函数</strong>：在需要使用当前 Vue 实例的上下文时（如访问 <code>data</code>, <code>methods</code>, <code>computed</code> 等），使用箭头函数作为回调可能会导致问题，因为 <code>this</code> 不会指向 Vue 实例。</p>
+</li>
+<li>
+<p><strong>模板中的使用</strong>：避免在 Vue 模板中直接使用箭头函数，因为这可能会导致性能下降和意料之外的行为。</p>
+</li>
+<li>
+<p><strong>兼容性</strong>：箭头函数是 ES6 的一部分，因此在不支持 ES6 的浏览器中无法使用。如果需要支持旧版浏览器，应当使用传统的函数表达式或者通过构建工具（如 Babel）进行转换。</p>
+</li>
+</ol>
+<h2 id="reactive-data">reactive data</h2>
+<h3 id="什么是响应式数据">什么是响应式数据</h3>
+<p>响应式数据是指当数据发生变化时，页面会自动发生变化，而不需要手动去更新页面。管理这种响应式数据的方式就是使用vue.js的响应式系统。</p>
+<h3 id="响应式系统的例子">响应式系统的例子</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;p&gt;Time:{{current.toLocaleString()}}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+  data() {
+    return {
+      current: new Date()
+    }
+  },
+  created() {
+    this.timer = setInterval(() =&gt; {
+      this.current = new Date()
+    }, 1000);
+  },
+  beforeUnmount() {
+    clearInterval(this.timer)
+  }
+}).mount('#app')
+</code></pre>
+<h3 id="理解视图的非同步更新">理解视图的非同步更新</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+  data() {
+    return {
+      message: 'Hello Vue.js'
+    }
+  },
+  mounted() {
+    this.message = 'Hello World'
+    console.log(this.$el.textContent.includes(this.message))
+  }
+}).mount('#app')
+</code></pre>
+<p>在mounted中修改message的值，但是在mounted中打印message的值，发现message的值并没有改变。这是因为vue.js在修改数据时，会将数据的修改放到一个队列中，然后在下一个事件循环中，清空队列，将队列中的数据进行更新。</p>
+<p><code>$nextTick</code>可以让我们在下一个事件循环中执行我们的代码。</p>
+<pre><code class="language-javascript">Vue.createApp({
+  data() {
+    return {
+      message: 'Hello Vue.js'
+    }
+  },
+  mounted() {
+    this.message = 'Hello World'
+    this.$nextTick(() =&gt; {
+      console.log(this.$el.textContent.includes(this.message))
+    })
+  }
+}).mount('#app')
+</code></pre>
+<p>在 Vue 中，页面更新不是同步的，这是因为 Vue 使用了异步更新队列。这意味着当你更改数据时，视图不会立即更新。Vue 会将所有的数据变更放入队列中，以便高效地进行批量更新。这个机制是为了避免不必要的重复渲染和计算，从而提高性能。</p>
+<h3 id="理解-vue-的异步更新机制">理解 Vue 的异步更新机制</h3>
+<ol>
+<li><strong>数据变更聚合</strong>：当你在同一个 &quot;tick&quot;（或者说是事件循环中的一次迭代）中更改多个数据属性时，Vue 会将这些更改合并到一个队列中。</li>
+<li><strong>高效的 DOM 更新</strong>：Vue 等待所有数据更改结束后，在下一个 &quot;tick&quot; 执行 DOM 更新。这样可以避免在一个事件循环中多次更改 DOM，因为多次更改 DOM 是非常耗性能的操作。</li>
+<li><strong>异步更新的挑战</strong>：有时，你可能需要在数据变更后立即基于新的 DOM 状态执行操作。但由于更新是异步的，此时新的 DOM 还未被渲染。</li>
+</ol>
+<h3 id="使用-nexttick">使用 <code>$nextTick</code></h3>
+<p><code>$nextTick</code> 是 Vue 实例的一个方法，用于在 DOM 更新完成后执行某些操作。它返回一个 Promise，你可以在其 <code>.then</code> 方法中执行需要在 DOM 更新后进行的操作。</p>
+<h4 id="使用场景">使用场景</h4>
+<ul>
+<li>当你需要在数据变更后立即操作更新后的 DOM 时。</li>
+<li>在单元测试中，确保 Vue 完成了 DOM 更新。</li>
+</ul>
+<h2 id="watch">watch</h2>
+<p>Vue 的 <code>watch</code> 选项允许你监视 Vue 实例上的数据变化，并在数据变化时运行特定的代码。它是响应式编程的一个核心特性，非常适合于执行异步操作或昂贵的运算响应数据的变化。</p>
+<h3 id="基本用法">基本用法</h3>
+<p>在 Vue 组件中，你可以使用 <code>watch</code> 选项来监视特定的数据属性。当被监视的属性发生变化时，指定的回调函数会被调用。</p>
+<pre><code class="language-javascript">new Vue({
+  data: {
+    a: 1,
+    b: 2
+  },
+  watch: {
+    a: function (newValue, oldValue) {
+      // 这个函数会在 `a` 的值改变时被调用
+      console.log(`a 从 ${oldValue} 变成了 ${newValue}`);
+    }
+  }
+});
+</code></pre>
+<p>在这个例子中，每当 <code>a</code> 的值改变时，就会输出一条日志记录其新旧值。</p>
+<h3 id="深度监听">深度监听</h3>
+<p>默认情况下，Vue 不会检测对象内部属性的变化。要观察对象内部属性的变化，需要使用 <code>deep</code> 选项。</p>
+<pre><code class="language-javascript">new Vue({
+  data: {
+    user: {
+      name: 'Alice',
+      age: 25
+    }
+  },
+  watch: {
+    user: {
+      handler: function (newValue, oldValue) {
+        console.log('用户信息发生了变化');
+      },
+      deep: true
+    }
+  }
+});
+</code></pre>
+<p>在这个例子中，无论 <code>user</code> 对象的哪个属性发生变化，监视器都会被触发。</p>
+<h3 id="立即触发">立即触发</h3>
+<p>使用 <code>immediate</code> 选项，可以在 Vue 实例创建时立即触发回调，而不必等到被监视的属性首次变化。</p>
+<pre><code class="language-javascript">new Vue({
+  data: {
+    c: 3
+  },
+  watch: {
+    c: {
+      handler: function (newValue, oldValue) {
+        console.log(`c 的当前值为 ${newValue}`);
+      },
+      immediate: true
+    }
+  }
+});
+</code></pre>
+<p>在这个例子中，监视器会在实例创建时立即执行一次，输出 <code>c</code> 的初始值。</p>
+<h3 id="结合计算属性">结合计算属性</h3>
+<p>监视器也可以用来监视计算属性：</p>
+<pre><code class="language-javascript">new Vue({
+  data: {
+    d: 4,
+    e: 5
+  },
+  computed: {
+    sum: function () {
+      return this.d + this.e;
+    }
+  },
+  watch: {
+    sum: function (newValue, oldValue) {
+      console.log(`总和从 ${oldValue} 变成了 ${newValue}`);
+    }
+  }
+});
+</code></pre>
+<p>在这个例子中，当 <code>d</code> 或 <code>e</code> 的值发生变化，导致计算属性 <code>sum</code> 的值发生变化时，监视器会被触发。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#vuejs%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">vue.js的生命周期</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">什么是生命周期</a></li>
+<li><a href="#%E8%A1%A5%E5%85%85%E6%96%B9%E6%B3%95%E7%9A%84%E7%AE%80%E5%86%99%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">补充；方法的简写和箭头函数</a></li>
+</ul>
+</li>
+<li><a href="#reactive-data">reactive data</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE">什么是响应式数据</a></li>
+<li><a href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BE%8B%E5%AD%90">响应式系统的例子</a></li>
+<li><a href="#%E7%90%86%E8%A7%A3%E8%A7%86%E5%9B%BE%E7%9A%84%E9%9D%9E%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0">理解视图的非同步更新</a></li>
+<li><a href="#%E7%90%86%E8%A7%A3-vue-%E7%9A%84%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E6%9C%BA%E5%88%B6">理解 Vue 的异步更新机制</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-nexttick">使用 <code>$nextTick</code></a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">使用场景</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#watch">watch</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法</a></li>
+<li><a href="#%E6%B7%B1%E5%BA%A6%E7%9B%91%E5%90%AC">深度监听</a></li>
+<li><a href="#%E7%AB%8B%E5%8D%B3%E8%A7%A6%E5%8F%91">立即触发</a></li>
+<li><a href="#%E7%BB%93%E5%90%88%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7">结合计算属性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

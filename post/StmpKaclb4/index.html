@@ -1,0 +1,659 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【5-23】软件工程 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【5-23】软件工程 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为一名高级以上工程师（staff+ e..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【5-23】软件工程 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为一名高级以上工程师（staff+ e..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/StmpKaclb4/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【5-23】软件工程 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为一名高级以上工程师（staff+ e...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/StmpKaclb4/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【5-23】软件工程
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-12-16 · 37 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>作为一名高级以上工程师（staff+ engineer），你的角色不仅包含了高级工程师的职责，还有更多其他方面。你通常需要负责团队的工程开发进度和质量，以及你自己的工作质量 - 而且经常还要负责其他团队或整个团队群组的输出。</p>
+<p>我想说在软件工程中并不存在&quot;银弹&quot;或在任何场景下都普遍适用的方法。但是确实有一些方法往往能在各个领域都表现良好。作为一名高级以上工程师，你能做的最好的事情就是在使用这些方法时积累经验，扩展你的工具集，并学会在合适的时机选择恰当的方法来帮助你的团队。</p>
+<h1 id="1-你仍需要进行的编码工作">1. 你仍需要进行的编码工作</h1>
+<p>作为高级及以上工程师应该花多少时间编码？这个问题没有统一的答案，但有一点是确定的：还有很多其他事情需要处理。是的，你应该为编码安排时间，但会比以前少。</p>
+<h2 id="集中时间段编码">集中时间段编码</h2>
+<p>要接受你无法像自己希望的那样经常编码。但要预留时间——最好跨越几周——来进行实际编码工作。如果能与项目开始或其他关键阶段保持一致，集中时间段编码会很有效。在不编码的时候，通过参与代码审查和提供反馈来保持对这个优先事项的关注。<br>
+这些集中编码时段也能很好地提醒你为什么要推掉一些非编码工作，以便腾出时间来编码。</p>
+<h2 id="在编码时段进行结对编程">在编码时段进行结对编程</h2>
+<p>不要犹豫去做结对编程，特别是当这可能对其他开发者有帮助的时候。在结对编程时，不要主导一切，而是要引导你的搭档朝正确的方向前进。这种方法比直接主导并用&quot;正确&quot;的方式完成要花更长时间，但这种引导能提升你搭档的水平——从而提高团队的整体技能。这就是为什么结对编程是一项高杠杆活动。</p>
+<p>要把编码作为指导、辅导和以身作则的机会。当你编写代码并进入&quot;心流状态&quot;时，你可能会享受这种只有你和电脑的时刻。这是一种很棒的感觉，但如果你在这段时间里匆忙写代码，提交一个草率的、半成品的pull request而没有测试，你的队友很可能会注意到。如果你的技能有点生疏，或者你想快速推进时，这种情况可能会发生。</p>
+<p>别忘了，你写的代码很可能要经过代码审查，这通常是工程师们的学习经历。因此，要注意创建一个文档完善、清晰的pull request，让它成为优秀PR的典范。</p>
+<p>你写的代码质量很重要，因为初级同事们经常会把高级工程师的代码作为质量标准的参考，把它作为学习和借鉴的榜样。如果团队发现你的工作质量标准较低，这就会让其他地方的低标准变得合理化。毕竟，如果高级工程师都可以这样，为什么其他人不行呢？</p>
+<p>这就是为什么要正确地编码很重要。这意味着当某件事完成时，它就是真正完成了——就像我们在第三部分&quot;把事情做完&quot;中讨论的那样。以身作则有助于改善团队的工程文化。</p>
+<h2 id="投入到遇到困难的项目中">投入到遇到困难的项目中</h2>
+<p>如果你在跨团队工作中压力很大，你可以专注于灭火，这意味着要参与到最需要帮助的团队的编码、结对编程和代码审查中。</p>
+<p>需要帮助的团队可能是在关键项目中有滑坡风险或落后的团队。这种方法是被动的，但有时是最有影响力的，只要团队不会把你的介入视为&quot;海鸥管理&quot;式的干预——即有人从上面介入团队并&quot;随意干预&quot;他们的工作，比如提交一个权宜之计而不是可持续的修复方案，然后迅速离开。</p>
+<h2 id="调整你的工作方式以适应团队">调整你的工作方式以适应团队</h2>
+<p>你很可能会与多个工程团队合作，或被要求加入某个团队来帮助交付重要项目。到这时，你可能已经形成了自己独特的工作方式，包括偏好的编码风格、流程、命名规范和工具使用。当你没有深度融入一个团队时，要努力适应他们，而不是重塑团队来适应你。</p>
+<p>如果你能适应并帮助他们改进实践，同事们会更尊重你。理想情况下，这些改进应该来自团队成员自己，他们能感受到你的支持，从而做出明智的改变。</p>
+<h2 id="保持策略性思维">保持策略性思维</h2>
+<p>在编写代码时要明智地选择工作。作为最有经验的工程师之一，你了解多种编码策略方法，可以从中选择，例如：<br>
+承担具有挑战性的编码任务并以身作则解决它们；在效率、质量和可维护性之间取得平衡。<br>
+你可能会遇到需要深入领域专业知识的更复杂工作和问题，比如理解相关系统如何工作，或者团队中缺乏深入技术专长的领域，如底层性能优化。<br>
+承担具有更广泛影响的编码工作。有些编码任务比其他任务更具战略性。以下是一些可能产生广泛影响的例子：</p>
+<ul>
+<li>添加新框架的pull request，以及展示其使用方法的最初几个pull request。框架使用示例可以证明它按预期工作，并为同事提供可以遵循的模板。</li>
+<li>添加新类型的自动化测试；例如，添加最初的几个集成测试或UI测试。添加这些可能涉及编写测试并配置CI/CD系统，使其在每个pull request和部署时运行。</li>
+<li>CI/CD的改变或改进。例如，在每个pull request上添加代码检查工具，或更改CI服务器以在pull request测试覆盖率低时添加警告。</li>
+<li>改进工程团队的工具。这可能涉及构建和共享一个自动化工具，用于处理繁琐但必要的开发任务，如推出功能标志、进行部署或回滚更改。</li>
+</ul>
+<p><strong>参与项目的早期编码阶段，然后为他人腾出空间。</strong> 项目的早期阶段是做出正确决策最关键的时候，比如设置架构、建立代码结构、确保按约定编写测试，以及确保监控和日志符合商定的参数。<br>
+采用亲自动手的方式通过编写代码、结对编程和代码审查提供反馈通常是明智的做法。<br>
+利用时间限制做更有创造性的编码。为不受打扰的编码时间做好安排是明智的，因为你需要这段时间来进入&quot;心流状态&quot;。然而，明智地收集信息以了解如何最有效地利用有限的编码时间也很重要。是否有提高团队效率的方法？是否有需要解决的复杂障碍？结对编程是否更有帮助？<br>
+你很少有像希望的那么多编码时间，所以要充分利用你所拥有的时间！</p>
+<h1 id="有用的工程流程">有用的工程流程</h1>
+<p>如何提高团队的软件工程质量？一如既往，没有适用于所有团队的&quot;通用&quot;方法论，无论其技能水平、经验或约束如何。然而，有些方法和流程通常会有帮助：我们将介绍这些。</p>
+<h2 id="定义完成">定义&quot;完成&quot;</h2>
+<p>&quot;完成&quot;是什么意思？这听起来是个简单的问题，但是所有团队成员对此都有相同的答案吗？在许多情况下，每个人对&quot;完成&quot;的定义都略有不同。自动化测试是&quot;完成&quot;的一部分还是额外的工作，面向用户的功能的可访问性如何，更新文档是否属于这些标准？<br>
+对于一个被认为交付质量低的团队来说，明确&quot;完成&quot;的含义并达成一致，可以带来显著的改进。在这样的团队工作时，或帮助改进其执行时，可以考虑这个练习：</p>
+<p>促进讨论，让团队成员分别描述&quot;完成&quot;对他们意味着什么，然后讨论一个共同的定义。你可以使用便利贴、数字白板或让人们做笔记。只需确保在开始时设定会议目标，即就优质工作的最低&quot;完成&quot;标准达成一致。让每个人都有发言权并推动达成一致。一旦定义了&quot;完成&quot;，就把它写下来。恭喜，团队成员现在已经设定了自己的标准，并有了一个可以互相负责的目标。<br>
+这通常被称为&quot;完成的定义&quot;（DoD）。它随着团队的发展而演变，并可能随项目而改变。当面临外部截止日期压力时，概念验证的DoD会不同，或者为长期可维护性而构建的项目也会不同。</p>
+<h2 id="编码风格指南">编码风格指南</h2>
+<p>对于经验不足的团队，清晰的编码风格指南可以避免关于如何格式化代码以及遵循哪些约定的争论。需要制定指南，并为成员提供建议修改的方式。<br>
+执行编码风格指南最清晰的方式是配置代码检查工具来检查这些规则，然后将这个工具连接到持续集成（CI）系统。当不遵循代码检查规则时，考虑阻止pull request的合并。<br>
+几家公司开源了他们的编码风格指南。以下是一些参考示例：</p>
+<ul>
+<li>Google的风格指南</li>
+<li>Airbnb的JavaScript风格指南和Swift风格指南</li>
+<li>GitLab的前端风格指南</li>
+</ul>
+<h2 id="代码审查">代码审查</h2>
+<p>一个良好的代码审查流程，其中反馈及时且审查有帮助，往往能提高质量，并使一个混合资历的团队整体上能更快地前进，因为审查可以在代码进入生产环境之前发现问题。<br>
+作为最有经验的工程师之一，你处于很好的位置来感知代码审查的动态。在第三部分：&quot;协作与团队合作&quot;中，我们介绍了好的代码审查的特征。注意这些动态，并找到方法引导工程师做更好的代码审查。一个明显的方式是以身作则。另一种方法是对其他代码审查提供反馈；表扬好的部分并指出工程师如何改进。</p>
+<h2 id="提交后代码审查">提交后代码审查</h2>
+<p>对于经验丰富的团队，阻塞式代码审查可能会降低生产力。这些团队的代码审查往往较少关注代码本身，更多地关注分享对所做更改的理解。<br>
+显然，提交后代码审查发生在代码提交之后。软件工程师Cindy Sridharan在文章&quot;提交后审查&quot;中详细介绍了她的经验：</p>
+<p>从许多方面来说，提交后审查提供了两全其美的方案：开发者的速度不会因等待批准而牺牲，而合理的问题可以由开发者在后续提交中快速解决。<br>
+虽然提交后审查有一些注意事项[...]，但主要倾向于提交后审查可以让开发者在开发功能时快速迭代，同时保持他们的更改较小。</p>
+<p>提交后代码审查并不一定意味着审查发生在部署之后。实际上，提交后代码审查在部署不一定连续，而是作为常规构建切割发生的团队中效果很好。它们在高度信任的环境中效果最好，这通常（但不总是！）是具有较长任期和高级别资历的团队。投资于能捕获明显问题的自动化的团队也往往从这种方法中受益更多。<br>
+让我们以Sridharan的更多观点结束这一部分，她是提交后代码审查的长期实践者：</p>
+<p>在开发者生产力和高质量代码之间保持平衡永远是一项具有挑战性的任务，需要明智的选择和权衡。任何形式的提交后审查都可以提高开发者的迭代速度。<br>
+像所有好事一样，它需要时间和投入才能做好，但对于试图提高开发者生产力的团队或组织来说，这确实是一个值得探索的途径。</p>
+<h2 id="自动化测试和生产环境测试">自动化测试和生产环境测试</h2>
+<p>自动化测试在大多数科技公司都是基本要求。它的优势几乎总是能证明投入的努力是值得的。查看你所在团队的测试方法，并考虑投入测试是否能帮助他们以更高的质量更快地前进。如果是这样，你就处于适当的位置来推动测试方法的改进。<br>
+我们在第三部分：&quot;测试&quot;中更详细地讨论了自动化测试方法，包括生产环境测试。</p>
+<h2 id="搭建新服务和组件">搭建新服务和组件</h2>
+<p>工程师如何搭建应用程序的新服务或组件？一种方法是使用健壮的脚手架系统，这可以带来重大的生产力提升。缺少这样的系统会降低生产力，因为工程师们不断地重复造轮子，而且每个服务都有略微不同的配置、依赖和编码风格。<br>
+大多数开发者门户都具有定义软件模板或骨架的功能是有原因的：因为易于使用的脚手架对开发者生产力的提升如此巨大！<br>
+如果你观察到工程师在项目开始时经常从头开始搭建服务或组件，考虑定义一种脚手架方式[...]</p>
+<h2 id="发布和实验卫生">发布和实验卫生</h2>
+<p>你所在的团队如何进行发布，以及如何安全地进行配置更改？对于重大发布是否有回滚计划，其中是否有些回滚是自动化的？<br>
+如果发布是错误和中断的来源，那么规划发布、回滚和自动化回滚可以使其更可靠。例如，如果一个团队经常使用功能标志进行实验，过时的功能标志和过时的实验可能会成为技术债务的来源。具有许多功能标志（其中许多是冗余的）的代码库比移除了无用功能标志的代码库更难导航和更危险。<br>
+实验卫生意味着移除已经完成其目的的功能标志。但是你所在的团队是如何做到这一点的？有些团队会创建后续任务，在实验结束后移除功能标志。但这是一个容易被忽视的任务。另一个选择是构建自动化工具来捕获不活跃的功能标志。更进一步，你甚至可以部署工具，为工程师创建自动化的pull request，建议移除过时的功能标志。Uber的Piranha就是一个例子，它根据标志预期的永久行为自动重构代码。</p>
+<h2 id="系统健康仪表板">系统健康仪表板</h2>
+<p>你的团队拥有和运营的系统有多健康？回答这个问题最直接的方式是通过仪表板来可视化团队的关键业务和系统指标。工程师应该能够轻松理解他们的系统是健康还是不健康。</p>
+<p>你所在的团队是否有仪表板？如果没有，问问为什么没有。关于仪表板应该如何展示没有固定规则；只要对团队有意义就行。当然，如果利益相关者也能理解它是额外的好处，但这不是必需的。如果没有仪表板，那就开始着手制作一个！<br>
+本书第五部分的&quot;可靠软件工程&quot;章节中有关于定义监控内容的建议。</p>
+<h1 id="快速迭代的工程实践">快速迭代的工程实践</h1>
+<p>作为staff+工程师，你的目标应该是提高你所在工程团队和其他工程团队的效率。高效的工程团队可以使用多种工具和流程。我们来看看其中的一些选择。</p>
+<h2 id="持续集成ci">持续集成（CI）</h2>
+<p>持续集成（CI）指的是通过pull requests频繁地将代码集成到主分支。每个打开的pull request都会触发自动构建，通常包括以下步骤：</p>
+<ul>
+<li>编译和构建项目</li>
+<li>运行静态分析测试和代码检查</li>
+<li>执行单元测试、集成测试和其他自动化测试</li>
+<li>执行其他自动化，如安全检查或自定义规</li>
+</ul>
+<p>CI的好处是能够快速获得反馈，并比没有CI时更早地发现回归问题。<br>
+所有CI系统面临的最大挑战之一是将自动化测试的运行时间降低到理想的几分钟内。如果工程师打开新的pull request但必须等待超过30分钟才能得到反馈，这就不是一个及时的反馈循环。<br>
+在大型代码库和测试数量众多的情况下，使CI自动化快速执行特别棘手。以下几种方法可以帮助加快速度：</p>
+<ul>
+<li>模块化代码并缓存未更改的构建产物</li>
+<li>拆分测试套件并在多台机器上并行运行</li>
+<li>CI时只运行部分测试套件，之后再运行完整测试套件</li>
+<li>CI时只运行测试变更的代码，之后再运行完整测试套件</li>
+</ul>
+<h2 id="持续部署cd">持续部署（CD）</h2>
+<p>持续部署（CD）进一步推进了CI，将已批准的代码更改直接部署到生产环境。CI和CD通常是相辅相成的，如果没有CI，CD就没有多大意义。<br>
+高级自动化部署实践对大型系统特别有价值，包括：</p>
+<ul>
+<li>更改的自动化分阶段发布。即使通过了所有自动化测试，对大型系统发布更改仍然有风险。对于后端系统，可以使用金丝雀发布方法，将新代码部署到一部分服务器。CD系统监控健康指标，只有在指标健康的情况下才继续发布。</li>
+<li>自动回滚。当系统在发布后检测到不健康的指标时，会自动回滚最新部署并向团队发送警报以进行调查。</li>
+</ul>
+<p>CI和CD系统为工程师提供快速反馈，并通过自动化测试和部署步骤减少错误。CI/CD在大多数科技公司都是非常普遍的实践。<br>
+然而，CI/CD系统也有缺点：</p>
+<ul>
+<li>设置时间。初始设置需要时间和精力，这可能不是小事</li>
+<li>构建和测试速度慢：如果这些过程缓慢，工程师就要花更多时间等待测试运行，这不是好的开发体验</li>
+<li>维护成本：健康的CI/CD系统需要维护。随着代码增加，构建和测试会变慢。如果测试套件耗时，会降低开发人员的效率</li>
+</ul>
+<h2 id="基于主干的开发">基于主干的开发</h2>
+<p>这是许多科技公司常用的策略，所有工程师在代码库的单一共享分支（通常称为&quot;main&quot;分支）上工作。这与在长期分支上工作并不频繁地合并到发布分支相反。<br>
+基于主干的开发有几个优势：</p>
+<ul>
+<li>单一事实来源：'main'分支是在生产环境运行的代码，所有工程师都在其上开发。</li>
+<li>更频繁的提交：为了与main分支保持同步，工程师频繁向其提交。</li>
+<li>持续集成：基于主干的开发需要设置CI以确保main分支的健康。</li>
+<li>功能标志：团队在基于主干的环境中仍然希望进行功能的分阶段发布。在没有长期分支的情况下，功能标志往往是一个明显的选择。</li>
+</ul>
+<p>基于主干环境的最大缺点是需要在构建工具和CI/CD上投入更多。合并到主干的频率更高，构建也更频繁，这可能给构建系统带来压力，因此需要提高构建吞吐量并减少构建时间。<br>
+对于采用基于主干开发的公司来说，拥有一个至少部分负责构建工具的平台团队是很常见的。在代码库上工作的工程团队越大，这就越复杂。</p>
+<h2 id="功能标志">功能标志</h2>
+<p>一种常见的发布控制方式是通过代码中的功能标志（Feature Flag）隐藏新功能。功能标志可以针对一部分用户启用，从而执行新版本的代码。</p>
+<p>功能标志的实现相对简单，例如，对于一个名为“Zeno”的假想功能，代码可能如下所示：</p>
+<pre><code>if (featureFlags.isEnabled(&quot;Zeno_Feature_Flag&quot;)) {
+    // 执行新代码
+} else {
+    // 执行旧代码
+}
+
+</code></pre>
+<p>功能标志在以下场景中特别常见：</p>
+<ul>
+<li><strong>基于主干的开发</strong> ：功能标志是将尚未准备好投入生产的功能提交到代码库的最可行方式。</li>
+<li><strong>原生移动和桌面应用</strong> ：这些应用将二进制代码分发给终端用户。功能标志可以切换要执行的代码部分。</li>
+<li><strong>以实验为文化的公司</strong> ：功能标志是保护和控制实验的首选方法。</li>
+</ul>
+<p>我们会在第四部分“发布到生产”中更详细地讨论功能标志。</p>
+<h2 id="单一代码库monorepos">单一代码库（Monorepos）</h2>
+<p>单一代码库指的是在一个大型代码库中存放整个平台的所有源代码。例如，可能有一个单一代码库存放所有的Go代码，一个存放所有的iOS代码，等等。这是Google、Meta和Uber等大型科技公司的常用方法。</p>
+<p>单一代码库的最大缺点是其体积庞大，代码库可能变得如此之大，以至于在单个开发者机器上检出代码库非常耗时，甚至对于非常大的代码库来说是不可能的。工具支持是另一个挑战；大多数版本控制供应商对适度大小的代码库提供了更好的支持。</p>
+<p>然而，借助专用工具，在单一代码库中开发往往效率更高。这是因为：</p>
+<ul>
+<li>依赖关系更清晰</li>
+<li>重构更简单</li>
+<li>更容易编写跨多个组件的集成测试</li>
+<li>一旦理解了代码库的结构，工程师更容易导航整个代码库</li>
+</ul>
+<p>大多数科技公司一开始为每个主要项目创建独立的代码库。随着公司发展，为了提高开发者的生产力和体验，自然会推动向单一代码库的转变。</p>
+<h2 id="微服务-vs-单体架构">微服务 vs 单体架构</h2>
+<p>微服务架构将应用程序组织为一组松耦合、可独立部署的服务。这些服务通常较小，被称为“微服务”。单体架构则相反：所有功能都在一个代码库中，并作为一个整体运行。</p>
+<p>关于单体应用设计和微服务架构哪种更适合公司，始终存在争论。这两种方法都有权衡，也有各自成功的案例。例如，Shopify坚持使用单体应用设计，其核心代码超过200万行Ruby代码，而Uber则走微服务路线，运营着超过2000个服务。</p>
+<p><strong>模块化单体和更模块化结构的微服务</strong> 似乎是两者之间务实的中间地带。随着公司规模的增长，两者的痛点都会愈发明显：</p>
+<ul>
+<li>对于单体架构，代码库变得庞大，代码的紧耦合使得进行更改变得困难。</li>
+<li>对于微服务，其数量会迅速增加，可能更容易意外破坏那些对被修改服务存在隐式依赖的其他服务。</li>
+</ul>
+<p>采用单体架构的公司最终会将其模块化，使工程师可以在更独立的小部分上工作。这是Shopify采用的方法。</p>
+<p>采用微服务架构的公司最终会引入指导原则，以更具逻辑性的架构来组织和结构化微服务。这是Uber采用的方法，他们将数千个微服务组织成几十个集合，称为“领域（domains）”。</p>
+<h2 id="4-提升工程师效率的工具">4. 提升工程师效率的工具</h2>
+<p>一些工具可以显著提高工程团队的效率，尤其是在大型科技公司。这些工具可以缓解开发者生产力的痛点。</p>
+<p><strong>服务目录</strong></p>
+<p>在团队构建服务或微服务的公司中，服务的泛滥可能成为问题。随着团队和服务数量的增加，回答以下问题变得越来越困难：</p>
+<ul>
+<li>是否有一个服务能够完成X功能？</li>
+<li>谁负责Y服务？它的值班轮换在哪里？</li>
+<li>我如何让我的团队加入这个服务？</li>
+</ul>
+<p>最直接的解决方法是创建一个服务目录。这是一个门户，团队可以在其中注册他们的服务，工程师可以搜索这些服务。许多大型科技公司会构建自己的服务目录，但越来越多的公司采用开发者门户（Developer Portals），它们提供服务目录作为一个功能。</p>
+<p><strong>代码搜索</strong></p>
+<p>搜索整个代码库的难易程度如何？你的公司代码库的搜索方法是否支持以下功能：</p>
+<ul>
+<li>搜索整个代码库</li>
+<li>支持正则表达式</li>
+<li>支持交叉引用，点击类名可以查看其定义</li>
+<li>搜索速度快</li>
+</ul>
+<p>谷歌早在20多年前就有一个团队专门负责构建和维护高级代码搜索工具。谷歌意识到高效搜索代码库是工程师生产力的一个重要提升，其“代码搜索”产品支持上述所有功能及更多。</p>
+<p>版本控制供应商（如GitHub和GitLab）在一定程度上支持代码搜索。Sourcegraph是一个更知名的供应商，其目标是构建与谷歌一样强大的代码搜索工具。</p>
+<p>鉴于高效搜索源码的价值，一些公司对此却毫无考虑，这显得有些奇怪。作为staff+工程师，了解公司在这一方面的现状，并考虑改进代码搜索是否能提升整体工程效率，是值得的。</p>
+<p><strong>开发者门户</strong></p>
+<p>最知名的开源开发者门户是Spotify开发的“Backstage”。它是为了解决公司扩展到数百个团队、许多服务以及项目脚手架方式日益碎片化时所遇到的痛点而构建的。</p>
+<p>Backstage由多个组件组成：</p>
+<ul>
+<li><strong>软件和服务目录</strong>：用于跟踪服务、网站、库、API和其他资源。团队可以在目录中注册资源，供工程师查找。</li>
+<li><strong>软件模板</strong>：用于创建新的API、网站、服务或其他组件的脚手架。工程师可以创建易于查找的模板，以便通过几个点击完成复杂操作。</li>
+<li><strong>技术文档</strong>：用于工程文档的Wiki。</li>
+<li><strong>插件</strong>：门户是模块化的，可以从中央目录安装插件。工程师也可以构建新的插件。</li>
+</ul>
+<p>像Google、Meta、Amazon和Uber这样的大型科技公司都有自定义的开发者门户。在其他地方，采用现有开发者门户（如Backstage或其他替代方案）的做法越来越普遍，这些门户可以是开源的，也可以从供应商处购买。</p>
+<p><strong>云开发环境</strong></p>
+<p>开发软件的默认方式通常是本地开发，而不是使用云。以下是使用本地开发环境的步骤：</p>
+<ul>
+<li>安装所使用的集成开发环境（IDE）</li>
+<li>检出代码</li>
+<li>安装依赖项</li>
+<li>为项目安装额外的工具或IDE扩展</li>
+<li>编译、测试并在本地部署代码，可能需要自定义步骤</li>
+<li>本地运行和调试代码，也可以选择自定义步骤</li>
+</ul>
+<p>随着代码库的增长，大型科技组织中的开发者生产力可能会因以下原因下降：</p>
+<ul>
+<li>检出代码库需要超过10分钟</li>
+<li>编译代码耗时过长</li>
+<li>运行测试需要超过10分钟</li>
+<li>设置开发环境是一个复杂且容易出错的过程</li>
+<li>时不时会有软件工程师因本地环境与他人不同而无法“构建/测试/部署”</li>
+<li>诸如<code>git status</code>这样的相对简单的git操作需要超过10秒</li>
+</ul>
+<p>当事情变慢时，云开发环境（CDE）可能成为一个有趣的选择。CDE提供了本地环境不具备的优势，包括：</p>
+<ul>
+<li>更短的反馈循环。构建速度更快，测试运行速度也更快。例如，Uber构建云开发环境后，复杂的构建速度提高了2到2.5倍。</li>
+<li>一致性和可重复性。工程师使用相同的环境，因此更容易重现错误，减少了在不同环境中追踪问题的时间。</li>
+<li>环境共享。开发者可以共享云开发环境进行调试。环境也可以与业务利益相关者或客户共享以进行演示。</li>
+<li>更简单的安全审计。不再需要监控每个开发者的本地环境以防范安全威胁，云环境可以配备安全工具来检测和缓解威胁。云环境也是一个较小的攻击面。</li>
+<li>更快的入职培训。云环境通常比本地开发环境提供更快的入职培训，使新工程师能够更快地熟悉新的代码库。</li>
+</ul>
+<p>云环境也有缺点：</p>
+<ul>
+<li>可能无法解决重要的瓶颈。对于大多数工程团队来说，“如果没有问题，就不要修复”是一个相当务实的方法。生产力瓶颈在哪里？如果构建/测试时间慢、入职时间长和开发者体验不一致不在主要瓶颈之列，那么CDE可能帮助不大。那么，为什么要花时间和金钱在这上面呢？</li>
+<li>初始设置和维护。设置和维护云开发环境需要时间和精力，与投资于CI/CD环境没有区别。只需确保在规划时预算这部分成本。</li>
+<li>成本。运行CDE的成本可能超过工程团队的笔记本电脑。这取决于供应商和使用情况，但在云中启动真正强大的机器并不便宜。像Uber、Slack和Pipedrive这样的大型科技公司可以证明增加的成本是合理的，因为每位软件工程师的“开发者基础设施成本”只占高级工程师薪酬的一小部分。</li>
+<li>CDE解决方案的成熟度。这些解决方案发展迅速，因此你可能找不到完全符合需求的产品。技术栈可能缺失部分，自定义选项等。</li>
+<li>供应商锁定。一些CDE供应商采用软件即服务（SaaS）模式，使得放弃他们的产品变得困难。在选择这样的CDE供应商时要谨慎。</li>
+</ul>
+<p>对于大型组织来说，云开发环境很有意义，但对小型团队来说意义不大。中型团队和公司应该识别工程团队的生产力瓶颈，并据此决定。</p>
+<p>实验总是一个选择。说服整个工程组织试用CDE可能令人生畏。但你真的需要这样做吗？在一两个团队中试用CDE解决方案并收集反馈可能更有效。CDE是否带来更快的构建和测试？工程师是否感到更高效？他们是否花更少的时间修复环境？收集数据以告知你的团队是否保留此设置。这可以帮助更广泛的组织决定是否采用CDE。</p>
+<h2 id="人工智能ai编码工具">人工智能（AI）编码工具</h2>
+<p>AI编码助手正在兴起，自2022年ChatGPT发布以来，其采用速度加快。第一个被广泛采用的AI编码助手是TabNine（2019年），随后是GitHub Copilot（2021年），以及2023年的其他许多工具——如Sourcegraph Cody、Replit Ghostwriter、Amazon CodeWhisperer等。</p>
+<p>AI编码助手提高了开发者的生产力，我们仍处于充分利用这项技术的早期阶段。关于AI助手，有几点需要考虑：</p>
+<ul>
+<li>底层模型的性能似乎是助手帮助程度的重要指标。有些机器学习模型在编码方面表现更好。</li>
+<li>将编码助手训练在代码库上可能是有益的，尤其是对于大型或独特的代码库。但即使没有这种训练，也似乎有好处。</li>
+</ul>
+<p>数据所有权和保留对大多数科技公司来说很重要。模型的数据是否也与供应商共享？如果是这样，这些敏感数据——公司的源代码！——可能会以意外的方式泄露或保留吗？</p>
+<p>可以构建的AI编码工具不仅仅是编码助手。AI和大型语言模型（LLM）的明显应用包括：</p>
+<ul>
+<li>代码审查。AI工具对提交的代码审查进行批判并指出明显问题。</li>
+<li>编写自动化测试。许多工程师认为工具不应该编写测试，但实际上，编写自动化测试可能很繁琐。AI工具可以生成测试用例，工程师可以在提交前进行调整。</li>
+<li>重构。IDE中的重构工具已经很先进，可以轻松完成方法或类的重命名。但AI工具可以通过基于文本输入（如“将所有Company-NameXXX引用重命名为NewCompanyNameXXX引用”）在整个项目中执行重构。</li>
+<li>过时功能标志的移除。重构的一个专门且非常有用的用例。</li>
+<li>合规性和安全审查。AI工具可以指出代码更改可能引发的监管或安全警示。</li>
+</ul>
+<p>科技公司已经在为其中一些用例构建工具，我认为供应商提供更先进的AI辅助工具只是时间问题。</p>
+<h2 id="购买-构建或采用">购买、构建或采用？</h2>
+<p>在获取上述工具之一时，通常有三种选择：</p>
+<ul>
+<li>构建它。这是大型科技公司通常采取的方法，因为大多数供应商不支持他们的规模，大公司能够避免被锁定在单一供应商中。</li>
+<li>购买它。如果供应商提供你所需的工具和功能，这是最快的开始方式。从短期来看，这通常是最便宜的，因为构建和采用需要专门的工程师。</li>
+<li>采用它。如果有一个开源项目符合你的工具或功能需求，你可以采用这个项目并自行操作。这比构建便宜得多。然而，你需要支付基础设施资源和维护费用。此外，工具可能需要为你的公司用例进行定制。</li>
+</ul>
+<p>正如往常一样，没有普遍的规则说明构建、购买或采用哪个是最佳选择。供应商会说购买是长期最便宜的选择。工程师倾向于构建，而这或采用解决方案往往在绩效评估和晋升中得到更积极的认可。此外，构建比与供应商谈判条款更有趣且更具教育意义。</p>
+<p>传统观点认为，你应该对公司的核心能力保持完全控制，并购买其他东西。这在理论上听起来不错，但一些最成功的科技公司反复忽视传统智慧，遵循对他们有效的道路。</p>
+<p>如果你有能力影响或做出购买/构建/采用决策，请遵循与任何重大工程选择相似的过程。收集信息并填补空白；例如，通过原型化替代方案来了解它们涉及的内容。</p>
+<h1 id="合规与隐私">合规与隐私</h1>
+<p>你的组织的软件工程流程很可能需要遵循某些合规和隐私指南。</p>
+<p>大型科技公司通常有一个合规或法律团队来决定需要遵循哪些法规、流程和指南。一些公司拥有内部的合规、隐私和安全团队，而另一些公司则聘请外部顾问。合规违规的代价是巨大的，无论是在声誉上还是财务上。Staff+工程师的部分职责是确保公司认真对待这一领域。</p>
+<h2 id="法规">法规</h2>
+<ul>
+<li>个人身份信息（PII，Personally Identifiable Information）不应被任何不需要访问的人获取。没有软件工程师、客户支持人员或其他员工应该能够访问这些信息。</li>
+<li>《通用数据保护条例》（GDPR，General Data Protection Regulation）是欧盟的一项重要法规，扩展了PII的范围，这些信息只能出于合法、正当的目的被存储和处理。</li>
+<li>你的组织可能需要遵守特定行业的合规指南。以下是其中一些的非详尽列表：
+<ul>
+<li>PCI DSS（支付卡行业数据安全标准）：用于处理信用卡信息。</li>
+<li>HIPAA（健康保险可携性与责任法案）和/或ISO/IEC27001：用于处理与医疗相关的数据。</li>
+<li>FERPA（家庭教育权利和隐私法案）：用于处理美国的学生或教育信息。</li>
+<li>FCRA（公平信用报告法案）：适用于涉及消费者报告机构（如信用公司、医疗信息公司或租户筛选）的应用程序。</li>
+<li>第508条合规：与美国联邦机构合作时，确保残疾人能够访问其电子信息技术（EIT）。</li>
+<li>欧洲无障碍法案（European Accessibility Act）指南：用于为欧盟国家政府开发时遵循。</li>
+</ul>
+</li>
+</ul>
+<p>你的产品可能还需要遵守个别国家的隐私法律。</p>
+<h2 id="日志记录">日志记录</h2>
+<p>数据日志记录是一个需要仔细思考的领域：</p>
+<ul>
+<li>未使用端到端加密记录PII数据可能导致数据泄露。</li>
+<li>尽量不要记录PII数据。将日志中的信息匿名化，转化为非PII数据。</li>
+<li>制定关于日志记录的指导原则，包括记录什么、何时记录以及如何记录，其中需包含关于PII数据的部分。</li>
+<li>审核日志以确保其符合法规。</li>
+<li>用户的错误报告（包括截图！）不应包含PII。你可能需要采取额外措施以确保这一点，例如防止信用卡号等信息出现在工单系统中或被客户支持人员看到。</li>
+</ul>
+<p>作为一种有益的实践，定期审查正在记录的数据以及如何记录，以确保任何系统中都没有非安全存储的PII。</p>
+<h2 id="审计">审计</h2>
+<p>你的系统可能需要接受合规性审计，例如GDPR或PII规则的审计。审计通常由专门从事这项工作的供应商完成。审计标准通常说明哪些是可接受的做法。然而，现实中，许多要求可能模糊不清，需要专家解释。</p>
+<p>在参与或领导审计时，尽量找到曾经经历过类似审计的人。如果这不可能，考虑提出聘请顾问的理由，以帮助为审计做准备。</p>
+<p>同样有效的方法是尽可能为审计做好准备，并与审计员合作。</p>
+<p>根据审计的类型以及审计员的预期帮助程度，为审计做准备可能是一项重要的工作。在Uber，我们花了数月时间映射流程、对流程和工具进行更改，并在GDPR启动之前对它们进行审计。这项工作的工作量和变更规模使得这个项目成为公司较大的工作之一。</p>
+<p>审计往往在第一次时最耗时和精力。一旦通过审计并建立了正确的流程，保持合规就容易得多了。</p>
+<h1 id="安全开发">安全开发</h1>
+<p>安全软件开发是一个不断发展的广泛主题，本书不会深入探讨。作为Staff+工程师，你需要对领域中的安全开发实践以及常见的威胁向量和如何减轻它们有深入的了解。</p>
+<p>安全编码实践可以是与语言无关的，也可以是特定于某种语言的。最流行的与语言无关的安全编码指南是<strong>OWASP安全编码实践参考指南</strong> 。</p>
+<p>除了OWASP指南，你可能还可以找到与你选择的语言和框架相关的安全编码实践。以下是一些示例：</p>
+<ul>
+<li>Oracle的Java SE安全编码指南</li>
+<li>OWASP的Go语言安全编码实践</li>
+<li>社区项目的Rust语言安全指南</li>
+</ul>
+<p>依赖项作为安全漏洞始终是一个持续的安全威胁。一个你的系统使用的库可能有一天被发现存在漏洞。在该库被修补之前，你的系统可能是不安全的。2021年发现的最具影响力的依赖漏洞之一是Log4j日志库的安全漏洞，它可以被利用来通过拒绝服务（DoS）攻击使后端系统离线。</p>
+<p>渗透测试是由专家测试系统漏洞的实践。如果你的团队或公司支持这一点，参与其中可以让你深入了解如何识别和修复系统中的安全风险。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#1-%E4%BD%A0%E4%BB%8D%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E7%9A%84%E7%BC%96%E7%A0%81%E5%B7%A5%E4%BD%9C">1. 你仍需要进行的编码工作</a>
+<ul>
+<li><a href="#%E9%9B%86%E4%B8%AD%E6%97%B6%E9%97%B4%E6%AE%B5%E7%BC%96%E7%A0%81">集中时间段编码</a></li>
+<li><a href="#%E5%9C%A8%E7%BC%96%E7%A0%81%E6%97%B6%E6%AE%B5%E8%BF%9B%E8%A1%8C%E7%BB%93%E5%AF%B9%E7%BC%96%E7%A8%8B">在编码时段进行结对编程</a></li>
+<li><a href="#%E6%8A%95%E5%85%A5%E5%88%B0%E9%81%87%E5%88%B0%E5%9B%B0%E9%9A%BE%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%AD">投入到遇到困难的项目中</a></li>
+<li><a href="#%E8%B0%83%E6%95%B4%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E4%BB%A5%E9%80%82%E5%BA%94%E5%9B%A2%E9%98%9F">调整你的工作方式以适应团队</a></li>
+<li><a href="#%E4%BF%9D%E6%8C%81%E7%AD%96%E7%95%A5%E6%80%A7%E6%80%9D%E7%BB%B4">保持策略性思维</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%B5%81%E7%A8%8B">有用的工程流程</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%AE%8C%E6%88%90">定义&quot;完成&quot;</a></li>
+<li><a href="#%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97">编码风格指南</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5">代码审查</a></li>
+<li><a href="#%E6%8F%90%E4%BA%A4%E5%90%8E%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5">提交后代码审查</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%92%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95">自动化测试和生产环境测试</a></li>
+<li><a href="#%E6%90%AD%E5%BB%BA%E6%96%B0%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6">搭建新服务和组件</a></li>
+<li><a href="#%E5%8F%91%E5%B8%83%E5%92%8C%E5%AE%9E%E9%AA%8C%E5%8D%AB%E7%94%9F">发布和实验卫生</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E5%81%A5%E5%BA%B7%E4%BB%AA%E8%A1%A8%E6%9D%BF">系统健康仪表板</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E8%BF%AD%E4%BB%A3%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5">快速迭代的工程实践</a>
+<ul>
+<li><a href="#%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90ci">持续集成（CI）</a></li>
+<li><a href="#%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2cd">持续部署（CD）</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E4%B8%BB%E5%B9%B2%E7%9A%84%E5%BC%80%E5%8F%91">基于主干的开发</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD%E6%A0%87%E5%BF%97">功能标志</a></li>
+<li><a href="#%E5%8D%95%E4%B8%80%E4%BB%A3%E7%A0%81%E5%BA%93monorepos">单一代码库（Monorepos）</a></li>
+<li><a href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1-vs-%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84">微服务 vs 单体架构</a></li>
+<li><a href="#4-%E6%8F%90%E5%8D%87%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%95%88%E7%8E%87%E7%9A%84%E5%B7%A5%E5%85%B7">4. 提升工程师效率的工具</a></li>
+<li><a href="#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BDai%E7%BC%96%E7%A0%81%E5%B7%A5%E5%85%B7">人工智能（AI）编码工具</a></li>
+<li><a href="#%E8%B4%AD%E4%B9%B0-%E6%9E%84%E5%BB%BA%E6%88%96%E9%87%87%E7%94%A8">购买、构建或采用？</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%88%E8%A7%84%E4%B8%8E%E9%9A%90%E7%A7%81">合规与隐私</a>
+<ul>
+<li><a href="#%E6%B3%95%E8%A7%84">法规</a></li>
+<li><a href="#%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95">日志记录</a></li>
+<li><a href="#%E5%AE%A1%E8%AE%A1">审计</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91">安全开发</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>
