@@ -1,0 +1,618 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【5-21】榜样型的资深工程师与首席工程师-理解业务 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【5-21】榜样型的资深工程师与首席工程师-理解业务 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在本书之前的章节中，我们讨论了“技术负责..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【5-21】榜样型的资深工程师与首席工程师-理解业务 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在本书之前的章节中，我们讨论了“技术负责..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/v39OnU9QuD/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【5-21】榜样型的资深工程师与首席工程师-理解业务 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在本书之前的章节中，我们讨论了“技术负责...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/v39OnU9QuD/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【5-21】榜样型的资深工程师与首席工程师-理解业务
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-12-15 · 38 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>在本书之前的章节中，我们讨论了“技术负责人”更多是一种角色，而不是一个明确的头衔或职业级别。那么，在没有技术负责人职业级别的公司里，高级工程师之后是什么职位呢？高级工程师之上的第一个级别通常被称为“资深工程师”（Staff Engineer）或“首席工程师”（Principal Engineer）。</p>
+<p>在谷歌，高级工程师（L5）之后是资深工程师（L6），接着是高级资深工程师（L7）、首席工程师（L8）、杰出工程师（L9）以及研究员（L10）。许多大型科技公司采用了类似的路径：高级工程师 → 资深工程师 → 首席工程师 → 杰出工程师。Uber和Databricks的职业发展路径与此类似。Netflix和Dropbox也有类似的级别，只是这些公司在本书出版时并未设立“杰出工程师”级别。</p>
+<p>然而，科技公司对高级工程师之上的头衔有着略微不同的看法。例如，微软、亚马逊和Booking.com并没有“资深工程师”这个概念；高级工程师之后的下一个职业级别是“首席工程师”。还有一些公司使用其他头衔，比如“架构师”（Oracle）、“首席技术人员”（eBay）或“首席顾问”（ThoughtWorks），作为高级工程师之后的级别。</p>
+<p>为什么各家公司对头衔的定义差异如此之大？这是因为各公司的期望不同。值得研究一家公司的头衔体系并问以下问题：</p>
+<p>一家公司的完整职业阶梯是什么？这可以更好地了解某些资深工程师及以上头衔的资历水平。一个很好的资源是网站Levels.fyi，它可以帮助你了解各家公司在高级工程师之上的职业级别。不过需要注意的是，比较两家公司职位的职责范围比网站展示的要难得多，因为细节才是关键所在。</p>
+<p>某个职位的工程和业务影响是什么？一个资深工程师负责的系统如果每年产生100万美元的收入且仅被少数客户使用，与另一个资深工程师负责的系统每年产生5亿美元收入并被数百万客户使用，这两者之间是有差别的。</p>
+<p>某个职位的影响范围有多大？通常会直接影响多少工程师？例如，在一家小公司里，首席工程师的影响范围可能是大约10名工程师。而在像Uber或谷歌这样的大公司里，这个范围可能是100名工程师甚至更多。这两个职位在头衔上相同，但在期望上却非常不同！</p>
+<p><strong>典型的资深工程师及以上职位的期望</strong></p>
+<p>“资深工程师及以上职位”（Staff+ Engineer）是我在本书中用来指代高级工程师之上的级别，包括资深工程师、首席工程师及更高级别的头衔。</p>
+<p>资深工程师及以上职位的头衔和期望差异很大。以下是我尝试总结的大型科技公司和较大规模初创公司中常见的期望。需要注意的是，对于那些首席工程师（Principal Engineer）位于资深工程师（Staff Engineer）、杰出工程师（Distinguished Engineer）或研究员（Fellow）之后的公司，其期望可能会高于这里列出的内容。</p>
+<p><strong>资深工程师及以上职位是工程经理（EM）和产品经理（PM）的合作伙伴</strong></p>
+<p>在大多数拥有个人贡献者（IC）和管理者双轨职业发展路径的大型科技公司和规模化初创公司中，资深工程师通常与工程经理（EM）或高级产品经理（PM）处于同一职业级别。这不仅仅是象征意义；它还表明资深工程师及以上职位需要成为工程经理和产品经理的合作伙伴。对于更高级别的资深工程师职业级别来说也是如此。例如，在Uber，首席工程师（L7）与工程总监（L7）处于同一职业级别。同样在Uber，首席工程师被期望成为工程总监和产品负责人（PM）的合作伙伴。我们在第一部分“职业路径”中讨论了双轨职业发展路径。</p>
+<p>这种期望通常是未明说的，需要资深工程师及以上职位的人员主动努力，投入时间来加强这种合作伙伴关系。正如任何合作一样，使其成功的关键在于信任；工程经理和产品经理需要付出努力完成重要的事情，并保持开放的沟通。</p>
+<p>作为一名资深工程师（Staff+ Engineer），你通常会面临比你能够轻松处理的更多工作。那么，如何确定应该专注于哪些对业务有利的工作呢？要回答这个问题，必须理解业务。</p>
+<p>在不太关注业务的情况下，你可能仍然能够在职业生涯中成长到资深工程师的级别，但如果没有这方面的知识，要在资深工程师的岗位上取得成功并进一步成长将非常困难。虽然软件工程、长期规划和协作等其他方面的职责同样重要，并且是你在职业生涯中可能已经强化的技能，但理解业务是不可或缺的。</p>
+<h1 id="北极星指标-关键绩效指标kpis和目标与关键成果okrs">北极星指标、关键绩效指标（KPIs）和目标与关键成果（OKRs）</h1>
+<p>北极星指标、KPIs 和 OKRs 的概念对于大多数软件工程师来说似乎既无聊又无关紧要。当 CEO 谈论 OKRs，或者产品经理讨论 KPIs 时，软件工程师往往觉得这些内容缺乏吸引力，因为我们更喜欢具体的内容。相比于讨论 OKRs 和 KPIs，我们更倾向于关注具体要做的项目以及为什么要做这些项目。</p>
+<p>对于单个工程团队来说，讨论项目的具体内容及其影响是很容易的。但随着团队数量的增加，你不能仅仅列出每个团队计划要做的事情；此时就需要退一步，从更大的视角来看问题。而这正是北极星指标、KPIs、OKRs 和路线图发挥作用的地方。作为一名资深工程师，你需要理解这些概念为什么重要以及它们的含义，并将这些内容传达给团队中的工程师，让他们明白应该关注什么以及为什么关注。</p>
+<p>这些概念如此重要的另一个原因是，大多数资深工程师都是工程经理（EM）和产品经理（PM）在定义团队战略和路线图方面的合作伙伴。为了与 EM 和 PM 使用相同的语言：北极星指标、KPIs 和 OKRs 是非常有帮助的工具。</p>
+<h2 id="北极星指标">北极星指标</h2>
+<p>这是一个团队或产品的愿景；它引导这些事物达到目标。例如，一个内部支付团队的北极星指标可以是：“让公司内的任何团队在一天或更短的时间内将支付功能集成到他们的产品中。</p>
+<p>北极星指标通常是雄心勃勃且不简单的——甚至可能是暂时无法实现的！这是有意为之的，因为它具有激励作用，旨在让团队成员保持动力和专注。一个好的例子是航天工程公司SpaceX的北极星指标：将人类送上火星。通过专注于这个目前无法实现的宏伟目标，公司通过逐步改进，一步步接近目标。这就是任何团队或公司设立北极星指标的目的。”</p>
+<p>北极星指标的度量是捕捉向目标迈进的进展，例如客户数量、每日活跃用户等类似数据。</p>
+<h2 id="关键绩效指标kpis">关键绩效指标（KPIs）</h2>
+<p>KPI代表关键绩效指标（Key Performance Indicator），是衡量某一领域进展的量化指标。大多数北极星指标都可以通过KPIs来体现。以下是一些常见的例子：</p>
+<ul>
+<li>商品交易总额（GMV）：在Uber中，这指的是由客户支出的总收入。</li>
+<li>同样地，对于像Stripe或Adyen这样的支付处理公司来说，它指的是客户通过支付处理器处理的总金额。</li>
+<li>收入：产品或团队所赚取的金额。在Uber的情况下，这通常占GMV的10-20%，因为其余部分支付给了司机、餐馆和快递员。而在Stripe或Adyen的情况下，这个比例要低得多，大约为GMV的1-3%。</li>
+<li>客户数量：这是一个直截了当的指标，通常被B2B（企业对企业）服务使用。</li>
+<li>DAU或MAU：产品的每日活跃用户或每月活跃用户。</li>
+<li>增量数据：增量GMV、增量收入、增量DAU或MAU。”</li>
+</ul>
+<p>流失率百分比：在给定时间段内未复购的客户占总客户基数的百分比。通常以一个月或一个季度为周期，用于获取最新反馈。</p>
+<ul>
+<li>正常运行时间：服务在总时间内完全运行的时间比例。</li>
+<li>客户支持工单百分比：在大公司中，通常会记录团队负责领域的客户支持工单百分比。该指标的激增可能表明“质量问题”。</li>
+<li>净推荐值（NPS）：通过调查问卷询问客户是否会向他人推荐产品。问卷得出一个平均分数，并进行跟踪。</li>
+</ul>
+<p>还有无数其他KPIs，例如客户生命周期价值（CLV）、客户获取成本（CAC）、报告的错误数量，以及其他任何你能想到的指标。一个好的KPI是可衡量的、明确的，并能帮助指示进展和发现问题。一个好的KPI也很难被“操控”：即在没有实际改进的情况下让指标朝着正确的方向发展。”</p>
+<h2 id="目标与关键成果okrs">目标与关键成果（OKRs）</h2>
+<p>目标与关键成果（OKR）是一种非常流行的设定和衡量目标的方法，最早由Google在1999年引入，当时公司成立仅一年，员工约40人。这个方法是投资人John Doerr建议的，他后来写了一本关于该方法及其成功的书《Measure What Matters》。</p>
+<p>采用OKRs的企业会在公司层面、组织层面以及团队层面设定目标。一个OKR由两个部分组成：</p>
+<ul>
+<li>目标：一个高层次的、定性的目标，意味着它不一定是可量化的。</li>
+<li>关键成果：可衡量的结果，用于帮助确定实现目标的进展。”</li>
+</ul>
+<p>一个OKR总是有一个目标，但可以有多个关键结果。一些例子如下：</p>
+<h2 id="1-目标提升我们服务的可靠性">1 目标：提升我们服务的可靠性</h2>
+<p>关键结果：</p>
+<ul>
+<li>将系统正常运行时间从99.8%提高到99.9%</li>
+<li>将API响应的p95延迟减少20%</li>
+<li>将未处理的异常错误减少30%</li>
+</ul>
+<h2 id="2-目标提升我们网页和移动应用的安全性">2 目标：提升我们网页和移动应用的安全性</h2>
+<p>关键结果：</p>
+<ul>
+<li>完成第三方安全审计并解决提出的主要问题</li>
+<li>为所有客户构建并推出双因素认证</li>
+<li>在两个工作日内响应90%提出的安全问题</li>
+</ul>
+<h2 id="3-目标优化我们的基础设施成本">3 目标：优化我们的基础设施成本</h2>
+<p>关键结果：</p>
+<ul>
+<li>将虚拟机的CPU利用率中位值从15%提高到25%</li>
+<li>退役或迁移所有仍在运行不受支持且资源密集的Python 2服务</li>
+</ul>
+<p>如果你的公司使用OKRs，从最高层开始了解领导层关注的目标和关键结果。弄清楚你的团队如何为这些目标做出贡献。</p>
+<p>与产品经理和工程经理合作，为团队制定对业务有意义且工程师能够理解的OKRs。你可能需要介入，将一些企业术语以及关键结果和目标的定义进行翻译和解释。</p>
+<p>不要过于执着于OKRs。它们是一种帮助团队聚焦的工具，类似于工单系统等工具可以提高效率。然而，与任何工具一样，OKRs也存在被过度使用的风险，可能会让团队过于专注于实现某个特定结果，而忽视为客户构建正确的产品。</p>
+<h2 id="是否在衡量正确的事情">是否在衡量正确的事情？</h2>
+<p>优秀的工程团队与普通团队之间的显著区别之一在于，“优秀团队”的工程师会质疑产品团队提出的KPIs甚至OKRs。对于模范的资深工程师及以上级别的工程师，我认为这种质疑是理所当然的。</p>
+<p>质疑每一个提出的衡量指标，并从多个角度进行调查：</p>
+<ul>
+<li>我们是否在衡量正确的事情？如果某个指标得到了改善，它是否会产生预期的业务结果？例如，如果一个KPI是关于某个端点的延迟，减少延迟是否会对客户和业务产生显著影响？或者减少错误率是否更重要？</li>
+<li>这种衡量方式或衡量目标如何可能被“操控”？衡量指标可以被以创造性的方式“操控”——也就是被人为修改。例如，在Uber，我所在的组织要求所有端点达到99.9%的可靠性。随后，一些远低于这一目标的团队仅仅通过更改其可靠性衡量方式来达到新目标，而没有对代码进行任何更改。另一次，目标是减少500服务器响应代码，一个团队简单地将现有的500（失败）响应代码改为200响应代码，并将错误信息移到“响应体”中。</li>
+<li>还应该衡量哪些“对策”指标？由于任何衡量指标都可能被操控，最好捕捉一些额外的指标以获得更全面的概览。例如，一个目标可能是将CPU利用率中位值从15%提高到25%，因为这是更高效资源使用的代理指标。然而，如何衡量代码没有因为更高的CPU利用率而变得效率更低？你需要设置一些性能基准来衡量代码性能随时间的基线；也许还需要衡量端点延迟（p50和p95值），以确保更高的CPU利用率不会显著降低用户体验。</li>
+</ul>
+<p>不要忘记更大的图景。衡量系统特性比衡量客户满意度、客户挫败感或客户转化率和流失率要容易得多。如果只专注于非常具体的衡量指标，这些关键细节可能会被忽视。</p>
+<h1 id="你的团队和产品">你的团队和产品</h1>
+<p>了解业务运作的最佳起点是你和团队正在开发的产品。理解这个产品是如何工作的，客户为什么使用它，它的竞争对手是谁，以及它如何为公司的盈利做出贡献。</p>
+<h2 id="戴上产品经理的帽子">戴上产品经理的帽子</h2>
+<p>你的团队有专职的产品经理吗？如果有，那太棒了；这是你可以——并且应该——合作的对象。如果没有，产品经理的角色仍然需要有人来承担，所以可以考虑由你来完成。</p>
+<p>尤其是对于面向内部的工程团队，比如构建技术产品的平台团队，通常没有产品经理。我们在第一部分《在不同环境中茁壮成长》中对平台团队有更多的讨论。</p>
+<p>然而，即使在这些团队中，仍然需要有人承担与产品相关的活动，以提高团队的效率，包括：</p>
+<ul>
+<li>确定并了解客户。客户究竟是谁，团队的服务或产品为他们解决了哪些问题，以及有哪些“客户角色模型”可以帮助开发人员与客户产生共鸣？</li>
+<li>衡量客户满意度。客户对“所收到的服务”满意还是不满意？特别是在没有产品经理的平台团队中，通常存在知识空白，因为团队没有通过调查或与客户团队交流来衡量这一点。</li>
+<li>从客户那里获取团队路线图的输入。如果你的团队为其他内部团队构建服务或产品，不从他们那里获取路线图的输入是很愚蠢的。为了做好这一点，需要有人与这些团队进行个人接触。”</li>
+</ul>
+<p>在没有专职产品经理的情况下，戴上你的产品经理帽子，开始处理上述活动。如果你确实有专职的产品经理，与他们合作。也许你可以帮助完成这些活动。</p>
+<h2 id="站在客户的角度思考">站在客户的角度思考</h2>
+<p>为什么你需要花费大量时间和精力去了解客户？因为理解客户如何运作是你发现需要解决的客户问题的途径。</p>
+<p>“资深工程师与高级工程师及以上级别工程师之间的一个关键区别在于：解决问题与发现问题。高级工程师和资深工程师都需要解决具有挑战性的问题，但资深工程师还需要发现值得解决的问题。站在客户的角度思考是最显而易见的方式之一。</p>
+<p>如果你不是正在开发的产品的常规用户，尝试成为一个！对于消费类产品，尤其是解决某些问题的产品，这会更容易。例如，当我加入Skype时，我已经在使用该视频通话服务与朋友联系，因此我已经是用户。然而，对于某些类型的产品，这可能会更棘手：</p>
+<ul>
+<li><strong>B2C（面向消费者）产品。</strong> 如果你正在开发的产品并不是你的目标客户所使用的产品，注册并尝试像客户一样使用它。了解目标人群，并始终考虑人们如何使用这个产品。</li>
+<li><strong>B2B（企业对企业）产品：</strong> 站在客户的角度思考并不容易。但仍然值得尝试。例如，在Shopify，许多开发人员会在平台上设置自己的商店，并列出一些外部用户看不到的数字产品，以便体验作为用户的设置过程。他们还会测试从商家端的购买流程等内容。”</li>
+</ul>
+<p>当客户是内部用户时：尝试使用测试账户或其他方式观察“客户体验”。这对于建立同理心和与客户更接近非常有帮助。</p>
+<p>参与客户支持。这是站在客户角度的最佳方式之一。阅读客户支持工单，聆听客户支持电话。更好的是，与客户支持人员交谈，他们可以总结用户最常见的问题，并分享客户情绪随时间的变化。”</p>
+<h2 id="了解客户使用你的产品的原因">了解客户使用你的产品的原因</h2>
+<p>“客户为什么使用我们？”这是一个显而易见的问题，但工程师经常没有答案，这令人惊讶。作为资深工程师及以上级别的工程师，你不能不了解这一点。所以去找答案吧！以下是方法：</p>
+<ul>
+<li>与客户交谈。特别是对于像B2B这样的利基产品，与客户交谈，或者参加销售、产品、客户支持或其他面向用户的职能部门与客户交谈的会议，这会很有帮助。</li>
+<li>旁听用户研究会议。如果你的公司与客户进行访谈并向他们展示计划，加入其中！这是了解用户关心什么的绝佳方式。”</li>
+</ul>
+<p>阅读评论。浏览用户评论，这些是主观的个人意见，同时也可以查看知名产品的分析师评论，以及可能包含竞争对手信息的媒体文章。</p>
+<ul>
+<li>你的竞争对手是谁，他们是如何运作的？他们有哪些不同之处，哪些地方做得更好，哪些地方做得更差？</li>
+<li>跟踪竞争对手通常是产品团队的职责，但我认为进行这项研究对资深工程师（以及你的产品）非常有益。你可能会发现产品团队忽略的内容，或者发现你的产品中存在的明显缺口，而这些是竞争对手没有的，也是衡量指标无法体现的。”</li>
+</ul>
+<p>如果可能的话，注册竞争对手的服务并以用户的身份进行评估。对于消费类产品来说，这很简单，但对于企业类产品可能会困难得多。与产品团队讨论他们如何评估竞争对手，并查看是否可以使用现有账户来分析竞争对手的产品。</p>
+<p>分享你的观察的一个好方法是创建一份包含你产品和竞争对手的“比较文档”。这可以帮助将知识传播给团队的其他成员。特别有用的比较内容包括：</p>
+<ul>
+<li>用户体验（UX）比较，例如注册和执行类似操作的用户流程，用图片或视频捕捉下来。</li>
+<li>功能和能力的比较，将它们并排列出。</li>
+<li>战略比较，分享关于竞争对手策略的洞察，以及这些策略如何与贵公司的策略进行比较。</li>
+<li>关于你产品和竞争对手产品的用户反馈的比较。</li>
+</ul>
+<h2 id="理解产品的商业价值">理解产品的商业价值</h2>
+<p>为什么你的公司投入大量资金和精力来构建你的产品？投资回报是什么？回答这些问题的最简单方法是询问你的产品经理或工程经理。不要接受浅显的答案，深入了解为什么业务会投资于你的产品和团队。</p>
+<p>产品通常可以根据其对业务的贡献分为两类：</p>
+<ul>
+<li>利润中心：被认为能够为公司创造财富的产品，例如直接产生收入的产品，比如社交媒体公司的广告部门，或投资银行的前台团队。</li>
+<li>成本中心：属于“业务必要部分，但不产生收入”的产品，例如合规、法律职能和客户支持。</li>
+</ul>
+<p>我们在第一部分《职业路径》中详细讨论了利润中心和成本中心。以下是一些问题，用于识别你的产品属于上述哪一类，以及它如何与业务价值相关：</p>
+<ul>
+<li>你的产品的关键绩效指标（KPIs）和目标与关键结果（OKRs）是什么？它们如何映射到公司的收入、增长和成本指标？</li>
+<li>这个产品今天和未来能直接产生多少收入/节约多少成本？</li>
+<li>这个产品能间接产生多少收入/节约多少成本？例如，通过其他职能部门使用它？</li>
+<li>你的产品对客户增长有多大贡献？</li>
+<li>你的产品是否减少了客户流失，或增加了客户留存？如果是，如何做到的，以及具体效果如何？</li>
+</ul>
+<h2 id="为你的产品创建swot分析">为你的产品创建SWOT分析</h2>
+<p>SWOT代表优势（Strengths）、劣势（Weaknesses）、机会（Opportunities）和威胁（Threats）。这是一个描述产品及其所处“商业环境”的规划文档。</p>
+<p>研究这四个领域，将其整理成文档，并与产品团队和团队成员分享以获取反馈。这个练习会迫使你像业务所有者一样思考并理解竞争对手。完成后，你会以更具战略性的方式看待你的产品。</p>
+<h1 id="你的公司">你的公司</h1>
+<p>在公司内部是开始理解业务的最佳方式。有很多方法可以感受公司是如何运作的。让我们逐一探讨。</p>
+<h2 id="公司的商业模式是什么">公司的商业模式是什么？</h2>
+<p>你的公司如何赚钱？它如何将收入转化为利润并管理成本？如果它尚未盈利，实现盈利的计划是什么？</p>
+<p>在初创公司中，亏损较长时间是常见的，可能需要数年才能实现盈利。了解单位经济学以及公司需要达到的目标以实现盈利仍然是值得的。单位经济学指的是生产单个产品或服务单位的成本。</p>
+<p>例如，在Uber的早期阶段，一个新城市的每次行程的单位成本可能是其带来的收入的两倍。</p>
+<p>对于上市公司，季度业务结果是公开的，可以提供最近业绩的概览。在这些公司，你通常可以在活动后获得最新财报电话会议的录音或文字记录。评估这些资源可以帮助你更好地理解公司的商业模式以及当前的关注点。</p>
+<p>为了理解公司如何赚钱，熟悉以下领域可能会有所帮助：</p>
+<ul>
+<li>市场营销、销售和消费者行为，特别是在B2C公司。</li>
+<li>企业销售的运作方式，以及它在B2B公司中的不同之处。</li>
+</ul>
+<h2 id="与产品人员进行一对一交流">与产品人员进行一对一交流</h2>
+<p>产品经理是业务与产品之间的“粘合剂”。他们需要对业务有出色的理解，并了解他们的产品如何影响绩效和增长。为了更好地“理解业务”，与这些人交谈吧！可以考虑从与产品人员的一次性会议开始，询问他们业务是如何运作的，以及他们的产品与业务的关系。</p>
+<h2 id="与工程和产品以外的人交谈">与工程和产品以外的人交谈</h2>
+<p>一些资深工程师犯的一个错误是只与工程师和产品人员联系，而忽视了更广泛的业务领域。不要这样做；拓展你的视野。</p>
+<p>考虑与以下人员交谈：</p>
+<ul>
+<li><strong>其他技术领域的人员：</strong> 例如设计、数据科学、用户体验研究、技术项目管理（TPM）以及类似领域。信息安全/安全性与大多数产品密切相关，而法律部门对于开源许可问题也很有帮助。</li>
+<li><strong>你的团队支持的业务领域：</strong> 依赖于你产品的业务团队。这些可能包括客户支持、市场营销、财务、人力资源等，具体取决于你的产品与业务的联系。</li>
+<li><strong>企业传播/公共关系（PR）：</strong> 在大公司，这个团队对于与宣传相关的事务非常有用，比如博客、会议演讲以及以任何形式公开展示你团队的工作。</li>
+</ul>
+<h2 id="与不相关团队或产品的群体交谈">与不相关团队或产品的群体交谈</h2>
+<p>尽管听起来有些反直觉，但偶尔与公司内与你的产品毫无关联的人交谈，了解他们的工作内容、如何为业务提供帮助以及他们与工程的联系，这可能是有益的。大多数情况下，这种类型的对话在短期或中期内没有直接收益。然而，它可以帮助你开阔视野，并与业务中完全不同领域的人建立个人联系。从本质上说，这是一种建立人脉和学习的机会。</p>
+<h2 id="与业务利益相关者进行一对一交流">与业务利益相关者进行一对一交流</h2>
+<p>产品经理通常是直接与对你构建的产品感兴趣的业务利益相关者沟通的同事。产品人员捕获需求和期望，同时也与业务利益相关者设定现实的期望，并向他们传达正在构建的内容。</p>
+<p>作为资深工程师，你需要与业务利益相关者交谈吗？如果你有一位非常出色的产品经理，他们能够捕捉细节并与这些人建立强有力的联系，那么答案可能是“不需要”。产品经理可能已经掌控了局面，而另一个人（你）与业务利益相关者交谈只会增加负担。</p>
+<p>然而，通常情况下，与业务利益相关者会面并在一对一交流中给予他们你全部的关注，是一项非常高效的活动，你应该去做，因为：</p>
+<ul>
+<li>如果没有这种关系，你将完全依赖于产品经理，无法在需要时代替他们。</li>
+<li>作为工程师，你可以通过这种方式获取更多未经筛选的业务背景信息，而不是通过产品经理传递的简化信息。</li>
+<li>通过直接联系，业务利益相关者更可能在发现与工程相关的问题时直接联系你，而不是被产品经理过滤掉并未与工程团队分享的问题。</li>
+</ul>
+<p>作为资深工程师，你需要成为业务的合作伙伴。但如果你从未与业务同事交谈过，又如何成为一个优秀的合作伙伴呢？根据我的经验，科技公司中的业务人员非常愿意与资深工程师进行一对一交流。这是因为他们通常认为自己的领域几乎没有直接受到工程团队的关注，尽管他们的成果在很大程度上依赖于工程工作。基本上，建立联系符合利益相关者的利益。</p>
+<p>哪些业务领域对你来说是有意义的对话对象？以下是一些建议：</p>
+<ul>
+<li>积极使用你的产品或为其构建的业务团队。</li>
+<li>从用户那里获取反馈的客户支持和运营团队。</li>
+<li>使用你的产品来吸引客户或推广业务的市场和销售团队。</li>
+<li>基于你的产品指标生成报告的财务团队。</li>
+</ul>
+<p>识别这些团队——你的产品经理可以帮助完成这项工作。然后，与合适的人安排一对一交流。主动联系他们，表明你有兴趣了解他们的业务领域，以及工程如何能够帮助他们。我还没有见过有哪个业务部门会拒绝一位想要帮助并寻求信息的工程代表！</p>
+<h2 id="关注领导层的沟通">关注领导层的沟通</h2>
+<p>当领导层召开全员会议、城镇会议，或向大组发送电子邮件时，注意他们所说的内容。如果这些信息是间接传达的，试着弄清楚真正的信息是什么。</p>
+<p>在资深工程师的级别，你可能已经习惯了领导层以间接方式传递信息，并用语言以“需要解读的方式”来传达敏感内容。例如，CEO很少会直接说某个领域在接下来的时期会被降低优先级，即使事实确实如此。但可以通过一些线索推断出这些事实，例如：</p>
+<ul>
+<li>该领域未出现在CEO列出的关键投资领域中。</li>
+<li>他们随意提到该领域的同事应该准备“少花多做”。</li>
+<li>他们提到一个节省成本的举措，并补充说，“这只是第一步，我希望接下来会有更多类似的举措。”</li>
+</ul>
+<p>在重大公告之后，与产品经理和工程经理交谈，以确认你是否正确理解了“真实”的信息。作为资深工程师，有必要翻译领导层使用的企业语言，这是一项需要实践的技能。</p>
+<h2 id="与客户交谈并倾听">与客户交谈并倾听</h2>
+<p>如果你的客户是消费者或外部企业，找到方法从这些人那里获取反馈。以下是一些方法：</p>
+<ul>
+<li>B2C公司：获取客户反馈。这可能来自社交媒体、消费者移动应用的应用商店评论以及客户反馈渠道。</li>
+<li>B2B公司：请求参与销售电话会议旁听。</li>
+<li>志愿参与客户支持，帮助分类处理新问题并解决其中一些问题。这是一种被低估的了解客户痛点的方式。此外，你的提议很可能会受到欢迎，因为通常很少有工程师对支持工作充满热情。</li>
+</ul>
+<h2 id="参与战略讨论">参与战略讨论</h2>
+<p>作为资深工程师，你应该已经在工程战略和规划讨论中占有一席之地。然而，你可能不会被邀请参加产品战略和业务战略讨论。</p>
+<p>但参加这些会议是拓宽你对业务理解的绝佳方式。所以努力争取参与，旁听一些会议。与经理或产品经理交谈，要求参加一个可以倾听和学习的会议。他们不太可能拒绝这样的请求！</p>
+<h2 id="参与跨职能项目">参与跨职能项目</h2>
+<p>获得对业务更广泛的理解最简单的方法就是参与涉及多种工程和业务团队协作的项目。作为资深工程师，你更有可能被分配到这类项目中。</p>
+<p>然而，如果你在资深工程师的岗位上没有参与此类项目，主动寻找这些机会是有帮助的。以下是一些方法：</p>
+<ul>
+<li>与经理交谈。告诉他们你的目标是帮助公司和团队更好地执行，这意味着你优先考虑团队项目，并表示如果有跨团队的项目需要你的团队协助，你会非常乐意参与。根据你与经理建立的信任程度，你可以进一步分享，参与跨团队项目可以帮助你在职业上成长，增加对业务的理解，扩大人脉，并最终帮助你的团队更好地执行任务。</li>
+<li>与其他团队的人员交谈。与其他团队的工程师、产品经理以及工程经理交谈，以拓宽你的理解和人脉。可能会有机会参与他们的项目。</li>
+<li>寻找可以协助的项目。如果你的公司有RFC（请求评论）或设计文档的文化，关注这些文档并在你擅长的领域提供帮助。与其他经理和工程师交谈，当有项目需要你的专业知识时，主动提出兼职协助。</li>
+<li>指导他人。如果你指导来自不同团队的工程师，你将获得关于他们面临挑战的洞察力。被指导者参与跨职能项目时可能会遇到挑战，而你将从他们的角度了解问题。当然，你并不能保证会与这类人员配对，但指导本身就是一个巨大的成长领域，作为资深工程师，参与指导活动是明智之举。</li>
+</ul>
+<h2 id="与经理和管理链进行一对一交流">与经理和管理链进行一对一交流</h2>
+<p>在与经理的一对一交流中，询问你尚未完全理解的业务部分。你的经理可以为你澄清问题，或者为你提供搜索方向的指导。即使一些经验较少的工程经理尚未意识到这一点，清晰地理解业务对他们和你自己都有好处。</p>
+<p>与跳级经理以及其他工程领导者进行一对一交流。当我在Uber工作时，一位负责开发者平台的工程副总裁（我合作过但不属于的团队）访问了我们的办公室，我与他们进行了一对一交流，以了解他们团队的工作内容。结果发现，这位副总裁想更多地了解我们团队在开发工具方面的痛点。我学到了很多关于开发工具的知识，以及如何互相帮助。随后，我邀请这位副总裁与我们团队的一位资深工程师进行一对一交流，他们愉快地同意了。我们团队的资深工程师从那次对话中获益良多。</p>
+<p>后来，当一位经验丰富的资深工程师加入我们的组织时，他们主动安排了这样的对话，而不是等待经理来安排。事实上，他们几乎与整个管理链以及跳级经理的同级进行了交流，以了解业务以及工程领导层关注的重点。不出所料，这位资深工程师识别出了“低垂的果实”项目以参与其中，并确定了优先处理的项目。</p>
+<h2 id="留出专门时间阅读prd">留出专门时间阅读PRD</h2>
+<p>在大型科技公司以及许多成长型科技公司和初创企业中，产品经理通过撰写产品需求文档（PRD）来将业务想法转化为功能或产品。这些文档通常记录了业务目标和产品的拟定功能。</p>
+<p>花时间阅读与你业务领域相关的PRD，并在发现不清楚的地方提问。定期这样做将帮助你保持与业务方向的联系。了解这一方向将有助于架构决策，例如如何发展基础设施以支持已在多个PRD中记录的几个相关产品计划。</p>
+<p>如果你的公司没有撰写PRD或产品经理以书面形式捕捉规范的文化，你需要寻找替代方法来保持对产品方向的了解，例如与产品人员交谈。</p>
+<h2 id="创造偶然会面的条件">创造偶然会面的条件</h2>
+<p>与不认识的同事见面和交谈可能会有所收获，尤其是在不占用太多时间的情况下。以下是一些建议：</p>
+<ul>
+<li>如果在办公室工作，午餐时坐在你不认识的人旁边，并与他们聊聊你们的工作。你也可以在拿咖啡时这样做。</li>
+<li>参加培训课程时，努力认识其他参与者。</li>
+</ul>
+<p>在这些情况下，我发现了解人们工作的领域、该领域的特别之处以及他们面临的挑战是很有趣的。此外，我总是对他们如何与技术和工程合作感兴趣，以及是否有我可以帮助的地方。</p>
+<p>我发现与业务中不同部分的人见面是一次开阔眼界的经历，尤其是他们的工作方式与软件工程的差异，以及“主要挑战”在不同领域意味着完全不同的事情。</p>
+<p>偶然的会面通常不会立即产生可操作的结果。但只要它们不占用太多时间，应该是有趣的。这类会面可能为未来的合作埋下种子，或者建立与业务不同部分的联系。</p>
+<p>“为什么很少有工程师与业务利益相关者会面？</p>
+<p>根据我在大型科技公司工作的经验，以及与其他地方的同行交流的结果，很少有工程师主动联系业务利益相关者。这是为什么呢？我观察到的常见原因包括：</p>
+<h2 id="我的经理没有这么做我为什么要做">“我的经理没有这么做，我为什么要做？”</h2>
+<p>在许多情况下，工程经理并不直接与业务利益相关者交谈，认为这是产品团队的工作。因此，工程师缺乏动力去这么做。在一些“政治化”的公司中，如果经理不与业务接触，工程师主动联系业务可能会被视为“捅娄子”。</p>
+<h2 id="他们从未见过其他工程师这么做">他们从未见过其他工程师这么做。</h2>
+<p>对于那些没有与主动联系业务利益相关者的同行共事过的工程师来说，他们没有这样的“榜样”，即使这些工程师已经变得更加资深，也不会想到要这么做。</p>
+<h2 id="产品领导层不鼓励这种行为">产品领导层不鼓励这种行为。</h2>
+<p>当工程经理、产品管理或公司的领导层没有鼓励工程师直接与业务合作，或未能强调这种合作的案例时，工程师自然不会想到要这么做。”</p>
+<h2 id="工程部门与业务部门的合作不密切">工程部门与业务部门的合作不密切。</h2>
+<p>一些公司声称工程师是以产品为中心或以客户为中心的，但实际上存在一种分离，导致业务无法与工程部门真正互动，反之亦然。</p>
+<h2 id="公司文化鼓励孤岛现象">公司文化鼓励孤岛现象。</h2>
+<p>许多公司采用更“传统”的管理风格，倾向于由关键人物（通常是经理）收集和分发信息。这可能包括非正式和正式的结构，使得“个人贡献者”获得信息的渠道较少，也缺乏分发信息的机会。大多数大型科技公司并非如此运作，但我观察到不少初创公司在成长过程中因领导层未能有意建立透明文化而逐渐形成这种现象，同时也未能赋予工程师决策权。</p>
+<h2 id="工程师缺乏自主权">工程师缺乏自主权。</h2>
+<p>在一些公司中，工程团队被视为“功能工厂”，工程师被期望按照指令行事，几乎没有自主权。在这些公司中，工程师被劝阻与业务利益相关者交谈，因为这被认为是浪费时间。毕竟，产品经理和项目经理已经在做这些事情了！”</p>
+<h1 id="上市公司">上市公司</h1>
+<p>如果你在一家上市公司工作，每三个月就有一次机会了解业务的运行情况。这就是季度财报周期，其中包括在最新财务结果发布后与相关方进行的收益电话会议。</p>
+<p>上市公司必须在季度报告中披露关键信息，其中领导层会回答分析师和记者的问题。这些电话会议通常面向投资者、利益相关者和媒体，但作为员工，你通常可以找到一些未在内部传达的信息。</p>
+<p>季度报告和投资者电话会议中的有用信息：</p>
+<ul>
+<li>数据：收入趋势如何？盈利或亏损情况如何？</li>
+<li>投资领域：领导层选择重点提到哪些产品、团队和领域？</li>
+<li>分析师提问：这些问题通常会针对敏感领域向领导层发问。这些领域是什么？领导层是否有良好的回应？</li>
+<li>前瞻性承诺：例如对收入增长和支出减少等目标的预测可能对你的产品或领域产生怎样的影响？</li>
+</ul>
+<p>理解诸如借贷、净收入、现金流和EBITDA等术语的含义，可以让你对公司的财务状况有深入的了解。这些是普遍适用的知识，如果你未来创办自己的公司或有机会担任高管职位，这些知识可能会有所帮助。</p>
+<p>一个很好的入门资源是Modern Treasury的《Accounting for Developers》。另一本对理解业务思维有帮助的书是Josh Kaufman的《The Personal MBA》。</p>
+<h1 id="初创公司">初创公司</h1>
+<p>与上市公司不同，初创公司不会每季度报告其财务状况，也不会面对分析师的尴尬提问。然而，初创公司往往具有更高的内部透明度。所以，利用这一点吧！</p>
+<p>如果你的初创公司默认是透明的，你应该能够访问业务指标，并了解业务的进展情况、增长领域和挑战。如果不是，主动询问相关信息。对于一位经验丰富的工程师来说，几乎没有理由不分享这些细节。毕竟，这些信息有助于改进关于工作内容的决策。</p>
+<p>如果你的初创公司规模足够小，你可以直接接触到创始人，那就抓住这个机会。偶尔与创始人会面，了解他们对业务的思考方式，以及他们的优先事项和业务目标。询问与投资者的关系，以及投资者和董事会的优先事项，从而了解公司的整体情况。</p>
+<p>如果你的初创公司正在筹集新一轮资金，询问是否可以查看融资计划书。这将描述你的初创公司目前的状况以及希望达到的目标。了解这些目标将使你更容易决定哪些工作应该优先完成，哪些可以暂时搁置。”</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E5%8C%97%E6%9E%81%E6%98%9F%E6%8C%87%E6%A0%87-%E5%85%B3%E9%94%AE%E7%BB%A9%E6%95%88%E6%8C%87%E6%A0%87kpis%E5%92%8C%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%85%B3%E9%94%AE%E6%88%90%E6%9E%9Cokrs">北极星指标、关键绩效指标（KPIs）和目标与关键成果（OKRs）</a>
+<ul>
+<li><a href="#%E5%8C%97%E6%9E%81%E6%98%9F%E6%8C%87%E6%A0%87">北极星指标</a></li>
+<li><a href="#%E5%85%B3%E9%94%AE%E7%BB%A9%E6%95%88%E6%8C%87%E6%A0%87kpis">关键绩效指标（KPIs）</a></li>
+<li><a href="#%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%85%B3%E9%94%AE%E6%88%90%E6%9E%9Cokrs">目标与关键成果（OKRs）</a></li>
+<li><a href="#1-%E7%9B%AE%E6%A0%87%E6%8F%90%E5%8D%87%E6%88%91%E4%BB%AC%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7">1 目标：提升我们服务的可靠性</a></li>
+<li><a href="#2-%E7%9B%AE%E6%A0%87%E6%8F%90%E5%8D%87%E6%88%91%E4%BB%AC%E7%BD%91%E9%A1%B5%E5%92%8C%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7">2 目标：提升我们网页和移动应用的安全性</a></li>
+<li><a href="#3-%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E6%88%91%E4%BB%AC%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E6%88%90%E6%9C%AC">3 目标：优化我们的基础设施成本</a></li>
+<li><a href="#%E6%98%AF%E5%90%A6%E5%9C%A8%E8%A1%A1%E9%87%8F%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B%E6%83%85">是否在衡量正确的事情？</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%A0%E7%9A%84%E5%9B%A2%E9%98%9F%E5%92%8C%E4%BA%A7%E5%93%81">你的团队和产品</a>
+<ul>
+<li><a href="#%E6%88%B4%E4%B8%8A%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E7%9A%84%E5%B8%BD%E5%AD%90">戴上产品经理的帽子</a></li>
+<li><a href="#%E7%AB%99%E5%9C%A8%E5%AE%A2%E6%88%B7%E7%9A%84%E8%A7%92%E5%BA%A6%E6%80%9D%E8%80%83">站在客户的角度思考</a></li>
+<li><a href="#%E4%BA%86%E8%A7%A3%E5%AE%A2%E6%88%B7%E4%BD%BF%E7%94%A8%E4%BD%A0%E7%9A%84%E4%BA%A7%E5%93%81%E7%9A%84%E5%8E%9F%E5%9B%A0">了解客户使用你的产品的原因</a></li>
+<li><a href="#%E7%90%86%E8%A7%A3%E4%BA%A7%E5%93%81%E7%9A%84%E5%95%86%E4%B8%9A%E4%BB%B7%E5%80%BC">理解产品的商业价值</a></li>
+<li><a href="#%E4%B8%BA%E4%BD%A0%E7%9A%84%E4%BA%A7%E5%93%81%E5%88%9B%E5%BB%BAswot%E5%88%86%E6%9E%90">为你的产品创建SWOT分析</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%A0%E7%9A%84%E5%85%AC%E5%8F%B8">你的公司</a>
+<ul>
+<li><a href="#%E5%85%AC%E5%8F%B8%E7%9A%84%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88">公司的商业模式是什么？</a></li>
+<li><a href="#%E4%B8%8E%E4%BA%A7%E5%93%81%E4%BA%BA%E5%91%98%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%A4%E6%B5%81">与产品人员进行一对一交流</a></li>
+<li><a href="#%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%92%8C%E4%BA%A7%E5%93%81%E4%BB%A5%E5%A4%96%E7%9A%84%E4%BA%BA%E4%BA%A4%E8%B0%88">与工程和产品以外的人交谈</a></li>
+<li><a href="#%E4%B8%8E%E4%B8%8D%E7%9B%B8%E5%85%B3%E5%9B%A2%E9%98%9F%E6%88%96%E4%BA%A7%E5%93%81%E7%9A%84%E7%BE%A4%E4%BD%93%E4%BA%A4%E8%B0%88">与不相关团队或产品的群体交谈</a></li>
+<li><a href="#%E4%B8%8E%E4%B8%9A%E5%8A%A1%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%A4%E6%B5%81">与业务利益相关者进行一对一交流</a></li>
+<li><a href="#%E5%85%B3%E6%B3%A8%E9%A2%86%E5%AF%BC%E5%B1%82%E7%9A%84%E6%B2%9F%E9%80%9A">关注领导层的沟通</a></li>
+<li><a href="#%E4%B8%8E%E5%AE%A2%E6%88%B7%E4%BA%A4%E8%B0%88%E5%B9%B6%E5%80%BE%E5%90%AC">与客户交谈并倾听</a></li>
+<li><a href="#%E5%8F%82%E4%B8%8E%E6%88%98%E7%95%A5%E8%AE%A8%E8%AE%BA">参与战略讨论</a></li>
+<li><a href="#%E5%8F%82%E4%B8%8E%E8%B7%A8%E8%81%8C%E8%83%BD%E9%A1%B9%E7%9B%AE">参与跨职能项目</a></li>
+<li><a href="#%E4%B8%8E%E7%BB%8F%E7%90%86%E5%92%8C%E7%AE%A1%E7%90%86%E9%93%BE%E8%BF%9B%E8%A1%8C%E4%B8%80%E5%AF%B9%E4%B8%80%E4%BA%A4%E6%B5%81">与经理和管理链进行一对一交流</a></li>
+<li><a href="#%E7%95%99%E5%87%BA%E4%B8%93%E9%97%A8%E6%97%B6%E9%97%B4%E9%98%85%E8%AF%BBprd">留出专门时间阅读PRD</a></li>
+<li><a href="#%E5%88%9B%E9%80%A0%E5%81%B6%E7%84%B6%E4%BC%9A%E9%9D%A2%E7%9A%84%E6%9D%A1%E4%BB%B6">创造偶然会面的条件</a></li>
+<li><a href="#%E6%88%91%E7%9A%84%E7%BB%8F%E7%90%86%E6%B2%A1%E6%9C%89%E8%BF%99%E4%B9%88%E5%81%9A%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A">“我的经理没有这么做，我为什么要做？”</a></li>
+<li><a href="#%E4%BB%96%E4%BB%AC%E4%BB%8E%E6%9C%AA%E8%A7%81%E8%BF%87%E5%85%B6%E4%BB%96%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%BF%99%E4%B9%88%E5%81%9A">他们从未见过其他工程师这么做。</a></li>
+<li><a href="#%E4%BA%A7%E5%93%81%E9%A2%86%E5%AF%BC%E5%B1%82%E4%B8%8D%E9%BC%93%E5%8A%B1%E8%BF%99%E7%A7%8D%E8%A1%8C%E4%B8%BA">产品领导层不鼓励这种行为。</a></li>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E9%83%A8%E9%97%A8%E4%B8%8E%E4%B8%9A%E5%8A%A1%E9%83%A8%E9%97%A8%E7%9A%84%E5%90%88%E4%BD%9C%E4%B8%8D%E5%AF%86%E5%88%87">工程部门与业务部门的合作不密切。</a></li>
+<li><a href="#%E5%85%AC%E5%8F%B8%E6%96%87%E5%8C%96%E9%BC%93%E5%8A%B1%E5%AD%A4%E5%B2%9B%E7%8E%B0%E8%B1%A1">公司文化鼓励孤岛现象。</a></li>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%BC%BA%E4%B9%8F%E8%87%AA%E4%B8%BB%E6%9D%83">工程师缺乏自主权。</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8">上市公司</a></li>
+<li><a href="#%E5%88%9D%E5%88%9B%E5%85%AC%E5%8F%B8">初创公司</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

@@ -1,0 +1,403 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-10-2】工具之 CI/CD - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-10-2】工具之 CI/CD - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+快速迭代的三种方法
+第一种方法是阅读现有..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-10-2】工具之 CI/CD - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+快速迭代的三种方法
+第一种方法是阅读现有..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/B25nvyXXx/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-10-2】工具之 CI/CD - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+快速迭代的三种方法
+第一种方法是阅读现有...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/B25nvyXXx/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-10-2】工具之 CI/CD
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-14 · 11 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="快速迭代的三种方法">快速迭代的三种方法</h2>
+<p><strong>第一种方法是阅读现有的代码并理解其功能。</strong> 写代码的挑战通常不是如何编写代码，而是要写什么样的代码。当在一个较为复杂的代码库中工作时，情况尤其如此。当你理解事物如何运作，并且能够熟练地在代码库中导航时，你会更加高效。以下是一些你可以做的事情：</p>
+<p><strong>请求有经验的工程师为你解释代码结构。</strong> 请一位经验丰富的工程师为你解释代码库的各个部分，各部分的功能以及需要注意的事项。<br>
+<strong>绘制类/模块及其连接关系。</strong> 用手或者像Excalidraw、LucidCharts之类的工具简单绘制一个图表。画出代码库中的各个部分并记录下你对它们角色的理解以及它们连接到什么。<br>
+<strong>与队友分享你的代码图。</strong> 与队友分享你创建的图表并征求反馈；这通常会引发有意义的讨论。经常情况下，你并不是唯一一个可以从图中学到新知识的人；其他人可能会从你的图中找到代码需要改进的地方，或者他们之前没有意识到的关联性。<br>
+<strong>制定一个备忘单。</strong> 记录下关键代码部分的查找位置，以及经常使用的模块或类。这可以很简单，比如一个文本文件或者基本文档。当你有“恍然大悟”的时刻时，记下来。</p>
+<h3 id="第二种方法是了解如何调试cicd系统">第二种方法是了解如何调试CI/CD系统。</h3>
+<p>CI代表“持续集成”，CD代表“持续部署”。在大多数科技公司和初创公司普遍使用CI/CD系统。在工作中，你可能会偶尔遇到CI服务器上意外失败的测试，或者使用CD部署时出现问题。这些问题通常很少见，但很难找到原因。</p>
+<ul>
+<li>了解你公司和团队的CI/CD工作原理。这种理解会增进你对幕后发生的事情有所了解。哪些脚本运行以及运行顺序是什么？你如何检查设置？向资深或有经验的工程师请教关于该系统的指导。如果有专门维护CI/CD系统的团队，跟他们的一位工程师交流一下。</li>
+<li>如何访问CI/CD日志？它们对于理解某些构建失败的原因至关重要。是CI/CD基础设施的问题，还是最近代码修改中可能出现的回归问题？</li>
+</ul>
+<h3 id="第三种方法是了解如何访问生产环境的日志和仪表板">第三种方法是了解如何访问生产环境的日志和仪表板。</h3>
+<p>在没有关于可能发生了什么的详细信息的情况下，为用户调试生产问题是具有挑战性的。因此，要弄清楚以下几个方面的访问选项：</p>
+<ul>
+<li>生产日志、仪表板和度量</li>
+<li>如何为特定用户过滤这些日志</li>
+<li>如何查询各种相关数据源进行调试</li>
+<li>如何为特定用户访问崩溃转储、错误和异常</li>
+<li>调试生产日志时需要遵循的流程。例如，当调试生产数据时涉及到个人信息，可能有数据保护流程需要遵循。向你的经理和更有经验的工程师请教。</li>
+</ul>
+<p>如果你有一个生产力备忘单，可以添加相关详情以便日后快速查阅。</p>
+<h3 id="在可能的情况下进行小的代码更改">在可能的情况下进行小的代码更改</h3>
+<p>在工作环境中，通常会通过提交拉取请求（PR）来进行代码更改，并附带上一个关于PR的描述。以下是一些有效处理PR的方法：</p>
+<ul>
+<li>尽量保持拉取请求的小巧。把你的更改分解成每个一个小的PR，每个PR只修改一个事情。</li>
+<li>总结“为什么”和“做了什么”。在拉取请求中，用不超过几句话解释为什么要做出这个更改。提供一个简短的概述你做了什么更改。记住，PR注释将来会被其他人阅读，了解为什么要进行这个更改。过度解释要比不够解释更有帮助。</li>
+<li>当UI发生变化时：使用图片。一张图片胜过千言万语。附上一个“之前”和“之后”状态的图片。</li>
+<li>提及已覆盖和未覆盖的边缘案例。明确表明你考虑了哪些情况。</li>
+<li>清楚地说明某个更改范围之外的事项，特别是如果未来预计会有后续工作的话。</li>
+<li>寻求对你拉取请求摘要的反馈。请更有经验的工程师审查你最近几个PR。询问他们喜欢什么，有什么让他们困惑的地方，以及对于撰写更清晰、更简洁摘要的建议。</li>
+</ul>
+<h3 id="编写并运行自动化测试">编写并运行自动化测试</h3>
+<p>编写代码中最耗时的事情往往是：编写代码。这包括构思方法、编写正确的代码，以及测试代码是否能够正常工作。接着，接下来最耗时的活动是修复你刚编写的代码引起的问题！编写既无错误又不会导致回归的代码的最佳方法是进行测试。当然，你应该在做出更改后手动测试你的代码。然而，也有一种更有效的方式：运行代码库中已经存在的自动化测试，并编写新的自动化测试来测试你的代码，并可捕捉未来的回归。关于为什么测试很重要和常见的方法，我们将在第三部分“测试”中详细介绍。现在，这里是一份你应该熟悉的测试简要摘要：</p>
+<ul>
+<li><strong>单元测试。</strong> 这是大多数环境中测试的基础。假设你的团队已经在使用单元测试，加入他们学习如何编写优秀的测试。从你的团队获得反馈。</li>
+<li><strong>集成测试、截图测试和端到端测试。</strong> 这些测试更复杂，测试功能范围更广。在后端开发中，集成测试可能更相关。对于Web和移动开发，截图测试和端到端测试可能更常见。了解你的团队是否使用这些测试，并学会如何编写和维护它们。</li>
+</ul>
+<h3 id="不要只是等待代码审查主动要求审查">不要只是等待代码审查：主动要求审查</h3>
+<p>等待太久才能获得代码审查会减慢你的进度。当你提交代码进行审查时，考虑让更有经验的开发人员知道代码审查将有助于你进一步进展。</p>
+<p>确定是否以及何时应请求此类审查的最佳方法是询问团队中的其他开发人员：在进行代码阅读时，是否介意你提醒他们进行审查？团队中是否有人宣布审查的渠道？</p>
+<p>更有经验的开发人员会明白，提供及时的代码审查对帮助开发人员更快地前进有很大帮助，并会优先考虑这样做。但如果他们还没有这样做，就问问如何最好地让他们知道你需要他们的帮助解决问题，并获得那个必要的审查。</p>
+<h3 id="频繁获取反馈">频繁获取反馈</h3>
+<p>成为可靠的软件工程师的两种最快方式：</p>
+<ul>
+<li>构建东西：通过编写代码解决问题并将代码部署到生产环境。</li>
+<li>获取反馈：你的解决方案是否按预期工作？是否没有任何副作用地达到你的预期？</li>
+</ul>
+<p><strong>通过部署到生产环境获取反馈。</strong> 获得对你的工作的反馈最直接的方式是将其部署到生产环境，然后确认它按预期运行。这种方法的好处在于，如果你的代码有错误或问题，有很大机会从客户那里很快得到反馈。</p>
+<p>当然，通过生产环境获得反馈的缺点是可能会出现问题。幸运的是，有更安全的获取反馈的途径可以明智利用。</p>
+<p><strong>要求对你的工作进行反馈。</strong> 有时，从你信任的同行或经理那里寻求对特定工作的直接反馈更为有效。</p>
+<p>寻求反馈的最佳时机是当你完成一个任务或项目时。这时人们将提供最具体、最有帮助的评论。下次完成一项工作时，考虑找一位更有经验的工程师，询问他们认为你做得好的地方以及有待改进之处。</p>
+<p>如果你与经理进行一对一的会议，就请他们就特定的工作或项目向你提供直接反馈。如果他们与你的工作关系不是很密切，可能无法立即提供反馈，但他们可以从团队成员那里收集反馈，并与你一起总结。</p>
+<p>许多工程师不擅长提供反馈，不是因为他们不在意提供良好的反馈，而是因为他们不知道如何提供具体和可执行的反馈。如果你收到听起来带有判断性，或者不够有帮助的反馈，比如“你本可以做得更快”，或者“你请求了很多帮助”，不要对此抱有个人情感。相反，更深入地探究，将其转化为更具操作性的内容，并询问这些行动是否会解决问题。例如，关于你本可以更快完成某事的反馈可能是个很差的表达方式，意思是你在遇到延迟时没有明确沟通。具有操作性的反馈则是在未来更清晰地沟通障碍。</p>
+<p><strong>与队友的成果进行比较。</strong> 工作不是竞争，但了解自己在产出和迭代速度方面与同事相比的情况是有益的。观察队友提交拉取请求、将代码推送到生产环境以及完成任务的频率。</p>
+<p>目标只是要了解你在团队正常工作速度方面的表现。一旦熟悉完毕，工程师以合理的速度达到他们的水平是标准期望。在从其他人那里获得明确反馈之前，有自己的数据点有助于了解自己的表现。</p>
+<h2 id="总结">总结</h2>
+<p>胜任的软件开发人员在具有一定经验水平的项目中完成任务。在能够可靠地完成明确定义的任务和较小的项目，这些任务需要调用你的技术技能、专业知识和经验中，还有很多可学习的东西。</p>
+<p>“实践，实践，实践”是成长的最佳建议。除了构建软件外，加速您专业成长的事项包括：</p>
+<ul>
+<li>在团队中工作，从其他开发人员学习</li>
+<li>拥有可以向他们提出问题的导师或伙伴</li>
+<li>能够与开发人员配对</li>
+<li>有足够的时间深入研究某种技术</li>
+<li>在足够长时间内从事项目和任务，以便掌握技术，但可以频繁切换以保持学习</li>
+</ul>
+<p>许多开发人员急于爬上职业阶梯的下一层。这是可以理解的，因为头衔具有重要作用，可以获得更好的薪资和更好的职业机会。</p>
+<p>然而，在软件开发实践中建立扎实的知识和经验基础；例如，学会如何辨别自己卡住了，如何自己解决问题，并养成持续学习的习惯，这些都需要时间，最终将使你受益终身。如果您继续学习和成长，初级阶段的时间并不是“浪费”的。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%BF%AB%E9%80%9F%E8%BF%AD%E4%BB%A3%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95">快速迭代的三种方法</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E8%B0%83%E8%AF%95cicd%E7%B3%BB%E7%BB%9F">第二种方法是了解如何调试CI/CD系统。</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%97%A5%E5%BF%97%E5%92%8C%E4%BB%AA%E8%A1%A8%E6%9D%BF">第三种方法是了解如何访问生产环境的日志和仪表板。</a></li>
+<li><a href="#%E5%9C%A8%E5%8F%AF%E8%83%BD%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E8%BF%9B%E8%A1%8C%E5%B0%8F%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%94%B9">在可能的情况下进行小的代码更改</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E5%B9%B6%E8%BF%90%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95">编写并运行自动化测试</a></li>
+<li><a href="#%E4%B8%8D%E8%A6%81%E5%8F%AA%E6%98%AF%E7%AD%89%E5%BE%85%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E4%B8%BB%E5%8A%A8%E8%A6%81%E6%B1%82%E5%AE%A1%E6%9F%A5">不要只是等待代码审查：主动要求审查</a></li>
+<li><a href="#%E9%A2%91%E7%B9%81%E8%8E%B7%E5%8F%96%E5%8F%8D%E9%A6%88">频繁获取反馈</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

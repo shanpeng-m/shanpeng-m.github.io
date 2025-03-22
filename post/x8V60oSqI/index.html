@@ -1,0 +1,671 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js学习日记【7】组件 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Vue.js学习日记【7】组件 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="4-1 组件的基本使用
+4-1-1 组件的定义
+javascript
+Vue.createApp({})
+    .component(&#39;my-component&#39;, {
+        template: &#39;&amp;lt;div&amp;gt;{{na..." />
+  <meta property="og:title" content="Vue.js学习日记【7】组件 - 小马的世界">
+  <meta property="og:description" content="4-1 组件的基本使用
+4-1-1 组件的定义
+javascript
+Vue.createApp({})
+    .component(&#39;my-component&#39;, {
+        template: &#39;&amp;lt;div&amp;gt;{{na..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/x8V60oSqI/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Vue.js学习日记【7】组件 - 小马的世界">
+  <meta name="twitter:description" content="4-1 组件的基本使用
+4-1-1 组件的定义
+javascript
+Vue.createApp({})
+    .component(&#39;my-component&#39;, {
+        template: &#39;&amp;lt;div&amp;gt;{{na...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/x8V60oSqI/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Vue.js学习日记【7】组件
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-12-06 · 13 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/vuejs/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vuejs
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="4-1-组件的基本使用">4-1 组件的基本使用</h2>
+<h3 id="4-1-1-组件的定义">4-1-1 组件的定义</h3>
+<p>javascript</p>
+<pre><code class="language-javascript">Vue.createApp({})
+    .component('my-component', {
+        template: '&lt;div&gt;{{name}} custom component!&lt;/div&gt;',
+        data() {
+            return {
+                name: 'my'
+            }
+        }
+    })
+    .mount('#app')
+</code></pre>
+<p>app.component('组件名', {组件配置})</p>
+<h3 id="4-1-2-全局组件和局部组件">4-1-2 全局组件和局部组件</h3>
+<p>在Vue.js中，全局组件和局部组件的主要区别在于它们的注册方式和作用范围。</p>
+<ol>
+<li><strong>全局组件</strong>：
+<ul>
+<li><strong>注册方式</strong>：使用<code>Vue.component</code>方法注册。一旦注册，可以在任何新创建的Vue实例的模板中使用。</li>
+<li><strong>作用范围</strong>：应用中的任何组件都可以无限制地使用全局组件，无需在各个组件中重复注册。</li>
+<li><strong>示例</strong>：</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-javascript">// 定义一个全局组件
+Vue.component('my-global-component', {
+    template: '&lt;div&gt;A global component&lt;/div&gt;'
+});
+</code></pre>
+<p>在任何组件模板中可以直接使用<code>&lt;my-global-component&gt;&lt;/my-global-component&gt;</code>。</p>
+<ol>
+<li><strong>局部组件</strong>：
+<ul>
+<li><strong>注册方式</strong>：在组件的<code>components</code>选项中注册。仅在定义它的组件中有效。</li>
+<li><strong>作用范围</strong>：只能在特定的父组件中使用。它对其他组件是不可见的，这有助于避免全局命名空间的污染。</li>
+<li><strong>示例</strong>：</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-javascript">// 定义一个局部组件
+const MyLocalComponent = {
+    template: '&lt;div&gt;A local component&lt;/div&gt;'
+};
+
+// 在另一个组件中使用
+new Vue({
+    el: '#app',
+    components: {
+    'my-local-component': MyLocalComponent
+    }
+});
+</code></pre>
+<p>在<code>#app</code>内部可以使用<code>&lt;my-local-component&gt;&lt;/my-local-component&gt;</code>，但在外部无法使用。</p>
+<p><strong>选择使用全局还是局部组件</strong> 取决于应用的需求。全局组件适合于那些需要跨多个组件重复使用的功能（如按钮、输入框等），而局部组件更适合于仅在特定场景中使用的功能，有助于保持代码的清晰和组织。</p>
+<h2 id="4-2-组件的通信">4-2 组件的通信</h2>
+<p>在Vue.js中，组件间通信是一个核心概念，用于在不同组件之间共享数据和行为。Vue提供了几种不同的方式来实现这一点：</p>
+<ol>
+<li>
+<p><strong>Props</strong>（属性）:</p>
+<ul>
+<li><strong>用途</strong>: 父组件向子组件传递数据。</li>
+<li><strong>工作原理</strong>: 父组件通过属性传递数据给子组件。子组件通过<code>props</code>选项来接收这些数据。</li>
+<li><strong>示例</strong>:
+<ul>
+<li>父组件模板中：<code>&lt;child-component some-prop=&quot;value&quot;&gt;&lt;/child-component&gt;</code></li>
+<li>子组件定义中：<code>props: ['someProp']</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Custom Events</strong>（自定义事件）:</p>
+<ul>
+<li><strong>用途</strong>: 子组件向父组件发送消息。</li>
+<li><strong>工作原理</strong>: 子组件使用<code>$emit</code>方法触发事件，父组件通过监听这些事件来接收消息。</li>
+<li><strong>示例</strong>:
+<ul>
+<li>子组件中：<code>this.$emit('my-event', data);</code></li>
+<li>父组件模板中：<code>&lt;child-component @my-event=&quot;handleEvent&quot;&gt;&lt;/child-component&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Provide/Inject</strong>:</p>
+<ul>
+<li><strong>用途</strong>: 实现祖先组件向其所有子孙组件传递数据，不论层级有多深。</li>
+<li><strong>工作原理</strong>: 祖先组件有一个<code>provide</code>选项来提供数据，子孙组件可以使用<code>inject</code>选项来接收这些数据。</li>
+<li><strong>示例</strong>:
+<ul>
+<li>祖先组件中：<code>provide: { key: value }</code></li>
+<li>子孙组件中：<code>inject: ['key']</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Vuex</strong>:</p>
+<ul>
+<li><strong>用途</strong>: 管理和维护应用的整体状态。</li>
+<li><strong>工作原理</strong>: Vuex是一个状态管理模式，它提供了一个集中存储所有组件的共享状态的仓库，并以一种可预测的方式来改变这个状态。</li>
+<li><strong>示例</strong>:
+<ul>
+<li>在Vuex仓库中定义状态、mutations、actions等。</li>
+<li>组件中通过<code>this.$store.state</code>访问状态，通过<code>this.$store.commit</code>触发同步更新，通过<code>this.$store.dispatch</code>触发异步操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>每种方法都适用于不同的场景。Props和Custom Events是最基本的通信方式，适用于父子组件间的通信。Provide/Inject适用于跨多层级的通信，但应谨慎使用，以避免复杂的依赖关系。Vuex适合于大型应用，可以集中管理所有组件的状态。选择合适的通信方式取决于你的应用结构和需要解决的具体问题。</p>
+<p>在Vue中，props的命名和使用支持从小驼峰（camelCase）和连接线（kebab-case）之间的自动转换。这是因为HTML属性是不区分大小写的，所以当你在父组件的模板中使用子组件时，你需要使用连接线（kebab-case）形式。然而，在JavaScript中，属性名通常使用小驼峰（camelCase）形式。Vue智能地在这两种命名约定之间做了桥接。</p>
+<p>这里是如何在Vue中使用这两种形式的一个示例：</p>
+<ol>
+<li>
+<p><strong>子组件定义中使用小驼峰（camelCase）</strong>：</p>
+<pre><code class="language-javascript">Vue.component('child-component', {
+  props: ['myProp'],
+  template: '&lt;div&gt;{{ myProp }}&lt;/div&gt;'
+});
+</code></pre>
+</li>
+<li>
+<p><strong>父组件模板中使用连接线（kebab-case）</strong>：</p>
+<pre><code class="language-html">&lt;child-component my-prop=&quot;value&quot;&gt;&lt;/child-component&gt;
+</code></pre>
+</li>
+</ol>
+<p>在这个例子中，<code>myProp</code>是子组件中定义的prop。然而，在父组件的模板中，我们使用<code>my-prop</code>来传递这个prop。Vue会自动处理这两种命名风格之间的转换，让你可以在JavaScript中使用驼峰命名，同时在模板中遵循HTML的命名规则。</p>
+<h3 id="不要在组件内修改props的值">不要在组件内修改props的值</h3>
+<p>在Vue.js中，组件内部直接修改prop的值是一个常见的反模式，通常应该避免。这是因为props的主要目的是让父组件能够传递数据给子组件，而子组件直接修改这些值可能会导致应用的数据流难以理解和维护。下面是关于为什么不应该在组件内修改prop的值的几个要点：</p>
+<ol>
+<li>
+<p><strong>单向数据流</strong>：Vue的组件体系设计为单向数据流。这意味着prop应该被视为从父组件流向子组件的只读数据。子组件改变prop可能导致父组件的状态与子组件的状态不同步，从而引起数据流中的不一致。</p>
+</li>
+<li>
+<p><strong>源数据的所有权</strong>：Prop的值应该由提供这个prop的父组件来控制。如果子组件能修改prop，它实际上就对父组件的状态产生了影响，这违反了组件间明确的界限和封装。</p>
+</li>
+<li>
+<p><strong>预测性和可维护性</strong>：如果组件内部改变了它的props，会使得组件的行为变得难以预测和理解。这种模式可能导致bug，并且使得组件难以维护。</p>
+</li>
+</ol>
+<p>如果你需要根据prop的值在子组件内部做出响应或更改，你可以：</p>
+<ul>
+<li>使用prop的值来初始化一个本地的响应式数据属性。</li>
+<li>使用计算属性来派生新的值。</li>
+<li>如果需要通知父组件变化，可以通过事件向父组件发出通知（使用<code>this.$emit</code>）。</li>
+</ul>
+<p>例如，如果你想根据一个prop初始化一个内部数据属性，可以这样做：</p>
+<pre><code class="language-javascript">props: ['initialValue'],
+data() {
+  return {
+    // 初始化一个内部属性，基于prop的值
+    internalValue: this.initialValue
+  };
+}
+</code></pre>
+<p>这样，<code>internalValue</code>是一个内部状态，可以自由修改，而不会影响到父组件传递的<code>initialValue</code> prop。如果需要将更改反馈给父组件，可以使用事件。</p>
+<h3 id="使用emit通知父组件">使用$emit通知父组件</h3>
+<p>在 Vue.js 中，<code>$emit</code> 是一种在组件间进行通信的方法，尤其是用于子组件向父组件发送消息。这是实现组件间通信的常用技术之一，尤其当你需要让父组件知道某些事件发生在子组件中时。</p>
+<h3 id="原理">原理</h3>
+<p><code>$emit</code> 的工作原理基于 Vue 的自定义事件系统。当一个子组件需要通知其父组件发生了某个事件时，它会 &quot;发射&quot;（emit）一个事件。这个事件可以附带一些参数，这些参数可以传递给父组件。父组件监听这个事件，并定义一个方法来响应这个事件。</p>
+<h3 id="使用方法">使用方法</h3>
+<h4 id="步骤-1-子组件发射事件">步骤 1: 子组件发射事件</h4>
+<p>子组件使用 <code>$emit</code> 发射一个事件，并可以传递数据作为参数。</p>
+<p><strong>子组件 (ChildComponent.vue):</strong></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;button @click=&quot;notifyParent&quot;&gt;点击我&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  methods: {
+    notifyParent() {
+      // 发射一个名为 'childEvent' 的事件，传递 'someData' 作为参数
+      this.$emit('childEvent', 'someData');
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中，当按钮被点击时，<code>notifyParent</code> 方法会被调用，它使用 <code>$emit</code> 来发射 <code>childEvent</code> 事件，并传递字符串 <code>'someData'</code> 作为参数。</p>
+<h4 id="步骤-2-父组件监听事件">步骤 2: 父组件监听事件</h4>
+<p>父组件在使用子组件的地方监听这个事件，并定义一个方法来响应这个事件。</p>
+<p><strong>父组件 (ParentComponent.vue):</strong></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;child-component @childEvent=&quot;handleChildEvent&quot;&gt;&lt;/child-component&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: {
+    ChildComponent
+  },
+  methods: {
+    handleChildEvent(data) {
+      console.log(&quot;事件被触发，接收到的数据:&quot;, data);
+      // 这里可以根据接收到的数据执行更多操作
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>在父组件中，通过 <code>@childEvent=&quot;handleChildEvent&quot;</code> 监听子组件发射的 <code>childEvent</code> 事件。当这个事件发生时，<code>handleChildEvent</code> 方法被调用，接收从子组件发送的数据（在这个例子中是字符串 <code>'someData'</code>）。</p>
+<p>使用 <code>$emit</code> 通知父组件是 Vue 中实现子到父通信的一种有效方式。通过这种方法，子组件可以发射事件，父组件可以监听并响应这些事件。这种通信机制不仅简洁高效，而且有助于保持组件的封装性和可重用性。</p>
+<p>当子组件发送多个不同的 <code>emit</code> 来通知父组件时，父组件可以通过监听不同的事件名称来区分这些 <code>emit</code> 来自哪里。每个 <code>$emit</code> 调用通常会包含一个特定的事件名称，这使得父组件能够根据这些名称区分不同的事件来源。</p>
+<h3 id="示例">示例</h3>
+<p>假设子组件有两个按钮，每个按钮点击时发出不同的 <code>emit</code>。</p>
+<p><strong>子组件 (ChildComponent.vue):</strong></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;button @click=&quot;emitEventOne&quot;&gt;Emit Event One&lt;/button&gt;
+  &lt;button @click=&quot;emitEventTwo&quot;&gt;Emit Event Two&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  methods: {
+    emitEventOne() {
+      // 发射第一个事件
+      this.$emit('eventOne', 'Data from Event One');
+    },
+    emitEventTwo() {
+      // 发射第二个事件
+      this.$emit('eventTwo', 'Data from Event Two');
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>在这个子组件中，定义了两个方法 <code>emitEventOne</code> 和 <code>emitEventTwo</code>，分别用于发出名为 <code>eventOne</code> 和 <code>eventTwo</code> 的事件。</p>
+<p><strong>父组件 (ParentComponent.vue):</strong></p>
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;child-component 
+      @eventOne=&quot;handleEventOne&quot; 
+      @eventTwo=&quot;handleEventTwo&quot;
+    &gt;&lt;/child-component&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: {
+    ChildComponent
+  },
+  methods: {
+    handleEventOne(data) {
+      console.log(&quot;Event One triggered:&quot;, data);
+    },
+    handleEventTwo(data) {
+      console.log(&quot;Event Two triggered:&quot;, data);
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>在父组件中，分别监听这两个事件，并为它们指定了不同的处理函数：<code>handleEventOne</code> 用于处理 <code>eventOne</code>，<code>handleEventTwo</code> 用于处理 <code>eventTwo</code>。这样，当子组件发出特定的 <code>emit</code> 时，父组件就可以通过不同的事件处理器来区分它们，并知道是哪个部分的代码触发了事件。</p>
+<p>通过为不同的 <code>emit</code> 指定不同的事件名称，并在父组件中对这些不同的事件设置不同的监听器，可以轻松区分和确定子组件中哪个部分发出了 <code>emit</code>。这种模式不仅清晰明了，还有助于维护组件间清晰的通信界限和逻辑流程。</p>
+<h3 id="provide-and-inject">provide and inject</h3>
+<p>在 Vue.js 中，<code>provide</code> 和 <code>inject</code> 是一对用于跨组件树进行通信的选项，主要用于父组件向其所有子孙组件提供数据，而无需通过每个子组件逐层传递。这对于在深层嵌套的组件中共享数据非常有用，例如在组件库或高阶应用中。</p>
+<h3 id="原理-2">原理</h3>
+<ul>
+<li><strong>provide</strong>: 父组件使用 <code>provide</code> 选项来提供数据。<code>provide</code> 可以是一个对象或返回对象的函数。提供的数据可以是响应式的或普通的对象。</li>
+<li><strong>inject</strong>: 子组件使用 <code>inject</code> 选项来声明它希望从其祖先组件接收的数据。<code>inject</code> 是一个字符串数组，指定了要注入的属性名。</li>
+</ul>
+<h3 id="示例-2">示例</h3>
+<p>假设我们有一个场景，其中父组件需要向所有子组件提供一个消息。</p>
+<h4 id="父组件">父组件</h4>
+<p>首先，在父组件中使用 <code>provide</code> 选项：</p>
+<pre><code class="language-vue">&lt;script&gt;
+export default {
+  provide() {
+    return {
+      sharedMessage: 'Hello from parent'
+    };
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>在这个例子中，父组件提供了一个名为 <code>sharedMessage</code> 的数据。</p>
+<h4 id="子组件">子组件</h4>
+<p>然后，在任何子组件中，你可以使用 <code>inject</code> 选项来接收 <code>sharedMessage</code> 数据：</p>
+<pre><code class="language-vue">&lt;script&gt;
+export default {
+  inject: ['sharedMessage'],
+  mounted() {
+    console.log(this.sharedMessage); // 输出: 'Hello from parent'
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>在这里，子组件通过 <code>inject</code> 选项注入了 <code>sharedMessage</code>。现在，这个子组件可以访问由其祖先组件提供的 <code>sharedMessage</code> 数据。</p>
+<h3 id="使用场景">使用场景</h3>
+<p><code>provide</code> 和 <code>inject</code> 经常在高级应用或组件库中使用，比如在开发提供跨多个组件共享状态的插件时。由于这种方式不需要显示的属性传递，它特别适合于深层嵌套组件的场景。</p>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li><code>provide</code> 和 <code>inject</code> 绑定并不是响应式的，除非你传递的是响应式对象。从 Vue 3 开始，你可以使用 <code>reactive</code> 函数使提供的对象变成响应式。</li>
+<li>这种模式虽然强大，但如果过度使用可能会使得组件间的依赖关系变得不明确。因此，建议仅在必要时使用，尤其是在那些需要跨多层级传递数据的场景中。</li>
+</ul>
+<p>通过使用 <code>provide</code> 和 <code>inject</code>，Vue 应用可以实现跨组件层级的通信，同时保持组件的封装性和重用性。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#4-1-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">4-1 组件的基本使用</a>
+<ul>
+<li><a href="#4-1-1-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%AE%9A%E4%B9%89">4-1-1 组件的定义</a></li>
+<li><a href="#4-1-2-%E5%85%A8%E5%B1%80%E7%BB%84%E4%BB%B6%E5%92%8C%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6">4-1-2 全局组件和局部组件</a></li>
+</ul>
+</li>
+<li><a href="#4-2-%E7%BB%84%E4%BB%B6%E7%9A%84%E9%80%9A%E4%BF%A1">4-2 组件的通信</a>
+<ul>
+<li><a href="#%E4%B8%8D%E8%A6%81%E5%9C%A8%E7%BB%84%E4%BB%B6%E5%86%85%E4%BF%AE%E6%94%B9props%E7%9A%84%E5%80%BC">不要在组件内修改props的值</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8emit%E9%80%9A%E7%9F%A5%E7%88%B6%E7%BB%84%E4%BB%B6">使用$emit通知父组件</a></li>
+<li><a href="#%E5%8E%9F%E7%90%86">原理</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法</a>
+<ul>
+<li><a href="#%E6%AD%A5%E9%AA%A4-1-%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%91%E5%B0%84%E4%BA%8B%E4%BB%B6">步骤 1: 子组件发射事件</a></li>
+<li><a href="#%E6%AD%A5%E9%AA%A4-2-%E7%88%B6%E7%BB%84%E4%BB%B6%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6">步骤 2: 父组件监听事件</a></li>
+</ul>
+</li>
+<li><a href="#%E7%A4%BA%E4%BE%8B">示例</a></li>
+<li><a href="#provide-and-inject">provide and inject</a></li>
+<li><a href="#%E5%8E%9F%E7%90%86-2">原理</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B-2">示例</a>
+<ul>
+<li><a href="#%E7%88%B6%E7%BB%84%E4%BB%B6">父组件</a></li>
+<li><a href="#%E5%AD%90%E7%BB%84%E4%BB%B6">子组件</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF">使用场景</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

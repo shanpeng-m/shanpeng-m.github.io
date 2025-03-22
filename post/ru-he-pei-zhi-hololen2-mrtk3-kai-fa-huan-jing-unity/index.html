@@ -1,0 +1,384 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>如何配置HoloLens2 MRTK3开发环境（Unity） - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="如何配置HoloLens2 MRTK3开发环境（Unity） - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="快速告诉你如何搭建HoloLens2 MRTK3开发环境。
+
+这篇文章介绍MRTK3的配置，如果需要了解MRTK2的配置，请点击这里
+新建项目
+打开Unity Hub点击New Project，选择合适的编辑器版本，选择3D，输入项目名称..." />
+  <meta property="og:title" content="如何配置HoloLens2 MRTK3开发环境（Unity） - 小马的世界">
+  <meta property="og:description" content="快速告诉你如何搭建HoloLens2 MRTK3开发环境。
+
+这篇文章介绍MRTK3的配置，如果需要了解MRTK2的配置，请点击这里
+新建项目
+打开Unity Hub点击New Project，选择合适的编辑器版本，选择3D，输入项目名称..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/ru-he-pei-zhi-hololen2-mrtk3-kai-fa-huan-jing-unity/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="如何配置HoloLens2 MRTK3开发环境（Unity） - 小马的世界">
+  <meta name="twitter:description" content="快速告诉你如何搭建HoloLens2 MRTK3开发环境。
+
+这篇文章介绍MRTK3的配置，如果需要了解MRTK2的配置，请点击这里
+新建项目
+打开Unity Hub点击New Project，选择合适的编辑器版本，选择3D，输入项目名称...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/ru-he-pei-zhi-hololen2-mrtk3-kai-fa-huan-jing-unity/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          如何配置HoloLens2 MRTK3开发环境（Unity）
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2022-12-06 · 3 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>快速告诉你如何搭建HoloLens2 MRTK3开发环境。</p>
+<!-- more -->
+<p>这篇文章介绍MRTK3的配置，如果需要了解MRTK2的配置，请点击<a href="https://inusturbo.github.io/post/ru-he-pei-zhi-hololen2-mrtk2-kai-fa-huan-jing-unity/">这里</a></p>
+<h2 id="新建项目">新建项目</h2>
+<p>打开Unity Hub点击New Project，选择合适的编辑器版本，选择3D，输入项目名称、选择靠近根目录的路径。</p>
+<h2 id="添加项目运行时的feature">添加项目运行时的Feature</h2>
+<ol>
+<li>下载<a href="https://aka.ms/MRFeatureTool">Mixed Reality Feature Tool</a></li>
+<li>下载完成后，解压缩文件并将其保存到桌面。</li>
+<li>运行MixedRealityFeatureTool.exe</li>
+<li>点击Start</li>
+<li>选择你新建的Unity工程路径（该工具中的“项目路径”框必须包含某个值，因此默认情况下会插入一个反斜杠（“_”））</li>
+<li>软件会检测到Unity版本。</li>
+<li>点击Discover Features（可能需要等待几秒）</li>
+<li>勾选MRTK3下的所有项目</li>
+<li>勾选Platform Support下的Mixed Reality OpenXR Plugin</li>
+<li>勾选Spatial Audio下的所有项目</li>
+<li>点击Get Features</li>
+</ol>
+<h2 id="打开unity项目">打开Unity项目</h2>
+<p>打开Unity项目，等待Unity完成导入新添加的包。过程中可能有以下窗口：</p>
+<ol>
+<li>Warning: Do you want to enable the backends? Doing so will *RESTART* the editor. 选择<code>Yes</code>。</li>
+<li>XR InteractionLayerMask Update Required: 选择：<code>No Thanks</code>。</li>
+</ol>
+<p>Unity有可能在这个过程中重启几次，请耐心等待。</p>
+<h2 id="导入配置文件">导入配置文件</h2>
+<p>导入包后，需要为目标平台设置配置文件</p>
+<ol>
+<li>
+<p>选择菜单栏的<code>Edit</code>-&gt;<code>Project Settings...</code></p>
+</li>
+<li>
+<p>在左侧选择<code>MRTK3</code></p>
+</li>
+<li>
+<p>点击右侧的Windows标徽（Universal Windows Platform settings）此时Profile显示为None</p>
+</li>
+<li>
+<p>在Project面板左侧找到<code>MRTK Core Definitions</code>-&gt;<code>Configuration</code>-&gt;<code>Default Profiles</code></p>
+</li>
+<li>
+<p>将右侧的<code>MRTKProfile</code>拖入<code>Project Settings</code>窗口的<code>Profile</code>处</p>
+</li>
+<li>
+<p>点击Windows标徽（Universal Windows Platform settings）和显示器徽标（Windows, Mac, Linux settings），确认二者都已经有了配置文件。</p>
+</li>
+</ol>
+<h2 id="配置openxr">配置OpenXR</h2>
+<ol>
+<li>选择菜单栏的<code>Edit</code>-&gt;<code>Project Settings...</code></li>
+<li>在左侧选择<code>XR Plug-in Management</code></li>
+<li>在Windows标徽（Universal Windows Platform settings）和显示器徽标（Windows, Mac, Linux settings）处确认勾选<code>Initialize XR on Stratup</code>，<code>OpenXR</code>和<code>Microsoft HoloLens feature group</code>。如果OpenXR旁边有黄色感叹号，点击黄色感叹号，点Fix all。会有一些无法修复的感叹号， 没关系，我们会在后面解决。</li>
+<li>左侧点击<code>XR Plug-in Management</code>-&gt;<code>OpenXR</code>，在Windows标徽（Universal Windows Platform settings）和显示器徽标（Windows, Mac, Linux settings）下的<code>Interaction Profile</code>中，点击加号分别添加<code>Eye Gaze Interaction Profile</code>,<code>Microsoft Hand Interaction Profile</code>,<code>Microsoft Motion Controller Profile</code>,如果遇到黄色感叹号，点击黄色感叹号，点击Fix all。</li>
+<li>（可选）将Windows标徽（Universal Windows Platform settings）和显示器徽标（Windows, Mac, Linux settings）下的<code>Depth Submission Mode</code>修改为<code>Depth 16 Bit</code></li>
+</ol>
+<h2 id="创建场景">创建场景</h2>
+<ol>
+<li>在Project面板中Packages-&gt;MRTK Input-&gt;Assets-&gt;Prefabs中，将<code>MRTK XR Rig</code>prefab拖入窗口。</li>
+<li>删除原有的Main Camera，因为<code>MRTK XR Rig</code>中已经包含摄像机。</li>
+<li>（可选，但如果你想在编辑内模拟运行推荐添加）在Project面板中Packages-&gt;MRTK Input-&gt;Simulation-&gt;Prefabs中，将<code>MRTKInputSimulator</code>prefab拖入窗口。</li>
+</ol>
+<p>这样就完成了HoloLens2 MRTK3的配置。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE">新建项目</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84feature">添加项目运行时的Feature</a></li>
+<li><a href="#%E6%89%93%E5%BC%80unity%E9%A1%B9%E7%9B%AE">打开Unity项目</a></li>
+<li><a href="#%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">导入配置文件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AEopenxr">配置OpenXR</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%9C%BA%E6%99%AF">创建场景</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

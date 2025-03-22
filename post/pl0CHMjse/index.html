@@ -1,0 +1,565 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js学习日记【4】指令v-on和v-error - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Vue.js学习日记【4】指令v-on和v-error - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="Vue 中的指令（以 v- 开头的）。
+Vue 提供了一系列内置的指令，用于在模板中执行特定的操作。这些指令包括但不限于：
+
+v-bind: 动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+v-model: 在表单控件或组件上创..." />
+  <meta property="og:title" content="Vue.js学习日记【4】指令v-on和v-error - 小马的世界">
+  <meta property="og:description" content="Vue 中的指令（以 v- 开头的）。
+Vue 提供了一系列内置的指令，用于在模板中执行特定的操作。这些指令包括但不限于：
+
+v-bind: 动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+v-model: 在表单控件或组件上创..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/pl0CHMjse/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Vue.js学习日记【4】指令v-on和v-error - 小马的世界">
+  <meta name="twitter:description" content="Vue 中的指令（以 v- 开头的）。
+Vue 提供了一系列内置的指令，用于在模板中执行特定的操作。这些指令包括但不限于：
+
+v-bind: 动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+v-model: 在表单控件或组件上创...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/pl0CHMjse/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Vue.js学习日记【4】指令v-on和v-error
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-11-27 · 8 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/vuejs/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vuejs
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="vue-中的指令以-v-开头的">Vue 中的指令（以 <code>v-</code> 开头的）。</h2>
+<p>Vue 提供了一系列内置的指令，用于在模板中执行特定的操作。这些指令包括但不限于：</p>
+<ol>
+<li><code>v-bind</code>: 动态地绑定一个或多个特性，或一个组件 prop 到表达式。</li>
+<li><code>v-model</code>: 在表单控件或组件上创建双向绑定。</li>
+<li><code>v-for</code>: 基于源数据多次渲染元素或模板块。</li>
+<li><code>v-if</code>, <code>v-else-if</code>, <code>v-else</code>: 根据表达式的值的真假条件渲染元素。</li>
+<li><code>v-on</code>: 监听 DOM 事件，并在触发时执行一些 JavaScript。</li>
+<li><code>v-show</code>: 根据表达式之真假值，切换元素的 <code>display</code> CSS 属性。</li>
+<li><code>v-pre</code>: 跳过这个元素和它的子元素的编译过程。</li>
+<li><code>v-cloak</code>: 这个指令会在关联实例结束编译时被移除。</li>
+<li><code>v-once</code>: 执行一次性的插值，当数据改变时，插值处的内容不会更新。</li>
+</ol>
+<p>每个指令都有其特定的用途。例如，<code>v-bind</code> 用于动态地绑定 HTML 属性到表达式，而 <code>v-on</code> 用于监听 DOM 事件。</p>
+<p>下面是一些简单的例子来演示这些指令的用法：</p>
+<h3 id="v-bind-示例"><code>v-bind</code> 示例</h3>
+<p>HTML：</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;img v-bind:src=&quot;imageSrc&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JavaScript：</p>
+<pre><code class="language-javascript">new Vue({
+  el: '#app',
+  data: {
+    imageSrc: 'path/to/image.jpg'
+  }
+});
+</code></pre>
+<h3 id="v-model-示例"><code>v-model</code> 示例</h3>
+<p>HTML：</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;input v-model=&quot;message&quot;&gt;
+  &lt;p&gt;The value of the input is: {{ message }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JavaScript：</p>
+<pre><code class="language-javascript">new Vue({
+  el: '#app',
+  data: {
+    message: ''
+  }
+});
+</code></pre>
+<h3 id="v-for-示例"><code>v-for</code> 示例</h3>
+<p>HTML：</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;ul&gt;
+    &lt;li v-for=&quot;item in items&quot;&gt;{{ item.text }}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JavaScript：</p>
+<pre><code class="language-javascript">new Vue({
+  el: '#app',
+  data: {
+    items: [
+      { text: 'Item 1' },
+      { text: 'Item 2' },
+      { text: 'Item 3' }
+    ]
+  }
+});
+</code></pre>
+<h2 id="和事件相关的指令">和事件相关的指令</h2>
+<h3 id="v-on-指令"><code>v-on</code> 指令</h3>
+<p><code>v-on</code> 指令用于监听 DOM 事件，并在触发时执行一些 JavaScript 代码。</p>
+<p>HTML：</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;button v-on:click=&quot;handleClick&quot;&gt;Click me&lt;/button&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JavaScript：</p>
+<pre><code class="language-javascript">Vue.createApp({
+  data() {
+    return {
+      message: ''
+    };
+  },
+  methods: {
+    handleClick() {
+      this.message = 'Hello World'
+    }
+  }
+}).mount('#app')
+</code></pre>
+<p>v-on: 这是 Vue 中用于附加事件监听器的指令。<br>
+click: 这是具体要监听的 DOM 事件类型，在这里是鼠标点击事件。<br>
+handleClick: 这是当事件发生时要调用的方法名。</p>
+<p>v-on可以简写为@，例如：</p>
+<pre><code class="language-html">&lt;button @click=&quot;handleClick&quot;&gt;Click me&lt;/button&gt;
+</code></pre>
+<p>引号里面的内容是一个表达式，这个表达式的值是一个方法名，这个方法名对应的方法会在事件发生时被调用。</p>
+<p>写成 <code>handleClick()</code> 和只写 <code>handleClick</code> 在 Vue 中有重要区别：</p>
+<ol>
+<li>
+<p><strong>handleClick</strong>:</p>
+<ul>
+<li>当你在 <code>v-on:click</code> 中使用 <code>handleClick</code>（没有括号），你是在传递这个函数的引用。这意味着当点击事件发生时，Vue 将调用这个函数。</li>
+<li>这种方式允许你在事件发生时传递原生的事件对象（例如 <code>MouseEvent</code>）到 <code>handleClick</code> 函数中。如果你的函数需要这个事件对象，Vue 会自动提供它。</li>
+</ul>
+</li>
+<li>
+<p><strong>handleClick()</strong>:</p>
+<ul>
+<li>当你写成 <code>handleClick()</code>（有括号）时，你是在指令中直接调用这个函数。这通常不是你想要的，因为它会在 Vue 实例渲染时立即调用该函数，而不是在点击事件发生时。</li>
+<li>这种方式通常用于你需要在事件处理器中传递特定参数的情况，而不是使用由事件本身自动传递的事件对象。</li>
+</ul>
+</li>
+</ol>
+<p>例如：</p>
+<pre><code class="language-html">&lt;!-- 传递函数引用，点击时调用 --&gt;
+&lt;button v-on:click=&quot;handleClick&quot;&gt;Click me&lt;/button&gt;
+
+&lt;!-- 传递一个立即调用的函数，这通常不是你想要的，除非你需要传递特定的参数 --&gt;
+&lt;button v-on:click=&quot;handleClick()&quot;&gt;Click me&lt;/button&gt;
+</code></pre>
+<p>如果你的 <code>handleClick</code> 方法不需要接收任何特别的参数，而只是想在点击事件发生时调用，那么你应该使用没有括号的形式 <code>handleClick</code>。如果你需要传递特定的参数（不是事件对象），那么你可以使用带括号的形式，并在里面指定你的参数，例如 <code>handleClick(param)</code>。</p>
+<h3 id="vue中可以使用的事件">Vue中可以使用的事件</h3>
+<h4 id="form表单事件">form表单事件</h4>
+<ul>
+<li><code>v-on:submit</code>：监听表单的提交事件。</li>
+<li><code>v-on:focus</code>：监听元素获取焦点的事件。</li>
+<li><code>v-on:blur</code>：监听元素失去焦点的事件。</li>
+<li><code>v-on:change</code>：监听元素的值发生改变的事件。</li>
+<li><code>v-on:selsect</code>：监听元素被选中的事件。</li>
+</ul>
+<h4 id="鼠标事件">鼠标事件</h4>
+<ul>
+<li><code>v-on:click</code>：监听元素被点击的事件。</li>
+<li><code>v-on:dblclick</code>：监听元素被双击的事件。</li>
+<li><code>v-on:mousedown</code>：监听鼠标按下的事件。</li>
+<li><code>v-on:mouseup</code>：监听鼠标松开的事件。</li>
+<li><code>v-on:mousemove</code>：监听鼠标移动的事件。</li>
+<li><code>v-on:mouseover</code>：监听鼠标移入的事件。</li>
+<li><code>v-on:mouseout</code>：监听鼠标移出的事件。</li>
+<li><code>v-on:mouseleave</code>：监听鼠标离开的事件。</li>
+<li><code>v-on:mouseenter</code>：监听鼠标进入的事件。</li>
+</ul>
+<h4 id="键盘事件">键盘事件</h4>
+<ul>
+<li><code>v-on:keydown</code>：监听键盘按下的事件。</li>
+<li><code>v-on:keyup</code>：监听键盘松开的事件。</li>
+<li><code>v-on:keypress</code>：监听键盘按下并松开的事件。</li>
+</ul>
+<h4 id="其他事件">其他事件</h4>
+<ul>
+<li><code>v-on:resize</code>：监听窗口大小改变的事件。</li>
+<li><code>v-on:scroll</code>：监听元素滚动的事件。</li>
+<li><code>v-on:error</code>：监听资源加载失败的事件。</li>
+<li><code>v-on:contextmenu</code>：上下文菜单事件。</li>
+</ul>
+<p><code>mouseenter</code>、<code>mouseleave</code>、<code>mouseover</code> 和 <code>mouseout</code> 是 DOM 中的鼠标事件，它们之间有一些重要的区别：</p>
+<ol>
+<li>
+<p><strong>mouseenter</strong>:</p>
+<ul>
+<li>当鼠标指针进入元素或其子元素的时候触发。</li>
+<li>不会冒泡，即只在鼠标指针进入绑定了事件监听器的那个元素时触发。</li>
+<li>不会因为鼠标指针在其子元素之间移动而重复触发。</li>
+</ul>
+</li>
+<li>
+<p><strong>mouseleave</strong>:</p>
+<ul>
+<li>当鼠标指针离开元素或其子元素的时候触发。</li>
+<li>与 <code>mouseenter</code> 类似，<code>mouseleave</code> 也不冒泡，并且只在鼠标离开绑定了事件监听器的元素时触发。</li>
+<li>不会因为鼠标指针在其子元素之间移动而重复触发。</li>
+</ul>
+</li>
+<li>
+<p><strong>mouseover</strong>:</p>
+<ul>
+<li>当鼠标指针移动到元素或其子元素上时触发。</li>
+<li>与 <code>mouseenter</code> 不同，<code>mouseover</code> 事件会冒泡。这意味着它不仅在鼠标指针移动到元素上时触发，也会在鼠标指针移动到其任何子元素上时触发。</li>
+<li>可以在鼠标指针在元素的不同子元素之间移动时重复触发。</li>
+</ul>
+</li>
+<li>
+<p><strong>mouseout</strong>:</p>
+<ul>
+<li>当鼠标指针离开元素或其子元素时触发。</li>
+<li>类似于 <code>mouseover</code>，<code>mouseout</code> 事件也会冒泡。</li>
+<li>也会在鼠标指针从元素的一个子元素移动到另一个子元素时触发。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><code>mouseenter</code> 和 <code>mouseleave</code> 更适用于当你需要处理鼠标指针进入或离开一个元素时的情况，而不希望子元素的移动触发事件。</li>
+<li><code>mouseover</code> 和 <code>mouseout</code> 则适用于需要考虑元素及其子元素的情况，且这两者会在指针移动到子元素时重复触发。</li>
+</ul>
+<h2 id="v-error-指令">v-error 指令</h2>
+<p><code>v-error</code> 指令用于监听资源加载失败的事件。</p>
+<p>例如在图片加载失败时，显示一张默认的图片：</p>
+<p>HTML：</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;img v-bind:src=&quot;imageSrc&quot; v-on:error=&quot;handleError&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<p>JavaScript：</p>
+<pre><code class="language-javascript">Vue.createApp({
+  data() {
+    return {
+      imageSrc: 'path/to/image.jpg'
+    };
+  },
+  methods: {
+    handleError() {
+      this.imageSrc = 'path/to/default-image.jpg';
+    }
+  }
+}).mount('#app')
+</code></pre>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#vue-%E4%B8%AD%E7%9A%84%E6%8C%87%E4%BB%A4%E4%BB%A5-v-%E5%BC%80%E5%A4%B4%E7%9A%84">Vue 中的指令（以 <code>v-</code> 开头的）。</a>
+<ul>
+<li><a href="#v-bind-%E7%A4%BA%E4%BE%8B"><code>v-bind</code> 示例</a></li>
+<li><a href="#v-model-%E7%A4%BA%E4%BE%8B"><code>v-model</code> 示例</a></li>
+<li><a href="#v-for-%E7%A4%BA%E4%BE%8B"><code>v-for</code> 示例</a></li>
+</ul>
+</li>
+<li><a href="#%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8C%87%E4%BB%A4">和事件相关的指令</a>
+<ul>
+<li><a href="#v-on-%E6%8C%87%E4%BB%A4"><code>v-on</code> 指令</a></li>
+<li><a href="#vue%E4%B8%AD%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BA%8B%E4%BB%B6">Vue中可以使用的事件</a>
+<ul>
+<li><a href="#form%E8%A1%A8%E5%8D%95%E4%BA%8B%E4%BB%B6">form表单事件</a></li>
+<li><a href="#%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6">鼠标事件</a></li>
+<li><a href="#%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6">键盘事件</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E4%BA%8B%E4%BB%B6">其他事件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#v-error-%E6%8C%87%E4%BB%A4">v-error 指令</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

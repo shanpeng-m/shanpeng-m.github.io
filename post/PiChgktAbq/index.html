@@ -1,0 +1,472 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【4-20】团队动态 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【4-20】团队动态 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为技术负责人，你有广泛的权限来塑造团队..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【4-20】团队动态 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为技术负责人，你有广泛的权限来塑造团队..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/PiChgktAbq/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【4-20】团队动态 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为技术负责人，你有广泛的权限来塑造团队...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/PiChgktAbq/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【4-20】团队动态
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-12-15 · 24 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>作为技术负责人，你有广泛的权限来塑造团队的动态，比如提升健康状况和士气，以及解决冲突。但如何利用这种影响力来创建一个健康且运作良好的团队呢？</p>
+<h1 id="健康的团队">健康的团队</h1>
+<p>什么使一个团队健康？以下是我在表现良好的团队中始终观察到的特征。</p>
+<h2 id="清晰度">清晰度</h2>
+<p>在一个健康的团队中，团队存在的原因、目标是什么以及如何实现这些目标是清晰的。清晰度始于领导层：技术负责人、工程经理和产品经理。他们通过与团队成员持续沟通来提供清晰度。</p>
+<p>判断是否有清晰度的一个简单方法是询问工程师团队的目标是什么，以及这些目标存在的原因。如果每个人的回答大致相同，那就说明清晰度足够。如果不是，则值得探究为什么人们的回答不同。</p>
+<h2 id="执行力">执行力</h2>
+<p>团队“能够完成事情”。这意味着以一种对利益相关者可见的方式交付项目、功能、产品和服务。</p>
+<p>我们已经深入探讨过作为工程师“完成事情”的含义，以及如何将良好的工作与向他人传达这些工作的能力结合起来。同样的原则也适用于健康的团队。作为技术负责人，你往往在帮助团队做好工作并确保组织内利益相关者了解这些工作方面扮演着重要角色。</p>
+<h2 id="良好的士气">良好的士气</h2>
+<p>健康的团队拥有良好的士气，人们对上班感到积极。一些良好士气的指标包括：</p>
+<ul>
+<li>投入的队友：人们对自己的工作充满热情，积极贡献想法并互相帮助。</li>
+<li>相互支持：团队成员之间有亲密的合作，当需要时，成员会主动帮助队友。</li>
+<li>低流失率：即使有机会，团队成员也很少离开团队。</li>
+<li>积极的氛围：团队内部充满正能量，成员有动力完成任务。</li>
+</ul>
+<h2 id="健康的沟通">健康的沟通</h2>
+<p>文明且建设性的沟通是健康团队的基本要求。即使在困难的情况下，人们也彼此尊重。沟通是开放且尊重的，工程师、工程经理、产品经理以及其他核心成员之间存在相互信任。</p>
+<p>每个团队都会有冲突，但在健康的团队中，这些冲突会被建设性地处理。没有真正的“戏剧性”——至少没有任何不能迅速解决的问题。<br>
+人们愿意彼此挑战以创造更好的解决方案，并以尊重和建设性的方式进行。例如，代码和设计评审包含有用且不带评判性的反馈。</p>
+<h2 id="一个投入的团队">一个投入的团队</h2>
+<p>每个人都为团队做出贡献，并参与计划和工作本身。没有人被排除在外，也没有人明显比其他人做得更少。初级成员和新加入的成员被邀请参与其中。团队成员感到安全，可以做自己，并在他人面前感到足够舒适以展现脆弱的一面。</p>
+<h1 id="不健康的团队">不健康的团队</h1>
+<p>不健康的团队从定义上来说与健康的团队相反。不健康团队的标志包括：</p>
+<ul>
+<li>缺乏清晰度</li>
+<li>执行力差</li>
+<li>非建设性地处理冲突</li>
+<li>缺乏沟通和信任</li>
+<li>非建设性的反馈</li>
+<li>缺乏心理安全感</li>
+<li>并非所有团队成员都做出贡献</li>
+</ul>
+<p>让我们来看看团队变得不健康的常见原因。</p>
+<p>为什么团队会不健康以及如何解决<br>
+糟糕的管理。这通常是主观的，但可能涉及经理长时间忽视团队动态、偏袒某些人、对团队成员的期望不一致、让自己的偏见过度影响决策、过度微观管理等等。</p>
+<p>糟糕管理往往很容易被察觉，因为团队成员经常会私下讨论令人恼火的管理行为。当然，要改变这种情况并不容易。如果经理愿意接受反馈，作为技术负责人，你可以尝试提供一些建设性的建议，帮助经理改善管理方式。然而，需要谨慎行事，因为最终落实健康的管理实践是团队经理的责任。</p>
+<p><strong>团队中的“聪明的混蛋”。</strong> 一个经验丰富但“坏苹果”的工程师可能就已经够让人头疼了，尤其是当经理因为担心失去这个“混蛋”带来的专业知识而保护他们时。然而，“聪明的混蛋”往往会损害团队的士气和动态。</p>
+<p>作为技术负责人，如果你注意到这种情况，建议尽早处理，而不是让问题恶化。你可以尝试向这位“混蛋”团队成员提供反馈。如果无效，你可能需要向他们的经理反映，因为经理拥有比你更多的工具来处理这种问题，包括绩效管理方法。</p>
+<p><strong>团队缺乏技能。</strong> 当团队成员缺乏执行所需的技能或经验时，团队的输出可能会很差。这可能是缺少某种技术技能，例如，当团队成员大多没有使用 Go 语言的经验时，却要处理一个 Go 语言代码库。</p>
+<p>作为技术负责人，你可以投入精力指导和指导他人，或者提出培训建议。如果你自己缺乏所需的技能，作为一名经验丰富的工程师，没有理由不去学习。时间可能是一个显而易见的阻碍，但如果团队必须掌握某项技能，那么在工作时间内主动安排时间学习这项技能可能是一个足够优先的事项，可以在不事先获得许可的情况下进行。</p>
+<p><strong>缺乏反馈或空洞的反馈。</strong> 在一个团队中，如果成员之间没有分享反馈，人们将无法意识到自己的行为对他人的影响。如果反馈过于笼统，回避指出需要解决的问题，也会产生同样的结果。</p>
+<p>我曾在一个团队中遇到过一个“聪明的混蛋”，每个人都在回避他。后来我了解到，没有人给过他反馈。当一位同事告诉他这些问题后，他的行为发生了改变。虽然经理不给直接下属提供反馈是不可原谅的，但作为技术负责人，你可以考虑提供建设性的反馈，帮助人们认识到自己的行为何时对团队产生了负面影响。</p>
+<p><strong>方向不明确。</strong> 如果一个团队的方向和目标经常改变或不明确，那么这个团队往往会感到困惑，健康状况较差。作为技术负责人，你应该确保团队和项目的方向是清晰的，并尽量减少干扰。</p>
+<p><strong>原地踏步。</strong> 有些团队工作非常努力，但几乎没有任何成果。他们通常忙于解决紧急问题，需要投入大量精力才能维持基本运转（KTLO）。团队的利益相关者会感到不满，并认为团队一定是在偷懒，而事实恰恰相反！<br>
+作为技术负责人，如果你发现你的团队在原地踏步，应该向管理层提出这个问题，并制定计划摆脱KTLO。这可能意味着暂停产品开发工作一段时间，解决“繁琐工作”的根本原因。这可能意味着将不再适合团队负责的系统转交给其他团队。这可能意味着许多事情，因此需要与团队的工程和产品领导层坐下来讨论，找到打破这个循环的方法。</p>
+<p><strong>一个高效的解决方案是在团队原地踏步时限制正在进行的工作。</strong> 在《An Elegant Puzzle》一书中，工程管理高管Will Larson建议：<br>
+“当原地踏步时，系统性的解决方法是增加流程，以整合团队的努力，完成更多的事情，并减少并行工作，直到团队能够开始偿还技术债务（例如，限制正在进行的工作）。战术上，这里的重点是帮助团队成员从个人生产力的视角转变为团队生产力的视角。”</p>
+<p><strong>过多的上下文切换。</strong> 如果一个团队中几乎每个人同时处理多个任务，往往很难完成任何事情，即使完成了也质量不高。这是原地踏步的一种情况，但更容易被察觉。</p>
+<p><strong>作为技术负责人，了解团队成员正在处理的工作内容。</strong> 如果你发现大多数队友同时在平衡多个重要任务，为他们提供优先级排序的帮助，并提供支持，让团队成员能够专注于最高优先级的任务。在开始新任务之前完成现有任务是一个有用的方法。</p>
+<p><strong>过多的流程。</strong> 如果一个团队的运作涉及过多的繁琐流程，即使是完成简单的事情，比如更改代码或使用新工具，也会变得非常困难。这会降低团队的效率和士气，并导致更多的人员流失。<br>
+作为技术负责人，你处于一个有利的位置，可以对不必要的流程进行反击并减少繁琐的流程。你也可以教育团队成员哪些流程是需要遵循的。但谁说这些流程不能被简化或自动化呢？</p>
+<p><strong>挑战繁琐、耗时的手动流程。</strong> 要知道，一些世界上最大的科技公司不会用糟糕的流程来烦扰工程师。苹果、微软和亚马逊等公司投入了大量的时间、精力和资金来自动化许多工程流程，因此你也许可以推动一些用自动化替代流程的举措！</p>
+<p><strong>缺乏结构。</strong> 过多的流程通常不是好事，但没有任何流程对于缺乏经验的工程师团队来说可能会是一个挑战。如果你发现自己在这样一个团队中，建立一些基本的护栏可能是个好主意，目的是随着团队的成熟逐步移除这些护栏。</p>
+<p>自动化的护栏比手动护栏更容易遵循且更持久，但手动护栏更容易实施。例如，如果团队中的大多数人都跳过了编写测试，而导致漏洞不断出现，那么作为第一步，你可以为所有更改业务逻辑的代码实施自动化测试。</p>
+<p>或者，你可以在CI系统中添加自动化，检查拉取请求的代码覆盖率，并在拉取请求导致测试覆盖率下降时添加自动警告。审查者可能会忽略警告，但这种自动化将使忽视测试变得更加困难，前提是团队希望将这一领域作为重点。</p>
+<p><strong>被技术债务困扰。</strong> 如果技术债务长期得不到解决，即使是修改功能或对系统进行看似很小的更改，也可能需要更长的时间，或者导致系统崩溃，最终花费更多时间来修复问题。一个技术债务过多的团队会开始原地踏步，并陷入处理越来越脆弱的系统的泥潭。</p>
+<h1 id="团队面临困难的结构性原因">团队面临困难的结构性原因</h1>
+<p>有时候，技术负责人对导致团队不健康的情况几乎无能为力，包括以下情况：</p>
+<p><strong>人员流失过多。</strong> 短时间内太多人离职，或者拥有关键知识和技能的人离开，留下了空白。人员流失的原因有很多，包括运气不好，或者公司层面或工程管理中的深层问题。</p>
+<p>当人员流失激增时，最明智的做法是重新商定期望，因为团队无法像以前一样交付相同数量或质量的工作。<br>
+<strong>新成员过多。</strong> 出乎意料的是，当团队迎来大量新成员时，由于需要进行入职培训，执行效率可能会下降。如果新成员积极参与项目，那么节奏可能会加快，但在他们学习系统的细节（通常通过犯错并从中学习）时，产出会暂时下降。</p>
+<p><strong>初级成员占比过高。</strong> 一个缺乏执行经验的团队会表现不佳。作为技术负责人，你可以做很多事情来提升团队的技能和经验，但这并非一朝一夕可以完成。<br>
+有助于解决问题的方法包括与工程师结对合作，审查他们的工作并提供反馈——代码审查往往变得非常重要——邀请更有经验的工程师短期加入以帮助提升团队水平，或者为你没有时间支持的工程师找到导师。</p>
+<p><strong>方向突然改变。</strong> 当团队意外改变方向时，执行的节奏通常会下降。改变方向意味着团队需要结束旧的工作，并开始规划新的方法。这一切都是正常的；作为技术负责人，你需要向利益相关者和领导层设定期望，即团队需要一个喘息的机会来重新调整方向，之后执行将会回到正轨。</p>
+<h1 id="成长中的团队问题">成长中的团队问题</h1>
+<p>有些团队看起来很健康，但实际上存在逐渐显现的、未被察觉的问题。如果这些问题得不到解决，可能会将团队拖入不健康的状态。成长中的问题包括以下几类：</p>
+<h2 id="无声的冲突和传话游戏">无声的冲突和“传话游戏”</h2>
+<p>表面上看，一个团队内部没有冲突，沟通也很文明。然而，在表面之下，静默的冲突正在发生，小团体正在形成。团队的经理——甚至一些团队成员——可能对此一无所知。冲突酝酿的时间越长，对生产力的伤害就越大。</p>
+<p>作为技术负责人，如果你注意到这一点，提醒你的经理是有帮助的，因为他们拥有应对这种情况的最佳工具。但不要仅仅依赖他们；尝试根据自己的判断，利用团队成员对你的信任，与相关方沟通以消除隔阂。</p>
+<h2 id="默默增长的执行问题">默默增长的执行问题</h2>
+<p>团队的执行力表现良好，但执行变得越来越困难。这可能是由于技术债务快速累积、运营工作占据了产品工作的时间、团队成员接近倦怠状态等原因。<br>
+作为技术负责人，不要等到这些问题爆发并妨碍团队表现。尝试从最紧迫的问题开始，缓解这些难题。</p>
+<h2 id="优秀的工作被忽视">优秀的工作被忽视</h2>
+<p>一些团队成员做了出色的工作，通常是在团队之外。然而，他们的经理对此一无所知，不仅没有认可这些额外的工作，反而认为这些团队成员的生产力低于其他人。<br>
+作为技术负责人，目标是深入了解团队成员所做的工作。即使是团队外的优秀工作，也要让其被认可。你处于最有利的位置，可以让被忽视的工作被注意到，因此要利用你的影响力来做到这一点。</p>
+<h2 id="人员流失风险的增长">人员流失风险的增长</h2>
+<p>团队成员往往知道某个队友正在尝试离开团队，但经理对此可能一无所知。如果你发现这种情况，你会怎么做：告诉经理，还是保持沉默？<br>
+这是一个微妙的情况，因为这个人可能最终不会离开。值得与你发现的人交谈，了解他们寻找其他机会的根本原因，并尽可能尝试解决问题。如果他们的动机是经济原因，作为技术负责人你可能无能为力。但如果他们因为持续处理紧急问题而接近倦怠，这是你可以帮助解决的问题，不仅是为这个人，也是为整个团队。</p>
+<h2 id="资深成员过多但缺乏挑战">资深成员过多但缺乏挑战</h2>
+<p>一种较为罕见的情况是，当一个团队中资深成员较多但缺乏足够的挑战时，可能会出现“厨师太多坏了汤”的情况，并围绕有影响力的“有趣项目”的工作机会产生冲突。如果工程师们有相同的晋升目标，而晋升目标与交付项目和展示影响力相关，这种动态可能会变得尤为复杂。<br>
+绩效管理通常不是技术负责人的职责，但提出这样的担忧给负责的经理是明智的选择。</p>
+<h1 id="改善团队动态">改善团队动态</h1>
+<p>作为技术负责人，你可能是团队中最有能力改善团队动态的个人贡献者。你可能是团队中更有经验的人之一，并且已经负责一些项目，这意味着你拥有一定的非正式权威。以下是利用你的职位来改善团队动态的方法。</p>
+<h2 id="首先观察">首先，观察</h2>
+<p>从观察团队的动态开始。不要急于立即“修复”任何问题，尤其是当你刚加入团队时。了解团队的状态。哪些方面感觉不健康？具体有哪些不健康的部分？<br>
+作为一个练习，可以列出本章前面提到的健康和不健康特征，并将它们应用到你的团队中。你看到了什么？记录下团队中最好的三件事，以及需要改进的三个方面。</p>
+<p>或者，可以考虑开展一个团队活动，让每个人反思哪些方面做得很好，哪些方面可以改进。<br>
+与团队成员私下交谈，以更好地了解情况。工程经理经常通过一对一会议与直接下属交谈，从而了解事情的真实状况。在私下环境中，人们往往会更坦率。</p>
+<p>考虑与团队成员进行一对一交流，不一定像经理那样定期进行，但至少可以作为单次的尝试。在私下交流中，询问他们认为哪些方面做得好，哪些是最大的问题。倾听他们的挑战以及他们对问题的看法。<br>
+建立信任会让这一过程变得更容易。虽然没有捷径，但支持队友、无私地帮助他们、不破坏信任，这些都能产生深远的影响。</p>
+<h2 id="接着改善动态">接着，改善动态</h2>
+<p>尽可能减少小组环境中的负面互动。在会议和其他小组场合中，团队的动态是如何表现的？是否有人主导讨论，而其他人退居幕后？冲突是在公开场合发生，还是在私下进行？<br>
+当负面动态出现时，可以采取行动减少小组环境中的负面互动。例如，如果两名团队成员之间的争论变得激烈，可以试着帮助缓和情绪，专注于解决眼前的问题。毕竟，你有一定的资历，如果你对不专业的行为袖手旁观，实际上等于默许了这种行为。</p>
+<p>让团队成员参与相关讨论。我观察到两种类型的工程团队：</p>
+<p>团队A：有经验的工程师在没有其他团队成员参与的情况下做出决策，然后将这些决策作为需要遵循的计划进行呈现。<br>
+团队B：有经验的工程师提出一个方案，但会让其他团队成员参与进来，或者解释他们的理由，并给予队友提出建议或挑战决策的机会。</p>
+<p>哪种团队效率更高？你可能会认为，在时间紧迫的情况下，团队A可能会因为减少讨论而移动得更快，尤其是在不太有经验的工程师对话题贡献有限的情况下。<br>
+但哪种团队动态更好？我认为，一个让所有人，包括缺乏经验的工程师，都感到被包容并能发出自己声音的团队，动态会更健康。<br>
+作为技术负责人，你将有机会塑造团队文化，使其更像团队A或团队B。平衡效率需求与让缺乏经验的工程师参与之间的关系，让他们了解决策是如何做出的，并能够参与决策过程。</p>
+<p>解决最紧迫的健康问题，或者将其上报给你的经理。一旦你对团队的状况有了了解，你就能识别出最紧迫的问题。</p>
+<p>这些问题可能是某个过于强势的团队成员、缺乏方向感，或其他任何问题。尝试利用你在团队中的信任和权威来解决问题。在某些情况下，你可以通过与人交谈或提供反馈来解决问题。以身作则也可能有所帮助。<br>
+但有时候，你无法解决一个紧迫的问题。你的经理对团队动态负有最终责任，因此当你没有解决问题的工具时，将问题上报给他们。在担任技术负责人时，并非每个问题都需要你来解决。例如，有绩效问题的同事不是你的问题，这是经理的责任。</p>
+<p>向经理提出解决方案，而不是仅仅列出问题清单。此外，尽量不要让问题突然冒出来。如果你有定期的会面，可以提前标记出你注意到的问题，这样它们就不会演变成更大的问题。</p>
+<h2 id="与其他团队的关系">与其他团队的关系</h2>
+<p>一个健康的团队不仅内部健康，还需要与其他团队保持健康的关系。作为技术负责人，你在帮助塑造这些关系方面具有重要影响力。简单来说，如果你与其他团队的工程师、产品人员和利益相关者建立了高效的合作关系，那么你将更好地帮助你的团队完成任务。<br>
+我们在“与其他工程团队更好合作的策略”中涵盖了一些建议。在那些建议的基础上，还可以考虑以下方法来建立与其他团队的健康关系。</p>
+<p>与其他团队的工程项目负责人保持联系。安排时间与项目负责人一起吃午饭或开个会——可以是面对面，也可以是线上通话。这些项目负责人可能是其他团队的技术负责人、高级工程师或资深工程师。讨论他们那边的情况：哪些方面进展顺利，哪些方面存在挑战。分享你团队的最新动态，如果可能的话，提供帮助以解决他们的挑战。</p>
+<p>与其他团队的工程经理或产品经理交流。偶尔了解一下与你经常合作的团队的经理是很有帮助的。参考“利益相关者管理”章节中的“向利益相关者学习”小节中的建议。</p>
+<p>在问题情况下考虑使用口头而非书面沟通。你的团队不可避免地会遇到与其他团队相关的问题。例如，你可能会对一个承诺的API更改迟迟未实现感到沮丧，或者对方团队拒绝了修改他们代码库的一个Pull Request感到不满。</p>
+<p>当此类冲突出现时，抓住机会与该团队的另一名工程师进行面对面的交流，或者通过视频通话沟通。通过交谈，你可以避免聊天或电子邮件等书面沟通渠道中常见的误解。此外，与一个你不熟悉的人交谈，不仅有助于解决当前的问题，还能建立更个人化的关系。在加强与其他团队的关系方面，直接沟通确实是一个很好的方法。</p>
+<p>收获总结</p>
+<p>在担任技术负责人角色时，你需要同时平衡以下几件事情：</p>
+<ul>
+<li>领导一个项目或一个工程团队</li>
+<li>赋能团队成员，同时帮助他们清除障碍</li>
+<li>与利益相关者、产品团队，甚至可能包括你的经理保持联系</li>
+<li>在从事个人贡献者（IC）工作时树立榜样，比如编写代码、代码评审以及值班</li>
+</ul>
+<p>平衡以上这些并不容易；这需要时间、实践以及一定的试验和错误。<br>
+以身作则。在担任技术负责人角色时，即使这种期望并不明确，团队的其他成员也会期望你以身作则。作为技术负责人，你应该足够亲力亲为，参与到规划、编写代码、进行代码评审以及值班轮岗（如果有的话）中去。<br>
+请记住，如果你选择走捷径，比如发布没有自动化测试的代码，或者快速推进但经常导致生产环境出问题，这将为团队定下基调。如果你希望团队整体保持高质量的标准，最好的方法就是以身作则，产出高质量的工作。同样，这也适用于培养一种完成任务、清除障碍、与客户沟通并解决问题的文化。</p>
+<p>此外，担任技术负责人意味着你有额外的责任，因此用于个人贡献者工作的时间会减少。所以，当你有机会从事个人贡献者工作时，要确保高效并让你的产出为团队完成任务设定一个高质量的标准。</p>
+<p>最好的技术负责人不会认为自己优于其他工程师。许多公司不使用“技术负责人”这一头衔的一个原因是，“负责人”这个词暗示了领导者与追随者的关系。但我所合作过的最具生产力的团队都有一个共同点：每个人都觉得自己有发言权，职位头衔不会妨碍提出更好的、更快的或更高质量的解决方案。</p>
+<p>作为技术负责人，要在需要时承担领导责任，与此同时创造一个让所有工程师都有发言权，并有信心主动采取行动、做出决策的环境。不要忘记，作为技术负责人的目标并不是“领导”，让所有人都依赖你并遵循你的决策。你的目标是：</p>
+<p>帮助团队和项目取得成功，让大家尽可能高效地工作。<br>
+一个成员更加独立的团队几乎总是比一个所有人都等待技术负责人决策的团队更高效。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E5%81%A5%E5%BA%B7%E7%9A%84%E5%9B%A2%E9%98%9F">健康的团队</a>
+<ul>
+<li><a href="#%E6%B8%85%E6%99%B0%E5%BA%A6">清晰度</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E5%8A%9B">执行力</a></li>
+<li><a href="#%E8%89%AF%E5%A5%BD%E7%9A%84%E5%A3%AB%E6%B0%94">良好的士气</a></li>
+<li><a href="#%E5%81%A5%E5%BA%B7%E7%9A%84%E6%B2%9F%E9%80%9A">健康的沟通</a></li>
+<li><a href="#%E4%B8%80%E4%B8%AA%E6%8A%95%E5%85%A5%E7%9A%84%E5%9B%A2%E9%98%9F">一个投入的团队</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8D%E5%81%A5%E5%BA%B7%E7%9A%84%E5%9B%A2%E9%98%9F">不健康的团队</a></li>
+<li><a href="#%E5%9B%A2%E9%98%9F%E9%9D%A2%E4%B8%B4%E5%9B%B0%E9%9A%BE%E7%9A%84%E7%BB%93%E6%9E%84%E6%80%A7%E5%8E%9F%E5%9B%A0">团队面临困难的结构性原因</a></li>
+<li><a href="#%E6%88%90%E9%95%BF%E4%B8%AD%E7%9A%84%E5%9B%A2%E9%98%9F%E9%97%AE%E9%A2%98">成长中的团队问题</a>
+<ul>
+<li><a href="#%E6%97%A0%E5%A3%B0%E7%9A%84%E5%86%B2%E7%AA%81%E5%92%8C%E4%BC%A0%E8%AF%9D%E6%B8%B8%E6%88%8F">无声的冲突和“传话游戏”</a></li>
+<li><a href="#%E9%BB%98%E9%BB%98%E5%A2%9E%E9%95%BF%E7%9A%84%E6%89%A7%E8%A1%8C%E9%97%AE%E9%A2%98">默默增长的执行问题</a></li>
+<li><a href="#%E4%BC%98%E7%A7%80%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%A2%AB%E5%BF%BD%E8%A7%86">优秀的工作被忽视</a></li>
+<li><a href="#%E4%BA%BA%E5%91%98%E6%B5%81%E5%A4%B1%E9%A3%8E%E9%99%A9%E7%9A%84%E5%A2%9E%E9%95%BF">人员流失风险的增长</a></li>
+<li><a href="#%E8%B5%84%E6%B7%B1%E6%88%90%E5%91%98%E8%BF%87%E5%A4%9A%E4%BD%86%E7%BC%BA%E4%B9%8F%E6%8C%91%E6%88%98">资深成员过多但缺乏挑战</a></li>
+</ul>
+</li>
+<li><a href="#%E6%94%B9%E5%96%84%E5%9B%A2%E9%98%9F%E5%8A%A8%E6%80%81">改善团队动态</a>
+<ul>
+<li><a href="#%E9%A6%96%E5%85%88%E8%A7%82%E5%AF%9F">首先，观察</a></li>
+<li><a href="#%E6%8E%A5%E7%9D%80%E6%94%B9%E5%96%84%E5%8A%A8%E6%80%81">接着，改善动态</a></li>
+<li><a href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%9B%A2%E9%98%9F%E7%9A%84%E5%85%B3%E7%B3%BB">与其他团队的关系</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-8-2】编写高质量代码 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-8-2】编写高质量代码 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+编写高质量代码
+作为一位称职的软件开发人..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-8-2】编写高质量代码 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+编写高质量代码
+作为一位称职的软件开发人..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/XNWbill4u/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-8-2】编写高质量代码 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+编写高质量代码
+作为一位称职的软件开发人...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/XNWbill4u/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-8-2】编写高质量代码
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-11 · 7 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="编写高质量代码">编写高质量代码</h2>
+<p>作为一位称职的软件开发人员，你会希望编写具有正确抽象层次的代码，能够可靠地运行，考虑到潜在的错误情况。这当然也包括代码的可读性，我们在这一节之前已经提到过这点。</p>
+<h3 id="使用正确的抽象层次">使用正确的抽象层次</h3>
+<p>在结构化代码时，你会创建抽象的类。这些类将实现细节从代码的其他部分抽象出来。例如，你可能会遇到一个名为“PaymentsIntent”的类，它在一个文件中实现以下功能：</p>
+<ul>
+<li>发送API请求进行付款</li>
+<li>通过查看JSON中的签名来评估其是否有效，将其转换为PaymentsResponse对象</li>
+<li>返回PaymentsResponse响应</li>
+</ul>
+<p>这个类并不做很多事情，但你可能会决定将第2个功能——将JSON转换为PaymentsResponse对象——抽象成自己的类。</p>
+<p>接着，PaymentsIntent将这样做：</p>
+<ul>
+<li>发送API请求进行付款</li>
+<li>创建一个新的PaymentResponse对象，然后返回这个对象</li>
+</ul>
+<p>为什么我们要抽象出解析付款响应JSON的过程呢？有几个原因：</p>
+<ul>
+<li>代码的其他部分现在可以使用相同的功能，而不需要复制逻辑。这符合“不要重复自己”（DRY）原则。</li>
+<li>类的责任被缩小，每个类都只有一个责任。</li>
+<li>在未来，如果支付API的响应发生变化，更容易确定应该修改哪些代码，因为解析功能集中在一个地方。</li>
+</ul>
+<p>在《软件设计哲学》一书中，作者约翰·奥斯特豪特描述了信息隐藏的好处：</p>
+<p>“信息隐藏以两种方式减少复杂性。首先，它简化了模块[或类]的接口。接口反映了模块功能的更简单、更抽象的视角，并隐藏了细节；这降低了使用该模块的开发人员的认知负担。其次，信息隐藏使系统更容易演化。如果一部分信息被隐藏了，那么在包含该信息的模块之外就不会有该信息的依赖，因此与该信息相关的设计变更只会影响一个模块。”</p>
+<p>以合适的抽象层次构建系统是一个你通过实践不断提升的过程。毕竟，你不希望将系统拆分成太多小块，因为过多数量的微小类会增加不必要的认知负担。</p>
+<h3 id="良好地处理错误">良好地处理错误</h3>
+<p>据我个人经验，许多故障都可以追溯到代码的错误处理不正确。作为软件开发者，编写代码时需要考虑可能出现的问题，并在错误处理上投入足够的时间和精力。拥有一套一致的错误处理策略很重要。当遇到可能是错误的情况时，你会怎么做？会抛出异常、记录错误、两者兼而或其他方式？你应该能够解释自己是如何处理错误的；最好与团队中的其他人保持一致。记录错误是一个明智的策略，你应该设定记录的策略。其中提供了一个在第五部分：《软件工程》中给出的策略。当怀疑时，使用 <strong>防御性编程</strong> 。这意味着其他部分代码的输入是不可靠且可能恶意的。在这种思维模式下，你会开始质疑然后验证系统、类甚至函数的输入。以下是一些防御性编程的方法：</p>
+<ul>
+<li><strong>验证输入，特别是用户输入。</strong> 假设有恶意意图或者意外的不正确信息。例如，你期望一个函数中的一个字符串参数应该是一个正数。但你仍要验证这一点，并在不符合条件时抛出错误。</li>
+<li><strong>期望无效的响应。</strong> 在调用函数时，不要假设它总是会返回一个“有效”的值。期望空的响应或者奇怪的值。例如，调用一个名为GetSalaryForEmployee()的函数，它返回给定员工的工资数值，验证返回值不是零或者负数，也不是一个不是数字的值。</li>
+<li><strong>期望恶意输入。</strong> 假设攻击者可能会故意发送破坏系统的输入。例如，攻击者可能会尝试提交可能用于SQL注入攻击的字符串。或者在网络上，攻击者可能会尝试使用跨站脚本（XSS）注入恶意脚本。</li>
+<li><strong>期望异常和错误。</strong> 在调用函数时，要做好它们可能抛出异常或者返回错误的准备。</li>
+</ul>
+<p>有时候你可能不需要使用防御性编程。例如，当使用一个类时，其中所有的输入都经过设计验证。而且，当在强类型语言或者函数声明可能抛出的异常时，你可能不太需要担心防御性编程。语言对错误处理有更多约束时，编译器可以更多地警告不正确的假设。</p>
+<h3 id="对未知状态要多加警惕">对“未知”状态要多加警惕</h3>
+<p>一个令人惊讶的常见问题是API响应与成功或失败代码的映射，以及如何处理“未知”情况。例如，一个用于发起支付请求的支付API可以返回“okay”、“资金不足”或“API暂时不可用”等响应。你需要在代码中将这些响应映射为“成功”或“失败”。你知道支付API可能会后续添加或删除响应，因此你希望构建一个足够健壮的系统，以处理API可能引入一个名为“需要用户操作”的新代码情况。以下是两种常见的做法：</p>
+<ul>
+<li><strong>允许列表。</strong> 采用此方法，你创建一个成功响应列表（允许列表），假定其他所有响应都为失败。因此，允许列表成为“OK”响应，其他响应都被视为失败。这种方法更为保守。当存在一个不严格属于失败的响应时，问题便会出现，比如“需要用户操作”。</li>
+<li><strong>阻止列表。</strong> 采用此方法，你创建一个被视为失败的响应列表（阻止列表），假定其他所有响应都是成功的。这种方法更为冒险，因为API可能引入新的错误代码，而你会将它们映射为成功。</li>
+<li><strong>处理“未知”状态可能会导致意外问题。</strong> 遗憾的是，白名单和黑名单并非通用解决方案。以一个API提供商引入一种以前从未见过的响应代码为例。我知道处理这种未知响应和代码的最佳方法是引入第三个状态（除了“成功”和“失败”之外），即“未知”，并触发错误、警报或其他操作，让工程师查看。请意识到，对未知状态或响应所做的任何决定都可能基于错误的假设。 <strong>通常，处理这些的正确方法是不要处理它们，而是抛出一个错误。</strong></li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8F%E4%BB%A3%E7%A0%81">编写高质量代码</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%8A%BD%E8%B1%A1%E5%B1%82%E6%AC%A1">使用正确的抽象层次</a></li>
+<li><a href="#%E8%89%AF%E5%A5%BD%E5%9C%B0%E5%A4%84%E7%90%86%E9%94%99%E8%AF%AF">良好地处理错误</a></li>
+<li><a href="#%E5%AF%B9%E6%9C%AA%E7%9F%A5%E7%8A%B6%E6%80%81%E8%A6%81%E5%A4%9A%E5%8A%A0%E8%AD%A6%E6%83%95">对“未知”状态要多加警惕</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

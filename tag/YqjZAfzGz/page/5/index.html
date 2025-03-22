@@ -1,0 +1,323 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="//Pony's World" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About Ma
+      </a>
+    
+    <a href="https://ma.shanpeng.im/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto pt-32">
+      <h1 class="text-2xl font-bold pb-8 flex justify-center items-center">
+        <i class="ri-hashtag"></i>
+        中文Chinese中国語
+      </h1>
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/ErknsnFmQ/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【10】window对象和console对象
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        JavaScript - window 对象
+JavaScript 中的 window 对象代表了浏览器窗口，并且作为全局对象在浏览器的环境中扮演着核心的角色。在浏览器环境中，window 对象具有多重作用：
+
+
+全局对象：在浏览器环境中，...
+      </div>
+      <a href="https://ma.shanpeng.im/post/ErknsnFmQ/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/FKBJ53JmB/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【8】HTML或者XML操作-DOM（Document Object Model）
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+什么是DOM？
+JavaScript的文档对象模型（DOM）是一个跨平台和语言独立的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。DOM将一个HTML或XML文档表现为一个树状结构，其中每个节点都是一个对象，代表文档中的一...
+      </div>
+      <a href="https://ma.shanpeng.im/post/FKBJ53JmB/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/yMWM26_ym/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【9】prototype属性
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-11-07</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        
+JavaScript 中的 prototype 属性是一个非常重要的概念，它是函数对象的一个特性。JavaScript 是一种基于原型的语言，这意味着对象可以通过复制一个现有对象来创建，而不是通过实例化一个类来创建。在这种模式中，prot...
+      </div>
+      <a href="https://ma.shanpeng.im/post/yMWM26_ym/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/TbYcvmSUa/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【7】基础数据操作 - Map
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-07-02</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        23-07-02 Map对象
+Map对象
+Map对象是一种有序的键值对集合，可以通过键来访问值，键不能重复。
+创建Map对象
+let data = new Map([
+    ['1st', 'a'],
+    ['2nd', 'b'],
+...
+      </div>
+      <a href="https://ma.shanpeng.im/post/TbYcvmSUa/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/KLT2J6seH/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【5】基础数据操作 - 对象
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1. 什么是对象
+对象是一种复合的数据类型，它将很多值（属性）组合在一起，可以通过属性名来访问这些值。用来表现一个事物的多个属性。以对象为中心的编程思想称为面向对象编程。JavaScript也是面向对象的编程语言。
+Object = Pro...
+      </div>
+      <a href="https://ma.shanpeng.im/post/KLT2J6seH/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/JS-4/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【4】控制语句
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        1. 条件语句
+1.1 if语句
+let x = 1;
+if (x &gt; 0) {
+    console.log('x是正数');
+}
+
+1.2 if...else语句
+let x = 1;
+if (x &gt; 0) {
+    c...
+      </div>
+      <a href="https://ma.shanpeng.im/post/JS-4/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/ren-ji-jiao-hu-zhong-de-ren-de-yin-su/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          人机交互中的人的因素
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-29</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>这是我在实验室论讲中的稿件。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/ren-ji-jiao-hu-zhong-de-ren-de-yin-su/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-2/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【2】基础知识
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        2023.06.10
+script的位置
+
+放在body里的任意位置：基本上不这么用，因为会阻塞页面的渲染，影响用户体验。
+放在body结束标签之前：这是最常用的方式，因为可以保证页面的渲染不会被阻塞。这也是提高页面加载速度的一种方式。
+放...
+      </div>
+      <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-2/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-1-bei-jing/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【1】背景
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        背景
+引入
+JavaScript是由Netscape Communications公司开发，是面向浏览器的脚本语言。取名JavaScript就是为了碰瓷当时非常火的Java，但是和Java是完全不同的两个语言。JavaScript是一个历经...
+      </div>
+      <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-1-bei-jing/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-3-suan-shu/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          JS学习日记【3】算数
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2023-06-14</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        Chapter 3 算数
+使用decimal.js
+1. 为什么要使用decimal.js
+decimal.js是一个用于浮点数计算的JavaScript库，它可以解决JavaScript浮点数计算的精度问题。因为它内部采用10进制计算，所...
+      </div>
+      <a href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-3-suan-shu/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+      <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/page/4/" class="btn btn-white">
+        <i class="ri-arrow-left-line mr-4"></i>
+        上一页｜Last
+      </a>
+    
+    
+      <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/page/6/" class="btn btn-white">
+        下一页｜Next
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+</body>
+</html>

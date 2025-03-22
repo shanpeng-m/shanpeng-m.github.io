@@ -1,0 +1,472 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-9-1】软件开发 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-9-1】软件开发 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+精通一门语言
+要真正精通一门语言。只有当..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-9-1】软件开发 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+精通一门语言
+要真正精通一门语言。只有当..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/a7m1eLPxx/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-9-1】软件开发 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+精通一门语言
+要真正精通一门语言。只有当...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/a7m1eLPxx/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-9-1】软件开发
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-12 · 18 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="精通一门语言">精通一门语言</h2>
+<p>要真正精通一门语言。只有当你真正把一门语言了如指掌时，你才能达到新的理解、理解和能力水平。什么是“了如指掌”？它是指知道如何使用这门语言：语法、结构和运算符。这意味着了解最佳实践并理解为什么推荐它们。它意味着深入了解内部工作原理，理解内存管理和垃圾回收的工作原理，代码是如何编译的，以及性能方面的要点。</p>
+<h3 id="学习一门语言的基础">学习一门语言的基础</h3>
+<p>深入学习一门语言有不同的层次。首先，需要掌握语言提供的内容，包括内置的数据类型、变量和数据结构、运算符、控制语句、类和对象，以及标准的错误处理方式。了解并尝试一些更高级的语言特性，比如泛型、并行执行/线程处理、更复杂的数据类型，以及语言支持的其他功能。</p>
+<p>学习一门语言的基础知识的一个好方法是查阅其文档；找到一份优质的语言参考资料，查看代码示例，或者学习一本关于基础知识的书籍。具有编程示例的视频课程同样有效，这些对某些人来说更合适。找到适合你的学习方式。拥有可以随时查阅的参考资料很方便，因此我建议投资一本书籍。</p>
+<h3 id="深入探究">深入探究</h3>
+<p>当你掌握了如何使用编程语言时，尝试深入探究。通过提出问题来实现这一点，例如：</p>
+<ul>
+<li>在声明变量、函数或类时实际发生了什么？</li>
+<li>代码将如何编译为机器码，可能会出现哪些优化？</li>
+<li>程序的内存占用情况是多少？如何观察所使用的内存？</li>
+<li>内存如何释放？假设语言使用垃圾回收，这是如何运作的？</li>
+<li>如果语言支持泛型，是否支持协变和逆变？</li>
+</ul>
+<blockquote>
+<p>在编程语言中，泛型（Generic）是指在编写代码时不指定具体类型，而是使用参数化类型，这样可以增加代码的灵活性和重用性。在泛型中，协变（covariance）和逆变（contravariance）是与类型参数的子类型关系相关的概念。</p>
+<ul>
+<li><strong>协变（Covariance）</strong>：如果类型 <code>S</code> 是类型 <code>T</code> 的子类型（即 <code>S &lt;: T</code>，其中 <code>&lt;:</code> 表示子类型关系），那么泛型类型 <code>C&lt;S&gt;</code> 是 <code>C&lt;T&gt;</code> 的子类型。简而言之，泛型类型随着类型参数的子类型而变化。</li>
+<li><strong>逆变（Contravariance）</strong>：与协变相反，如果类型 <code>S</code> 是类型 <code>T</code> 的子类型，那么泛型类型 <code>C&lt;T&gt;</code> 是 <code>C&lt;S&gt;</code> 的子类型。逆变意味着泛型类型的参数可以是更一般的类型。<br>
+不是所有编程语言都支持泛型的协变和逆变。例如，Java 中的泛型是不支持协变和逆变的，但是在某些其他语言（如Scala和C#）中支持协变和逆变。<br>
+总结来说，泛型的协变和逆变允许类型参数随着其子类型或者更一般的类型而变化，这样可以提高代码的灵活性和可重用性，但实现方式因编程语言而异。</li>
+</ul>
+</blockquote>
+<ul>
+<li>泛型代码是如何解释的，它在底层是如何进行优化的？</li>
+</ul>
+<p>寻找书籍、视频、在线课程以及其他关于编程语言高级部分的资源。AI工具可以提供回答一些问题的捷径，但它们很可能不会像更详细的书籍或在线资源那样深入。在尝试提出类似问题时，不要忘记这些问题都很复杂，并涵盖你可能不了解或无法单独解决的领域。</p>
+<p>我深入学习语言的方法是通过研读相关书籍、参加高级课程、阅读深入讨论细节的文章，最近还开始向人工智能助手提问总结概念并核实答案的正确性。任何尖端技术中都会有多位专家深入探讨语言的方方面面并分享他们的发现。寻找深入的资源，并投入时间去学习它们。</p>
+<p>学习并使用工具来深入了解内部原理以及更多关于运作方式的信息。这些工具可能包括内存和CPU分析器、开发者工具和诊断工具。这些工具不仅帮助你更好地理解语言的内部运作方式，而且在更高级的调试中也会派上用场。</p>
+<p>在Uber，我的团队在后端使用Java、Python和Node.JS。我们使用这些不同的语言是因为我们需要与其他团队编写的服务进行交互。</p>
+<p>在公司内部，Go语言逐渐开始流行起来，很多新的服务都是使用Go构建的。我们的团队喜欢探索，所以我们决定使用Go构建一个新的服务，这也给了我们一个学习这门语言的机会。</p>
+<p>有一名实习生加入了我们的团队，他非常热爱Go语言。甚至在实习之前，他就花了很多时间做教程、阅读有趣的部分、做一些小项目，尝试不同的语言特性。这名实习生立刻参与到了代码审查中，开始向队友提供如何用“Go的方式”编写代码的建议。团队的工程师们开始更多地让他参与进来，要求他审查Go代码，和他一起构建服务。</p>
+<p>这个实习生成为了我们团队的“Go专家”。他是如何做到的呢？他比任何人都投入了更多的时间和精力，并且不断深入了解这种编程语言的工作原理。</p>
+<p>这段话提醒了我们，即使缺乏经验，也可以通过投入时间和精力来掌握一门语言、框架或特定领域，最终成为专家！</p>
+<h3 id="首先要熟悉使用的主框架">首先要熟悉使用的“主”框架</h3>
+<p>现如今，仅使用一种编程语言的情况已经很少见了，尽管你可能主要会在某个框架中使用你的“主”语言。举例来说，如果你在前端使用JavaScript或TypeScript，你可能还会用到React、Next.js等前端框架。如果你写Ruby代码，你可能会使用Rails。如果是PHP，那么你可能会选择Laravel，以此类推。在开发产品时，倾向性框架能够带来更快的进展，因此也更受欢迎。</p>
+<p>掌握一个框架的过程和学习一门语言类似。要先学习框架的基础知识，然后深入了解其内部运行原理。</p>
+<p>开源框架的一个优势在于，即使刚开始时它的代码库看似复杂，你仍可以直接深入了解其内部运行机制。这是大多数编程语言所没有的优势。</p>
+<p>许多开发人员满足于对他们主要框架的“够好”，因此不投入过多时间深入了解事物运作的原理和方式。</p>
+<p>如果你迈出额外的一步，花更多时间深入了解框架，你所获得的知识应该会在调试棘手的 bug、进行架构决策或迁移到框架的新版本时成为优势。</p>
+<h3 id="学习第二种语言">学习第二种语言</h3>
+<p>当你熟悉足够的第一种语言后，尝试学习第二种语言。举个例子，如果团队中有一些成员在使用不同的编程语言，那么值得考虑自愿加入他们的工作，并明确表示你对学习这种新语言很感兴趣。</p>
+<p>学习第二种语言的好处远比人们通常认为的要多：</p>
+<ul>
+<li><strong>掌握对比优缺点的能力。</strong> 当开始使用第二种语言时，你会发现有些事情更难做，而其他一些事情更容易。假设你已经深入学习了你的“第一”语言，你立刻就能看到新语言的优势所在，以及不足之处。</li>
+<li><strong>深入了解你的第一语言。</strong> 这可能看起来有些违反直觉，但学习第二种编程语言通常会帮助你更加精通你的第一种语言。当你尝试在你的“主”语言中解决第二种语言支持的问题时，这种精通就会发生。这经常是你了解“第一”语言的限制，发现新的能力，或更好地理解动态类型、泛型以及其他高级语言特性的方式。</li>
+<li><strong>摆脱只使用你的“主要”语言的习惯。</strong> 如果你只精通一种编程语言，你可能会总是倾向于使用它。然而，一种编程语言很少适合所有项目和情况。有时候使用新的编程语言会带来好处，比如可以使用的库，或者更好的性能特性。养成学习新语言的习惯，不要害怕挑战。<br>
+学习更多的语言会变得更容易。你的第一种编程语言往往是最难学习的。第二种仍然有点棘手，但接下来事情会变得更容易。学习的编程语言越多，你就越能欣赏它们的不同特点和能力。</li>
+</ul>
+<p>AI工具在学习新语言的语法方面可以提供很大帮助。许多人工智能助手可以将代码从一种语言“翻译”成另一种语言。它们还可以回答类似的问题，比如，“展示我在‘正在学习的语言中’声明函数的不同方式。”利用这些AI工具加快学习速度。只需记住它们可能会给出错误答案 - 所以一定要验证它们的输出！</p>
+<h3 id="是向深度发展还是向广度发展">是向深度发展，还是向广度发展？</h3>
+<p>有能力的软件开发人员拥有丰富的知识储备。这意味着他们至少对一种编程语言和框架有深入的了解。然而，这种语言或框架不一定是他们最早学会的。</p>
+<p><strong>我建议开发人员在职业生涯的早期就要在至少一个领域“深入”研究。</strong> 可以采取我们之前讨论过的方法，比如深入研读相关资源。另一个很好的方法是与某个领域的专家结对学习，向他们请教自主学习的资源并完成学习。</p>
+<p>另一种深入学习的方式是学习每天遇到的“沉闷”但必要的内容。软件工程师本·库恩将这称为“蓝团研究”。蓝团研究这个术语来自Y Combinator联合创始人保罗·格雷厄姆的一篇文章，文章中“蓝团”是一个假想语言的名称。在本的文章《捍卫蓝团研究》中，他描述了为什么深入研究看似沉闷、毫无意义的框架和语言是有用的。</p>
+<p>假设你选择的蓝团是React。你可能担心，如果将来转移到堆栈的不同部分，甚至是不同的Web框架，学习这些繁琐的细节会是没有用的。是的，有些可能会是没有用的。但React的核心思想——编写纯净的呈现函数，使用协调机制使更新变得快速——非常强大和通用。实际上，它现在已经被iOS（SwiftUI）和Android（Jetpack Compose）的下一代UI框架复制。学习React背后的原理使学习其他框架变得更容易。实际上，它甚至可以成为一个从一个框架“导入”到另一个框架的有用思想来源。</p>
+<p>蓝团研究出奇地广泛适用，因为即使你在学习某个具体的蓝团系统的细节，该系统的设计将包含一个可提取的通用原理的核心。</p>
+<p>“蓝团研究的复合效应会比你最初预期的更加显著，有两方面。首先，了解一个蓝团将使学习为实现相同目的的其他替代蓝团变得更容易，就像上面提到的React/SwiftUI示例。其次，了解一个蓝团更多将有助于加速学习堆栈相邻部分的蓝团。”</p>
+<p>事实证明，你可以在打下深厚基础的同时也使自己变得更全面，而蓝团研究——了解你使用的工具和框架实际上是如何工作的——就是一个很好的例子。只要“你花时间学习舒适区以外的东西，那么你的知识和技能深度和广度都会增长。”</p>
+<h2 id="debugging-调试">Debugging 调试</h2>
+<p>在编写代码解决问题时，它有时候不会按你期望的那样运行。经验不足的话，发生这种情况的频率可能更高。那么，你该如何找出问题出在哪里呢？检查代码，尝试逐步分析，直到找到错误。基本上，这就是调试。能够快速有效地调试的工程师，能够更快速地修复错误，迭代更快。虽然有些人似乎天生具备调试的天赋，但这一切都是可以学会的。那么，如何才能在调试方面变得更好呢？</p>
+<p>了解调试工具大多数集成开发环境（IDE）如VS Code或JetBrains IntelliJ等，都配备了强大的运行时调试工具。但我发现，经验不足的工程师经常没有意识到这些工具有多么强大。在代码执行时检查代码是最好的方式之一，可以看到你所做的不正确假设，以及代码的实际行为。与“更改运行并希望它能正常工作”的方法相比，调试工具可以节省数小时的时间。首先要了解你所使用IDE附带的调试工具。设置断点并检查本地变量。逐步进入/跳出/越过函数并检查调用堆栈。查阅文档和教程，了解如何使用更高级的功能。一些调试器可能支持有用的功能，包括：</p>
+<ul>
+<li>在运行时修改变量</li>
+<li>在调试过程中评估表达式</li>
+<li>条件断点和异常断点</li>
+<li>观察点（设置在变量上的断点，当它发生变化时触发）</li>
+<li>转到帧（从调用堆栈的另一个部分重新启动调试）</li>
+<li>在线程间切换</li>
+<li>在调试器运行时修改源代码</li>
+<li>修改环境变量</li>
+<li>模拟传感器输入（用于基于硬件的环境，如移动设备）</li>
+</ul>
+<blockquote>
+<p>这些功能通常是现代调试器（debugger）提供的一些高级功能，对于开发人员在调试复杂程序时非常有用：</p>
+<ol>
+<li><strong>在运行时修改变量</strong>：</li>
+</ol>
+<ul>
+<li><strong>用途</strong>：允许开发人员在程序运行时动态修改变量的值，这对于调试过程中发现问题、验证假设或者进行实时调整非常有帮助。</li>
+</ul>
+<ol start="2">
+<li><strong>在调试过程中评估表达式</strong>：
+<ul>
+<li><strong>用途</strong>：允许开发人员在断点处或者程序运行时，通过调试器直接评估和执行表达式。这对于验证计算结果、理解代码行为或者调试复杂逻辑很有帮助。</li>
+</ul>
+</li>
+<li><strong>条件断点和异常断点</strong>：
+<ul>
+<li><strong>用途</strong>：条件断点允许在满足特定条件时触发断点，而异常断点则在异常抛出时中断程序执行。这些功能帮助开发人员在关注特定情况下快速捕捉程序状态。</li>
+</ul>
+</li>
+<li><strong>观察点（设置在变量上的断点，当它发生变化时触发）</strong>：
+<ul>
+<li><strong>用途</strong>：当某个变量的值发生变化时，观察点可以在不中断程序执行的情况下通知开发人员。这对于追踪特定变量的变化、理解代码执行路径或者确认状态变化十分有用。</li>
+</ul>
+</li>
+<li><strong>转到帧（从调用堆栈的另一个部分重新启动调试）</strong>：
+<ul>
+<li><strong>用途</strong>：允许开发人员从当前执行点跳转到调用堆栈的其他部分，这对于查看调用链、理解函数调用关系或者回溯错误来源非常有帮助。</li>
+</ul>
+</li>
+<li><strong>在线程间切换</strong>：
+<ul>
+<li><strong>用途</strong>：在多线程程序中，开发人员可以在不中断整体程序的情况下切换调试的线程，这对于并发调试和排查多线程交互问题非常重要。</li>
+</ul>
+</li>
+<li><strong>在调试器运行时修改源代码</strong>：
+<ul>
+<li><strong>用途</strong>：某些调试器允许开发人员在程序运行时修改源代码，这对于快速验证修复、实时调整程序行为或者修复临时Bug非常有帮助。</li>
+</ul>
+</li>
+<li><strong>修改环境变量</strong>：
+<ul>
+<li><strong>用途</strong>：在调试过程中修改环境变量可以模拟不同的运行环境，这对于测试不同配置、处理依赖问题或者模拟特定条件非常有帮助。</li>
+</ul>
+</li>
+<li><strong>模拟传感器输入（用于基于硬件的环境，如移动设备）</strong>：
+<ul>
+<li><strong>用途</strong>：允许开发人员模拟实际设备的输入（例如传感器数据），这对于移动设备开发、传感器集成或者实验测试非常重要。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>类似Visual Studio、JetBrains IDE和Chrome DevTools等工具支持几乎所有上述功能，现代开发环境也是以提高开发者生产力为目标构建的。如果你还没有尝试过它们，现在是一个很好的时机。</p>
+<h3 id="观察经验丰富的开发人员如何进行调试">观察经验丰富的开发人员如何进行调试</h3>
+<p>提高调试能力的一个被低估的方法是看那些非常擅长调试的开发者是如何做的。当听到一位同行开发者提到一个棘手的bug时，可以询问是否可以跟随他们或与他们配对进行调试。表明你有兴趣了解他们是如何找到bug根本原因的。在团队中，至少要与每位开发者配对一次进行调试会话。您肯定会学到新的调试技巧，也许会发现新的调试工具。</p>
+<h3 id="学会无需工具进行调试">学会无需工具进行调试</h3>
+<p>有时，你可能无法访问调试工具，比如在命令行工作时，或者你决定不使用调试工具。在没有工具的情况下进行调试是可能的。这些方法通常需要额外工作，但你可能会学到更多。以下是一些方法：</p>
+<ul>
+<li>在控制台记录日志。这是最简单的方法。在调用函数时开始输出信息；打印变量的值和其他可能有帮助的内容。然后重新运行代码，并尝试通过查看控制台日志弄清楚发生了什么。</li>
+<li>纸上调试。拿一支笔和纸，或使用白板。列出你关心的关键变量，然后开始在脑海中执行代码，记录这些变量每次如何变化。更具体的笔记通常更有帮助。如果卡住了，可以请其他人跟着看，确保你在脑海中正确执行代码。如果能获得调试器的支持，这种方法尤为强大。首先进行纸上调试，然后运行调试器，检查你是否在脑海中正确地运行了程序。</li>
+<li>编写（单元）测试。这种方法类似于测试驱动开发（TDD），尤其适用于调试函数。编写指定预期输入和输出的测试。运行这些测试时，检查哪些成功了，哪些失败了。然后修改代码，快速重新运行测试。这种方法有助于快速获得关于你的修改是否有效的反馈。此外，正如我们在第三部分：测试中所涵盖的那样，测试是可维护代码的基础，所以你可能需要编写测试。</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%B2%BE%E9%80%9A%E4%B8%80%E9%97%A8%E8%AF%AD%E8%A8%80">精通一门语言</a>
+<ul>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E4%B8%80%E9%97%A8%E8%AF%AD%E8%A8%80%E7%9A%84%E5%9F%BA%E7%A1%80">学习一门语言的基础</a></li>
+<li><a href="#%E6%B7%B1%E5%85%A5%E6%8E%A2%E7%A9%B6">深入探究</a></li>
+<li><a href="#%E9%A6%96%E5%85%88%E8%A6%81%E7%86%9F%E6%82%89%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%BB%E6%A1%86%E6%9E%B6">首先要熟悉使用的“主”框架</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E7%A7%8D%E8%AF%AD%E8%A8%80">学习第二种语言</a></li>
+<li><a href="#%E6%98%AF%E5%90%91%E6%B7%B1%E5%BA%A6%E5%8F%91%E5%B1%95%E8%BF%98%E6%98%AF%E5%90%91%E5%B9%BF%E5%BA%A6%E5%8F%91%E5%B1%95">是向深度发展，还是向广度发展？</a></li>
+</ul>
+</li>
+<li><a href="#debugging-%E8%B0%83%E8%AF%95">Debugging 调试</a>
+<ul>
+<li><a href="#%E8%A7%82%E5%AF%9F%E7%BB%8F%E9%AA%8C%E4%B8%B0%E5%AF%8C%E7%9A%84%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95">观察经验丰富的开发人员如何进行调试</a></li>
+<li><a href="#%E5%AD%A6%E4%BC%9A%E6%97%A0%E9%9C%80%E5%B7%A5%E5%85%B7%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95">学会无需工具进行调试</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

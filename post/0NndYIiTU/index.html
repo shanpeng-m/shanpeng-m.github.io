@@ -1,0 +1,369 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【2-9-2】重构与测试 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【2-9-2】重构与测试 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+重构
+重构是编码中重要但常常被忽视的一部..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【2-9-2】重构与测试 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+重构
+重构是编码中重要但常常被忽视的一部..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/0NndYIiTU/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【2-9-2】重构与测试 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+重构
+重构是编码中重要但常常被忽视的一部...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/0NndYIiTU/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【2-9-2】重构与测试
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-14 · 11 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<h2 id="重构">重构</h2>
+<p>重构是编码中重要但常常被忽视的一部分。要擅长重构，就像学习编码一样。你可以阅读关于某个主题的所有内容，但如果不去实践，你永远无法真正掌握它。要擅长重构，你必须经常实践。</p>
+<h3 id="要尽可能经常地练习重构">要尽可能经常地练习重构。</h3>
+<p><strong>首先，编写代码后对自己的代码进行重构。</strong> 完成一个任务并让代码正常运行后，用批判的眼光仔细阅读所有更改。有什么地方可以改进，或者更具表现力？代码怎样读起来更顺畅？当你发现可以改进的地方时，就进行修改。这些改动通常会是小改动，可能感觉不像是重构，但这是一个很好的开始。</p>
+<p><strong>在代码审查中获取重构的想法并付诸行动。</strong> 当别人审查你的代码，或者你查看其他代码审查时，会有评论指出可以在代码库级别上进行改进的地方。这些评论可能与更改的代码无关，但与周围的代码相关。这类评论通常会突显出代码其他部分进行重构的机会。</p>
+<p>如果你看到一个评论可能是改进代码的机会，就接受并自愿进行重构。与能够确认这是一个好主意并稍后审查你的重构的人一起配对。要将这个重构作为一个独立的任务或拉取请求进行，以便易于审查。</p>
+<p><strong>仔细阅读代码。</strong> 在阅读代码的过程中，记下不一致和难以理解的部分。通过代码审查获取重构机会可能有时会碰巧。一个更加专注的方式是阅读代码并试图理解它的功能。这种做法带来双重好处。</p>
+<p>首先，你可以加深对系统的了解。通过阅读代码，你会更好地理解代码执行了什么以及在哪里执行。你将能够更好地进行调试和推理代码。请参考本章 <em>“读写代码的数量需要平衡”</em> 的部分。</p>
+<p>其次，你会发现许多不一致之处。事物的命名会不同，或者看起来是重复的，还有其他很多。有些部分可能很难理解；你会想弄清一个方法做什么，或者为什么存在某个特定的类。你会看到难以阅读的代码。</p>
+<p>记下所有这些内容。你可以把它们写在私人文档中，或者你可以使用IDE的扩展并记录自己的评论，这些评论存储在本地文件中，不被提交或被其他人看到。</p>
+<p><strong>列出一个你想要重构的事项清单。</strong> 然后，从他人那里获得反馈。尽管迫不及待地开始修复你发现的所有问题很诱人，但这不是最佳做法。团队中可能已经知道你的一些观察结果。在极少数情况下，他们可能已经决定以牺牲一些可读性的代码换取其他原因，比如性能或可维护性。Kubernetes源代码的某些部分就是一个很好的例子。您可能还会发现需要重构的内容，实际上是团队已经商定的约定。</p>
+<p>相反，寻求第二个意见，并与对该代码库足够有经验的人讨论你的观察结果。获取他们的反馈，并决定哪些重构是有意义的，哪些不是。有了新的清单后，评估每个重构需要的工作量，并安排好要如何进行。最好首先进行较简单的重构。</p>
+<p>当你有一个按优先级排序的清单时，你可以把它当作你的“重构待办事项”。如果你所在的团队记录他们计划的工作，你可以创建任务。在你的常规工作之外开始一个重构。你可以在等待代码审查或任务之间的空闲时间进行。尽量完成第一个重构；等待审查并合并，然后寻求他人的反馈。一遍又一遍，慢慢但确定地按照清单进行。当接近完成时，寻找新的优化代码的机会。</p>
+<p>在一个健康的团队中，人们将为你进行这种工作而喝彩；尤其是那些认为重构是一个好主意的人。你将获得多重好处：不仅可以练习重构，还能更多地了解代码库，并获得同事在清理工作方面的好感。如果你在开始重构之前定期征求反馈意见，你将了解同事认为什么重要或不重要，以及原因。</p>
+<h3 id="了解你的集成开发环境ide的重构功能并加以利用">了解你的集成开发环境(IDE)的重构功能并加以利用。</h3>
+<p>许多IDE都内置了对简单重构操作的支持，比如重命名变量、更改函数签名、将逻辑提取到自己的函数中等等。无论你使用哪种IDE，都要花时间学习它提供的重构支持。<br>
+如果通过手工操作进行简单重构任务，会耗费时间且容易出错。使用工具将使你更快速，并且不必担心重构所需的时间是否值得。这只需要一眨眼的功夫。<br>
+重构是多方面的。从简单重构开始，逐渐转向更复杂的重构。一个简单的重构是函数的部分；先从“重命名变量”开始，然后将功能提取到其他方法中。下一个级别是重构多个函数，例如消除重复代码。接着是在类级别上进行类似的工作。最后是在服务/库/框架级别上。<br>
+重构的范围越小，就越容易正确完成并测试，确保没有出错。尽管任何重构都是宝贵的职业经验，但要小心不要贪多。如果你开始了一个难以控制且难以跟踪所有更改的重构工作，就要缩小范围。你能否将重构分解为较小的部分，逐个完成？如果情况变得过于复杂，这是向更有经验的人请教的绝佳机会，以了解他们如何解决相同的问题。</p>
+<h3 id="重构测试">重构测试</h3>
+<p>项目中一个被低估的重构机会是重构单元测试。通常，测试代码存在大量重复和结构混乱，违反了许多最佳实践。添加测试的人通常遵循已建立的风格，很少进行改进。</p>
+<p>重构测试可以从仅一个测试开始，使其更易读，然后通过代码审查获得反馈。从这里开始，你可以继续清理整个类。将常见功能提取到自己的方法中，简化测试，并使其更易读通常是一个容易的胜利。你还可以促进关于要遵循哪种风格和实践的讨论。</p>
+<p>在团队层面达成一致的一些实践和约定后，你可以开始重构其他类。重构测试通常被视为一项不被重视的任务，但我认为它们很重要。此外，你可以通过IDE快捷键练习高效重构。这些测试有着长期的影响：你做出的改进将被许多其他编写新测试的开发人员遵循，符合你优化的惯例。</p>
+<p>“在重构缺乏充分测试的产品代码时要非常小心。在频繁重构时拥有一个安全网非常关键。这个安全网就是代码的单元测试。如果尝试重构没有自动化测试的代码，你将花费更多的精力来验证其正确性。</p>
+<p>有些情况下可以重构没有经过测试的代码。这些情况通常限于团队故意未经测试的代码库的部分，如用户界面（UI）层。然而，如果你必须手动验证重构涉及的每个用例，那么从快速重构中获得的效率优势将会丧失。</p>
+<h3 id="让重构成为日常习惯">让重构成为日常习惯</h3>
+<p>增强你的重构能力。只有通过频繁练习、犯错误并从中学习，才能学会无畏且轻松地进行重构。在完成几项任务后，要坚持每次做一项重要的重构任务。</p>
+<h2 id="测试">测试</h2>
+<p>优秀的软件开发人员被视为可靠，这在一定程度上源自于他们能够对合理复杂度的工作给出相当准确的时间估算。更重要的是，可靠的开发人员的代码能够按照预期运行。那么这些开发人员是如何确保他们的代码达到这样的标准呢？<br>
+<strong>在请求代码审查或提交代码之前，他们会对代码进行测试。</strong> 这里指的并不一定是自动化测试。可靠的开发人员首先会在完成工作后手动测试他们的代码，然后再请求代码审查或将其推送到生产环境中。<br>
+他们会考虑到代码可能遇到的边缘情况，并进行简单的测试。例如，如果他们构建了一个API端点，他们会在本地启动该端点，并向端点发送各种请求以测试功能。如果他们编写了一个执行某些逻辑的函数，他们会确保该函数在调用边界条件时也能按预期工作。</p>
+<p><strong>可靠的开发人员非常重视边缘情况。</strong> 他们会仔细研究潜在的边缘情况，并与利益相关者确认在这种情况下应该发生什么。例如，在构建用户输入字段时，可靠的开发人员会确认他们需要验证用户输入，以及如果用户输入了不同的内容应该发生什么。或者，在一个用于充值现金账户的应用中，他们会考虑边缘情况，比如负数金额或非数字值。</p>
+<p>测试用例，即使是手动的，也是可靠的开发人员在开始开发之前就会记录下来的事情。随着开发的进行，他们倾向于扩展这个列表，并找到新的、以前未考虑到的边缘情况。当代码准备好后，他们会为所有情况进行测试，并只有在确信代码运行如预期时才提交代码。</p>
+<p>开发人员通常因为忽略边缘情况和测试用例，以及在假设代码能正常运行的情况下提交代码，从而引入错误。而出现的错误几乎肯定会是被忽视的边缘情况。一位开发人员可能会想：“没关系，这种事情每个人都会遇到。” 是的，的确会发生。但耐人寻味的是，那些花时间考虑边缘情况、不在确认所有假设前不推送代码的可靠开发人员中，这种情况发生的频率要少得多。</p>
+<p><strong>自动化测试是许多有能力的开发人员常用的工具。</strong> 他们已经定义了边缘情况和测试用例。在职业生涯的早期，他们可能手动测试了所有这些情况。然而，一旦熟悉了单元测试和集成测试工具，他们就不会再回到缓慢、痛苦的手动测试过程。</p>
+<p>有些人尝试过测试驱动开发。这是一种先编写单元测试，然后编写通过这些测试的代码的方法。然而，大多数开发人员更习惯于同时编写代码并进行有意义的自动化测试。我们将在第三部分“测试”中探讨不同类型的自动化测试。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%87%8D%E6%9E%84">重构</a>
+<ul>
+<li><a href="#%E8%A6%81%E5%B0%BD%E5%8F%AF%E8%83%BD%E7%BB%8F%E5%B8%B8%E5%9C%B0%E7%BB%83%E4%B9%A0%E9%87%8D%E6%9E%84">要尽可能经常地练习重构。</a></li>
+<li><a href="#%E4%BA%86%E8%A7%A3%E4%BD%A0%E7%9A%84%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83ide%E7%9A%84%E9%87%8D%E6%9E%84%E5%8A%9F%E8%83%BD%E5%B9%B6%E5%8A%A0%E4%BB%A5%E5%88%A9%E7%94%A8">了解你的集成开发环境(IDE)的重构功能并加以利用。</a></li>
+<li><a href="#%E9%87%8D%E6%9E%84%E6%B5%8B%E8%AF%95">重构测试</a></li>
+<li><a href="#%E8%AE%A9%E9%87%8D%E6%9E%84%E6%88%90%E4%B8%BA%E6%97%A5%E5%B8%B8%E4%B9%A0%E6%83%AF">让重构成为日常习惯</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E8%AF%95">测试</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

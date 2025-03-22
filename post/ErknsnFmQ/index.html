@@ -1,0 +1,479 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JS学习日记【10】window对象和console对象 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JS学习日记【10】window对象和console对象 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="JavaScript - window 对象
+JavaScript 中的 window 对象代表了浏览器窗口，并且作为全局对象在浏览器的环境中扮演着核心的角色。在浏览器环境中，window 对象具有多重作用：
+
+
+全局对象：在浏览器环境中，..." />
+  <meta property="og:title" content="JS学习日记【10】window对象和console对象 - 小马的世界">
+  <meta property="og:description" content="JavaScript - window 对象
+JavaScript 中的 window 对象代表了浏览器窗口，并且作为全局对象在浏览器的环境中扮演着核心的角色。在浏览器环境中，window 对象具有多重作用：
+
+
+全局对象：在浏览器环境中，..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/ErknsnFmQ/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="JS学习日记【10】window对象和console对象 - 小马的世界">
+  <meta name="twitter:description" content="JavaScript - window 对象
+JavaScript 中的 window 对象代表了浏览器窗口，并且作为全局对象在浏览器的环境中扮演着核心的角色。在浏览器环境中，window 对象具有多重作用：
+
+
+全局对象：在浏览器环境中，...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/ErknsnFmQ/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          JS学习日记【10】window对象和console对象
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-11-07 · 6 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="javascript-window-对象">JavaScript - <code>window</code> 对象</h2>
+<p>JavaScript 中的 <code>window</code> 对象代表了浏览器窗口，并且作为全局对象在浏览器的环境中扮演着核心的角色。在浏览器环境中，<code>window</code> 对象具有多重作用：</p>
+<ol>
+<li>
+<p><strong>全局对象</strong>：在浏览器环境中，全局变量都是 <code>window</code> 对象的属性，全局函数是 <code>window</code> 对象的方法。</p>
+</li>
+<li>
+<p><strong>窗口操作</strong>：通过 <code>window</code> 对象，我们可以控制浏览器窗口的行为，例如打开新窗口、关闭窗口、调整窗口大小、查询窗口大小和位置等。</p>
+</li>
+<li>
+<p><strong>浏览器对象模型（BOM）</strong>：<code>window</code> 对象是浏览器对象模型（BOM）的一部分，它提供了与浏览器交互的方法和属性，包括对浏览器历史、屏幕、位置和导航器的访问。</p>
+</li>
+</ol>
+<p>以下是 <code>window</code> 对象中一些常用的属性和方法的简要介绍：</p>
+<h3 id="属性">属性</h3>
+<ul>
+<li><code>window.document</code>：指向 <code>document</code> 对象，它代表了加载在窗口中的 HTML 文档。</li>
+<li><code>window.location</code>：提供了当前窗口的 URL 信息，可以用来获取地址、重定向到新的页面等。</li>
+<li><code>window.history</code>：允许对浏览器的会话历史进行操作，比如后退和前进。</li>
+<li><code>window.screen</code>：包含了有关用户屏幕的信息，如宽度和高度。</li>
+<li><code>window.innerWidth</code> 和 <code>window.innerHeight</code>：提供了窗口内容区域的尺寸。</li>
+<li><code>window.localStorage</code> 和 <code>window.sessionStorage</code>：提供了Web存储API，允许存储键值对数据。</li>
+</ul>
+<h3 id="方法">方法</h3>
+<ul>
+<li><code>window.alert()</code>：显示一个带有消息和一个确认按钮的警告框。</li>
+<li><code>window.confirm()</code>：显示一个带有消息和确认及取消按钮的对话框。</li>
+<li><code>window.prompt()</code>：显示一个带有消息、输入框和确认取消按钮的对话框。</li>
+<li><code>window.open()</code>：打开一个新的浏览器窗口或标签页。</li>
+<li><code>window.close()</code>：关闭当前窗口。</li>
+<li><code>window.setTimeout()</code> 和 <code>window.setInterval()</code>：分别用于设置延迟执行函数和重复执行函数的定时器。</li>
+<li><code>window.clearTimeout()</code> 和 <code>window.clearInterval()</code>：分别用于取消由 <code>setTimeout()</code> 和 <code>setInterval()</code> 设置的定时器。</li>
+</ul>
+<h3 id="事件">事件</h3>
+<p><code>window</code> 对象也是事件的触发者，例如：</p>
+<ul>
+<li>当用户调整浏览器窗口大小时会触发 <code>resize</code> 事件。</li>
+<li>当页面加载完成后触发 <code>load</code> 事件。</li>
+<li>当页面即将卸载时触发 <code>beforeunload</code> 事件。</li>
+</ul>
+<h3 id="使用例子">使用例子</h3>
+<pre><code class="language-javascript">// 显示一个简单的警告框
+window.alert(&quot;Hello, world!&quot;);
+
+// 询问用户是否真的想要离开页面
+window.onbeforeunload = function() {
+  return &quot;你确定要离开吗？&quot;;
+};
+
+// 打开一个新的窗口
+let newWindow = window.open(&quot;https://www.example.com&quot;, &quot;_blank&quot;);
+
+// 设置一个5秒后执行的函数
+let timeoutID = window.setTimeout(function() {
+  alert(&quot;这是5秒后的消息！&quot;);
+}, 5000);
+
+// 每隔1秒钟执行一次的定时器
+let intervalID = window.setInterval(function() {
+  console.log(&quot;这条消息会每隔1秒钟打印一次&quot;);
+}, 1000);
+
+// 获取窗口的宽度和高度
+let width = window.innerWidth;
+let height = window.innerHeight;
+</code></pre>
+<h2 id="javascript-console-对象">JavaScript - <code>console</code> 对象</h2>
+<p>在 JavaScript 中，<code>console</code> 对象是一个内建的对象，提供了访问浏览器控制台的功能。控制台通常用于输出调试信息，但它也可以做更多的事情。<code>console</code> 对象的方法可以在浏览器的开发者工具中执行，以便开发者可以记录信息、警告、错误等，或者进行JavaScript表达式的即时评估。</p>
+<p>以下是 <code>console</code> 对象的一些常用方法：</p>
+<h3 id="输出方法">输出方法</h3>
+<ul>
+<li><code>console.log()</code>：最常用的方法，用于输出普通的日志信息。</li>
+<li><code>console.info()</code>：用于输出信息性消息，与 <code>log()</code> 类似，在不同浏览器中可能显示图标不同。</li>
+<li><code>console.warn()</code>：用于输出警告信息，通常会有警告图标和不同的文本颜色以区别于普通日志。</li>
+<li><code>console.error()</code>：用于输出错误信息，错误信息通常带有错误图标，并且有不同的颜色。</li>
+<li><code>console.debug()</code>：用于输出调试信息，与 <code>log()</code> 方法相似，但是可以根据浏览器的设置来开启或关闭调试信息的显示。</li>
+</ul>
+<h3 id="分组方法">分组方法</h3>
+<ul>
+<li><code>console.group()</code>：创建一个新的内联消息组，后续的所有消息都会被缩进，表示它们属于这个组。</li>
+<li><code>console.groupCollapsed()</code>：同 <code>group()</code>，但是新创建的消息组是默认折叠的，用户可以点击展开。</li>
+<li><code>console.groupEnd()</code>：结束当前的消息组。</li>
+</ul>
+<h3 id="计时方法">计时方法</h3>
+<ul>
+<li><code>console.time()</code>：启动一个计时器，可以用来跟踪操作耗时。</li>
+<li><code>console.timeEnd()</code>：停止对应的计时器，并输出所耗费的时间。</li>
+<li><code>console.timeLog()</code>：记录当前计时器的值。</li>
+</ul>
+<h3 id="其他方法">其他方法</h3>
+<ul>
+<li><code>console.table()</code>：将复杂的数据结构以表格的形式输出，便于查看。</li>
+<li><code>console.clear()</code>：清空控制台信息。</li>
+<li><code>console.assert()</code>：如果断言的第一个参数为 <code>false</code>，则输出信息。用于进行条件判断，输出不符合条件时的错误信息。</li>
+<li><code>console.trace()</code>：输出当前的堆栈跟踪。</li>
+<li><code>console.count()</code>：计数输出某个标签被调用的次数。</li>
+<li><code>console.dir()</code>：以 JSON 的形式显示一个对象的属性，可以深入查看对象。</li>
+</ul>
+<h3 id="使用例子-2">使用例子</h3>
+<pre><code class="language-javascript">// 常规日志输出
+console.log(&quot;这是一个普通的日志信息。&quot;);
+
+// 信息性消息
+console.info(&quot;这是一个信息性的消息。&quot;);
+
+// 警告信息
+console.warn(&quot;这是一个警告信息。&quot;);
+
+// 错误信息
+console.error(&quot;这是一个错误信息。&quot;);
+
+// 分组输出
+console.group(&quot;我的分组&quot;);
+console.log(&quot;第一项&quot;);
+console.log(&quot;第二项&quot;);
+console.groupEnd();
+
+// 计时器
+console.time(&quot;计时器&quot;);
+// 执行一些操作...
+console.timeEnd(&quot;计时器&quot;);
+
+// 断言
+console.assert(1 === 2, &quot;这将会输出错误信息，因为1不等于2&quot;);
+
+// 显示对象属性
+console.dir(document.head);
+
+// 堆栈跟踪
+console.trace(&quot;跟踪&quot;);
+
+// 计数器
+console.count(&quot;计数器&quot;);
+console.count(&quot;计数器&quot;);
+console.count(&quot;计数器&quot;);
+</code></pre>
+<p><code>console</code> 对象中的方法通常用于开发阶段来辅助开发者调试代码，但它们也可用于运行时的日志记录等用途。它们的实际表现可能会根据不同的浏览器有所差异。在编写生产级别的代码时，应该考虑到这些方法可能会对性能有所影响，并且在生产环境中应该减少或移除调试代码。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#javascript-window-%E5%AF%B9%E8%B1%A1">JavaScript - <code>window</code> 对象</a>
+<ul>
+<li><a href="#%E5%B1%9E%E6%80%A7">属性</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6">事件</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90">使用例子</a></li>
+</ul>
+</li>
+<li><a href="#javascript-console-%E5%AF%B9%E8%B1%A1">JavaScript - <code>console</code> 对象</a>
+<ul>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%96%B9%E6%B3%95">输出方法</a></li>
+<li><a href="#%E5%88%86%E7%BB%84%E6%96%B9%E6%B3%95">分组方法</a></li>
+<li><a href="#%E8%AE%A1%E6%97%B6%E6%96%B9%E6%B3%95">计时方法</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95">其他方法</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90-2">使用例子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

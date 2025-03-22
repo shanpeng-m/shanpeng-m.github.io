@@ -1,0 +1,526 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【4-16】务实的技术负责人 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【4-16】务实的技术负责人 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+技术负责人的职位非常有趣，因为担任技术负..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【4-16】务实的技术负责人 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+技术负责人的职位非常有趣，因为担任技术负..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/XcFBwbY_kr/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【4-16】务实的技术负责人 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+技术负责人的职位非常有趣，因为担任技术负...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/XcFBwbY_kr/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【4-16】务实的技术负责人
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-11-27 · 31 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>技术负责人的职位非常有趣，因为担任技术负责人通常是一种角色，而非正式头衔。成为技术负责人意味着你是一名经验丰富，通常是高级或以上级别的工程师。你是一个项目的负责人，或者在所有项目中是你工程团队的首选人选。有些团队有多个技术负责人，每个项目一个，而另一些团队只有一个技术负责人，通常是团队中经验最丰富或在职时间最长的工程师。</p>
+<p>典型的技术负责人头衔在谷歌、Meta、亚马逊、微软和优步等公司中，并没有“技术负责人”这一职称。在高级工程师级别之后是员工工程师级别。但在这些公司中，团队或项目内通常存在技术负责人角色。相比之下，一些公司确实有正式的技术负责人职位。在有技术负责人正式头衔的公司中，这一职位最常见的称谓有：</p>
+<ul>
+<li>技术负责人</li>
+<li>负责人工程师 / 负责人开发者</li>
+</ul>
+<p>典型的技术负责人期望“技术负责人的期望通常与高级工程师相似，但增加了领导项目的责任。在一些公司，技术负责人的期望更接近于员工工程师的期望。有关这些级别的常见期望，请参阅第三部分（高级）和第五部分（员工）的介绍。此外，技术负责人的期望有时与工程经理的期望重叠。技术负责人并不负责人员管理，但他们往往承担着帮助团队更好地协调与对齐的管理责任。这通常是工程经理负责的领域，直到他们有技术负责人可以委派给此项工作。</p>
+<h1 id="项目管理">项目管理</h1>
+<p>在高速增长的创业公司和大型科技公司中，各级工程师通常会主导工程项目。因此，作为一名工程师，提升这一能力对于向高级和资深角色发展非常重要。<br>
+作为技术负责人或充当技术负责人的工程师，领导项目是日常工作的一部分。那么，您如何高效而自信地完成这个任务呢？</p>
+<h2 id="工程师主导项目的公司">工程师主导项目的公司</h2>
+<p>哪些科技公司赋予软件工程师担任项目工程领导的权利，即使他们的级别低于高级或技术领导者？其实有很多公司。在大多数地方，每个团队都可以自主决定如何运作，没有特定的工作方式被强制要求。以下是我确认的几家公司，它们有多个团队由工程师领导项目，并得到经理和更有经验的工程师的支持：</p>
+<p>Shopify：这个角色称为“IC Champion”（个人贡献冠军individual contributor champion）<br>
+Amazon：非高级工程师经常主导复杂度适合的项目<br>
+Atlassian：由中级工程师担任的常见角色，称为Feature Lead<br>
+Microsoft：许多产品团队都采用这种方式<br>
+GitHub：称这个角色为DRI（直接责任人）<br>
+X（前Twitter）：多个产品团队称这个角色为PTL（项目技术领导者）<br>
+DAZN（体育流媒体初创公司）：称这个角色为项目负责人<br>
+Klarna有团队正在试验这种方法<br>
+Trivago称这个角色为技术驱动者<br>
+Skyscanner：许多团队让经验较少的工程师参与项目，并最终带领项目<br>
+Thought Machine（金融科技初创公司）：项目团队由工程师领导，而工程经理则领导“组件团队”<br>
+“大型科技公司：Meta、谷歌、苹果和优步的多个团队采用这种方法。</p>
+<p>苹果公司值得单独提及，因为它的联合创始人史蒂夫·乔布斯认为个人贡献者（ICs）最擅长管理。他在1985年的一次采访中说：<br>
+“你知道谁是最好的管理者吗？他们是那些伟大的个人贡献者，他们从来不想成为管理者，但决定不得不成为管理者，因为没有其他人能像他们那样出色。”</p>
+<h2 id="为什么我们要进行项目管理">为什么我们要进行项目管理？</h2>
+<p>“项目”是许多组织用来协调努力，以推动特定商业目标的词汇。项目的持续时间可能短至几周，但通常从开始到结束会持续数月，长期项目甚至可能跨越数年。然而，在具备健康工程文化的技术公司，工程师每天都能交付多次商业价值，并且每几个月会完成被视为“完成”的项目。</p>
+<p>那么，我们是否可以在没有任何项目管理形式的情况下完成工作呢？如果你一个人工作，不依赖于其他团队，也没有其他团队依赖于你的工作，那就没问题！你可以为自己想要构建的功能制定一个计划，编写代码，交付完成，这样就完成了。你可能不需要本章提到的任何工具。</p>
+<p>然而，当更多人员一起工作时，就需要：</p>
+<p>目标：明确你正在解决的问题是什么。<br>
+规划：对如何解决该问题有一个高层次的概念。在某些情况下，正式的规范可能在计划之前就已存在。<br>
+协调：明确谁负责做什么。<br>
+保持团队同步：在工作进展中，确保所有团队成员了解项目进展情况。<br>
+管理风险、变更和延迟：软件构建过程中充满风险，因为我们往往在新的、未经尝试的方式中构建解决方案。</p>
+<p>项目管理方法提供了上述所有内容的策略，并帮助回答许多工程师都畏惧的问题：“这需要多长时间？”</p>
+<p>截止日期对项目很重要，无论我们工程师是否喜欢这样。在商业通过日期协调和沟通各个职能的环境中，尤其如此。大多数大型科技公司和大多高增长的初创企业都是以日期为导向的企业。正如我在文章《是的，你应该估算软件项目》中所写：</p>
+<p>“估算很重要，因为大多数人和企业都是以日期为导向的。上市公司根据季度进行计划和预算。它们在询问‘需要多长时间才能推出？’之后决定向项目和人员投资多少。私营的风险投资支持公司则试图及时推出新功能，以帮助下一轮的融资。</p>
+<p>是的，有些企业并不以日期为主要导向，但这种情况很少见。私人盈利的生活方式企业和公共机构可能是对日期不太在意的实体的最佳例子。”</p>
+<p>我们在本章中讨论的内容适用于任何框架中更复杂的“工作单元”，而对于简单、明确定义的工作部分则不是必需的。任何涉及人员协调并跨越多个依赖关系的相当规模的工作都是一个项目，可以从这里所覆盖的方法中获益。</p>
+<h3 id="项目启动与里程碑">项目启动与里程碑</h3>
+<p>我观察到，一个项目失败的主要原因在于预期不一致。这种情况通常在项目接近尾声时才显现出来，正当工程团队以为他们已经完成时。</p>
+<p>项目启动会有助于确保在开始时没有误解，而这些误解在后期可能导致大量工作被舍弃或完全重做。我将启动会视为一个与相关利益相关者澄清重大问题的活动：</p>
+<p>降低任何项目风险的最佳方法就是召开启动会，在会上所有项目利益相关者确认他们理解项目的目标和实施方法，并支持高层次的计划。</p>
+<p>对于启动会的准备工作，取决于项目的复杂性和利益相关者的数量。在我看来，撰写一份文件是必不可少的，应该提前分发给大家，让他们添加意见。这种方式在任何有远程或部分远程工作的团队的组织中都是必须的。</p>
+<p>产品需求文档（PRD）是描述项目“为何”以及“什么”的常见格式。尽管工程师应该在一定程度上参与，但在此阶段并不涉及工程细节，主要是为了使所有产品、工程、设计、数据科学和业务的利益相关者达成一致。可以参考各大科技公司的PRD示例。</p>
+<h3 id="项目启动会">项目启动会</h3>
+<p>项目启动会使每个人达成对“为何”和“什么”的共识。这个启动会是人们审核计划并解答问题的时刻。一个成功的启动会是项目负责人提问：“关于项目是什么、我们为什么要做它或者我们的实施方法有什么疑问吗？”</p>
+<p>理想情况下，每个人都能根据现有信息回答清楚。在实际操作中，我看到房间里会爆发出一系列问题，这证明了启动会的价值。在团队开始构建之前解决问题总比之后更好，因为后期的变更可能意味着之前的努力付诸东流。</p>
+<p>我建议启动会应以会议形式进行。可以为阅读提案文件或由项目负责人向与会者逐步讲解留出十分钟。如果是在线会议，可以考虑要求参与者打开视频，这样会议主持人可以通过视觉 cues 发现可能存在分歧的人，并在适当时给予他们一点推动，鼓励他们发言。</p>
+<p>虽然这听起来可能有些反直觉，我建议邀请所有有相关发言权的利益相关者参加启动会。这意味着要邀请来自商业部门的所有人员，包括客户支持。虽然会议参与者越多，时间成本就越高，但这是可以接受的，因为这是一个早期捕捉误解并避免后期浪费精力的机会。</p>
+<h3 id="工程启动会议">工程启动会议</h3>
+<p>工程启动会议是在项目启动会议之后进行的，目的是使工程师在“如何”方面达成一致。会议的参与者包括工程团队及相关的工程干系人，例如数据科学、机器学习或基础设施团队。一旦业务目标和高层次方法得到明确，工程师便开始规划具体的实施方式。</p>
+<p>这种规划的方式多种多样，有些团队会进行头脑风暴，偶尔是虚拟形式。许多大型科技公司和初创公司通常用工程规划文档来启动会议，这些文档类似于RFC（请求评论），ERD（工程需求文档）或ADR（架构决策记录）。</p>
+<p>我非常支持将达成一致的工程方法记录下来，因为这有很多好处。它迫使工程师清楚地描述所提议的方法，从而减少误解。此外，计划可以被广泛传播以供评论。在项目进行时，这份规划文档随后可为后续参与项目的人员提供帮助，帮助他们理解已做出的决策。</p>
+<h3 id="确定里程碑">确定里程碑</h3>
+<p>此步骤的目标是使工程团队了解“何时”。一些工程团队将他们的规划与项目的里程碑和估算结合起来，但我更倾向于将这两者分开。原因在于，如果在规划阶段就设定了工程日期和里程碑，团队很可能会立即添加捷径并做出会造成技术债务的决策。通过单独进行工程规划，团队应制定出有利于系统和服务长期健康的最佳决策，而不仅仅是为项目本身。</p>
+<p>在制定好工程计划后，就可以开始确定可交付的里程碑了。这些里程碑越细化越好，因为所有的估算都会有一定偏差，只有到达里程碑时才能真正知道偏差有多大。此外，每达成一个里程碑，项目的最终目标也会更进一步。</p>
+<p>一旦确定了里程碑，团队会对每个里程碑所需的工作进行细分，并给出粗略的时间估算。有些团队使用T恤尺码作为时间单位，另一些则倾向于采用规划扑克的方法，用斐波那契数列来估算复杂度（1、2、3、5、8、13等），还有一些团队则偏爱以工程天数为单位。最终，无论你在以日期为驱动的公司选择哪种方法，都需要给出一个粗略的日期估算，说明这个里程碑应该在何时实现。</p>
+<p>我希望里程碑足够小，以便在几周内可以完成。如果里程碑涉及较长时间段的工作，我会鼓励团队设定中间里程碑，来捕捉更小的部分。</p>
+<h3 id="确保估算不是固定的">确保估算不是固定的</h3>
+<p>软件项目充满了未知和风险，合理的要求是团队能够根据最佳信息对所需时间有一个大致的了解。在项目进展过程中，会出现许多风险和挑战，这会增加复杂性并改变原本的估算。</p>
+<p>当然，业务方会希望了解最终的交付日期。作为项目负责人，有几种方法可以用来分享这个估算的截止日期。许多负责人会在估算中添加余量或时间来人为夸大，然后对外沟通这个信息。<br>
+我通常更倾向于添加一些余量，同时也教育业务方理解没有“固定的日期”这一概念。可以向业务承诺会定期提供更新，随着项目逐步达到里程碑，可以逐渐提供更有信心的截止日期。</p>
+<p>在这个意义上，软件工程和建筑工作是类似的。任何曾经雇佣过建筑公司进行房屋建造或装修的人都知道，日期和预算充其量只是估算。通常情况下，完成时间总是会比预期的要长。软件项目同样如此。</p>
+<p>当然，有时候发布日期是固定的。例如，一些公司已经提前明确了固定的发布日期。在金融和银行业中，进行变更和遵守新法规的截止日期也都是固定的。在这种情况下，日期是不可协商的；但相应地，工作范围可能会减少。在这种情形下，了解对业务的重要性尤为重要——有关此主题的更多信息，请参阅第五部分：理解业务。</p>
+<h2 id="软件项目物理学">软件项目物理学</h2>
+<p>虽然我们构建的软件是虚拟的，但我发现，有一种“软件物理学”的“定律”是非常准确的：如果这个三角形看起来很熟悉，那可能是因为它类似于项目管理三角形，这是一种常用模型，用于描述成本、时间、范围和质量之间的关系。对于大科技公司和快速成长的初创公司，质量通常很少可以妥协；而时间线和范围更容易调整。<br>
+参与项目的工程师、时间线和范围是紧密相连的。如果其中一个发生变化，至少另一个也必须随之变化。”</p>
+<h3 id="当范围增加时">当范围增加时</h3>
+<p>当项目范围扩大时，时间线也需要延长，或者需要更多的人分配到项目中。时间线与范围增长的第一种选择很直接，但业务通常不喜欢这个选择。<br>
+对于第二种选择，即增加更多的人，额外的工作时间和加班会增加项目三角形中的“人”元素。值得注意的是，团队成员的数量并不一定需要增加，如果现有队员的工作时间更长，人数可以保持不变。一个好处是他们对项目的背景有充分的了解，不需要进行入职培训。但请明确，投入到项目中的劳动时间超出了原计划。<br>
+在不减慢进度的情况下，向项目中增加更多人是具有挑战性的，但在少数情况下这是可以实现的。每当我提到这一点时，布鲁克斯定律经常被引用。这条定律出自弗雷德·布鲁克斯的书《神秘的男人月》：</p>
+<p>“在一个延迟的软件项目上增加人力会使项目更晚完成。”</p>
+<p>我不会将这视为普遍真理。这对于入职培训耗时很少、工作可以拆分并且可并行化、能够引入具有领域知识的人员，并且相对于团队规模投入人数较少的项目并不成立。<br>
+引入熟悉代码库的工程师来处理独立的工作，可以加速项目。通过增加新工程师，我也成功地交付了相较于原定时间线增加了范围的项目。<br>
+然而，这总是涉及到入职培训时间和沟通成本的艰难权衡。入职培训需要时间，可能会分散团队的注意力。入职培训越简单，例如使用内部开源模型，新员工具备的领域知识越多，那么成本就越低。沟通成本亦是如此，清晰的文档、干净的代码库和异步流程都能降低入职培训的影响。”</p>
+<p>实际上，对于大多数范围扩大的项目，引入额外的工程师通常是不可能的，因为他们需要来自其他团队或项目，而闲置的工程师通常很少。而且，对于很多项目，工作可能并不够可以并行化，以至于新加入的成员无法简单地接手。</p>
+<p>要意识到获取更多人力的不同方法，知道加班等于更多的劳动投入，并且只有在能够加速特定项目的情况下才招募具备领域知识的工程师。显而易见：双倍的工程师数量并不会将完成时间减半。然而，如果这些工程师具备领域知识且工作可以分割，那么在合理的情况下，它可以缩短完成时间。”</p>
+<h3 id="当项目时间线变化时">当项目时间线变化时</h3>
+<p>如果项目的截止日期提前，必然会有所妥协。最可能的情况是范围被缩减。不太明显的是，在这种情况下，“人”这方面的需求几乎总是增加，因为在更紧的截止日期下，人们通常会开始加班或被要求花更多时间。因此，项目的“人小时”总数在没有增加额外人员的情况下增加。<br>
+对于一个时间缩短的项目，是否可以增加更多工程师？这是可能的，但新成员的入职培训时间可能使其变得不切实际，除非截止日期离得很远。”</p>
+<h3 id="当项目上能参与的人减少时">当项目上能参与的人减少时</h3>
+<p>意外的问题可能导致项目上工作的人减少，例如团队成员被调往其他工作、疾病等。当人数减少时，范围需要缩小，时间线应该延长，或者需要增加更多人员。”</p>
+<p>在这里，改变范围或时间线是最简单的。通过推动减少的团队多工作几个小时可以增加更多的人小时。然而，如果加班成为常态，人们会感到疲惫，这种方法可能会适得其反。团队加班通常会导致错误增加，因为人们工作时间延长，发布更多bug，往往没有察觉。不要忘记，疲惫的一个人可能会对项目产生负面影响，引入本可以避免的回归错误，而这些错误如果他们得到了足够的休息是不会出现的。<br>
+了解范围、时间线和人之间的关系很有用，清楚地知道如果一个组件发生改变，至少还有一个组件也应该随之改变。作为项目负责人，这种思维模型可以帮助你与业务方面进行更现实的权衡谈判。”</p>
+<h3 id="当参与项目的人发生变化时">当参与项目的人发生变化时</h3>
+<p>一个不太直观的情况是，当一个新成员加入团队时，这是否会影响时间线，比如因为更多人参与项目而缩短时间线？<br>
+通常时间线不会改变，或者可能甚至会延长！如果一个新团队成员也是新入职员工，入职培训可能会拖延足够长的时间，以分散团队成员的注意力，从而减慢项目进度。如果入职培训很快且新加入者能够迅速上手，那么他们或许能加速项目进展。有些公司新入职员工进入公司的第二天就能交付生产，而在某些地方，第一项更改可能需要1到2个月。入职培训越快，新加入者入职后加速项目的可能性就越大。<br>
+同样地，如果团队成员被替换——例如，当某人调出项目，另一个人调入时——入职培训的时间将影响时间线是否受到影响。这在某些团队中几乎没有影响，但在其他团队中则是一个重大打击。考虑到离职和入职培训的时间，并传达项目的范围或时间线可能会因此改变的信息。</p>
+<h2 id="日常项目管理">日常项目管理</h2>
+<p>有几种广泛使用的项目管理方法，许多工程团队会运用这些方法：</p>
+<ul>
+<li>Scrum：通常适用于为期一周或更长的冲刺。团队通常会进行计划与估算会议、定期的梳理会议以优先排序下一轮冲刺的工作，以及冲刺回顾会议。Scrum的一大好处是结构性，但对于经验丰富的团队来说，这种方法可能过于僵化。</li>
+<li>Kanban：一种方法，其中下一项工作是待办事项列表顶部的任务，团队会进行某种形式的计划和优先排序会议。Kanban的主要优势在于灵活性，优先级变化时并不会造成问题。缺点是缺乏结构，这一点对于经验不足的团队来说可能是更希望有明确框架的。</li>
+<li>Scrumban：Scrum和Kanban方法的结合，根据需要合并使用两者的元素。这通常意味着对冲刺的要求不那么严格，允许在选择高优先级工作时有更多灵活性。</li>
+</ul>
+<p>我不相信对项目管理采取规定性的做法。我推荐的一个方法是尝试不同的方式。如果软件工程这个领域在过去二十年的经验教给我什么，那就是某个团队有效的方法可能在其他地方效果并不好。尝试你认为可行的方法，包括那些你不太确定的方法。尝试明确的项目管理方法，采用不同的站立会议格式——包括完全不进行——以及新的工作估算或跟踪方式。通过实践学习没有比这更好的方法了。无论你选择哪种方法，我建议关注以下几点：</p>
+<ul>
+<li>每个人是否在同一页面上？确保有一个检查的方法。项目失败的少数迹象中，有很大一部分是回答“否”时。</li>
+<li>让团队和自己对已达成的意见负责。没有什么比写下事情并由大家签字更能促进责任感。这就是为何以整个团队名义签署的每周状态邮件在促进责任感方面效果很好。期待——并鼓励！——团队成员在他们不想签字时发声。</li>
+<li>作为项目负责人，要慷慨地委派任务。向你的经理进行上下级委派，同时向支持你的人横向委派。考虑将任务委派给团队成员，并为他们提供希望承担的领导机会。</li>
+<li>迭代与反馈：频率越高越好。瀑布式开发模型失败的原因在于反馈往往在规划开始多年之后才来。获得关于项目真实状态的反馈频率越高，保持项目正常进行的可能性越大。这就是为什么短迭代、小里程碑和频繁反馈是成功的坚实框架。在每隔几周召开一次回顾会议可以帮助识别什么有效，什么需要改进，以及如何改进。</li>
+<li>预料意外情况。尽早识别风险–接下来会详细阐述这一点。必要时采取权衡，酌情决定何时这样做。</li>
+<li>“不要忘记大局和项目的最终目标。目标不是编写代码、完成任务单或以一定速度产出工作。目标与商业关联，因此要经常陈述这一点，专注于实现目标，而不是做一些无法推动你接近完成的繁琐工作。”<br>
+作为技术负责人的决策技术负责人角色——甚至项目负责人的角色——都有模糊不清的一面。显然，一个团队经理可以并且确实会做出团队层面的决策，同样清楚的是工程师们做出一些自己的决策。但是技术负责人的职责是什么？他们需要做项目层面还是团队层面的决策，如果是，何时需要做？他们是否可以独立做这些决策，还是需要咨询经理并听从他们的意见？例如，当项目距离交付日期还有两周时，一名工程师发现他们打算使用的框架缺少一个关键特性。那么，要么改变特性，降低功能，要么需要编写大量自定义代码，但这样会延长项目的时间线。工程师期望你作为技术负责人做出决策：一个选择影响范围，另一个选择影响时间线。你能单独做出这个决定吗，还是需要咨询如经理、产品经理或业务相关方等利益相关者？</li>
+</ul>
+<p>在做决定之前，不要忘记咨询团队的其他成员。较少经验的技术负责人常常认为若需要做出决定，他们应该自己做。但是，他们是否真的具备做出最好决定的条件？考虑授权给信息最丰富的人来做决定。在上述例子中，提出两种解决方案的工程师可能已经有他们认为最好的建议。帮助他们表达出这个建议，然后在考虑是否告知或咨询利益相关者的同时支持这个建议。通知利益相关者。当做出的决定影响到项目的时间线、范围或人员时，始终考虑通知相关利益方。这意味着分享：</p>
+<ul>
+<li>当前情况，即问题</li>
+<li>桌面上的潜在解决方案及其权衡</li>
+<li>团队选择的你支持的方法</li>
+</ul>
+<p>你能做出决定吗，或者需要先咨询？作为技术负责人，预计你能够推动事情向前发展，而不是对每个决策都推诿给利益相关者或经理。依据情况判断是否可以当场做决定，或是否最好先咨询利益相关者或你的经理。随着时间推移，你会逐渐与利益相关者建立信任，能够预测何时某个决策的小范围足以只通知他人，何时的影响程度需要你咨询他人。</p>
+<h2 id="风险与依赖">风险与依赖</h2>
+<p>如前所述，构建一款新软件与建造一栋新公寓大楼有许多相似之处。这两者常常都需要比计划更长的时间并超出预算。没有两个项目是完全相同的：材料和技术各异，约束和挑战也不同。建筑和软件工程还共同面临一些风险只在工作开始后才显现，这需要你随时应对。让我们来看看软件项目中最常遇到的八种风险以及如何降低这些风险：</p>
+<ul>
+<li>技术风险</li>
+<li>工程依赖</li>
+<li>非工程依赖</li>
+<li>缺失的决策或上下文依赖</li>
+<li>不切实际的时间线</li>
+<li>人员不足或带宽不足</li>
+<li>项目中途的意外状况</li>
+<li>完全不知道某项任务究竟需要多长时间</li>
+</ul>
+<p>技术风险当你以前没有使用过某个框架、库、语言或服务时，可能会面临“未知的未知”——即你并不知道的风险。如何降低：</p>
+<ul>
+<li>原型制作。花一两天时间构建与你需要做的事情相关的原型。在原型制作过程中，你将会发现差距、风险和未知因素。</li>
+<li>审查路线图和工具。如果通过工具、资源和反馈进行审查，会不会有重大变化？这项技术的稳定性如何，维护/投资的需求多少？</li>
+<li>评估“不稳定”的框架和工具。你可能会想使用版本不稳定的库、框架或API，所以评估这种不稳定性所带来的风险是多大。有时风险是可以接受的，因为使用最新的、足够稳定的版本意味着你在变得更稳定时不需要进行更新。</li>
+<li>考虑选择那些不会频繁变化的替代方案。这是一个在使用新颖有趣的事物与使用能够可靠工作的已经有保障的事物间权衡的过程。</li>
+</ul>
+<p>工程依赖当你无法推进工作，直到其他工程团队对他们管理的服务、库或框架进行更改。如何降低：</p>
+<ul>
+<li>与其他团队沟通，了解需要做什么。</li>
+<li>提出自己来做这项工作，前提是有内部开源模型。不应低估这项工作所需的时间，因为你需要了解他们服务的背景并考虑约束条件。如果一个平台团队负责你需要修改的内容，预期会有许多约束条件。平台团队需要确保他们的更改不会破坏任何客户。</li>
+<li>针对这个依赖关系进行模拟，以便于在等待其他团队构建期间自己解锁进度。</li>
+<li>将这个依赖关系移出关键路径，例如，构建自己更简单的版本，并记住你将需要维护自己构建的内容。如果选择这条道路，仔细考虑维护带来的负担。</li>
+<li>作为团队一起集体解决问题。让整个团队参与其中来解决真正困难的问题，这通常能取得奇效，并团结团队。</li>
+<li>向上寻求帮助，通过升级到管理层来帮助优先处理其他团队的工作路线。在此之前，我建议始终先尝试工程师间的沟通。</li>
+</ul>
+<h3 id="非工程依赖">非工程依赖</h3>
+<p>当您无法在没有非工程团队的信息或批准的情况下取得进展时，就会出现这种情况。<br>
+如何缓解：</p>
+<ul>
+<li>与团队沟通，明确您需要什么原因，以及如果他们不采取行动会带来什么影响。</li>
+<li>您能否绕过这个团队？例如，如果这是一个设计依赖，您能否制作一些替代性的草图？</li>
+<li>如有需要，可以寻求上级的帮助，比如项目经理或工程经理。但请分享适当的背景信息，并理解团队面临的困难或限制。</li>
+</ul>
+<h3 id="缺失的决策或上下文依赖">缺失的决策或上下文依赖</h3>
+<p>当你对如何或为何建立某项工作感到不确定时。我知道只有一种方法可以降低这种风险：拒绝开始工作，直到你理解上下文，或者有了必要的决策。告诉利益相关者你需要他们提供什么信息，才能继续工作。如果在某项工作中仍存在基本问题未得到回答，开始工作对团队、公司和你自己来说都是一种不负责任的行为。确保你清楚应该做什么，以及为什么要做。在这一点明晰之前，不要开始工作。</p>
+<h3 id="不切实际的时间表">不切实际的时间表</h3>
+<p>这种情况通常发生在未征求团队意见的情况下上级下达了完成日期，当时间表让你感到不安时。如何降低风险：以粗略估算的方式将需要完成的工作进行分解，以便有东西可以讨论。提供有助于满足时间表的权衡方案，减少工作范围，并考虑在项目中添加更多工程师。不要害怕跳出思维框架。以下是一些与管理层接洽时的建议示例：”</p>
+<ul>
+<li>
+<p>与其进行功能讨论，不如发布一个按钮来捕捉信息并打开一个Zendesk工单，使用基本的自动化功能。这样我们就能在截止日期之前交付。</p>
+</li>
+<li>
+<p>那么，如果我们能暂停我团队正在做的所有其他项目，并让两名高级Android工程师在接下来的两个月内转过来工作，同时暂停终止Zeno服务，以免我们需要迁移到Athena，那么我们才有可能在这个截止日期之前完成。否则，我们就按照原计划进行，将时间表推迟两个月，或缩减范围，以便不发布聊天功能。</p>
+</li>
+</ul>
+<p>拒绝接受自上而下的截止日期。如果你是一位经理，要保护你的团队，让他们在没有时间压力的情况下进行估算。明确你可以做什么以及不能做什么。</p>
+<h3 id="人手不足或带宽有限">人手不足或带宽有限</h3>
+<p>由于还有其他工作进行，团队无法现实地承担另一个项目，但领导层表示没有选择。如何降低风险：</p>
+<ul>
+<li>明确你的团队能够同时处理多少工作/项目。基本上，要澄清你们的典型产出是多少。</li>
+<li>提出停止其他当前优先级较高的项目，但要清楚说明其影响。这样的回复可以作为参考：“如果你能说服首席产品官让我们停止项目Zeno的工作，我们就可以承担另一个项目。然而，即使如此，停止工作将对团队士气造成打击，切换上下文也会使Zeno的工作增加几个星期。我需要首席产品官亲自告诉我，她同意团队放弃这项工作，承受士气下降的影响，并让Zeno的工作增加四周。”</li>
+</ul>
+<h3 id="项目中途的意外">项目中途的意外</h3>
+<p>软件开发充满了意外，事情可能突然且不可预测地出现。如何降低风险：</p>
+<ul>
+<li>这是什么类型的风险？看看上述减轻方法是否适用。</li>
+<li>是否可以规避或忽略？它可能只是虚惊，所以进行调查。</li>
+<li>时间表是否需要延长？这是最合理的方法，答案往往是“是”，而不是许多人所预期的那样！</li>
+<li>在进行快速修复时，可以承担技术、架构或过程债务，并在项目结束时再进行适当的修复吗？这里的风险在于修复可能永远无法完成，所以要对其优先级负责。</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86">项目管理</a>
+<ul>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E5%B8%88%E4%B8%BB%E5%AF%BC%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%85%AC%E5%8F%B8">工程师主导项目的公司</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E8%A6%81%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86">为什么我们要进行项目管理？</a>
+<ul>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%87%8C%E7%A8%8B%E7%A2%91">项目启动与里程碑</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E4%BC%9A">项目启动会</a></li>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E4%BC%9A%E8%AE%AE">工程启动会议</a></li>
+<li><a href="#%E7%A1%AE%E5%AE%9A%E9%87%8C%E7%A8%8B%E7%A2%91">确定里程碑</a></li>
+<li><a href="#%E7%A1%AE%E4%BF%9D%E4%BC%B0%E7%AE%97%E4%B8%8D%E6%98%AF%E5%9B%BA%E5%AE%9A%E7%9A%84">确保估算不是固定的</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%89%A9%E7%90%86%E5%AD%A6">软件项目物理学</a>
+<ul>
+<li><a href="#%E5%BD%93%E8%8C%83%E5%9B%B4%E5%A2%9E%E5%8A%A0%E6%97%B6">当范围增加时</a></li>
+<li><a href="#%E5%BD%93%E9%A1%B9%E7%9B%AE%E6%97%B6%E9%97%B4%E7%BA%BF%E5%8F%98%E5%8C%96%E6%97%B6">当项目时间线变化时</a></li>
+<li><a href="#%E5%BD%93%E9%A1%B9%E7%9B%AE%E4%B8%8A%E8%83%BD%E5%8F%82%E4%B8%8E%E7%9A%84%E4%BA%BA%E5%87%8F%E5%B0%91%E6%97%B6">当项目上能参与的人减少时</a></li>
+<li><a href="#%E5%BD%93%E5%8F%82%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%BA%BA%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%E6%97%B6">当参与项目的人发生变化时</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86">日常项目管理</a></li>
+<li><a href="#%E9%A3%8E%E9%99%A9%E4%B8%8E%E4%BE%9D%E8%B5%96">风险与依赖</a>
+<ul>
+<li><a href="#%E9%9D%9E%E5%B7%A5%E7%A8%8B%E4%BE%9D%E8%B5%96">非工程依赖</a></li>
+<li><a href="#%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%86%B3%E7%AD%96%E6%88%96%E4%B8%8A%E4%B8%8B%E6%96%87%E4%BE%9D%E8%B5%96">缺失的决策或上下文依赖</a></li>
+<li><a href="#%E4%B8%8D%E5%88%87%E5%AE%9E%E9%99%85%E7%9A%84%E6%97%B6%E9%97%B4%E8%A1%A8">不切实际的时间表</a></li>
+<li><a href="#%E4%BA%BA%E6%89%8B%E4%B8%8D%E8%B6%B3%E6%88%96%E5%B8%A6%E5%AE%BD%E6%9C%89%E9%99%90">人手不足或带宽有限</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%80%94%E7%9A%84%E6%84%8F%E5%A4%96">项目中途的意外</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

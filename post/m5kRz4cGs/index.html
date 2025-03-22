@@ -1,0 +1,581 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【3-12】合作和团队协作 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【3-12】合作和团队协作 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在独自工作时，编码几乎总是构建软件中最具..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【3-12】合作和团队协作 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在独自工作时，编码几乎总是构建软件中最具..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/m5kRz4cGs/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【3-12】合作和团队协作 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在独自工作时，编码几乎总是构建软件中最具...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/m5kRz4cGs/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【3-12】合作和团队协作
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-07-21 · 35 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>在独自工作时，编码几乎总是构建软件中最具挑战性的部分。而在团队中，与同事合作可能同样具有挑战性。在协作中，许多因素都很重要：确保遵循约定的方法，就使用哪些编码模式达成一致，如何进行测试，遵循哪些命名约定等等。</p>
+<p>当你作为更大团队的一部分工作时——例如，当几个团队共同构建一个产品时——你需要确保你的工作方向与其他人保持一致。这可能包括确保你暴露的新API端点能够按照另一个团队的预期方式工作，或者告知某个团队他们正在阻碍你的进度，因为他们需要对其服务进行修改。</p>
+<p>在大多数公司中，沟通、协作和团队合作是对全面发展的高级软件工程师的基本期望。在本章中，我们将探讨最常见的协作情况，并深入研究如何在这些方面表现卓越。</p>
+<h2 id="代码审查">代码审查</h2>
+<p>一个好的代码审查应该全面考察代码变更及其如何融入现有代码库。审查者需要检查标题和描述的清晰度,理解变更的原因,并关注代码的正确性、测试覆盖率、功能变化,以及是否遵循了编码规范和最佳实践。</p>
+<p>高质量的代码审查会指出明显可以改进的地方,比如难以理解的代码、模糊的命名、被注释掉的代码、未经测试的代码或被忽视的边界情况。审查者还会注意到当一次审查中包含了过多的变更时,建议将代码变更保持单一目的,并将其拆分成更聚焦的部分。</p>
+<p>更好的代码审查会在更广泛的系统背景下看待变更,检查变更是否易于维护。审查者可能会询问变更的必要性以及它如何影响系统的其他部分。他们会关注引入的抽象如何融入现有的软件架构,并指出可维护性方面的观察,如可以简化的复杂逻辑、测试结构、代码重复等可能的改进点。</p>
+<h3 id="审查的语气">审查的语气</h3>
+<p>代码审查的语气对团队士气有着重要影响。严厉的语气可能会给人一种敌对环境的印象,甚至被视为微攻击。主观性强的语言可能会让人产生防御心理,引发激烈讨论。相反,专业、温和和积极的语气有助于营造包容的环境,使人们更愿意接受建设性反馈,从而促进健康、活跃的讨论。</p>
+<p>好的代码审查倾向于提出开放式问题,而不是做出强烈或主观的陈述。审查者会提供可能更优的替代方案和解决方法。他们认识到自己可能会遗漏某些内容,因此在做出纠正前会先寻求澄清。更好的代码审查还体现了同理心,认可代码作者在变更上投入的时间和精力。这些审查会赞赏好的解决方案,总体上保持积极的语气。</p>
+<h3 id="在批准前请求修改">在批准前请求修改</h3>
+<p>好的代码审查不会在存在未解决问题的情况下批准变更。然而,审查者会明确指出哪些问题或评论是非阻塞性的或不重要的,通常将这些称为&quot;小问题&quot;或&quot;nit&quot;。在批准变更时,他们会明确表示,例如给出&quot;LGTM&quot;(looks good to me)的评价。同样,在请求跟进时,他们也会明确表达,并使用代码审查工具或遵循团队惯例来传达这一信息。</p>
+<p>更好的代码审查在存在重要问题需要解决时不会批准变更。这些审查在原则上坚定,但在实践中灵活;有时,作者会在后续的代码变更中解决这些问题。对于紧急变更,审查者会尽量让自己有空进行更快的审查。</p>
+<h3 id="相互沟通">相互沟通</h3>
+<p>好的代码审查会提出所需的所有问题,如果修改没有解决这些问题,审查者会指出这一点。当对话变成冗长的来回讨论时,审查者会亲自联系作者,以避免在代码审查工具上浪费更多时间。</p>
+<p>大量评论的存在表明可能存在误解,通过面对面交流更容易识别和解决这些问题。高效的工程师知道,亲自接触可以节省时间并避免产生不良情绪。</p>
+<h3 id="小细节评论">小细节评论</h3>
+<p>&quot;小细节&quot;(Nitpick)指的是对不会显著影响拉取请求质量的微小变更的评论,例如建议变量或函数的替代名称,声称变量声明应按字母顺序排列,或者缩进可以改进等。</p>
+<p>好的代码审查会明确指出哪些查询是小细节,通常不会包含太多这样的评论。过多的小细节评论可能会令人沮丧,并分散对更重要主题的注意力。</p>
+<p>更好的代码审查意识到过多的小细节评论是缺乏工具或标准的迹象。经常遇到这些问题的审查者会寻求在代码审查过程之外解决问题。例如,大多数常见的小细节评论可以通过自动化代码检查来解决。那些无法自动化的问题通常可以通过团队达成某些标准并遵循这些标准来解决,最终可能会实现自动化。</p>
+<h3 id="新人加入和代码审查">新人加入和代码审查</h3>
+<p>优秀的代码审查对所有人都采用相同的质量标准和方法,不论职位、级别或工作年限。审查意见应当语气温和、积极支持,并明确指出需要在批准前修改的地方。</p>
+<p>更好的代码审查会特别注意为新加入的同事提供良好的首次审查体验。审查人员会体谅新同事可能不了解所有的编码规范,尤其是一些不成文的非正式规则。他们也充分意识到新人还在熟悉代码库,可能不清楚代码遵循的某些惯例。</p>
+<p>更好的代码审查还会额外花心思解释首选方法,并提供更多学习资源。审查意见语气积极,为新人对代码库做出的首次贡献表示祝贺。</p>
+<h3 id="跨办公室-跨时区的审查">跨办公室、跨时区的审查</h3>
+<p>优秀的代码审查会尽可能考虑到分布式工作场所的时区差异。审查人员会尽量在双方都在工作的重叠时间内进行审查。对于需要大量评论的审查,审查人员会主动提出直接交谈或视频通话。</p>
+<p>更好的代码审查人员会注意到反复出现的时区问题,并寻求超出代码审查框架的系统性解决方案。这类问题的解决通常并不简单,可能涉及重构和创建新的服务/接口,或者改进工具。解决这种依赖关系可以让双方团队工作更轻松,进展更高效。</p>
+<p>如需更多关于如何进行良好代码审查的建议,请参阅:</p>
+<ul>
+<li>Google的《代码审查开发者指南》</li>
+<li>GitLab的《代码审查指南》</li>
+</ul>
+<h2 id="结对">结对</h2>
+<p>对于经验不足的工程师来说,配对是一种很好的方式,可以完成困难的任务、学习更多知识并提升自己。但配对对于经验丰富的工程师同样有用。你难免会遇到卡壳的情况,这时与他人配对可以帮助你解决问题。在使用新的代码库或技术时,尤其容易遇到困难。与团队中或相邻团队中的专家配对,可以帮助你更快地克服问题。你还可以向他人学习,建立更牢固的职业关系。</p>
+<p>配对可以是结对编程,也可以只是配对解决问题。</p>
+<p>结对编程时,如果是面对面,通常是坐在一起,共用同一个屏幕,轮流使用键盘。在远程环境下,通常是通过视频通话和屏幕共享来进行,或者更常见的是使用协作编辑器,双方可以同时输入文本。</p>
+<p>配对意味着面对面时坐在一起或使用白板。远程配对通常是通过视频通话,根据需要使用屏幕共享或协作编辑工具。我在下文中用”配对”来指代这两种活动。配对是两个人合作解决问题最简单、最高效的形式。</p>
+<h3 id="配对有用的情况">配对有用的情况</h3>
+<p>对软件工程师来说,配对最常用于解决以下问题:</p>
+<ol>
+<li>加入新团队、新代码库或新系统。当你加入一个新团队或接触新的代码库时,与他人配对可以帮助你快速上手。他们可以向你介绍关键的必知信息,帮你首次设置环境,指出已知问题等。这是配对最常见的用途。</li>
+<li>实现新功能。当工程师不确定如何实现某个功能时,与领域内更有经验的开发人员配对可以学习如何实现,并了解资深同事的思考方式。</li>
+<li>调试棘手的bug。有时你可能无法弄清楚为什么某些东西不能正常工作,即使你尝试了多种调试方法。这时引入另一双眼睛会非常有用,而且配对的人不一定要比你更有经验。通常,仅仅是解释你的怀疑和已经尝试过的方法,就能帮助找到解决方案。</li>
+<li>规划和架构设计。在开始构建一个复杂的项目之前,最好与另一位开发人员讨论你的方法。草拟你的想法,告诉他们你考虑过但排除的方法,概述你的建设计划,包括你将使用的技术、语言、框架和库的细节,你将重用或修改的现有组件,你将建立的类结构,以及你将如何测试和验证你的解决方案。</li>
+<li>确认你的做法是否正确。当你实现一个功能时,你可能想和别人讨论你的方法,展示你做出的决定。与调试一样,他们不一定需要比你更有经验。</li>
+<li>理解某些东西如何工作。当使用一个难以理解的新系统、服务或组件时,与专家(或构建者!)配对可能更快、更有教育意义,他们可以为你讲解事物的工作原理。</li>
+<li>“作弊”式地观察和学习其他开发人员的工作方式。配对的一个巨大好处是你可以看到人们实际是如何工作的。你可以与他们交谈,了解他们的思考方式,看到他们的IDE,他们使用的快捷键,他们如何编写和测试代码等。第一次与某人配对通常会让我大开眼界,我会”借鉴”我喜欢的工具和方法。</li>
+</ol>
+<p>除了传递知识,配对还有助于建立与配对工程师的个人关系。无论谁更有经验,你们都会通过一起解决问题相互学习。</p>
+<h3 id="当你是更有经验的一方时的方法">当你是更有经验的一方时的方法</h3>
+<p>当你在配对中是更有经验的一方时,有一些方法可以让会话更有效:</p>
+<ol>
+<li>**明确问题。 ** 请你的配对伙伴解释他们需要解决的问题。有时工程师来找你配对,但并不清楚他们需要帮助什么。如果你首先明确这一点,会议将更加有重点。是要实现一个功能的基本实现吗?是要帮助他们理解一个组件如何工作吗?要具体,在主题明确之前不要开始会话。</li>
+<li><strong>了解紧急程度。</strong> 处理每分钟影响数千客户的宕机问题,与处理非时间敏感的问题,二者之间有很大的区别。</li>
+<li><strong>在时间紧迫时,先解决问题并解释,然后再跟进。</strong> 当时间紧迫时,不要害怕主导局面。解释你正在做什么来解决问题,为什么这样做,以及如何验证你的更改是否有效。一旦问题解决,不再有时间压力,再回过头来教对方如何做你刚才做的事。</li>
+<li><strong>目标是教会你的配对伙伴一些东西,而不仅仅是给出答案。</strong> 如果你只是尽可能快速高效地解决你配对伙伴的问题,然后回到自己的工作,这是一项低效的任务。为什么?因为下次他们遇到类似的问题时,他们仍然不知道如何解决,还会来找你。然而,当你花时间教同事如何解决问题时,配对就成为了一项高效的活动。这样,下次他们遇到类似的问题时,就可以自己解决了。</li>
+<li><strong>避免立即给出答案,即使你能做到。</strong> 当一个开发人员说有一个他们无法修复的bug让他们非常烦恼,而你正好知道问题所在时,很容易想立即告诉他们。但是,你还记得你是如何发现问题的吗?你用了哪些方法来排除其他原因?指导他们经历你经历过的同样的学习过程!</li>
+<li><strong>给对方足够的空间来说话和输入。</strong> 你是更有经验的那个,很可能你能更快地解决问题。但别忘了,一个好的配对会话应该教会对方一些东西。所以,给你的配对伙伴表达想法的空间,如果你开始编写解决方案,把它交给他们来完成。</li>
+<li><strong>试图从你的配对伙伴那里学到一些东西。</strong> 作为这次配对中更有经验的人,你可能认为你会教导和领导整个会话,没什么可学的。但事实可能并非如此!如果你指导对方并提出开放式问题,他们可能会用你没想到的方法或你不知道他们有的经验来让你惊讶。</li>
+<li><strong>适时给予赞美。</strong> 当你的配对很好地完成了一部分工作时,给予积极的反馈。这会意味着很多,并强化这种行为。</li>
+</ol>
+<p>有时偏离主题是自然的。配对时偏离主题,偏离解决主要问题是很常见的。特别是在没有时间压力的情况下,这种情况可能会发生。这是可以的,也是自然的。配对部分是为了解决问题,部分是为了相互学习,部分是为了更好地了解对方。而且这也很有趣;所以如果你有机会探索一个有趣的领域,就去做吧。</p>
+<h3 id="当你是经验较少的一方时的方法">当你是经验较少的一方时的方法</h3>
+<p>不要害怕询问是否可以与某人配对!虽然这种感觉在经验较少的工程师中更为常见,但我甚至观察到一些高级工程师担心请求与资深或首席工程师配对会被视为承认自己无法胜任工作。但事实并非如此:请求配对是更快完成工作和学习的好方法。</p>
+<p>当你请求与某人配对时,要尊重他们的时间,如果他们有紧急事务要处理,要保持灵活。如果这个人很有帮助,要感谢他们抽出时间配对。可以考虑在他人面前这样做。这是一件好事,也可能会鼓励团队成员在看到你这样做并从中受益后提出自己的配对请求。</p>
+<p>配对似乎是一种被低估和未充分利用的方法,特别是在远程工作的环境中。我建议你通过主动帮助看起来遇到困难的开发人员,以及与可能帮助你解决问题的同事配对,来使用配对方法帮助你周围的人。</p>
+<h2 id="指导">指导</h2>
+<p>作为高级工程师,你将有很多机会指导同事。同时,向更有经验的导师学习也是个不错的主意。</p>
+<h3 id="非正式指导">非正式指导</h3>
+<p>指导并不一定要是正式的才能成为有效的学习经历。事实上,大多数指导都是非正式的。当开发人员一起工作和协作时,指导自然而然地就发生了。</p>
+<p>代码审查或团队项目合作是非正式指导的常见情况。没有固定的结构,只是工程师们一起工作,给予和获得反馈,互相学习。</p>
+<p>与其他工程师进行非正式的一对一交流,简单地讨论他们正在处理的事情,也可以是一种非正式指导 - 即使它看起来不像!这仍然很有启发性,通常能提供新的思路和方法。</p>
+<h3 id="正式指导">正式指导</h3>
+<p>对开发人员来说,更罕见的指导形式是正式指导。这是一种更有经验的同事同意指导初级工程师,启动指导关系,并定期举行会议以帮助被指导者成长的安排。那么,既然非正式指导无处不在,为什么还要费力进行正式指导呢?有几个原因:</p>
+<ul>
+<li>你可能没有机会与足够有经验的人一起工作,想找人学习更多。</li>
+<li>更正式的指导关系可以帮助你更快、更有针对性地成长,因为你会花专门的时间进行专业发展。</li>
+</ul>
+<p>在两个地方很容易开始正式的、有针对性的指导:结构化程度较高的科技公司和在线社区。一些科技公司有指导计划,但这些很少对外公开。优步、PayPal和亚马逊等公司都有内部计划,可以轻松获得有针对性的指导。</p>
+<p>在线的导师社区也很欢迎新人,容易上手。有越来越多的网站提供这类服务:可以搜索”开发者指导其他开发者”来获取资源。</p>
+<p>在我作为开发人员工作期间,如果有正式指导,我可能会成长得更快。因此,当我转型为工程管理者时,我特意在团队中安排了经验较少的工程师和经验丰富的工程师之间的指导关系。初级工程师因此成长更快并不令人意外。出乎我意料的是,高级工程师通过与资深或首席工程师的正式指导也受益匪浅。</p>
+<p>那么,如何建立正式的指导关系呢?和任何项目一样,良好的开端有助于让每个人 - 在这种情况下是导师和被指导者 - 达成共识。</p>
+<h3 id="启动指导介绍性会议">启动指导:介绍性会议</h3>
+<p>开始正式指导的最佳方式是召开启动会议。我经常建议人们这样接近潜在的导师:“您是我仰慕的人。我能安排一次谈话,讨论一下我想要成长的领域,以及您作为导师可能如何帮助我吗?“最好专门安排时间来分享一些背景,看看你们双方是否愿意并能够承诺进行指导。</p>
+<p>准备好在启动会议上讨论的话题列表,例如:</p>
+<ol>
+<li>背景。分享背景有助于”破冰”。</li>
+<li>“这对我有什么好处?“你希望从这种关系中获得什么,你想如何成长?也问问对方同样的问题。最好的指导关系是双向的,双方都能从中获益。</li>
+<li>要涵盖的主题。你对什么感兴趣?你想在哪些方面成长?是否有更紧迫的事情需要讨论?</li>
+<li>频率。多久跟进一次,什么时候?大多数开发人员每两周进行一次30-60分钟的交流,时间由双方协商。</li>
+<li>会面之间的沟通。导师是否愿意接受随机的问题?他们的日程安排如何?</li>
+<li>短期目标。你希望在下个月在哪个领域有所成长?先从这个开始。</li>
+<li>评估进展。用什么标准来评估指导的效果?</li>
+<li>挑战。最好提前说明。例如,可以坦白地告诉潜在的导师你对指导完全不了解。或者你的导师可能会说他们下个月工作特别忙。</li>
+</ol>
+<p>请记住,如果有人邀请你成为导师,说”不”也是可以的。作为寻找导师的被指导者,我曾遇到几位潜在导师婉言谢绝。对有些人来说,是因为时间不够,而其他人则觉得他们没有我所寻求的专业知识。不要因为被拒绝而灰心;问问他们是否有其他潜在导师的推荐。你很快就会找到合适的人选。</p>
+<h3 id="作为导师时">作为导师时</h3>
+<p>以下是成为一名有效导师的方法:</p>
+<ol>
+<li>从一开始就明确期望。说明你能投入多少时间,以及你对被指导者的期望。如果你希望他们准备好要讨论的事项清单,就说出来。如果你喜欢保持随意的风格,处理随时出现的问题,也可以讨论这种方式。</li>
+<li>倾听被指导者的想法。这是导师最重要的角色。是的,被指导者希望得到可行的建议,但谈论正在发生的事情和他们的感受同样重要。</li>
+<li>尝试用他们可以参与的问题开始对话,比如”你在想什么?”、“你在struggle with什么?”、“你在做什么项目?”、“你这周的目标是什么?“听听有哪些你可能帮得上忙的地方。</li>
+<li>避免直接给出现成的答案。成为一个高效的导师不是要解决别人的问题,而是帮助他们成长,以便他们能够解决自己的问题。在指导时,你要尽可能推迟分享解决方案。相反,要提出问题,提供替代方案,并克制住告诉别人该怎么做的冲动。采取耐心的、以辅导为先的方法可以赋予初级开发人员权力,加速他们的学习。</li>
+<li>讨论具体情况以深入探讨。这些可能是被指导者提出的,也可能是导师注意到的。主题可能涉及沟通、文化问题、深入的技术问题、代码审查等等。</li>
+<li>为具体情况提供背景和视角。你在行业中的时间可能更长,了解被指导者正在struggle with的情况。如果你们在同一家公司工作,你可能比他们更了解公司的运作方式。回顾你当年如何应对具有挑战性的情况,可以帮助被指导者在遇到类似情况时感到不那么焦虑。</li>
+<li>利用你的人脉网络来帮助被指导者。作为导师,你通常比被指导者有更多的人脉:如果你们在同一家公司工作,这一点尤其有用。在这种情况下,你可以让被指导者与能够帮助他们的同事取得联系。介绍他人并邀请其他人花时间与你的被指导者交流会产生很大的影响。即使你们在不同的公司工作,可能仍有机会将他们与其他人联系起来或提供帮助。</li>
+<li>让被指导者知道你站在他们这边。寻求你指导的人不仅在寻求建议,也在寻求支持。他们经验越少,越可能感到像个冒牌货,你的支持就越能帮助他们。鼓励的话比你想象的更有力:<br>
+我合作过的每个导师都会在我们的谈话结束时说”你能行!“或”你可以做到!“之类的话。只是简单的话语,但对我来说意义重大。</li>
+</ol>
+<p>作为一个优秀导师的更多建议:</p>
+<ul>
+<li>努力从被指导者那里学到新东西。对他们想要解决的问题保持好奇,理解他们的观点。即使你知道正确的答案,你也可能学到新东西,从新的角度看问题。</li>
+<li>帮助被指导者为问题想出多种解决方案。同时,帮助他们阐明权衡。解释概念而不是解决方案,帮助被指导者理解解决方案很少是非此即彼的。这对技术主题尤其重要,对大多数非技术问题也适用。</li>
+<li>针对技术和非技术主题调整你的方法。技术问题通常更容易处理。你可以通过询问他们已经尝试过哪些方法来提供指导,并用问题引导他们找到可行的方法。对于沟通、冲突等非技术主题,倾听是关键。</li>
+</ul>
+<h3 id="作为被指导者时">作为被指导者时</h3>
+<p>当建立了固定的交流频率后,如何持续从指导中获得价值?我坚信,作为被指导者,你需要在指导中投入时间和精力才能从中获益。</p>
+<ol>
+<li>一开始就明确预期。准备好与你的导师交流,充分利用他们的时间。带上你的挑战、成功案例和你想要他们提供意见的话题。准备一份要讨论的主题清单。当你得到建议和想法时,承诺采取行动并付诸实践。让你的导师知道进展如何。</li>
+<li>保持一个与导师共享的文档可能会有帮助。你可以在会面之间在文档中记录下次要提出的话题,比如:
+<ul>
+<li>关键事件。简要告诉你的导师发生的重要事情。保持简洁。</li>
+<li>对上次行动项目/指导/讨论的反思。如果你根据上次会议的讨论做了什么,分享结果。这对你们双方都有用。</li>
+<li>当前的挑战。描述你面临的挑战,讨论它,并头脑风暴解决方案。</li>
+<li>近期的成功。描述一个进展顺利的情况及其原因,询问导师的意见。十有八九,他们的反馈会让你重新评估如何处理事情。</li>
+</ul>
+</li>
+</ol>
+<h3 id="指导的长期好处">指导的长期好处</h3>
+<p>指导对所有参与者都有重大的长期好处。软件行业其实很小,所以你今天指导的初级人员随着时间的推移会变得更资深,你们可能在不同的场合重新联系。如果你是一个支持性的导师,他们很可能会记住这一点。谁知道一段良好的关系在未来某个时候可能会带来什么好处。</p>
+<p>指导没有固定的模式。对大多数人来说,它是非正式知识共享和定期交流的混合。被指导者经常会就一次性问题联系导师。有些人更喜欢面对面指导,而有些指导关系仅限于代码审查。每种指导关系都是不同的;重要的是它对导师和被指导者都有效。</p>
+<h2 id="给予反馈">给予反馈</h2>
+<p>作为高级工程师，你会注意到其他开发者的优秀表现，也会发现他们可以改进的地方。在这两种情况下，你可以选择说些什么，或者保持沉默。我认为，如果不给予反馈，那就是浪费了一个机会，前提是反馈要以尊重的方式进行，并且目的是帮助对方成长。</p>
+<h3 id="给予积极反馈的更好方法">给予积极反馈的更好方法</h3>
+<p>给予积极反馈看似简单，毕竟这就是在赞美某人。但是有一些方法可以让反馈更有效：</p>
+<ol>
+<li>具体化：不要只说”干得好”。指出具体细节，比如：“我很欣赏你在pull request中处理了所有四个边缘情况，并为它们都编写了测试。我们需要更多这样的细致工作，继续保持！”</li>
+<li>真诚：不要陷入说些你不真心认同的好话的陷阱。这在短期内可能有效，但长期来看，人们会注意到不真诚的反馈。如果你认为某人做得只是还行，就不要告诉他们做得非常出色。相反，找出真正出色的细节并强调它，对其他方面给予建设性的反馈。</li>
+</ol>
+<h3 id="给予建设性或负面反馈">给予建设性或负面反馈</h3>
+<ol>
+<li>在给出反馈之前先提问。特别是当你不熟悉对方的工作，或者他们没有明确要求反馈时，这一点尤为重要。</li>
+</ol>
+<p>例如，假设你注意到一个新加入者的pull request缺少单元测试，而指南要求必须有测试。你可以直接指出缺少测试，但更好的策略可能是问：“你考虑过如何测试这个变更吗？”</p>
+<p>将其表述为一个问题，给他们机会分享更多背景信息，也可以纠正遗漏。在上述情况下，对方可能会以几种方式回应：</p>
+<ul>
+<li>“当然，我知道我们通常会做测试，但这是一个紧急修复，用于解决故障。测试将在下一个pull request中提交！”</li>
+<li>“哇，我完全忘记了。非常感谢你的提醒。让我现在就做，我会确保下次不会遗漏。”</li>
+<li>“测试？什么测试？我不知道你们这里要做测试。”</li>
+</ul>
+<p>注意这些回应中没有负面情绪。这就是在给予反馈前先提问的好处！</p>
+<ol>
+<li>以同理心传达纠正性反馈。分享你的观察，然后通过提问引导他们得出正确的结论。一旦他们明白了，给予积极的强化。</li>
+</ol>
+<p>你与接受反馈的人之间的信任越多，你就可以越”直接”，而不会冒犯他们。要根据具体情况判断什么是适当的。别忘了，反馈的目的是帮助对方进步。只要你提供的反馈是鼓励而非打击，你就在帮助他们成长。</p>
+<p>善于给予反馈是一个巨大的优势。在这方面对我帮助最大的资源是以下两本书：</p>
+<ul>
+<li>Kim Scott的《Radical Candor》</li>
+<li>Joseph Grenny、Ron McMillan、Al Switzler和Kerry Patterson的《Crucial Conversations》</li>
+</ul>
+<h2 id="与其他工程团队协作">与其他工程团队协作</h2>
+<p>与其他工程团队协作的原因有很多,例如:</p>
+<ul>
+<li>理解其他团队工程师编写或最后修改的代码</li>
+<li>修改其他团队拥有的代码部分</li>
+<li>对使用其他团队拥有的服务或组件有疑问</li>
+<li>计划修改其他团队拥有的代码,并希望遵循相关规范</li>
+<li>另一个团队需要解除对你在他们系统上工作的阻碍</li>
+</ul>
+<p>如果你的工作场所采用内部开源模式,即你可以访问大部分代码并为其创建合并请求,那么当你提出合并请求时,其他团队的工程师可能会阻止你的更改。这通常是因为该团队拥有那部分代码,所以在进行更改之前最好先咨询他们 - 尤其是对于大型团队。</p>
+<p>在只有少数几名工程师的小公司里,很容易了解开发人员并找出他们的工作内容。例如,在一个包括你在内只有6名工程师的工作场所,你会知道Bob和Suzy负责后端,Sam和Kate负责网页,Tom负责移动端,所以你知道该向谁询问问题。同样,在一家有5个工程团队的公司:平台和核心主要是后端,而网络核心、客户支持和客户体验则是网页、移动和后端工程师的混合团队。</p>
+<p>然而,在拥有十几个以上工程团队的公司,弄清楚哪些团队与你的团队有关系变得很棘手。通常,找出该与谁交谈的最佳指示是查看上次谁修改了相关代码行,然后联系他们。</p>
+<h3 id="绘制团队地图">绘制团队地图</h3>
+<p>绘制一张与你的团队相连的工程团队地图,并列出与你的团队有联系的团队。列出:</p>
+<ul>
+<li>你的团队依赖的工程团队。你的团队使用其API或服务的团队</li>
+<li>依赖你的团队的工程团队。提示:查看影响你的团队的中断,当变更是由另一个团队做出的。很可能那就是一个依赖团队</li>
+<li>构建类似功能且可能存在功能重叠的团队,尤其是对客户而言</li>
+<li>如果你的团队拥有用户界面,则列出在同一屏幕上的团队</li>
+</ul>
+<p>你的团队使用的基础设施团队,即使是间接使用的</p>
+<p>绘制完地图后,向你的同事和管理者展示,看看是否有遗漏。</p>
+<h3 id="向其他团队介绍自己">向其他团队介绍自己</h3>
+<p>让与你有联系的工程团队认识你。利用与你自己团队相连的团队地图,至少与每个团队的某个人见面。你可能已经在与其中一些团队合作。如果没有,这里有一个建议:与一位有经验的工程师或团队经理安排一个简短的介绍会议。告诉他们你的目标是更多地了解他们的团队,并给名字一个面孔。如果有相关文档,提前阅读。</p>
+<p>在会议上,介绍你自己,简要分享你的团队做什么,并询问对方。他们在那里工作了多长时间,他们在团队中的角色是什么,团队做什么,他们使用哪些技术,以及他们面临的挑战是什么?</p>
+<p>介绍性会议的目标是双重的:</p>
+<ul>
+<li>收集有关团队的信息,以便日后加快你的工作。例如,在计划构建新功能时,你可能意识到这个团队需要在他们的系统中进行更改。你可以立即与你认识的那个团队的工程师讨论这个问题。</li>
+<li>建立个人联系。组织越大,与其他团队的个人联系就越重要。</li>
+</ul>
+<p>通过介绍性会议,你可以了解更多关于另一个工程团队的信息,这总是很有趣的!很有可能你会学到新东西,或者受到启发去尝试他们使用的不同工程方法。</p>
+<h2 id="影响他人">影响他人</h2>
+<p>作为高级工程师,你在团队和公司中的”影响力”非常重要。你在一个群体中越受尊重、知名度越高或影响力越大,你的声音就越容易被听到,也就越容易引导事情朝你认为正确的方向发展。</p>
+<p>那么,作为一名工程师,如何提高自己的影响力呢?以下是一些方法:</p>
+<h3 id="交付出色的工作">交付出色的工作</h3>
+<p>什么是”出色”的工作取决于你所处的环境。确保你的工作在质量和速度之间达到适当的平衡。在初创公司,“出色”可能更偏向于快速交付产品,而在大公司,“出色”可能意味着经过充分测试的整洁代码、易于审核的代码变更,或可维护的解决方案。</p>
+<p>了解在你所在的工程组织中什么才算”出色”,并定期从同事和管理者那里获得反馈,以了解你的工作表现如何。当你建立起做出色工作的声誉时,其他人就会信任你。</p>
+<h3 id="认识其他人">认识其他人</h3>
+<p>特别是认识工程组织以外的人。试着抽出时间走出你的工程圈子。与产品人员、设计、数据科学等非工程职能部门的同事,以及业务部门的人交流。</p>
+<p>这样做的目的是更好地了解产品方向和业务战略。考虑与你的产品经理定期进行一对一的会面 - 比如每月一次 - 以更好地了解产品部门的工作内容、原因以及你如何提供帮助。</p>
+<p>加入与其他团队工程师的电话会议。在分布式环境或远程团队中工作时,很可能大部分工作都是通过电子邮件、聊天、文档和编码完成的。</p>
+<p>不要完全保持异步沟通;考虑进行视频通话,与你合作的同事”面对面”交谈。找个借口与你平时异步合作的人聊聊天。在通话过程中,试着更多地了解他们。他们在团队中工作多久了?他们还负责什么其他工作?他们所在的地方发生了什么事?</p>
+<p>与人交谈而不仅仅专注于工作有几个好处。首先,你们每个人都能感受到那些邮件和拉取请求背后的人是谁。其次,你会了解到更多关于他们工作方式的背景信息。最后,你可能会通过相似的观点、个人兴趣或其他方面建立意想不到的联系。</p>
+<h3 id="参与跨职能项目">参与跨职能项目</h3>
+<p>参与RFC / 设计文档 / 跨团队规划。如果你的公司使用RFC、设计文档或ADR,开始阅读其他团队的计划,并在你的专业知识可以提供帮助时参与其中。</p>
+<p>当我加入Uber时,由于其透明的RFC文化,一个新世界向我敞开了大门。仅仅通过阅读其他团队的RFC,我就学到了很多关于他们工作方式的知识,并通过RFC与团队建立了联系,因为我有相关的专业知识和兴趣可以贡献。你的影响力和人际网络是相互关联的;很少有比通过参与有趣的规划文档、学习新东西并帮助其他工程师更有趣的方式来扩展你的网络了。</p>
+<p>参与跨团队项目。如果你只与团队成员合作,那么你的影响力就会局限于你的团队。要与团队以外的人建立信任,就要在扩展你的理解的同时一起工作并建立关系。当你在自己的团队中感到舒适时,寻找机会参与不同工程团队和非工程团队的项目。</p>
+<p>我发现,建立人际网络的最佳方式之一是根本不去”社交”。相反,只需专注于解决共同的问题。例如,在Uber,我建立的一些最牢固的联系是通过参与那些需要每天与其他工程师、经理、产品经理或设计师交谈以完成重要工作的项目。</p>
+<h3 id="宣传你的工作-但不要自吹自擂">宣传你的工作 - 但不要自吹自擂</h3>
+<p>确保你的同事和经理知道你做出了出色的工作。我并不是建议你要咄咄逼人。但是,如果你们有团队会议展示每个人的工作,那为什么不也展示一下你的进展和成果呢?如果你的团队要在更大的会议上做演讲,自愿谈谈你负责的领域。</p>
+<p>记录你所做的工作,并时不时地通过我们在”掌控你的职业”一章中介绍的工作日志等格式与你的经理分享。</p>
+<p>致力于建立强大的个人品牌。Leonard Welter是Bloomberg的一位产品经理。他观察到工程师们都有”个人品牌”。以下是他的建议:</p>
+<p>“‘建立个人品牌’的概念可能被视为一种消极的政治行为,尤其是当它偏向于形式大于内容时。然而,思考你在组织中是如何被看待的很重要。我希望有人能在我职业生涯早期就告诉我关于’品牌’的概念。你的’品牌’是被视为能够完成任务的人吗?还是被认为有强烈意见,但很少亲自动手的人?当涉及到这种品牌时,结果并不是唯一重要的因素。”</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5">代码审查</a>
+<ul>
+<li><a href="#%E5%AE%A1%E6%9F%A5%E7%9A%84%E8%AF%AD%E6%B0%94">审查的语气</a></li>
+<li><a href="#%E5%9C%A8%E6%89%B9%E5%87%86%E5%89%8D%E8%AF%B7%E6%B1%82%E4%BF%AE%E6%94%B9">在批准前请求修改</a></li>
+<li><a href="#%E7%9B%B8%E4%BA%92%E6%B2%9F%E9%80%9A">相互沟通</a></li>
+<li><a href="#%E5%B0%8F%E7%BB%86%E8%8A%82%E8%AF%84%E8%AE%BA">小细节评论</a></li>
+<li><a href="#%E6%96%B0%E4%BA%BA%E5%8A%A0%E5%85%A5%E5%92%8C%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5">新人加入和代码审查</a></li>
+<li><a href="#%E8%B7%A8%E5%8A%9E%E5%85%AC%E5%AE%A4-%E8%B7%A8%E6%97%B6%E5%8C%BA%E7%9A%84%E5%AE%A1%E6%9F%A5">跨办公室、跨时区的审查</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E5%AF%B9">结对</a>
+<ul>
+<li><a href="#%E9%85%8D%E5%AF%B9%E6%9C%89%E7%94%A8%E7%9A%84%E6%83%85%E5%86%B5">配对有用的情况</a></li>
+<li><a href="#%E5%BD%93%E4%BD%A0%E6%98%AF%E6%9B%B4%E6%9C%89%E7%BB%8F%E9%AA%8C%E7%9A%84%E4%B8%80%E6%96%B9%E6%97%B6%E7%9A%84%E6%96%B9%E6%B3%95">当你是更有经验的一方时的方法</a></li>
+<li><a href="#%E5%BD%93%E4%BD%A0%E6%98%AF%E7%BB%8F%E9%AA%8C%E8%BE%83%E5%B0%91%E7%9A%84%E4%B8%80%E6%96%B9%E6%97%B6%E7%9A%84%E6%96%B9%E6%B3%95">当你是经验较少的一方时的方法</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8C%87%E5%AF%BC">指导</a>
+<ul>
+<li><a href="#%E9%9D%9E%E6%AD%A3%E5%BC%8F%E6%8C%87%E5%AF%BC">非正式指导</a></li>
+<li><a href="#%E6%AD%A3%E5%BC%8F%E6%8C%87%E5%AF%BC">正式指导</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8%E6%8C%87%E5%AF%BC%E4%BB%8B%E7%BB%8D%E6%80%A7%E4%BC%9A%E8%AE%AE">启动指导:介绍性会议</a></li>
+<li><a href="#%E4%BD%9C%E4%B8%BA%E5%AF%BC%E5%B8%88%E6%97%B6">作为导师时</a></li>
+<li><a href="#%E4%BD%9C%E4%B8%BA%E8%A2%AB%E6%8C%87%E5%AF%BC%E8%80%85%E6%97%B6">作为被指导者时</a></li>
+<li><a href="#%E6%8C%87%E5%AF%BC%E7%9A%84%E9%95%BF%E6%9C%9F%E5%A5%BD%E5%A4%84">指导的长期好处</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%99%E4%BA%88%E5%8F%8D%E9%A6%88">给予反馈</a>
+<ul>
+<li><a href="#%E7%BB%99%E4%BA%88%E7%A7%AF%E6%9E%81%E5%8F%8D%E9%A6%88%E7%9A%84%E6%9B%B4%E5%A5%BD%E6%96%B9%E6%B3%95">给予积极反馈的更好方法</a></li>
+<li><a href="#%E7%BB%99%E4%BA%88%E5%BB%BA%E8%AE%BE%E6%80%A7%E6%88%96%E8%B4%9F%E9%9D%A2%E5%8F%8D%E9%A6%88">给予建设性或负面反馈</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8E%E5%85%B6%E4%BB%96%E5%B7%A5%E7%A8%8B%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C">与其他工程团队协作</a>
+<ul>
+<li><a href="#%E7%BB%98%E5%88%B6%E5%9B%A2%E9%98%9F%E5%9C%B0%E5%9B%BE">绘制团队地图</a></li>
+<li><a href="#%E5%90%91%E5%85%B6%E4%BB%96%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D%E8%87%AA%E5%B7%B1">向其他团队介绍自己</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BD%B1%E5%93%8D%E4%BB%96%E4%BA%BA">影响他人</a>
+<ul>
+<li><a href="#%E4%BA%A4%E4%BB%98%E5%87%BA%E8%89%B2%E7%9A%84%E5%B7%A5%E4%BD%9C">交付出色的工作</a></li>
+<li><a href="#%E8%AE%A4%E8%AF%86%E5%85%B6%E4%BB%96%E4%BA%BA">认识其他人</a></li>
+<li><a href="#%E5%8F%82%E4%B8%8E%E8%B7%A8%E8%81%8C%E8%83%BD%E9%A1%B9%E7%9B%AE">参与跨职能项目</a></li>
+<li><a href="#%E5%AE%A3%E4%BC%A0%E4%BD%A0%E7%9A%84%E5%B7%A5%E4%BD%9C-%E4%BD%86%E4%B8%8D%E8%A6%81%E8%87%AA%E5%90%B9%E8%87%AA%E6%93%82">宣传你的工作 - 但不要自吹自擂</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

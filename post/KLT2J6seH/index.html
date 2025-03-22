@@ -1,0 +1,536 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JS学习日记【5】基础数据操作 - 对象 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JS学习日记【5】基础数据操作 - 对象 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="1. 什么是对象
+对象是一种复合的数据类型，它将很多值（属性）组合在一起，可以通过属性名来访问这些值。用来表现一个事物的多个属性。以对象为中心的编程思想称为面向对象编程。JavaScript也是面向对象的编程语言。
+Object = Pro..." />
+  <meta property="og:title" content="JS学习日记【5】基础数据操作 - 对象 - 小马的世界">
+  <meta property="og:description" content="1. 什么是对象
+对象是一种复合的数据类型，它将很多值（属性）组合在一起，可以通过属性名来访问这些值。用来表现一个事物的多个属性。以对象为中心的编程思想称为面向对象编程。JavaScript也是面向对象的编程语言。
+Object = Pro..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/KLT2J6seH/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="JS学习日记【5】基础数据操作 - 对象 - 小马的世界">
+  <meta name="twitter:description" content="1. 什么是对象
+对象是一种复合的数据类型，它将很多值（属性）组合在一起，可以通过属性名来访问这些值。用来表现一个事物的多个属性。以对象为中心的编程思想称为面向对象编程。JavaScript也是面向对象的编程语言。
+Object = Pro...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/KLT2J6seH/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          JS学习日记【5】基础数据操作 - 对象
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-06-29 · 8 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/QcxVK42Jgh/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              工具
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="1-什么是对象">1. 什么是对象</h2>
+<p>对象是一种复合的数据类型，它将很多值（属性）组合在一起，可以通过属性名来访问这些值。用来表现一个事物的多个属性。以对象为中心的编程思想称为面向对象编程。JavaScript也是面向对象的编程语言。</p>
+<p>Object = Properties + Methods</p>
+<h2 id="2-创建对象">2. 创建对象</h2>
+<p>创建一个对象最简单的方法就是利用new操作符。</p>
+<pre><code class="language-javascript">let obj = new Object();
+</code></pre>
+<p>例如生成一个Date对象：</p>
+<pre><code class="language-javascript">let now = new Date(2022, 11, 31, 23, 59, 59, 999);
+</code></pre>
+<p>这叫做对象的实例化。为了实例化对象，对象中有一个专用的方法叫做构造函数。构造函数的作用就是用来初始化对象。new操作符会调用构造函数，生成一个对象实例。</p>
+<p>为什么要实例化一个对象呢？</p>
+<p>对象是一个抽象的概念，就像我们有人的概念，但是具体到每个实例，你是张三我是李四，每个人都有不同的属性，所以我们需要实例化一个对象，来表示具体的某个人。所以对象的实例化是为了确保每个对象有自己的专用的领域的行为。</p>
+<h2 id="3-获取对象属性和方法-点运算符">3. 获取对象属性和方法 - 点运算符</h2>
+<p>使用点运算符可以获取对象的属性和方法。</p>
+<pre><code class="language-javascript">now.getFullYear(); // 2022
+</code></pre>
+<p>本来在调用.运算符时要进行判断，如果对象的属性或方法不存在，会报错。</p>
+<pre><code class="language-javascript">let obj = {};
+obj.prop.method(); // Uncaught TypeError: Cannot read property 'method' of undefined
+</code></pre>
+<pre><code class="language-javascript">let str = null;
+if (str !== null &amp;&amp; str!== undefined) {
+    console.log(str.length);
+}
+</code></pre>
+<p>但是在ES2020中，可以使用可选链运算符<code>?.</code>来获取对象的属性和方法。</p>
+<pre><code class="language-javascript">now?.getFullYear(); // 2022
+</code></pre>
+<p>如果对象的属性或方法不存在，可选链运算符<code>?.</code>会返回<code>undefined</code>。</p>
+<pre><code class="language-javascript">let obj = {};
+obj?.prop?.method(); // undefined
+</code></pre>
+<h2 id="4-静态方法">4. 静态方法</h2>
+<p>静态方法是定义在类上的方法，而不是定义在实例上的方法。静态方法通常用于为一个应用程序创建工具函数。</p>
+<pre><code class="language-javascript">Math.max(1, 2, 3); // 3
+</code></pre>
+<h2 id="5-内置对象">5. 内置对象</h2>
+<p>内置对象是指由JavaScript语言提供的、不依赖于宿主环境的对象，它们在任何JavaScript环境中都可以使用。内置对象的属性和方法在ECMAScript规范中定义。</p>
+<p>内置对象包括：</p>
+<ul>
+<li>基本对象：Object、Function、Boolean、Symbol、Error</li>
+<li>数字和日期对象：Number、BigInt、Math、Date</li>
+<li>字符串：String、RegExp</li>
+<li>可索引的集合对象：Array、TypedArray、Map、Set、WeakMap、WeakSet</li>
+<li>结构化数据：JSON</li>
+<li>控制抽象对象：Promise、Generator、GeneratorFunction、AsyncFunction</li>
+<li>反射：Reflect、Proxy</li>
+<li>国际化：Intl、Intl.Collator、Intl.DateTimeFormat、Intl.ListFormat、Intl.NumberFormat、Intl.PluralRules、Intl.RelativeTimeFormat</li>
+</ul>
+<p>Javascript的内置对象原则上不要用new来创建，因为这样会破坏内置对象的封装性，而且可能会跟宿主环境的内置对象发生冲突。</p>
+<h2 id="string对象">String对象</h2>
+<p>String对象是一个用来表示和操作字符串的全局对象，它是一个构造函数，可以用来生成字符串对象。</p>
+<pre><code class="language-javascript">let str = 'hello';
+</code></pre>
+<h3 id="获取字符串的长度">获取字符串的长度</h3>
+<pre><code class="language-javascript">str.length; // 5
+</code></pre>
+<h3 id="大小写转换">大小写转换</h3>
+<pre><code class="language-javascript">str.toUpperCase(); // HELLO
+str.toLowerCase(); // hello
+</code></pre>
+<p>如果只想转换字符串的首字母大小写，可以使用下面的方法。</p>
+<pre><code class="language-javascript">str.substring(0, 1).toUpperCase() + str.substring(1); // Hello
+</code></pre>
+<h3 id="取出指定位置的字符">取出指定位置的字符</h3>
+<pre><code class="language-javascript">str.charAt(0); // h
+str.slice(0, 1); // h (start, end-1)
+str[0]; // h 
+str.substring(0, 1); // h (start, end-1)
+</code></pre>
+<p>如果start和end相同，返回空字符串。</p>
+<pre><code class="language-javascript">str.slice(0, 0); // ''
+str.substring(0, 0); // ''
+</code></pre>
+<p>如果start &gt; end，slice会返回空字符串。</p>
+<pre><code class="language-javascript">str.slice(1, 0); // ''
+</code></pre>
+<p>substring会将两个参数对调</p>
+<pre><code class="language-javascript">str.substring(2, 0); // he
+</code></pre>
+<p>如果start或end是负数，slice会将负数转换为字符串长度加上负数，substring会将负数转换为0。</p>
+<pre><code class="language-javascript">str.slice(-1); // o
+str.substring(-1); // hello
+str.slice(0, -1); // hell
+str.substring(0, -1); // ''
+</code></pre>
+<h3 id="搜索指定字符串">搜索指定字符串</h3>
+<pre><code class="language-javascript">str.indexOf('l'); // 2
+str.lastIndexOf('l'); // 3
+</code></pre>
+<p>indexOf用来搜索指定字符串第一次出现的位置，lastIndexOf用来搜索指定字符串最后一次出现的位置。</p>
+<p>如果指定字符串没有出现，indexOf返回-1，lastIndexOf返回-1。</p>
+<p>注意：indexOf和lastIndexOf都是区分大小写的。</p>
+<p>字符串的搜索方法还有includes()、startsWith()、endsWith()。</p>
+<pre><code class="language-javascript">str.includes('l'); // true
+str.startsWith('h'); // true
+str.endsWith('o'); // true
+</code></pre>
+<p>字符串去除空格的方法trim()、trimStart()、trimEnd()。</p>
+<pre><code class="language-javascript">let str = ' hello ';
+str.trim(); // 'hello'
+str.trimStart(); // 'hello '
+str.trimEnd(); // ' hello'
+</code></pre>
+<p>字符串置换的方法有replace()、replaceAll()。</p>
+<pre><code class="language-javascript">str.replace('l', 'L'); // heLlo
+str.replaceAll('l', 'L'); // heLLo
+</code></pre>
+<p>字符串分割的方法split()。</p>
+<pre><code class="language-javascript">str.split('l'); // ['he', '', 'o']
+str = 'hello world';
+str.split(' '); // ['hello', 'world']
+</code></pre>
+<p>字符串补全的方法padStart()、padEnd()。</p>
+<pre><code class="language-javascript">str.padStart(10, '0'); // 00000hello
+str.padEnd(10, '0'); // hello00000
+</code></pre>
+<p>字符串重复的方法repeat()。</p>
+<pre><code class="language-javascript">str.repeat(2); // hellohello
+</code></pre>
+<p>字符串Unicode正则化的方法normalize()。什么是Unicode正则化呢？Unicode允许字符的编码方式有多种，比如字母Ô可以写成\u004F\u030C，也可以写成\u01D1。这两种编码方式在Unicode中被视为不同的字符，但是在JavaScript中，它们被视为同一个字符。normalize()方法可以将不同的Unicode编码方式统一为同一种编码方式。</p>
+<pre><code class="language-javascript">str = '\u004F\u030C';
+str.normalize(); // Ô
+</code></pre>
+<h2 id="number对象">Number对象</h2>
+<p>Number对象是一个用来表示数字值的全局对象，它是一个构造函数，可以用来生成数字对象。</p>
+<pre><code class="language-javascript">let num = 123;
+</code></pre>
+<p>Number对象提供了一些常量。</p>
+<pre><code class="language-javascript">Number.MAX_VALUE; // 1.7976931348623157e+308 如果超过这个值，会返回Infinity，如果要用更大的数，可以使用BigInt对象。
+Number.MIN_VALUE; // 5e-324
+Number.MAX_SAFE_INTEGER; // 9007199254740991
+Number.MIN_SAFE_INTEGER; // -9007199254740991
+Number.NaN; // NaN
+Number.NEGATIVE_INFINITY; // -Infinity
+Number.POSITIVE_INFINITY; // Infinity
+</code></pre>
+<p>使用BigInt可以直接在数字后面加n来表示大数。</p>
+<pre><code class="language-javascript">let bigNum = 1234567890123456789012345678901234567890n;
+</code></pre>
+<p>注意大数在比较的时候</p>
+<pre><code class="language-javascript">console.log(1n == 1); // true
+console.log(1n === 1); // false
+</code></pre>
+<p>数值形式变换</p>
+<pre><code class="language-javascript">let num1 = 255
+num1.toString(16); // ff
+num1.toString(8); // 377
+num1.toString(2); // 11111111
+</code></pre>
+<pre><code class="language-javascript">let num2 = 123.456
+num2.toFixed(0); // 123
+num2.toFixed(1); // 123.5
+num2.toFixed(2); // 123.46
+num2.toFixed(3); // 123.456
+num2.toFixed(7); // 123.4560000
+num2.toExponential(1); // 1.2e+2
+num2.toPrecision(4); // 123.5
+num2.toPrecision(7); // 123.4560
+</code></pre>
+<p>字符串转换为数值</p>
+<pre><code class="language-javascript">let str = '123xxx'
+Number(str); // NaN
+Number.parseInt(str); // 123
+Number.parseFloat(str); // 123
+
+let d = new Date()
+Number(d); // 1497444451394
+Number.parseInt(d); // NaN
+Number.parseFloat(d); // NaN
+
+let h = '0x10'
+Number(h); // 16
+Number.parseInt(h); // 16
+Number.parseFloat(h); // 0
+
+let b = '0b11'
+Number(b); // 3
+Number.parseInt(b); // 0
+Number.parseFloat(b); // 0
+
+let e = '1.01e+2'
+Number(e); // 101
+Number.parseInt(e); // 1
+Number.parseFloat(e); // 101
+</code></pre>
+<h2 id="math对象">Math对象</h2>
+<p>方法非常多，和数学有关的基本上都在这个对象里。所以这里就不一一列举了。</p>
+<h2 id="date对象">Date对象</h2>
+<p>Date对象用来表示日期和时间。</p>
+<pre><code class="language-javascript">let d = new Date(); // 当前时间
+let d = new Date(2017, 9, 18, 12, 34, 56, 789); // 2017-10-18T04:34:56.789Z 月份是从0开始的，所以9表示10月。
+let d = new Date(0); // 1970-01-01T00:00:00.000Z
+let d = new Date(2017, 11, 0, 12, 34, 56, 789); // 2017-11-30T04:34:56.789Z 0表示上个月的最后一天。
+</code></pre>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%B9%E8%B1%A1">1. 什么是对象</a></li>
+<li><a href="#2-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">2. 创建对象</a></li>
+<li><a href="#3-%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95-%E7%82%B9%E8%BF%90%E7%AE%97%E7%AC%A6">3. 获取对象属性和方法 - 点运算符</a></li>
+<li><a href="#4-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">4. 静态方法</a></li>
+<li><a href="#5-%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1">5. 内置对象</a></li>
+<li><a href="#string%E5%AF%B9%E8%B1%A1">String对象</a>
+<ul>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E9%95%BF%E5%BA%A6">获取字符串的长度</a></li>
+<li><a href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2">大小写转换</a></li>
+<li><a href="#%E5%8F%96%E5%87%BA%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%9A%84%E5%AD%97%E7%AC%A6">取出指定位置的字符</a></li>
+<li><a href="#%E6%90%9C%E7%B4%A2%E6%8C%87%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2">搜索指定字符串</a></li>
+</ul>
+</li>
+<li><a href="#number%E5%AF%B9%E8%B1%A1">Number对象</a></li>
+<li><a href="#math%E5%AF%B9%E8%B1%A1">Math对象</a></li>
+<li><a href="#date%E5%AF%B9%E8%B1%A1">Date对象</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

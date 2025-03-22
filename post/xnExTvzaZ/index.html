@@ -1,0 +1,625 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Vue.js学习日记【6】高级数据绑定 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Vue.js学习日记【6】高级数据绑定 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="
+3-4 绑定数据的derective
+3-4-1 v-bind 把数据绑定到属性上
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;form&amp;gt;
+        &amp;lt;label for=&amp;quot;m..." />
+  <meta property="og:title" content="Vue.js学习日记【6】高级数据绑定 - 小马的世界">
+  <meta property="og:description" content="
+3-4 绑定数据的derective
+3-4-1 v-bind 把数据绑定到属性上
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;form&amp;gt;
+        &amp;lt;label for=&amp;quot;m..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/xnExTvzaZ/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="Vue.js学习日记【6】高级数据绑定 - 小马的世界">
+  <meta name="twitter:description" content="
+3-4 绑定数据的derective
+3-4-1 v-bind 把数据绑定到属性上
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;form&amp;gt;
+        &amp;lt;label for=&amp;quot;m...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/xnExTvzaZ/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          Vue.js学习日记【6】高级数据绑定
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-12-04 · 12 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/vuejs/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              Vuejs
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <!-- more -->
+<h2 id="3-4-绑定数据的derective">3-4 绑定数据的derective</h2>
+<h3 id="3-4-1-v-bind-把数据绑定到属性上">3-4-1 v-bind 把数据绑定到属性上</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;form&gt;
+        &lt;label for=&quot;memo&quot;&gt;Memo:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;memo&quot; v-bind=&quot;attrs&quot;/&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            attrs: {
+                size: 20,
+                maxlength: 20,
+                required: true
+            }
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; id=&quot;memo&quot; size=&quot;20&quot; maxlength=&quot;20&quot; required=true/&gt;
+</code></pre>
+<p>设定的属性重复的时候，后面的会覆盖前面的。</p>
+<h3 id="3-4-2-v-html-把数据绑定到元素的innerhtml上">3-4-2 v-html 把数据绑定到元素的innerHTML上</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div v-html=&quot;html&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            html: '&lt;span style=&quot;color: red&quot;&gt;Hello&lt;/span&gt;'
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>上面的相当于</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div&gt;&lt;span style=&quot;color: red&quot;&gt;Hello&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="3-4-3-v-once-只绑定一次">3-4-3 v-once 只绑定一次</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div v-once&gt;{{message}}&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            message: 'Hello'
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>上面的相当于</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div&gt;Hello&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>使用场景：当数据不会变化的时候，使用v-once，可以提高性能。</p>
+<h3 id="3-4-4-v-bindstyle-绑定样式">3-4-4- v-bind:style 绑定样式</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div v-bind:style=&quot;style&quot;&gt;{{message}}&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            message: 'Hello',
+            style: {
+                color: 'red',
+                fontSize: '20px'
+            }
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>甚至可以直接写成</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div v-bind:style=&quot;{color: 'red', fontSize: '20px'}&quot;&gt;{{message}}&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            message: 'Hello'
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>v-bind:style 可以根据浏览器的变化，自动补充浏览器前缀。</p>
+<p>例如：在Chrome中，会自动补充-webkit-。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div v-bind:style=&quot;{color: 'red', fontSize: '20px', display: '-webkit-box'}&quot;&gt;{{message}}&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            message: 'Hello'
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>上面的相当于</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div style=&quot;color: red; font-size: 20px; display: -webkit-box;&quot;&gt;Hello&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="3-4-5-v-bindclass-绑定class">3-4-5 v-bind:class 绑定class</h3>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div class=&quot;small&quot; v-bind:class=&quot;{color, frame: isChange}&quot;&gt;
+        Hello World
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">Vue.createApp({
+    data() {
+        return {
+            color: true,
+            isChange: true
+        }
+    }
+}).mount('#app');
+</code></pre>
+<p>上面的相当于</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div class=&quot;small color frame&quot;&gt;
+        Hello World
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="3-4-6-v-cloak-防止闪烁">3-4-6 v-cloak 防止闪烁</h3>
+<p><code>v-cloak</code> 是 Vue.js 提供的一个特殊指令，主要用于在 Vue 实例完全编译渲染结束之前隐藏未编译的标记。这个指令特别有用于防止在加载和编译过程中显示原始的花括号语法（{{ }}），从而提升用户体验。</p>
+<h3 id="如何使用-v-cloak">如何使用 v-cloak</h3>
+<p>通常，你会在一个带有 <code>{{ }}</code> 插值的元素上添加 <code>v-cloak</code> 指令。然后，在 CSS 中定义一个 <code>v-cloak</code> 规则，用于在 Vue 实例挂载之前隐藏这个元素。</p>
+<h4 id="示例-html">示例 HTML：</h4>
+<pre><code class="language-html">&lt;!-- 在根元素或任何需要隐藏未编译内容的元素上添加 v-cloak --&gt;
+&lt;div id=&quot;app&quot; v-cloak&gt;
+  {{ message }}
+&lt;/div&gt;
+</code></pre>
+<h4 id="示例-css">示例 CSS：</h4>
+<pre><code class="language-css">/* 当 v-cloak 存在时，隐藏元素 */
+[v-cloak] {
+  display: none;
+}
+</code></pre>
+<p>在这个例子中，当页面初次加载时，用户将不会看到像 <code>{{ message }}</code> 这样的未编译文本。Vue 实例准备就绪并完成编译后，<code>v-cloak</code> 指令将被自动移除，CSS 规则不再适用，因此元素变为可见。</p>
+<h3 id="为什么使用-v-cloak">为什么使用 v-cloak</h3>
+<p>在一些情况下，尤其是在网速较慢或者脚本较大时，Vue 的编译过程可能会有轻微延迟。在这个短暂的时间里，用户可能会看到原始的插值表达式，比如 <code>{{ message }}</code>，而不是它们被替换后的值。使用 <code>v-cloak</code> 可以避免这种情况，直到 Vue 完成编译，应用变得可交互。</p>
+<h2 id="3-5-高级事件处理">3-5 高级事件处理</h2>
+<h3 id="3-5-1-事件修饰符">3-5-1 事件修饰符</h3>
+<p>在 Vue.js 中，事件处理修饰符是一些特殊的后缀，用于在模板中的事件监听器上指示 Vue 以特定的方式处理 DOM 事件。这些修饰符使得事件处理的逻辑更简洁、清晰，并且可以更容易地在模板内部实现复杂的事件处理。</p>
+<p>以下是一些常用的 Vue 事件处理修饰符：</p>
+<ol>
+<li><strong>.stop</strong> - 调用 <code>event.stopPropagation()</code>，阻止事件继续传播（即阻止事件冒泡）。</li>
+</ol>
+<pre><code class="language-html">&lt;button @click.stop=&quot;doThis&quot;&gt;点击我&lt;/button&gt;
+</code></pre>
+<ol start="2">
+<li><strong>.prevent</strong> - 调用 <code>event.preventDefault()</code>，阻止事件的默认行为（如阻止表单提交）。</li>
+</ol>
+<pre><code class="language-html">&lt;form @submit.prevent=&quot;onSubmit&quot;&gt;提交&lt;/form&gt;
+</code></pre>
+<p><code>.prevent</code> 修饰符在 Vue.js 中用于调用 <code>event.preventDefault()</code>，阻止事件的默认行为，在多种场景中都非常有用。以下是一些常见的使用场景：</p>
+<h3 id="1-阻止表单提交">1. 阻止表单提交</h3>
+<p>最常见的用例是阻止表单的默认提交行为。在传统的 HTML 表单提交中，当点击提交按钮或按下回车键时，表单会尝试将数据提交到服务器，页面会重新加载或跳转。在单页应用（SPA）中，这种行为通常不需要，因为数据通常是通过 AJAX 请求异步发送的。</p>
+<pre><code class="language-html">&lt;form @submit.prevent=&quot;onSubmit&quot;&gt;
+  &lt;!-- 表单内容 --&gt;
+  &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<p>在这个例子中，当用户提交表单时，<code>.prevent</code> 修饰符会阻止表单的默认提交行为，允许 <code>onSubmit</code> 方法处理数据，比如发送 AJAX 请求，而不会导致页面重新加载或跳转。</p>
+<h3 id="2-阻止链接默认跳转">2. 阻止链接默认跳转</h3>
+<p>当你在 <code>&lt;a&gt;</code> 标签上使用点击事件处理器时，你可能不希望点击链接时触发页面跳转或刷新。</p>
+<pre><code class="language-html">&lt;a href=&quot;https://example.com&quot; @click.prevent=&quot;handleClick&quot;&gt;
+  点击我
+&lt;/a&gt;
+</code></pre>
+<p>在这个例子中，点击链接时将不会导致浏览器跳转到 <code>href</code> 指定的 URL，而是执行 <code>handleClick</code> 方法。</p>
+<h3 id="3-阻止事件冒泡中的默认行为">3. 阻止事件冒泡中的默认行为</h3>
+<p>在某些情况下，你可能需要在处理事件冒泡时阻止默认行为。</p>
+<pre><code class="language-html">&lt;div @click=&quot;divClick&quot;&gt;
+  &lt;button @click.prevent=&quot;buttonClick&quot;&gt;点击我&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在这里，点击按钮将执行 <code>buttonClick</code> 函数，但不会触发 <code>&lt;button&gt;</code> 的默认行为（如果有的话），同时 <code>.prevent</code> 也会阻止事件冒泡到 <code>&lt;div&gt;</code>，所以 <code>divClick</code> 不会被执行。</p>
+<h3 id="4-处理复杂的交互">4. 处理复杂的交互</h3>
+<p>在需要更复杂的交互时，如拖放操作、自定义的滑动控件等，阻止默认行为可以防止浏览器执行与这些操作冲突的默认动作。</p>
+<ol>
+<li><strong>.capture</strong> - 使用事件捕获模式，即内部元素触发的事件先在此处处理，然后才是冒泡阶段。</li>
+</ol>
+<pre><code class="language-html">&lt;div @click.capture=&quot;doThis&quot;&gt;点击我&lt;/div&gt;
+</code></pre>
+<ol start="4">
+<li><strong>.self</strong> - 只当事件在该元素本身（而不是子元素）触发时才触发回调。</li>
+</ol>
+<pre><code class="language-html">&lt;div @click.self=&quot;doThat&quot;&gt;点击我&lt;/div&gt;
+</code></pre>
+<ol start="5">
+<li><strong>.once</strong> - 事件将只触发一次，之后便解绑监听器。</li>
+</ol>
+<pre><code class="language-html">&lt;button @click.once=&quot;doOnce&quot;&gt;点击我&lt;/button&gt;
+</code></pre>
+<p><code>.once</code> 修饰符在 Vue.js 中用于确保事件处理器只触发一次，之后该事件监听器会自动移除。这在某些特定场景中非常有用，例如：</p>
+<h3 id="1-防止重复提交">1. 防止重复提交</h3>
+<p>假设你有一个提交表单的按钮，你不希望用户因为多次点击而重复提交表单。</p>
+<pre><code class="language-html">&lt;button @click.once=&quot;submitForm&quot;&gt;提交表单&lt;/button&gt;
+</code></pre>
+<p>在这个例子中，无论用户点击多少次按钮，<code>submitForm</code> 方法只会被调用一次，从而防止了表单的重复提交。</p>
+<h3 id="2-显示一次性通知或弹窗">2. 显示一次性通知或弹窗</h3>
+<p>如果你想显示一条只出现一次的通知或弹窗（例如欢迎消息或引导提示），可以使用 <code>.once</code> 修饰符。</p>
+<pre><code class="language-html">&lt;button @click.once=&quot;showWelcomeMessage&quot;&gt;显示欢迎信息&lt;/button&gt;
+</code></pre>
+<p>点击按钮后，欢迎信息将显示出来，但随后再点击按钮将不会有任何反应，因为事件监听器在第一次触发后就被移除了。</p>
+<h3 id="3-添加一次性的事件监听">3. 添加一次性的事件监听</h3>
+<p>在某些情况下，你可能需要在特定元素上添加一次性的事件监听器，比如动画结束事件，你只想监听一次动画结束。</p>
+<pre><code class="language-html">&lt;div @animationend.once=&quot;handleAnimationEnd&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<p>一旦动画结束，<code>handleAnimationEnd</code> 方法将被调用，然后事件监听器会被移除。</p>
+<h3 id="4-避免重复执行开销大的操作">4. 避免重复执行开销大的操作</h3>
+<p>如果你有一个执行开销大的操作（如 AJAX 请求、复杂的计算等），使用 <code>.once</code> 可以确保该操作仅执行一次，无论触发多少次事件。</p>
+<pre><code class="language-html">&lt;button @click.once=&quot;performExpensiveTask&quot;&gt;执行操作&lt;/button&gt;
+</code></pre>
+<ol>
+<li><strong>.passive</strong> - 表明事件的默认行为（如滚动等）不会被阻止，用于提高移动端的性能。</li>
+</ol>
+<pre><code class="language-html">&lt;div @scroll.passive=&quot;onScroll&quot;&gt;滚动我&lt;/div&gt;
+</code></pre>
+<p>这些修饰符可以单独使用，也可以组合使用。例如，如果你想要一个按钮的点击事件只执行一次，并阻止事件冒泡，你可以这样写：</p>
+<pre><code class="language-html">&lt;button @click.once.stop=&quot;doThisOnce&quot;&gt;点击我&lt;/button&gt;
+</code></pre>
+<p>冒泡和传播是 DOM 事件在元素层级结构中的两种主要传递方式。为了理解这些概念，我们可以通过一个例子来说明。</p>
+<h3 id="事件冒泡event-bubbling">事件冒泡（Event Bubbling）</h3>
+<p>事件冒泡是指当一个事件在一个元素上触发时，该事件会依次向上传递到其父元素，一直传到文档的根元素（通常是 <code>document</code> 对象）。这意味着，一个事件不仅仅只作用于它直接绑定的元素，还会影响到它的所有父元素。</p>
+<h4 id="例子">例子</h4>
+<p>假设有以下 HTML 结构：</p>
+<pre><code class="language-html">&lt;div id=&quot;parent&quot;&gt;
+    &lt;button id=&quot;child&quot;&gt;点击我&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在这里，<code>button</code> 是 <code>div</code> 的子元素。如果你在 <code>button</code> 上绑定一个点击事件，当你点击按钮时，这个事件会首先在 <code>button</code> 上触发，然后冒泡到 <code>div</code>，如果 <code>div</code> 有父元素，继续向上冒泡。</p>
+<p>如果 <code>div</code> 也有一个点击事件的监听器，那么即使点击的是 <code>button</code>，<code>div</code> 的点击事件也会被触发，因为事件从 <code>button</code> 冒泡到了 <code>div</code>。</p>
+<h3 id="事件捕获event-capturing">事件捕获（Event Capturing）</h3>
+<p>事件捕获与事件冒泡相反。在事件捕获阶段，事件从文档的根元素开始，向下传递到目标元素的路径上的每个元素，最后到达目标元素（触发事件的元素）。</p>
+<p>通常，当我们添加事件监听器时，默认是在冒泡阶段处理事件的。但我们可以指定事件处理器在捕获阶段触发。</p>
+<h4 id="例子-2">例子</h4>
+<p>使用相同的 HTML 结构：</p>
+<pre><code class="language-html">&lt;div id=&quot;parent&quot;&gt;
+    &lt;button id=&quot;child&quot;&gt;点击我&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>如果我们在 <code>div</code> 和 <code>button</code> 上都添加了点击事件监听器，并且将 <code>div</code> 的监听器设置为在捕获阶段触发，当点击 <code>button</code> 时，事件处理的顺序会是：首先在 <code>div</code> 上触发（捕获阶段），然后在 <code>button</code> 上触发（冒泡阶段）。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#3-4-%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE%E7%9A%84derective">3-4 绑定数据的derective</a>
+<ul>
+<li><a href="#3-4-1-v-bind-%E6%8A%8A%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%88%B0%E5%B1%9E%E6%80%A7%E4%B8%8A">3-4-1 v-bind 把数据绑定到属性上</a></li>
+<li><a href="#3-4-2-v-html-%E6%8A%8A%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%88%B0%E5%85%83%E7%B4%A0%E7%9A%84innerhtml%E4%B8%8A">3-4-2 v-html 把数据绑定到元素的innerHTML上</a></li>
+<li><a href="#3-4-3-v-once-%E5%8F%AA%E7%BB%91%E5%AE%9A%E4%B8%80%E6%AC%A1">3-4-3 v-once 只绑定一次</a></li>
+<li><a href="#3-4-4-v-bindstyle-%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F">3-4-4- v-bind:style 绑定样式</a></li>
+<li><a href="#3-4-5-v-bindclass-%E7%BB%91%E5%AE%9Aclass">3-4-5 v-bind:class 绑定class</a></li>
+<li><a href="#3-4-6-v-cloak-%E9%98%B2%E6%AD%A2%E9%97%AA%E7%83%81">3-4-6 v-cloak 防止闪烁</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-v-cloak">如何使用 v-cloak</a>
+<ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B-html">示例 HTML：</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B-css">示例 CSS：</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-v-cloak">为什么使用 v-cloak</a></li>
+</ul>
+</li>
+<li><a href="#3-5-%E9%AB%98%E7%BA%A7%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86">3-5 高级事件处理</a>
+<ul>
+<li><a href="#3-5-1-%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6">3-5-1 事件修饰符</a></li>
+<li><a href="#1-%E9%98%BB%E6%AD%A2%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4">1. 阻止表单提交</a></li>
+<li><a href="#2-%E9%98%BB%E6%AD%A2%E9%93%BE%E6%8E%A5%E9%BB%98%E8%AE%A4%E8%B7%B3%E8%BD%AC">2. 阻止链接默认跳转</a></li>
+<li><a href="#3-%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%AD%E7%9A%84%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA">3. 阻止事件冒泡中的默认行为</a></li>
+<li><a href="#4-%E5%A4%84%E7%90%86%E5%A4%8D%E6%9D%82%E7%9A%84%E4%BA%A4%E4%BA%92">4. 处理复杂的交互</a></li>
+<li><a href="#1-%E9%98%B2%E6%AD%A2%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4">1. 防止重复提交</a></li>
+<li><a href="#2-%E6%98%BE%E7%A4%BA%E4%B8%80%E6%AC%A1%E6%80%A7%E9%80%9A%E7%9F%A5%E6%88%96%E5%BC%B9%E7%AA%97">2. 显示一次性通知或弹窗</a></li>
+<li><a href="#3-%E6%B7%BB%E5%8A%A0%E4%B8%80%E6%AC%A1%E6%80%A7%E7%9A%84%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC">3. 添加一次性的事件监听</a></li>
+<li><a href="#4-%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E6%89%A7%E8%A1%8C%E5%BC%80%E9%94%80%E5%A4%A7%E7%9A%84%E6%93%8D%E4%BD%9C">4. 避免重复执行开销大的操作</a></li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1event-bubbling">事件冒泡（Event Bubbling）</a>
+<ul>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7event-capturing">事件捕获（Event Capturing）</a>
+<ul>
+<li><a href="#%E4%BE%8B%E5%AD%90-2">例子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>
