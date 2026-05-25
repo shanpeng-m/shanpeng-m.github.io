@@ -1,0 +1,349 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件设计的哲学【2】复杂性的本质 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件设计的哲学【2】复杂性的本质 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="本书讨论的是如何设计软件系统，以尽量降低它们的复杂性。第一步是理解敌人：到底什么是“复杂性”？如何判断一个系统是否不必要地复杂？是什么导致系统变得复杂？本章将在较高的层面上回答这些问题；后续章节将从更低的层次、以具体结构特征的形式，向你展示..." />
+  <meta property="og:title" content="读书笔记-软件设计的哲学【2】复杂性的本质 - 小马的世界">
+  <meta property="og:description" content="本书讨论的是如何设计软件系统，以尽量降低它们的复杂性。第一步是理解敌人：到底什么是“复杂性”？如何判断一个系统是否不必要地复杂？是什么导致系统变得复杂？本章将在较高的层面上回答这些问题；后续章节将从更低的层次、以具体结构特征的形式，向你展示..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/vLxZXPspLG/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件设计的哲学【2】复杂性的本质 - 小马的世界">
+  <meta name="twitter:description" content="本书讨论的是如何设计软件系统，以尽量降低它们的复杂性。第一步是理解敌人：到底什么是“复杂性”？如何判断一个系统是否不必要地复杂？是什么导致系统变得复杂？本章将在较高的层面上回答这些问题；后续章节将从更低的层次、以具体结构特征的形式，向你展示...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/vLxZXPspLG/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件设计的哲学【2】复杂性的本质
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-01-19 · 11 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>本书讨论的是如何设计软件系统，以尽量降低它们的复杂性。第一步是理解敌人：到底什么是“复杂性”？如何判断一个系统是否不必要地复杂？是什么导致系统变得复杂？本章将在较高的层面上回答这些问题；后续章节将从更低的层次、以具体结构特征的形式，向你展示如何识别复杂性。</p>
+<p>识别复杂性的能力是一项至关重要的设计技能。它可以让你在投入大量精力之前就发现问题，也能帮助你在不同方案之间做出更好的选择。判断一个设计是否简单，往往比真正做出一个简单的设计要容易；但一旦你能够识别出系统过于复杂，你就可以利用这种能力，引导你的设计理念朝向简洁。如果一个设计看起来很复杂，不妨尝试换一种方法，看看是否能更简单。随着经验积累，你会注意到某些技术往往会带来更简单的设计，而另一些则与复杂性高度相关。这将帮助你更快地产出简单的设计。</p>
+<p>本章还提出了一些基本假设，为全书其余内容奠定基础。后续章节会将本章中的内容视为前提，并在此基础上进行各种细化和推论。</p>
+<h2 id="21-复杂性的定义">2.1 复杂性的定义</h2>
+<p>在本书中，我以一种实用的方式来定义“复杂性”。复杂性是指任何与软件系统结构相关、并使系统难以理解和修改的因素。<br>
+复杂性可以有多种表现形式。例如，某段代码的工作方式可能难以理解；修改系统可能需要付出大量的精力；实现一个小改进可能需要大量工作；或者不清楚为了实现这个改进，系统的哪些部分必须被修改；又或者很难在修复一个 bug 的同时不引入新的 bug。如果一个软件系统难以理解和修改，那么它就是复杂的；如果它容易理解和修改，那么它就是简单的。</p>
+<p>你也可以从成本与收益的角度来思考复杂性。在一个复杂的系统中，即便是很小的改进，也需要付出大量工作；而在一个简单的系统中，较大的改进也可以用较少的努力来完成。</p>
+<p>复杂性是开发者在某个特定时间点、为了实现某个特定目标时所体验到的东西。它不一定与系统的整体规模或功能数量直接相关。人们经常用“复杂”来形容那些功能丰富、规模庞大的系统；但如果这样的系统易于使用和开发，那么从本书的定义来看，它并不复杂。当然，几乎所有大型且功能复杂的软件系统在现实中确实都很难开发和维护，因此它们通常也符合我对复杂性的定义，但这并非必然如此。同样，一个小型、功能并不复杂的系统，也完全可能非常复杂。</p>
+<p>复杂性取决于最常进行的活动。如果一个系统中有少数几个部分非常复杂，但这些部分几乎从不需要被修改，那么它们对系统整体复杂性的影响并不大。用一种粗略的数学方式来描述：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mo>=</mo><munder><mo>∑</mo><mi>p</mi></munder><msub><mi>c</mi><mi>p</mi></msub><msub><mi>t</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">C = \sum_p c_p t_p 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.4361180000000004em;vertical-align:-1.386113em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.386113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>系统的整体复杂性 (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>)，由每个部分 (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>) 的复杂度 (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">c_p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>)，以及开发者花在该部分上的时间比例 (t_p) 共同决定。将复杂性隔离在一个几乎不会被触及的地方，几乎和彻底消除这种复杂性一样有效。</p>
+<p>复杂性对读者来说往往比对作者更明显。如果你写了一段代码，自己觉得它很简单，但其他人认为它很复杂，那么它就是复杂的。当你遇到这种情况时，值得去深入了解其他开发者为什么觉得它复杂；你很可能能从你和他们观点之间的差异中学到一些有价值的经验。作为一名开发者，你的工作不仅是写出自己容易使用的代码，更重要的是写出<strong>其他人也能轻松使用和维护的代码</strong>。</p>
+<h2 id="22-复杂性的症状">2.2 复杂性的症状</h2>
+<p>复杂性通常以三种总体形式表现出来，下面的段落将分别加以说明。每一种表现形式都会让开发工作变得更加困难。</p>
+<h3 id="变更放大change-amplification">变更放大（Change amplification）：</h3>
+<p>复杂性的第一个症状是：一个看似简单的改动，却需要在许多不同的地方修改代码。举个例子，假设有一个包含多个页面的网站，每个页面都显示一个带背景色的横幅。在许多早期的网站中，背景颜色是直接在每个页面中单独指定的，如图 2.1(a) 所示。为了修改整个网站的背景颜色，开发者可能不得不手动修改每一个已有页面；对于一个拥有成千上万个页面的大型网站来说，这几乎是不可能完成的任务。</p>
+<p>幸运的是，现代网站通常采用如图 2.1(b) 所示的方法：在一个中心位置统一指定横幅颜色，而所有单独的页面都引用这个共享的值。采用这种方式，只需要一次修改，就可以改变整个网站的横幅颜色。良好设计的目标之一，就是减少每个设计决策所影响的代码数量，从而使设计变更不需要涉及大量的代码修改。</p>
+<h3 id="认知负担cognitive-load">认知负担（Cognitive load）：</h3>
+<p>复杂性的第二个症状是认知负担，它指的是开发者为了完成一项任务所必须掌握和记住的信息量。认知负担越高，开发者就需要花更多时间学习所需的信息，同时也更容易因为遗漏重要细节而引入 bug。</p>
+<p>例如，假设在 C 语言中有一个函数负责分配内存，返回指向该内存的指针，并假定调用者会负责释放这块内存。这就增加了使用该函数的开发者的认知负担；如果开发者忘记释放内存，就会产生内存泄漏。如果系统可以被重新设计，使得调用者不必关心释放内存的问题（由分配内存的同一模块负责释放），就可以降低认知负担。</p>
+<p>认知负担可以通过多种方式产生，例如：包含大量方法的 API、接口或行为上的不一致、全局变量的存在、以及模块之间复杂的依赖关系。</p>
+<p>系统设计者有时会认为，复杂性可以通过代码行数来衡量。他们假设：如果一个实现比另一个更短，那它一定更简单；如果只需要改动几行代码就能完成修改，那这个修改一定很容易。然而，这种观点忽略了认知负担所带来的成本。我曾见过一些框架，虽然只需写很少的代码就能完成应用，但却极其难以理解这些代码究竟应该写在哪里、如何写。</p>
+<p>依赖关系是软件中的一个基本组成部分，不可能被彻底消除。事实上，在软件设计过程中，我们是有意引入依赖关系的。每当你创建一个新类时，就会围绕这个类的 API 产生依赖关系。然而，软件设计的目标之一，是减少依赖关系的数量，并让那些不可避免的依赖尽可能简单且显而易见。</p>
+<p>继续以前面的网站示例来说明。在旧的网站中，背景颜色在每个页面中单独指定，因此所有网页彼此之间都存在依赖关系。新的网站通过在一个中心位置统一指定背景颜色，并提供一个 API，让各个页面在渲染时通过该 API 获取颜色，从而解决了这个问题。新的设计消除了页面之间的依赖，但在获取背景颜色的 API 周围创建了一个新的依赖。</p>
+<p>幸运的是，这种新的依赖更加明显：很清楚每个网页都依赖于横幅的背景颜色，开发者也可以通过搜索变量名，轻松找到所有依赖该值的地方。此外，编译器还能帮助管理 API 依赖：如果共享变量的名称发生变化，所有仍在使用旧名称的代码都会产生编译错误。新的设计用一个简单且显式的依赖，替换了一个隐蔽且难以管理的依赖。</p>
+<p><strong>复杂性的第二个来源是晦涩性（obscurity）</strong> 。当关键信息不够清晰时，就会产生晦涩性。一个简单的例子是变量名过于通用，几乎不包含任何有价值的信息（例如 time）。或者变量没有明确单位，导致只能通过扫描代码中变量的使用位置来推断含义。又或者变量的文档说明不充分，只能通过阅读代码来理解。</p>
+<p>晦涩性通常与依赖关系有关，因为依赖本身并不总是显而易见的。例如，如果系统中新增了一种错误状态，可能需要在一个保存错误字符串的表中添加对应条目，但从状态定义本身并不容易看出这一点。不一致性也是造成晦涩性的一个重要因素：如果同一个变量名被用于两个不同的目的，开发者就很难判断该变量在特定场景下的含义。</p>
+<p>在很多情况下，晦涩性来源于文档不足，第 13 章将专门讨论这一点。不过，晦涩性本身也是一个设计问题。如果系统设计得清晰、直观，那么所需的文档自然会更少。大量文档的存在，往往是设计存在问题的信号。减少晦涩性的最佳方式，是简化系统设计本身。</p>
+<p>综合来看，依赖关系和晦涩性共同导致了第 2.2 节中描述的三种复杂性表现形式：依赖关系会引发变更放大和高认知负担，而晦涩性会制造“未知的未知”，同样增加认知负担。如果我们能够采用设计技术来最小化依赖关系和晦涩性，就能有效降低软件的复杂度。</p>
+<h2 id="24-复杂性是渐进式的">2.4 复杂性是渐进式的</h2>
+<p>复杂性并不是由一次灾难性的错误造成的；它是由大量微小问题逐步累积而成的。单个依赖关系或晦涩点，本身并不太可能显著影响软件系统的可维护性。真正的问题在于，随着时间推移，成百上千个微小的依赖和晦涩点不断堆积。最终，几乎系统中的每一次修改，都会受到其中多个问题的影响。</p>
+<p>复杂性的渐进特性，使得它非常难以控制。人们很容易说服自己：“这次引入的一点点复杂性无关紧要。”然而，如果每个开发者在每一次修改时都采取这种态度，复杂性就会迅速累积。一旦复杂性已经堆积起来，就很难再消除；单独修复某一个依赖或晦涩点，通常并不会带来明显改善。</p>
+<p>为了减缓复杂性的增长，必须采取一种 <strong>“零容忍”</strong> 的态度，这一点将在第 3 章中进一步讨论。</p>
+<h2 id="25-总结">2.5 总结</h2>
+<p>复杂性源自依赖关系和晦涩性的不断累积。随着复杂性的增加，会导致变更放大、高认知负担以及“未知的未知”。结果是：实现每一个新功能，都需要修改更多的代码；此外，开发者需要花费更多时间来获取足够的信息，才能安全地进行修改；在最糟糕的情况下，他们甚至无法找到所需的全部信息。</p>
+<p><strong>归根结底，复杂性让对现有代码库的修改变得困难且充满风险。</strong></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#21-%E5%A4%8D%E6%9D%82%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89">2.1 复杂性的定义</a></li>
+<li><a href="#22-%E5%A4%8D%E6%9D%82%E6%80%A7%E7%9A%84%E7%97%87%E7%8A%B6">2.2 复杂性的症状</a>
+<ul>
+<li><a href="#%E5%8F%98%E6%9B%B4%E6%94%BE%E5%A4%A7change-amplification">变更放大（Change amplification）：</a></li>
+<li><a href="#%E8%AE%A4%E7%9F%A5%E8%B4%9F%E6%8B%85cognitive-load">认知负担（Cognitive load）：</a></li>
+</ul>
+</li>
+<li><a href="#24-%E5%A4%8D%E6%9D%82%E6%80%A7%E6%98%AF%E6%B8%90%E8%BF%9B%E5%BC%8F%E7%9A%84">2.4 复杂性是渐进式的</a></li>
+<li><a href="#25-%E6%80%BB%E7%BB%93">2.5 总结</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

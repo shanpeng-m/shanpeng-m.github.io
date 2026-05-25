@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://ma.shanpeng.im</id>
+    <title>小马的世界</title>
+    <updated>2026-05-25T23:46:58.700Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://ma.shanpeng.im"/>
+    <link rel="self" href="https://ma.shanpeng.im/atom.xml"/>
+    <subtitle>//Pony&apos;s World</subtitle>
+    <logo>https://ma.shanpeng.im/images/avatar.png</logo>
+    <icon>https://ma.shanpeng.im/favicon.ico</icon>
+    <rights>All rights reserved 2026, 小马的世界</rights>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件设计的哲学【7】不同层，不同抽象]]></title>
+        <id>https://ma.shanpeng.im/post/UYTB4fVIDp/</id>
+        <link href="https://ma.shanpeng.im/post/UYTB4fVIDp/">
+        </link>
+        <updated>2026-05-26T00:19:19.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深]]></title>
+        <id>https://ma.shanpeng.im/post/BIrsLkGP5S/</id>
+        <link href="https://ma.shanpeng.im/post/BIrsLkGP5S/">
+        </link>
+        <updated>2026-05-24T15:39:39.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[源码理解Autoware Freespace Planner]]></title>
+        <id>https://ma.shanpeng.im/post/vODmOEQzWA/</id>
+        <link href="https://ma.shanpeng.im/post/vODmOEQzWA/">
+        </link>
+        <updated>2026-04-12T02:41:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件设计的哲学【5】信息隐藏（以及泄露）]]></title>
+        <id>https://ma.shanpeng.im/post/IrigO-7vK2/</id>
+        <link href="https://ma.shanpeng.im/post/IrigO-7vK2/">
+        </link>
+        <updated>2026-02-15T07:15:10.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep）]]></title>
+        <id>https://ma.shanpeng.im/post/t-0wH4yDLf/</id>
+        <link href="https://ma.shanpeng.im/post/t-0wH4yDLf/">
+        </link>
+        <updated>2026-01-19T12:13:41.000Z</updated>
+    </entry>
+</feed>

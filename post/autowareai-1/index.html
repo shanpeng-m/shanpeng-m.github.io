@@ -1,0 +1,510 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>【Autoware.ai学习笔记】第一课-1 开发环境介绍 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【Autoware.ai学习笔记】第一课-1 开发环境介绍 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="自动驾驶开源系统Autoware学习笔记
+Development Environment
+https://www.autoware.org/training
+
+简介
+Autoware展示了一种现实与未来结合的愿景，你可以从图中看出这个系统现..." />
+  <meta property="og:title" content="【Autoware.ai学习笔记】第一课-1 开发环境介绍 - 小马的世界">
+  <meta property="og:description" content="自动驾驶开源系统Autoware学习笔记
+Development Environment
+https://www.autoware.org/training
+
+简介
+Autoware展示了一种现实与未来结合的愿景，你可以从图中看出这个系统现..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/autowareai-1/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/post-images/autowareai-1.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="【Autoware.ai学习笔记】第一课-1 开发环境介绍 - 小马的世界">
+  <meta name="twitter:description" content="自动驾驶开源系统Autoware学习笔记
+Development Environment
+https://www.autoware.org/training
+
+简介
+Autoware展示了一种现实与未来结合的愿景，你可以从图中看出这个系统现...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/autowareai-1/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          【Autoware.ai学习笔记】第一课-1 开发环境介绍
+        </h1>
+        
+          <img src="https://ma.shanpeng.im/post-images/autowareai-1.png" alt="【Autoware.ai学习笔记】第一课-1 开发环境介绍" class="block w-full mb-8">
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2022-11-02 · 7 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/zi-dong-jia-shi/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              自动驾驶
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>自动驾驶开源系统Autoware学习笔记<br>
+Development Environment<br>
+https://www.autoware.org/training</p>
+<!-- more -->
+<h2 id="简介">简介</h2>
+<p>Autoware展示了一种现实与未来结合的愿景，你可以从图中看出这个系统现在具备的能力。</p>
+<ul>
+<li>车辆本身所处的位置</li>
+<li>针对车辆所处环境的定位（使用LiDAR 数据和GPS数据）</li>
+<li>全景（包括2D或者3D的交通中其他参与者的情况，还可以分析他们分类，是车辆还是行人等，并且能判断他们的移动速度，并且预测他们的移动路径）</li>
+<li>计算车辆运动开始和停止的时机</li>
+<li>以静态语义地图的形式展示环境信息（车道信息，交通信号灯信息等）<br>
+<img src="https://ma.shanpeng.im/post-images/1667369719230.png" alt="" loading="lazy"></li>
+</ul>
+<p>这里有一个<a href="https://www.youtube.com/watch?v=kn2bIU_g0oY">demo视频（YouTube）</a>，你可以通过视频来了解Autoware具体是如何运作的。</p>
+<h2 id="为什么有这个课程">为什么有这个课程</h2>
+<ol>
+<li>自主驾驶（AD）是一个巨大的趋势。在过去5年中，仅自动驾驶软件的平均投资就达到了23亿美元。<br>
+<img src="https://gitlab.com/ApexAI/autowareclass2020/-/raw/master/images/self-driving-trend.png" alt="" loading="lazy"></li>
+<li>开发自动驾驶应用的主要推动力之一ROS已经成熟，ROS 2现在可以产品化了。<br>
+<img src="https://gitlab.com/ApexAI/autowareclass2020/-/raw/master/images/ros2.png" alt="" loading="lazy"></li>
+<li>同样，Autoware也已经完成研究和原型设计阶段，下一个版本Autoware.Auto正在以更严格的方式开发，将会以在商业应用中使用作为明确的目标。</li>
+<li>从零开发一个自动驾驶系统是相当困难的，需要大量的资金和人力。有了本课所介绍的技术（ROS 2和Autoware.Auto），用户可以专注于实际的自主驾驶应用，如无人出租车、高速公路自动驾驶、自主代客停车等。<br>
+<img src="https://gitlab.com/ApexAI/autowareclass2020/-/raw/master/images/valet_parking.jpeg" alt="" loading="lazy"></li>
+<li>ROS 2和Autoware.Auto是新技术。本课程提供了快速并且高质量的捷径来掌握它们。</li>
+</ol>
+<h2 id="课程组织">课程组织</h2>
+<h3 id="预备知识">预备知识</h3>
+<ol>
+<li>熟悉ROS1（或者其他机器人框架）和中等水平的C++</li>
+<li>具有线性代数、高等数学、统计学相关的知识。一个理想的学生应该对感知、定位、规划、控制、状态估计、决策理论比较熟悉。</li>
+<li>硬件：唯一的性能限制来源于基于Unity的模拟器。关于它对硬件的需求，请查看模拟器的文档。</li>
+<li>软件：Ubuntu 18.04</li>
+</ol>
+<h3 id="学习材料">学习材料</h3>
+<p>这门课的视频讲座将会上传到<a href="https://www.youtube.com/channel/UCyo9zNZTbdJKFog2q8f-cEw">Youtube</a>，幻灯片及实验材料可以从课程的<a href="https://www.apex.ai/academy-autoware">概览页面</a>下载。</p>
+<h3 id="这门课程提供了什么">这门课程提供了什么</h3>
+<p>该课程是与Autoware基金会和ROS社区的成员合作举办的。他们都是在软件中间件、软件框架、自动驾驶汽车的算法和工具等领域的世界领先专家。在该课程中，你将学习如何实际建立一个工作的自动驾驶堆栈来执行自动代客泊车（AVP）。</p>
+<h2 id="开发环境">开发环境</h2>
+<h3 id="安装-ade-awesome-development-environment">安装 ADE (Awesome Development Environment)</h3>
+<p>在这门课程中我们使用 <a href="https://ade-cli.readthedocs.io/en/latest/">ADE</a>. 因为我们想确保所有学生使用的都是一样的开发环境。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitlab.com/ApexAI/autowareclass2020/-/raw/master/images/ADE.png" alt="ADE" loading="lazy"></figure>
+<h3 id="docker">Docker</h3>
+<p>安装ADE需要安装Docker，具体的要求请查看这个链接: https://ade-cli.readthedocs.io/en/latest/install.html#requirements.</p>
+<p>要在你的 Ubuntu 18.04 电脑上安装ADE，你可以按照下面的顺序或者 <a href="https://ade-cli.readthedocs.io/en/latest/install.html">遵循ADE文档中的安装说明</a>:</p>
+<pre><code class="language-sh">$ cd ${HOME}
+$ mkdir adehome
+$ cd adehome
+$ wget https://gitlab.com/ApexAI/ade-cli/uploads/85a5af81339fe55555ee412f9a3a734b/ade+x86_64
+$ mv ade+x86_64 ade
+$ chmod +x ade
+$ mv ade ~/.local/bin
+$ which ade
+# Update ade
+$ ade update-cli
+# Now setup ade
+$ touch .adehome
+$ git clone --recurse-submodules https://gitlab.com/autowarefoundation/autoware.auto/AutowareAuto.git
+$ cd AutowareAuto/
+$ ade start
+# this will take awhile
+$ ade enter
+</code></pre>
+<p>现在你应该在你的提示中看到以下内容</p>
+<pre><code class="language-sh">&lt;your_username&gt;@ade:~$
+</code></pre>
+<blockquote>
+<p><strong>注意：</strong> 从现在开始，我们将在命令行指令前加上<code>$</code>或<code>ade$</code>，以表明这些命令应该在普通终端或ADE环境中运行。</p>
+</blockquote>
+<h2 id="安装-ros-2">安装 ROS 2</h2>
+<p>Autoware.Auto 使用 ROS 2 Dashing，他已经 <a href="https://gitlab.com/autowarefoundation/autoware.auto/AutowareAuto/-/blob/master/tools/ade_image/apt-packages#L19">安装</a> 在ADE中了. 安装目录是 <code>/opt/ros/dashing/</code>. 关于从头安装ROS 2的说明，请参考<a href="https://index.ros.org/doc/ros2/Installation/Dashing/">ROS 2 Dashing的ROS文档</a>.</p>
+<p>你可以通过执行下面的命令来判断安装是否正确。</p>
+<pre><code class="language-sh">ade$ ros2 -h
+</code></pre>
+<p>你也可以尝试使用两个独立的终端运行talker/listener的例子</p>
+<pre><code class="language-sh">ade$ ros2 run demo_nodes_cpp talker
+</code></pre>
+<pre><code class="language-sh">ade$ ros2 run demo_nodes_cpp listener
+</code></pre>
+<p>如果你想在ADE内部安装额外的系统包，你可以使用<code>apt</code>包管理工具。</p>
+<pre><code class="language-sh">ade$ sudo apt update
+ade$ sudo apt install ros-dashing-turtlesim
+ade$ sudo apt install ros-dashing-rqt-*
+ade$ sudo apt install byobu
+</code></pre>
+<blockquote>
+<p><strong>注意：</strong> 在<code>ade stop</code>和<code>ade start</code>命令之间系统包的安装不会永久保存。任何有价值的东西都应该放在<code>adehome</code>目录下，该目录存储在主机上并挂载在ADE环境中。</p>
+</blockquote>
+<h2 id="安装-autowareauto">安装 Autoware.Auto</h2>
+<h3 id="二进制版本">二进制版本</h3>
+<p>Autoware.Auto 已经安装在 ADE中了. 安装的路径是 <code>/opt/AutowareAuto/</code>, 并且它作为一个 <a href="https://ade-cli.readthedocs.io/en/latest/create-custom-volume.html?highlight=volume">docker volume</a>提供。</p>
+<h3 id="源代码版本">源代码版本</h3>
+<p>如果要 <a href="https://autowarefoundation.gitlab.io/autoware.auto/AutowareAuto/installation-and-development.html#installation-and-development-how-to-build">从源代码安装</a> 你可以用之前克隆的版本，运行下面的命令：</p>
+<pre><code class="language-sh">ade$ cd AutowareAuto
+ade$ colcon build
+ade$ colcon test
+ade$ colcon test-result
+</code></pre>
+<h2 id="运行一个物体检测的命令">运行一个物体检测的命令</h2>
+<p>现在你已经准备好运行Autoware.Auto的典型应用之一，一个基于LiDAR的物体检测程序。</p>
+<h3 id="事前准备">事前准备</h3>
+<ol>
+<li>
+<p><a href="https://drive.google.com/open?id=1vNA009j-tsVVqSeYRCKh_G_tkJQrHvP-">下载一个预先录制好的 pcap 文件</a> 并且将其放置在 <code>${HOME}/adehome/data</code>.</p>
+</li>
+<li>
+<p>克隆一个为这个课程特别制作的配置文件</p>
+</li>
+</ol>
+<pre><code class="language-sh">ade$ git clone https://gitlab.com/ApexAI/autowareclass2020.git ~/autowareclass2020
+</code></pre>
+<p>执行下面的命令（每条命令需要新开一个ADE终端窗口）</p>
+<blockquote>
+<p><strong>注意</strong> 在执行以下每个命令之前，有必要对Autoware.Auto工作区进行source。你可以通过在ADE终端执行<code>source /opt/AutowareAuto/setup.bash</code>来完成。</p>
+</blockquote>
+<pre><code class="language-sh">ade$ udpreplay ~/data/route_small_loop_rw-127.0.0.1.pcap
+ade$ rviz2 -d /home/${USER}/autowareclass2020/code/src/01_DevelopmentEnvironment/aw_class2020.rviz
+ade$ ros2 run velodyne_node velodyne_cloud_node_exe __ns:=/lidar_front __params:=/home/${USER}/autowareclass2020/code/src/01_DevelopmentEnvironment/velodyne_node.param.yaml
+ade$ ros2 run robot_state_publisher robot_state_publisher /opt/AutowareAuto/share/lexus_rx_450h_description/urdf/lexus_rx_450h.urdf
+ade$ ros2 run point_cloud_filter_transform_nodes  point_cloud_filter_transform_node_exe __ns:=/lidar_front __params:=/opt/AutowareAuto/share/point_cloud_filter_transform_nodes/param/vlp16_sim_lexus_filter_transform.param.yaml __node:=filter_transform_vlp16_front points_filtered:=/perception/points_in
+ade$ ros2 run ray_ground_classifier_nodes ray_ground_classifier_cloud_node_exe __ns:=/perception __params:=/opt/AutowareAuto/share/autoware_auto_avp_demo/param/ray_ground_classifier.param.yaml
+ade$ ros2 run  euclidean_cluster_nodes euclidean_cluster_exe __ns:=/perception __params:=/opt/AutowareAuto/share/autoware_auto_avp_demo/param/euclidean_cluster.param.yaml
+</code></pre>
+<p>结果如下图：</p>
+<figure data-type="image" tabindex="2"><img src="https://gitlab.com/ApexAI/autowareclass2020/-/raw/master/images/object_detection.png" alt="object_detection" loading="lazy"></figure>
+<h2 id="编辑并且编译你的代码">编辑并且编译你的代码</h2>
+<p>现在我们将看看如何创建一个新的Autoware.Auto包，编辑它，并编译它。</p>
+<ol>
+<li>创建一个新的包</li>
+</ol>
+<pre><code class="language-sh">ade$ cd ~/AutowareAuto/src
+ade$ autoware_auto_create_pkg --destination . --pkg-name autoware_my_first_pkg --maintainer &quot;Dejan Pangercic&quot; --email dejan@apex.ai --description &quot;My first Autoware pkg.&quot;
+
+</code></pre>
+<ol start="2">
+<li>编辑文件</li>
+</ol>
+<pre><code class="language-sh">ade$ emacs -nw autoware_my_first_pkg/src/autoware_my_first_pkg_node.cpp
+# Edit one Line
+</code></pre>
+<ol start="3">
+<li>重新编译并执行</li>
+</ol>
+<pre><code class="language-sh">ade$ cd ..
+ade$ colcon build --packages-select autoware_auto_autoware_my_first_pkg
+ade$ source install/setup.bash
+ade$ ros2 run autoware_auto_autoware_my_first_pkg autoware_my_first_pkg_exe
+</code></pre>
+<p>祝贺你! 现在你有了Autoware.Auto的白带。</p>
+<h1 id="下一讲">下一讲</h1>
+<p>在下一讲中，你将了解到汽车和机器人代码开发的理论以及用于开发Autoware.Auto的一些实践。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E8%BF%99%E4%B8%AA%E8%AF%BE%E7%A8%8B">为什么有这个课程</a></li>
+<li><a href="#%E8%AF%BE%E7%A8%8B%E7%BB%84%E7%BB%87">课程组织</a>
+<ul>
+<li><a href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86">预备知识</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99">学习材料</a></li>
+<li><a href="#%E8%BF%99%E9%97%A8%E8%AF%BE%E7%A8%8B%E6%8F%90%E4%BE%9B%E4%BA%86%E4%BB%80%E4%B9%88">这门课程提供了什么</a></li>
+</ul>
+</li>
+<li><a href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">开发环境</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-ade-awesome-development-environment">安装 ADE (Awesome Development Environment)</a></li>
+<li><a href="#docker">Docker</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85-ros-2">安装 ROS 2</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-autowareauto">安装 Autoware.Auto</a>
+<ul>
+<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%89%88%E6%9C%AC">二进制版本</a></li>
+<li><a href="#%E6%BA%90%E4%BB%A3%E7%A0%81%E7%89%88%E6%9C%AC">源代码版本</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AA%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B%E7%9A%84%E5%91%BD%E4%BB%A4">运行一个物体检测的命令</a>
+<ul>
+<li><a href="#%E4%BA%8B%E5%89%8D%E5%87%86%E5%A4%87">事前准备</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BC%96%E8%BE%91%E5%B9%B6%E4%B8%94%E7%BC%96%E8%AF%91%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81">编辑并且编译你的代码</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8B%E4%B8%80%E8%AE%B2">下一讲</a></li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

@@ -1,0 +1,555 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【5-25】软件架构 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【5-25】软件架构 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在思考杰出的资深工程师（Staff+）所..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【5-25】软件架构 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在思考杰出的资深工程师（Staff+）所..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/Nt32Utdssm/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【5-25】软件架构 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+在思考杰出的资深工程师（Staff+）所...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/Nt32Utdssm/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【5-25】软件架构
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2025-01-13 · 37 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>在思考杰出的资深工程师（Staff+）所需具备的能力时，软件架构和软件设计总是位列前茅。软件架构是规划复杂系统的基础，而优秀的软件架构则是构建可靠且可维护系统的根基。</p>
+<p>在资深工程师层级，软件架构的重要性不言而喻，以至于传统公司仍然将最有经验的软件工程师称为“软件架构师”。而新兴的科技公司已经摒弃了这一称谓，转而采用资深工程师（Staff）、首席工程师（Principal）或杰出工程师（Distinguished Engineer）的称呼，以强调工程师角色。然而，尽管“架构师”这一词汇已逐渐过时，但资深工程师仍然被明确要求具备扎实的软件架构能力。</p>
+<p>我见过的最优秀的软件架构师，都是通过在具有挑战性的项目中积累经验，并不断学习而脱颖而出的。在本章节中，我们不会详细讲解如何成为一名杰出的软件架构师。我坚信，这需要通过实践以及参与复杂的真实项目来锻炼。我们会重点讨论在为复杂问题规划解决方案时需要关注的领域。</p>
+<h1 id="尽可能保持简单">尽可能保持简单</h1>
+<p>当我提到在一些我参与过的最大型项目中（比如重构每年处理600亿美元交易的Uber支付系统，或为Xbox One构建Skype并在上线首周吸引了100万用户）我们并没有使用“标准”的软件架构规划工具时，人们常常感到惊讶。我们本可以使用正式的方法和专用的架构框架来设计架构，比如UML、4+1模型、架构决策记录（ADR）、C4模型、依赖关系图等，但我们没有。</p>
+<p>我们使用了白板、方框和箭头来绘制想法，并用简单的语言记录这些想法，再将文档分发出去以征求反馈。我们也没有使用专业术语。尽管团队中的资深工程师在Google、VMWare、PayPal等大公司工作了数十年，并且之前已经设计过许多大型系统，但我们仍然保持简单。</p>
+<p>在架构设计中，保持简单并避免使用复杂的术语仅仅是为了炫耀。我的观点并不是说你不应该使用更正式的方法，而是只有在你确信它们能带来价值且团队成员能够理解的情况下再使用。</p>
+<p>保持架构简单的好处在于，它让讨论和想法对所有人都更容易理解，包括初级软件工程师。这是一件好事，因为理解架构的人越多，你就能收集到更多的反馈和建议。</p>
+<p>设计复杂的架构往往比设计简单高效的架构更容易。我记得我遇到过的一位最优秀的软件架构师，他曾担任工程总监，并构建过一些全球最大型的支付系统。我们一起设计Uber的新版支付系统时，他用几个简单易懂的图表解释了他的设计方案。我问他是如何能够如此清晰地捕捉并表达如此复杂的系统的。他告诉我，清晰源于多次构建类似的支付系统，从复杂版本开始，不断提炼出更高效的方案。</p>
+<h1 id="熟悉术语但不要过度使用">熟悉术语，但不要过度使用</h1>
+<p>尽管在可以避免使用术语的情况下尽量不用是有帮助的，但作为资深工程师（Staff+），你仍然需要了解与你工作相关的技术词汇，也就是“术语”！这包括：</p>
+<ul>
+<li><strong>与软件工程相关的术语</strong> 。如果你构建分布式系统，你需要理解诸如弱/强一致性、幂等性、写直通缓存（write-through cache）、反向代理（reverse proxy）等许多术语。</li>
+<li><strong>与业务相关的术语</strong> 。例如，如果你在支付领域工作，你需要理解并能够使用诸如发卡行、收单行、支付网关、PCI DSS、授权/预扣（auth/hold）等术语。</li>
+<li><strong>内部术语</strong> 。每家公司都有自己的内部术语。例如，在Uber，我们有“Morpheus”（实验系统）、“Bankemoji”（支付系统）、“landing a diff”（合并一个pull request）、“commandeering an L5 outage”（在高影响力的故障中担任主导角色）等。</li>
+</ul>
+<p>找到一种方法来整理和学习与你日常工作相关的术语。当加入一个新团队或公司时，你会听到新的术语。通过研究行业或业务语言，以及向同事询问内部使用的术语，弄清楚它们的含义。</p>
+<p>学习术语与学习一门新语言有些相似，练习得越多，就越自然。我发现一个对我非常有效的方法是记录新术语，并稍后弄清它们的含义。在不同的场景中使用这些术语，以确认它们的正确语境。</p>
+<p>过度使用术语可能会排除那些不理解它的人。让一个经验较浅的软件工程师感到自卑，并阻止他们参与对话和分享想法的最简单方法，就是使用他们不理解的术语。</p>
+<p>不要成为一个“术语架构师”。是的，你应该理解并能够使用领域的词汇，是的，当每个人都理解术语时，它确实能加速沟通。</p>
+<p>但在经验水平各异的团队中，使用更简单的术语。在第一次使用某个术语时，确保大家都熟悉它的含义。</p>
+<p>解释术语有助于人们正确使用它，而你也会因此更擅长在术语和简单表达之间切换。你是否注意到最优秀的老师能够用简单的方式解释复杂的事物？通过使用基础术语而不是技术术语来培养这种技能。下次你准备使用术语时，先停一下，试着不用术语来表达。如果你经常这样做，你会成为一个平易近人的工程师，而不是让人感到有些畏惧的“术语架构师”。</p>
+<h1 id="架构债务">架构债务</h1>
+<p>架构债务是一种技术债务，指的是过去的软件架构决策导致软件或服务的扩展、维护甚至操作变得更加困难。</p>
+<p>与技术债务一样，没有工程师或团队会故意制造架构债务。然而，曾经合理的决策可能会随着时间的推移变得次优。以下是四个架构债务的例子：</p>
+<p><strong>#1：创建独立服务以加快速度</strong></p>
+<p>一个团队需要构建一个新功能，最明显的方法是扩展一个后端服务。然而，这个后端服务由另一个团队负责，而该团队对提议的更改表示反对。为了快速推进，工程团队构建了一个新服务，从而能够快速推出其功能。</p>
+<p>随后，这个工程团队在推出其他新服务时也采取了同样的做法。在所有情况下，这样的决策确实加快了交付速度，并避免了与其他工程团队就如何扩展或集成现有服务进行协商的麻烦。</p>
+<p>然而，随着时间的推移，独立小服务的弊端逐渐显现。对某个功能进行更改时，需要先找到对应的服务，并弄清楚它使用的约定。服务可能用不同的编程语言编写，这使得上下文切换更加困难。同样麻烦的是，每个服务都有自己的依赖项，并且可能使用同一库的不同版本。</p>
+<p>在这种情况下，团队为了追求速度而忽视了系统的可维护性，无意中制造了架构债务。</p>
+<p><strong>#2：未拆分单体应用</strong></p>
+<p>截然相反的做法也会导致架构债务。假设一个团队构建了一个单体应用来支持所有产品。起初，坚持使用单体架构是合理的，因为它允许团队更快地推进，并且只需将一个代码库部署到服务器上。</p>
+<p>然而，随着团队的壮大，对同一个单体应用的开发变得痛苦。如果单体应用的结构不够细化，工程师可能需要花费更多时间在同一个文件上开发完全不同的功能，同时还要解决合并冲突。如果单体应用只能作为一个整体部署，部署时间可能会增加，并且更容易出现冲突——例如，一个团队希望推迟部署其更改，而另一个团队则想尽快推进。</p>
+<p><strong>#3：非功能性问题</strong></p>
+<p>许多架构决策在构建系统时效果良好。然而，随着系统负载的增加以及更多用例的加入，系统的一些非功能性特性可能会显著退化，例如：</p>
+<ul>
+<li><strong>性能</strong> ：系统延迟可能变得不可接受，资源（如CPU或内存）的优化失控，或者系统的吞吐量难以满足需求。</li>
+<li><strong>可扩展性</strong> ：随着系统负载的增加，其性能可能显著下降，甚至导致客户感受到明显的性能问题。</li>
+<li><strong>可靠性</strong> ：系统的故障或性能下降变得更加频繁，表明系统存在问题。</li>
+</ul>
+<p><strong>#4：过时的语言或框架</strong></p>
+<p>这类似于技术债务，但使用过时且不再受支持的语言或框架也可能导致架构债务。当使用不再积极维护或支持的语言或框架时，可能会面临安全风险和互操作性问题。在某些情况下，这些语言或框架的性能可能显著低于现代替代方案。</p>
+<p>更改语言或框架是一项重大任务，因此在重写过程中可以合理地重新审视一些架构决策。例如，当在线教育平台Khan Academy从Python 2切换到Go语言时，它还将单体应用拆分为更小的服务，并从使用REST API端点转向GraphQL。</p>
+<p>需要注意的是，使用过时的语言或框架并不会自动产生债务。坚持使用稳定但不流行的语言或框架的一个被低估的好处是，意外问题和阻碍会更少。而使用正在开发中的框架和语言时，总是存在发现其他团队很少遇到的问题的风险，或者这些问题在语言或框架层面尚未发布修复方案。</p>
+<p>通过使用框架和语言的稳定版本，而不是开发版本或标记为“alpha”或“beta”的版本，可以降低这种风险。</p>
+<h1 id="单向门决策与双向门决策">单向门决策与双向门决策</h1>
+<p>软件架构涉及许多决策，其中很多是权衡取舍之间的选择。但并非所有决策都是平等的，一种常见的思考方式是将它们分为“单向门”或“双向门”决策。这一概念来自在线零售巨头亚马逊的“Day 1”文化。</p>
+<h2 id="双向门决策">双向门决策</h2>
+<p>这些是容易逆转且影响有限的决策。以下是一些双向门决策的例子：</p>
+<ul>
+<li><strong>功能的A/B测试</strong> 。设计上容易逆转的更改，例如进行A/B测试、运行实验或使用功能开关。</li>
+<li><strong>命名</strong> 。例如，为内部使用的类和变量命名。由于大多数编程环境都具有强大的重构功能，命名的更改非常简单。只要没有外部依赖于某个名称，修改起来就很直接。</li>
+<li><strong>是否将一个类拆分为两个类</strong> 。将一个类重构为两个类，或将两个类合并为一个类，是另一种相对容易逆转的任务。</li>
+<li><strong>选择CSS预处理器</strong> 。在选择是否使用CSS预处理器（如SASS或LESS）时，由于这些预处理器之间的相似性，这一决策很容易逆转。如果代码库中只有一小部分使用了CSS预处理器，那么决策就更加简单。</li>
+<li><strong>选择测试框架</strong> 。在选择单元测试或其他自动化测试框架时，稍后可以通过仅为新测试引入一个新的测试框架来撤销这一决策，而无需重写现有测试。</li>
+<li><strong>选择新的代码格式检查工具（linter）</strong> 。此更改是一次性的。尽管工作可能稍微复杂一些，但只是更换了工具，可能还涉及对代码格式的一些调整。</li>
+</ul>
+<h2 id="单向门决策">单向门决策</h2>
+<p>与上述内容形成鲜明对比的是，单向门决策是那些非常难以逆转的决策，只有在经过深思熟虑后才应改变。在可能的情况下，最好对这些决策进行原型设计，或者在代码库的较小部分执行它们，以便更容易逆转。</p>
+<p>实际上，真正的单向门决策非常少，因为软件本质上是可逆的。例外情况包括以一种无法后来修改或修改难度极大的方式发布软件。这样的软件通常与硬件绑定，例如嵌入式软件或嵌入到只读存储器（ROM）中的软件。大多数软件决策是完全可逆的。例如，如果选择将20个微服务整合为一个单体架构，这一决策可以在之后撤销，即使这样做可能意义不大。</p>
+<p>单向门决策是那些逆转成本过高的决策，这种成本相对于你的工作环境而言是相对的。通常，这意味着逆转一个决策所需的工作量至少与实施该决策时相当。以下是一些由于逆转所需的时间和精力而可能被视为单向门的决策：</p>
+<ul>
+<li><strong>从单体架构切换到微服务，或反之亦然</strong> 。一旦选择了单体架构或微服务的模型，迁移到另一种方法的成本就会变得过高。</li>
+<li><strong>编程语言的选择</strong> 。更改现有代码可能非常困难，因为你需要重写所有现有代码。同时，你可能还需要培训工程师并招聘目标语言的专家。有些语言很容易引入另一种语言，例如在JavaScript的Web应用中引入TypeScript。</li>
+<li><strong>框架的选择</strong> 。某些应用开发框架的约束性足够强，以至于选择一个框架会被视为单向门。例如，在前端开发中，选择React、Vue或Svelte会将你锁定在这些生态系统中。要将应用程序从这些框架中迁移出来，可能需要完全重写。</li>
+<li><strong>云端与本地基础设施</strong> 。使用本地基础设施或云服务提供商是一个更改成本极高的决策。通过使用容器等抽象技术可以更轻松地进行更改，但切换基础设施仍然是一个激烈且通常风险较高的迁移过程。</li>
+<li><strong>关系型与NoSQL数据存储</strong> 。在关系型与NoSQL数据模型之间迁移要比在NoSQL与SQL模型之间迁移容易得多。选择其中之一通常被认为是单向门决策。</li>
+<li><strong>原生移动/桌面应用的强制升级策略</strong> 。原生应用程序很有趣，因为它们可以运行客户端代码的旧版本。决定如何实施“强制升级”策略以禁止运行某些旧版本是一个难以逆转的决策，因为业务逻辑将在客户端上运行。</li>
+<li><strong>导致完全回滚/重写的更改</strong> 。如果你需要撤销所有工作并进行完全重写，这通常是一个单向门决策。</li>
+</ul>
+<h2 id="从双向门变为单向门的决策">从双向门变为单向门的决策</h2>
+<p>某些最初被视为双向门的决策，随着时间的推移，由于客户的期望，实际上会变成单向门。以下是一些例子：</p>
+<ul>
+<li><strong>协议的选择</strong> 。决定一个服务暴露的协议是一个很难逆转的决策。例如，更改REST、GraphQL、Protobufs、Thrift或类似协议的成本非常高。所有客户都必须迁移到新协议，或者必须为旧协议编写一个适配器以保持向后兼容性。</li>
+<li><strong>版本管理策略</strong> 。如何为API或产品确定版本号？一旦确定了这种方法并且客户习惯了一种策略，就很难甚至不可能更改，而不会损害客户的信任。</li>
+<li><strong>将功能暴露为公共的、稳定的API</strong> 。客户在接触到一个API后会基于它进行开发。一旦API被声明为稳定，客户就会期望没有破坏性的更改，任何此类更改都必须作为一个新API端点推出，或者作为一个具有新主版本号的端点推出——前提是版本管理策略考虑到了这一点。</li>
+<li><strong>推出一个面向客户的新服务</strong> 。与API类似，客户使用的服务必须得到维护，并且通常需要提供向后兼容性。例如，这就是为什么亚马逊网络服务（AWS）对宣布一个新服务为“正式可用”有很高的标准。一旦AWS宣布服务正式可用，它就需要维护该服务，即使它是亏损的。服务只能在数年的长期时间范围内被弃用，这使得推出一个新的AWS服务成为一个单向门决策。</li>
+</ul>
+<h2 id="介于两者之间的决策">介于两者之间的决策</h2>
+<p>有些决策是可逆的，但逆转的成本可能会较高。数据迁移和引入较小的框架就是这样的例子。</p>
+<p>我的建议是，判断一个决策是容易逆转的双向门，还是逆转成本较高的单向门。对于双向门决策，没有必要花费太多时间争论或进行广泛的原型设计。对于单向门决策，请做好功课：制作原型或构建概念验证来确认决策的可行性，并尽量让工作的第一阶段足够简单，以便于逆转。</p>
+<p>识别哪些是双向门决策，哪些是单向门决策，是一项需要时间学习的技能。如果不确定，请进行研究，选择看起来合理的方案向前推进，并在完成后反思决策的效果。</p>
+<h1 id="决策的影响范围">决策的影响范围</h1>
+<p>你所做的决策会影响多少团队和客户？有些决策的影响范围有限，例如重构一个只有你的团队使用的系统代码。这种决策的“影响范围”很小，这同样适用于对其他团队或客户不依赖的系统所做的更改。</p>
+<p>而其他决策的影响范围则更大。例如，废弃一个公司内部20个团队使用的API端点，不仅会影响这些团队，还会影响所有依赖这20个团队的客户。如果这是一个有10万客户使用的公共端点，那么其影响范围就非常大了。</p>
+<p>影响范围较大的决策由于以下几个原因更难执行：</p>
+<ul>
+<li><strong>来自需要因更改而进行工作的团队的反对</strong> 。例如，如果这20个团队都需要更改他们的代码并测试是否如预期运行，那么你可以预期其中几个团队会对你团队提出的时间表表示反对。</li>
+<li><strong>对客户的影响</strong> 。如果废弃一个API会导致付费客户的功能中断，那么发布这一破坏性变更可能会导致客户流失。</li>
+</ul>
+<p><strong>逆转单向门架构决策的影响范围通常很大。</strong></p>
+<p>找到方法来缩小影响范围。几乎可以肯定的是，有多种方法可以减少任何决策的影响范围。例如，外部保留一个API端点的可用性，同时在内部废弃该API端点，并设置一个适配器来“翻译”到新的API端点。或者，通过为客户提供额外功能来激励他们迁移到新的端点，从而缩小影响范围。</p>
+<p>在特定的上下文和限制下，选择一个影响范围较小的决策可能并不是正确的选择。因此，列出所有选项并权衡它们的利弊。通常，减少影响范围的决策是“跳出框框思考”的结果。</p>
+<p>良好的架构决策可以限制未来纠正性决策的影响范围。我希望有一种方法可以避免那些影响范围不可避免地很大、且对依赖你软件的团队和客户不受欢迎的复杂情况。但事实上并没有；你只能在实践中学习，并努力在下次设计更可持续的软件。</p>
+<h1 id="可扩展的架构">可扩展的架构</h1>
+<p>Staff+ 工程师通常被期望设计可扩展的架构。这种期望在大型科技公司中通常会被明确写入职责说明中。那么，这意味着什么呢？可扩展性是指构建一个能够处理不断增长的工作量并适应未来增长的系统。虽然“可扩展性”是一个可能存在歧义的术语，但可以将其分为两个主要类别：</p>
+<ul>
+<li>新的业务用例的增长</li>
+<li>数据、使用量和流量负载的增长</li>
+</ul>
+<p><strong>扩展以适应新的业务用例的增长</strong></p>
+<p>假设你在一个网约车应用的支付团队工作。你的任务是实现客户通过信用卡支付的功能。你构建了这个支付选项，业务方对其运行效果感到满意。随着时间的推移，应用程序不断发展，业务方要求更多新的支付能力：</p>
+<ul>
+<li>使用 PayPal 支付</li>
+<li>使用现金支付</li>
+<li>使用 Apple Pay 支付</li>
+<li>使用 PayTM（印度的一种数字钱包）支付</li>
+</ul>
+<p>你可以从头开始为每种支付方式实现支持，但这并不是一个真正可扩展的方法。更可扩展的方法是预测可能的请求类型，并设计一种更容易为每种支付方式添加支持的方法。</p>
+<p>一个可扩展的方法首先要认识到业务会不断添加支付方式的需求。你意识到通过后端、网页和移动端构建代码来创建一种新的支付方式大约需要一个月的时间。因此，你设计了一个有明确规范的框架，这可能需要几个月的时间来构建，但它将添加一种新支付方式所需的时间缩短到几天。恭喜你，你已经实现了可扩展的架构。</p>
+<p>在不了解以下两点的情况下，你无法为可扩展的业务用例进行设计：</p>
+<ol>
+<li><strong>业务如何运作</strong> 。以支付方式为例，你需要了解支付是如何运作的。例如，通过研究全球最受欢迎的20种支付方式，并与支付领域的专家一起研究它们的机制。</li>
+<li><strong>公司的发展路线图</strong> 。是否值得投资以使添加新支付方式变得更具可扩展性？如果业务在接下来的两年内只计划添加 Apple Pay，那么答案是否定的。但如果计划在12个月内添加10种支付方式，那么提前做好准备是明智的。但如果不了解公司的计划，你就无法判断是否需要让系统更具“业务用例可扩展性”。</li>
+</ol>
+<p>为适应数据、使用量和流量负载增长而扩展</p>
+<p>当一个视频流媒体系统存储的视频数量是现在的100倍时，它将如何运行？当同一个系统的日活跃用户数量增加到现在的100倍时，它又将如何表现？这些是典型的可扩展性挑战。关于如何构建可扩展系统的文献资料非常丰富，而后端系统、网页系统以及移动或桌面应用程序通常需要稍微不同的方法。大多数关于可扩展性的讨论通常集中在后端系统上，包括以下内容：</p>
+<ul>
+<li>水平扩展与垂直扩展</li>
+<li>分片（Sharding）</li>
+<li>缓存（Caching）</li>
+<li>消息传递策略</li>
+<li>数据库复制</li>
+<li>内容分发网络（CDN）</li>
+</ul>
+<p>我们在这里不会深入探讨可扩展架构的主题，但有一些书籍对此进行了详细介绍：</p>
+<ul>
+<li>《Designing Data-Intensive Applications》，作者 Martin Kleppmann</li>
+<li>《Foundations of Scalable Systems》，作者 Ian Gorton</li>
+</ul>
+<h1 id="架构决策与业务优先级">架构决策与业务优先级</h1>
+<p>随着软件工程师经验的增长，他们会越来越意识到架构决策的重要性。架构决策需要时间来体现其效果，包括你自己的决策。许多工程师通过做出糟糕的架构决策或受到这些决策的影响，逐渐培养了对良好架构的理解。</p>
+<p>人们很容易陷入追求‘完美’架构的陷阱，这种架构能够支持新的业务用例和流量模式的扩展。然而，如果不考虑当前的业务需求，就有可能导致系统过度设计。</p>
+<h2 id="让架构决策与业务目标和增长保持一致">让架构决策与业务目标和增长保持一致</h2>
+<p>架构不应独立存在；事实上，好的架构总是与业务紧密结合的。业务的目标是什么？底层架构应该能够支持这些目标的实现。如果当前的系统阻碍了这些目标的达成，那么改变它们是一项值得且必要的任务。</p>
+<p>业务计划如何增长？架构决策应该帮助系统随着公司的增长目标演变和扩展。然而，如果花费时间和精力为业务不需要的事情构建可扩展的系统，那就是资源的浪费。”</p>
+<p>“让我们来看一个具体的例子：在一家电商公司重新设计支付系统以提高其可扩展性。但在这里‘可扩展性’的含义是什么呢？</p>
+<p>如果业务的痛点是无法快速添加新的支付方式——例如，目前需要两个月时间，而业务需要在接下来的一年里添加20种新的支付方式以保持竞争力——那么投资于重新设计架构以快速添加支付方式是合理的做法。</p>
+<p>如果业务的痛点是支付系统的宕机导致客户流失，那么进行架构更改以提高系统的可靠性是明智的。这可能涉及架构更改，但也可能包括改进监控、告警和值班响应。</p>
+<p>但如果业务在支付相关的问题上没有痛点，那么是否真的有业务理由进行大规模的架构更改？不要忘记，变更需要付出努力和承担风险，因此必须有收益和业务理由。</p>
+<p>当然，提高工程效率和减少工程工作量是合理的业务理由。只需确保这些理由在优先事项列表中占据较高位置！</p>
+<h2 id="将架构变更与业务计划联系起来">将架构变更与业务计划联系起来</h2>
+<p>你可能会多次注意到，改进系统架构可以帮助减少技术债务并提高工程效率。然而，这种改进往往不足以成为合理的业务理由来支持这项工作。</p>
+<p>考虑将一些改进与业务优先级和业务关注的功能或产品项目结合起来。例如，在构建新功能时，也改进与该功能相关的架构，使其更加健壮，或者让未来的类似功能添加变得更容易、更快速。”</p>
+<h2 id="足够好可能比完美更好">‘足够好’可能比‘完美’更好</h2>
+<p>代码和工程流程可以根据需要进行修改或移除，也可以引入新的代码和流程。架构也可以根据需要进行修改，但架构的变更成本更高，因此在做出‘单向门’决策时需要谨慎。</p>
+<p>最终，在构建‘完美’架构与建立‘足够好’架构之间找到平衡是明智的。‘足够好’的架构能够帮助业务实现目标并支持其增长。”</p>
+<p>架构很少是固定不变的；它可以随着业务的变化进行调整和修改。</p>
+<p>你越能将业务的增长和变化与架构的演变联系起来，就越能帮助软件工程解决业务问题，并通过软件和软件架构来实现这一目标。”</p>
+<h1 id="保持足够接近工作的完成地点">保持足够接近工作的完成地点</h1>
+<p>成为资深工程师及更高级别工程师的最大挑战在于，许多事情会将你从实际编码中拉开距离，比如会议、招聘以及其他优先事项。你会感受到更多时间被“全局性”事务占据，比如了解业务、与非技术利益相关者交流，以及与各种团队协作。</p>
+<p>了解业务并参与战略性讨论确实是比写代码更高杠杆的活动。然而，只有当你足够技术化并亲身实践时，才能在这些讨论中有效地代表工程团队，这些活动才会真正具有高杠杆效应。</p>
+<p>“在接近工作的完成地点和从事工程师的工作之间找到平衡。编码肯定不会占用你大部分时间，但要避免成为一个典型的理论型软件架构师。想办法保持亲身实践并接近代码，同时更深入地了解业务。</p>
+<p>继续参与架构决策，并支持其他工程师成为更好的架构师。良好的架构是不断演进的，而推动其演进的是软件工程师。作为一名资深工程师，即使有许多其他优先事项，也要花时间审查和讨论其他工程师提出的架构方法和改进。”</p>
+<p>作为一名优秀的架构师，你不应该希望自己总是做出架构决策，因为这样会让你成为团队的瓶颈。相反，你应该通过质疑和指导帮助其他工程师做出面向未来的决策；提出问题并建议他们考虑权衡取舍。</p>
+<h1 id="软件架构师的特质">软件架构师的特质</h1>
+<p>“资深软件工程师”和“软件架构师”这两个术语通常可以互换使用。资深工程师可能是团队、组或组织中最资深的工程师。他们通常会深度参与架构工作并主导许多项目。</p>
+<p>我观察到不同类型的架构师或资深工程师。对于一名经验丰富的工程师来说，不同类型架构师的特质可以帮助反思软件工程的方式。以下是一些架构师的典型特质总结。</p>
+<p>需要注意的是，这些是行为的描述，而行为是可以改变的。例如，一个架构师可能在某个项目中更注重实践，而在另一个项目中较少如此。此外，个人会随着时间而变化，因此“象牙塔架构师”可以变成一个“平易近人”的架构师。</p>
+<p>我确实倾向于更实际的特质，因为我反复观察到那些与代码保持密切联系的工程师，通常比那些脱离工程核心方面的工程师做出更好的决策。然而，没有单一的“好”或“坏”的方式，更理论化的特质在许多情况下也会有用。更偏理论的工程师往往花更多时间了解业务和行业，这有助于为决策带来急需的洞察力。</p>
+<h2 id="更理论化的特质">更理论化的特质</h2>
+<p><strong>#1：象牙塔架构师</strong></p>
+<p>一位脱离日常工作的软件工程师，与实现其架构想法的软件工程师几乎没有互动。这类人通常难以接近，也不显得平易近人。他们的决策往往带有“自上而下”的感觉。</p>
+<p>“难以接近意味着，当工程师不理解他们的逻辑或有合理的反对意见时，他们通常全然不知。”</p>
+<p><strong>#2：过分精确者</strong></p>
+<p>一位过于关注人们言辞细节并纠正这些细节的工程师。这类人往往不会认真对待那些表达不够完美的工程师。</p>
+<p>与一位过分精确的同事共事时，许多工程师面临的问题在于，讨论往往会集中在细枝末节上，而忽略了大局。不够资深的工程师如果因术语使用不当而反复被纠正，可能会避免与这位同事交流。</p>
+<p><strong>#3：理论狂热者</strong></p>
+<p>这类工程师热衷于阅读书籍、论文和案例研究，并建议采用他们最近阅读到的模式或方法，并以这些资源作为依据。</p>
+<p>理论狂热者的问题在于，他们可能过于依赖书本知识，而缺乏他们所从事领域的实践经验。在有更实际的架构师对其提出挑战的环境中，理论狂热者可以通过提供替代方法帮助团队。然而，如果没有反对意见，他们可能会强制推行不切实际的架构方法，从而导致未来的痛点和工程困扰。</p>
+<p><strong>#4：哲学家</strong></p>
+<p>这类工程师似乎能为每次架构讨论带来很多价值，通过提出替代方法和反对意见。然而问题在于，涉及这类人的讨论似乎永远没有尽头，也难以达成一致。这类工程师通常偏好详尽的辩论，这可能与更务实的工程师产生冲突，后者倾向于做出“足够好”的决策，然后开始实施。</p>
+<p><strong>#5：语言大师</strong></p>
+<p>这类工程师精通技术术语，并且从不放过在对话中使用完美语言的机会。在有初级工程师参与的团队环境中，一位语言大师可能会说出类似以下的话：</p>
+<p>“显然幂等性并不是严格的要求，因为系统可能甚至不具备弱一致性。我建议我们关注持久性，但不确定我们是否有适当的决策权来讨论这个问题。”</p>
+<p>“语言大师可能认为工程能力与术语使用之间存在不可分割的联系。因此，他们会忽视那些不具备相同技术术语掌握能力的同事的意见。语言大师和过分精确者有一些共同特质，但过分精确者通常对术语的执着程度不如语言大师。语言大师往往也是象牙塔架构师，因为他们鄙视来自任何他们认为在技术语言上不够流利的人的意见——而这些人通常几乎包括所有人。”</p>
+<p><strong>#6：甩手顾问</strong></p>
+<p>一位在项目早期阶段提供建议，但在实施阶段离开的资深工程师。问题在于，这种方式提供的建议可能弊大于利，因为当工作开始时，这些建议的假设可能被证明是错误的。此时，团队会陷入困境：是坚持看起来不再相关的建议，还是向甩手顾问寻求新的意见，亦或是自主决定，因为甩手顾问选择了不参与后续工作？</p>
+<p>甩手顾问可能会说他们超负荷工作，没有时间参与他们希望参与的项目，因为他们的任务太多。如果你发现自己成为了甩手顾问，考虑减少你所负责的事情数量，以便从头到尾跟进项目。</p>
+<h2 id="更实际的特质">更实际的特质</h2>
+<p><strong>#7：编码机器</strong></p>
+<p>一位大部分时间专注于编码的资深软件工程师。这类人通常能快速完成任务，并且因为与其他软件工程师并肩工作，所以自然显得非常平易近人。</p>
+<p>Meta 有一种专门为资深工程师定义的“编码机器”原型，这是专门为 Michael Novati 创建的。他曾与我分享这种原型是如何被创建的：</p>
+<p>“Facebook 将公平性作为首要考虑因素。我基本上是公司里提交代码最多的人，但当他们将我与其他 E7 级别的工程师进行对比时——当然，这个群体非常小，大约只有 100 人——他们觉得我的影响力不够大，或者不够同级。”</p>
+<p>“我当时非常努力地想让我的贡献得到更多认可。我还在那段时间进行了 300 多次面试，并参与了一些重要的工作。据我了解，当时我的工程总监写下了‘编码机器’原型，并提交给负责评审所有 E7 的校准小组。委员会接受了这一点，并将其添加到原型列表中。”</p>
+<p>成为编码机器并不是人们通常会与软件架构师联系在一起的特质，但我认为打破“架构师不能非常亲自参与编码”这一迷思很重要。一些最大的科技公司，比如 Meta，认可这种人的存在及其重要性。</p>
+<p><strong>#8：集成者</strong></p>
+<p>一位经验丰富的工程师，了解公司大部分系统的工作原理、功能以及如何轻松扩展和修改这些系统。这些工程师非常注重实践，能够快速对大多数系统进行修改，集成新功能，或者将一个系统与另一个系统整合起来。</p>
+<p>在拥有众多复杂系统的公司中，集成者是极其有用的人才。凭借对系统的深入了解，他们可以提供聪明的解决方案和优雅的临时修复，避免进行大规模的重写工作。</p>
+<p>但需要注意的是，集成者可能会过于习惯于临时修补系统——毕竟他们非常擅长这一点！将集成者与一位更偏理论的工程师配对，可能是进行大规模重写或重新架构的好方法，因为集成者会对不必要的重写提出质疑。集成者和编码机器都在调试和解决复杂的错误及系统故障方面表现出色，因为他们对代码和系统有深入的理解，并且具备实践经验。</p>
+<p><strong>#9：平易近人的工程师</strong></p>
+<p>一位经验丰富的软件工程师，令人惊讶地平易近人且随时可用，通常是因为他们在团队中工作，参与工程师的讨论，值班支持，并参加工程师聚集的聊天和讨论。</p>
+<p>这类工程师经常通过代码审查和结对编程的方式，非正式地指导不够资深的同事，有时也会以更正式的方式定期与被指导者会面，讨论工作和挑战。</p>
+<p><strong>#10：详细的记录者</strong></p>
+<p>一位撰写文档帮助其他工程师理解架构、常见概念和术语的工程师。这类工程师支持 RFCs、设计文档、架构决策记录（ADRs）、运行手册以及其他捕获和传播知识的文档。</p>
+<p>需要注意的是，文档的实际程度决定了这种特质是更偏实践还是更偏理论。许多象牙塔架构师同时也是详细的记录者。</p>
+<p><strong>#11：追逐新潮的工程师</strong></p>
+<p>一位喜欢跳到最新、最棒的框架或方法的工程师，他们刚刚学会这些新技术。这种方法在经验较少的团队中表现良好，团队成员渴望走在技术的前沿。</p>
+<p>然而，随着时间推移，几乎盲目追逐最新技术趋势的做法可能会引发问题，因为新技术往往未经充分验证，总会出现意料之外的问题。</p>
+<p><strong>#12：传统派工程师</strong></p>
+<p>与追逐新潮的工程师相反，这是一位倾向于使用已经工作了几十年的工具集的资深工程师，即使团队成员认为这些工具已经过时了。</p>
+<p>相信与否，传统派工程师可能曾经也是追逐新潮的工程师，但由于屡次受挫，他们决定追逐潮流不值得。</p>
+<p>传统派工程师不一定不受欢迎。在更有经验的团队中，他们可以有效倡导一种有益的方式，强调经过验证的方法，这些方法往往使软件开发更少意外甚至没有意外。他们的座右铭是“使用无聊的技术”。</p>
+<p>然而，传统派工程师可能会与偏好现代方法的团队成员产生紧张关系，他们的存在可能会使喜欢尖端技术的工程师更难被招聘到团队中。</p>
+<p><strong>架构师特质有用吗？</strong></p>
+<p>你可能会发现你的同事具备上述一种或多种典型特质。根据你当前的工作，弄清楚你的同事如何看待你的特质可能会很有用。</p>
+<p>这正是将这些特质作为反思工具的意义所在。你会被描述为更偏理论，还是更偏实践？最重要的是，你被看待的方式是否与你想要的一致？</p>
+<p>不要忘记，这些特质描述的是行为，而行为是可以改变的。大多数工程师可以在自己身上识别出上述多种特质的混合体，而这些特质的组合会随着项目和团队动态的变化而改变。</p>
+<p>为具备不同特质的工程师配对可以创造出色的结果。为了证明没有绝对好的或坏的特质，我回想起我有机会合作过的最好的架构师。这并不是一个人，而是一对组合。一个是高度理论化的架构师，另一个是高度实践性的架构师。</p>
+<p>这两个人不断挑战对方。他们的独特组合带来了既实用又优雅的架构，具有长期的可维护性和可扩展性。在这个过程中，他们似乎逐渐对彼此的方法产生了尊重，因此理论型工程师变得更加务实，而实践型工程师开始欣赏研究论文、书籍以及花时间思考而不仅仅是编码的价值。</p>
+<p>在足够长的职业生涯中，你可能会发现自己表现出几种不同的特质。认识到每种特质的特点可以帮助你反思，某些特质是否适合当前的项目和团队。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BF%9D%E6%8C%81%E7%AE%80%E5%8D%95">尽可能保持简单</a></li>
+<li><a href="#%E7%86%9F%E6%82%89%E6%9C%AF%E8%AF%AD%E4%BD%86%E4%B8%8D%E8%A6%81%E8%BF%87%E5%BA%A6%E4%BD%BF%E7%94%A8">熟悉术语，但不要过度使用</a></li>
+<li><a href="#%E6%9E%B6%E6%9E%84%E5%80%BA%E5%8A%A1">架构债务</a></li>
+<li><a href="#%E5%8D%95%E5%90%91%E9%97%A8%E5%86%B3%E7%AD%96%E4%B8%8E%E5%8F%8C%E5%90%91%E9%97%A8%E5%86%B3%E7%AD%96">单向门决策与双向门决策</a>
+<ul>
+<li><a href="#%E5%8F%8C%E5%90%91%E9%97%A8%E5%86%B3%E7%AD%96">双向门决策</a></li>
+<li><a href="#%E5%8D%95%E5%90%91%E9%97%A8%E5%86%B3%E7%AD%96">单向门决策</a></li>
+<li><a href="#%E4%BB%8E%E5%8F%8C%E5%90%91%E9%97%A8%E5%8F%98%E4%B8%BA%E5%8D%95%E5%90%91%E9%97%A8%E7%9A%84%E5%86%B3%E7%AD%96">从双向门变为单向门的决策</a></li>
+<li><a href="#%E4%BB%8B%E4%BA%8E%E4%B8%A4%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B3%E7%AD%96">介于两者之间的决策</a></li>
+</ul>
+</li>
+<li><a href="#%E5%86%B3%E7%AD%96%E7%9A%84%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4">决策的影响范围</a></li>
+<li><a href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E7%9A%84%E6%9E%B6%E6%9E%84">可扩展的架构</a></li>
+<li><a href="#%E6%9E%B6%E6%9E%84%E5%86%B3%E7%AD%96%E4%B8%8E%E4%B8%9A%E5%8A%A1%E4%BC%98%E5%85%88%E7%BA%A7">架构决策与业务优先级</a>
+<ul>
+<li><a href="#%E8%AE%A9%E6%9E%B6%E6%9E%84%E5%86%B3%E7%AD%96%E4%B8%8E%E4%B8%9A%E5%8A%A1%E7%9B%AE%E6%A0%87%E5%92%8C%E5%A2%9E%E9%95%BF%E4%BF%9D%E6%8C%81%E4%B8%80%E8%87%B4">让架构决策与业务目标和增长保持一致</a></li>
+<li><a href="#%E5%B0%86%E6%9E%B6%E6%9E%84%E5%8F%98%E6%9B%B4%E4%B8%8E%E4%B8%9A%E5%8A%A1%E8%AE%A1%E5%88%92%E8%81%94%E7%B3%BB%E8%B5%B7%E6%9D%A5">将架构变更与业务计划联系起来</a></li>
+<li><a href="#%E8%B6%B3%E5%A4%9F%E5%A5%BD%E5%8F%AF%E8%83%BD%E6%AF%94%E5%AE%8C%E7%BE%8E%E6%9B%B4%E5%A5%BD">‘足够好’可能比‘完美’更好</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%9D%E6%8C%81%E8%B6%B3%E5%A4%9F%E6%8E%A5%E8%BF%91%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%AE%8C%E6%88%90%E5%9C%B0%E7%82%B9">保持足够接近工作的完成地点</a></li>
+<li><a href="#%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E7%89%B9%E8%B4%A8">软件架构师的特质</a>
+<ul>
+<li><a href="#%E6%9B%B4%E7%90%86%E8%AE%BA%E5%8C%96%E7%9A%84%E7%89%B9%E8%B4%A8">更理论化的特质</a></li>
+<li><a href="#%E6%9B%B4%E5%AE%9E%E9%99%85%E7%9A%84%E7%89%B9%E8%B4%A8">更实际的特质</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

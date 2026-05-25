@@ -1,0 +1,437 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep） - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep） - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="管理软件复杂性最重要的技术之一，是在设计系统时，让开发者在任何给定时刻只需要面对系统整体复杂性的一小部分。这种方法称为模块化设计（modular design），本章将介绍其基本原则。
+4.1 模块化设计（Modular design）
+在..." />
+  <meta property="og:title" content="读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep） - 小马的世界">
+  <meta property="og:description" content="管理软件复杂性最重要的技术之一，是在设计系统时，让开发者在任何给定时刻只需要面对系统整体复杂性的一小部分。这种方法称为模块化设计（modular design），本章将介绍其基本原则。
+4.1 模块化设计（Modular design）
+在..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/t-0wH4yDLf/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep） - 小马的世界">
+  <meta name="twitter:description" content="管理软件复杂性最重要的技术之一，是在设计系统时，让开发者在任何给定时刻只需要面对系统整体复杂性的一小部分。这种方法称为模块化设计（modular design），本章将介绍其基本原则。
+4.1 模块化设计（Modular design）
+在...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/t-0wH4yDLf/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep）
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-01-19 · 17 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>管理软件复杂性最重要的技术之一，是在设计系统时，让开发者在任何给定时刻只需要面对系统整体复杂性的一小部分。这种方法称为模块化设计（modular design），本章将介绍其基本原则。</p>
+<h2 id="41-模块化设计modular-design">4.1 模块化设计（Modular design）</h2>
+<p>在模块化设计中，一个软件系统会被分解为一组相对独立的模块。模块可以有多种形式，例如类、子系统或服务。在理想情况下，每个模块都应当完全独立于其他模块：开发者可以在任何一个模块中工作，而不需要了解其他模块的任何细节。在这样的世界里，系统的复杂度将等于其最复杂模块的复杂度。</p>
+<p>不幸的是，这个理想无法完全实现。模块必须通过调用彼此的函数或方法来协同工作，因此模块之间不可避免地需要了解彼此的一些信息。于是就会产生依赖关系：当一个模块发生变化时，其他模块可能也需要随之调整。例如，一个方法的参数列表会在该方法与所有调用它的代码之间形成依赖；如果参数发生变化，所有调用点都必须修改以匹配新的签名。依赖关系还可以以其他更微妙的形式存在，例如：某个方法只有在另一个方法先被调用之后才能正确工作。模块化设计的目标，是最小化模块之间的依赖关系。</p>
+<p>为了识别和管理依赖关系，我们通常将每个模块分为两部分：接口（interface） 和 实现（implementation）。<br>
+接口包含了其他模块的开发者在使用该模块时必须知道的一切信息。通常， <strong>接口描述的是模块做什么（what），而不是怎么做（how）</strong> 。实现则是完成接口所承诺功能的具体代码。</p>
+<p>在某个模块中工作的开发者，需要理解该模块的接口和实现，以及它所调用的其他模块的接口；但他或她不应该需要理解那些其他模块的实现细节。</p>
+<p>举一个实现了平衡树的模块作为例子。该模块内部可能包含相当复杂的代码，用来确保树始终保持平衡；但这些复杂性对模块的使用者是不可见的。使用者看到的是一个相对简单的接口，用于插入、删除和查找节点。调用插入操作时，调用方只需提供新节点的键和值；遍历树、分裂节点等机制并不会暴露在接口中。</p>
+<p>在本书中，模块被定义为：任何同时具有接口和实现的代码单元。在面向对象语言中，每个类都是一个模块；在非面向对象语言中，类中的方法，或独立的函数，也都可以视为模块——它们同样有接口和实现，模块化设计的技术同样适用。更高层次的子系统和服务也是模块，只是它们的接口形式可能不同，例如内核调用或 HTTP 请求。本书中关于模块化设计的大部分讨论以类为例，但这些技术和概念同样适用于其他类型的模块。</p>
+<p>最好的模块，是那些接口远比实现简单的模块。</p>
+<p>这样的模块有两个主要优势：</p>
+<ul>
+<li>简单的接口可以将模块施加给系统其他部分的复杂性降到最低；</li>
+<li>如果模块的修改不涉及接口变化，那么系统中的其他模块就不会受到影响。</li>
+</ul>
+<p>当模块的接口明显比其实现简单时，就会有很多内部细节可以被修改，而不影响其他模块。</p>
+<h2 id="42-接口中包含什么">4.2 接口中包含什么？</h2>
+<p>模块的接口包含两类信息：形式化信息（formal） 和 非形式化信息（informal）。</p>
+<p>形式化接口是明确写在代码中的，并且可以由编程语言检查其正确性。例如，一个方法的形式化接口是它的签名，包括参数的名称和类型、返回值的类型，以及可能抛出的异常信息。大多数编程语言都会确保方法调用时，参数的数量和类型与签名匹配。一个类的形式化接口由其所有公共方法的签名，以及所有公共变量的名称和类型组成。</p>
+<p>接口中还包含非形式化的元素。这些信息无法被编程语言直接理解或强制执行。非形式化接口包括模块的高层行为，例如：某个函数会删除由其某个参数指定的文件；或者对类的使用存在约束（例如，某个方法必须在另一个方法之前被调用）。只要开发者在使用模块时需要知道某条信息，那它就是该模块接口的一部分。</p>
+<p>接口的非形式化部分只能通过注释或文档来描述，而编程语言无法保证这些描述是完整或准确的。事实上，在大多数接口中，非形式化部分往往比形式化部分更大、更复杂。</p>
+<p>一个接口清晰定义的好处之一，是它能够准确说明开发者在使用该模块时需要知道什么信息，从而帮助消除第 2.2 节中提到的“未知的未知”问题。</p>
+<h2 id="43-抽象abstractions">4.3 抽象（Abstractions）</h2>
+<p>抽象（abstraction） 与模块化设计的思想密切相关。抽象是对某个实体的简化视图，它省略了不重要的细节。抽象之所以有价值，是因为它让我们更容易思考和操作复杂的事物。</p>
+<p>在模块化编程中，每个模块都通过其接口提供了一种抽象。接口呈现的是模块功能的简化视角；它隐藏了实现中的复杂细节，只暴露使用者真正关心的部分。</p>
+<p>脚注说明：<br>
+在研究领域中，确实存在一些编程语言，可以使用形式化规范语言来精确描述方法或函数的整体行为，并自动检查规范与实现是否一致。一个有趣的问题是：这种形式化规范是否可以取代接口中的非形式化部分？作者目前的观点是：用自然语言（如英语）描述的接口，对开发者来说，往往比形式化规范语言更直观、更容易理解。</p>
+<p>从模块抽象的角度看，实现中的许多细节是 <strong>不重要的</strong> ，因此应当被 <strong>省略在接口之外</strong> 。</p>
+<p>在抽象的定义中，“不重要”这个词至关重要。一个抽象省略的不重要细节越多，抽象就越好。然而，只有当某个细节 <strong>确实不重要</strong> 时，它才应该被省略。抽象可能在两种情况下出错：<br>
+第一种是包含了并不真正重要的细节；这样会让抽象变得不必要地复杂，增加使用该抽象的开发者的 <strong>认知负担</strong> 。<br>
+第二种错误是省略了 <strong>实际上很重要</strong> 的细节。这会导致 <strong>晦涩性</strong> ：只看抽象的开发者无法获得正确使用该抽象所需的全部信息。省略了重要细节的抽象是一种 <strong>虚假抽象（false abstraction）</strong> ：它看起来很简单，但实际上并非如此。设计抽象的关键，在于理解什么才是重要的，并寻找能够 <strong>最小化重要信息数量</strong> 的设计。</p>
+<p>举个例子，考虑一个 <strong>文件系统</strong> 。文件系统提供的抽象省略了许多细节，例如：为某个文件的数据选择存储设备上哪些块。这些细节对文件系统的使用者并不重要（只要系统能提供足够的性能）。然而，文件系统实现中的某些细节对用户是重要的。大多数文件系统会将数据缓存在主存中，并可能延迟将新数据写入存储设备以提升性能。一些应用（如数据库）需要确切地知道数据 <strong>何时</strong> 被写入到存储介质，以确保系统崩溃后数据仍然存在。因此，将数据刷新到二级存储的规则， <strong>必须</strong> 在文件系统的接口中可见。</p>
+<p>我们不仅在编程中依赖抽象来管理复杂性，在日常生活中也是如此。微波炉内部包含复杂的电子元件，用于将交流电转换为微波并在加热腔内分布；而用户看到的却是一个简单得多的抽象：几个按钮，用来控制时间和功率。汽车也通过抽象，让我们无需理解电机控制、电池管理、防抱死制动、巡航控制等机制，就能驾驶它们。</p>
+<h3 id="44-深模块deep-modules">4.4 深模块（Deep modules）</h3>
+<p>最好的模块，是那些 <strong>功能强大但接口简单</strong> 的模块。作者用“深（deep）”来描述这种模块。为了形象化“深度”的概念，设想每个模块都由一个矩形表示，如图 4.1 所示。矩形的面积与模块实现的功能量成正比；矩形的上边表示模块的接口，该边的长度表示接口的复杂度。</p>
+<p>最好的模块是深的：它们在一个简单的接口背后隐藏了大量功能。深模块之所以是好的抽象，是因为只有很小一部分内部复杂性会暴露给使用者。</p>
+<p>模块的“深度”是一种从 <strong>成本—收益</strong> 角度思考设计的方式。模块带来的收益是它的功能；模块的成本（从系统复杂性的角度）是它的接口。模块的接口代表了它向系统其他部分施加的复杂性：接口越小、越简单，引入的复杂性就越少。最好的模块，是 <strong>收益最大、成本最小</strong> 的模块。接口是好东西，但 <strong>更多或更大的接口并不一定更好</strong> 。</p>
+<p>Unix 操作系统及其后代（如 Linux）所提供的文件 I/O 机制，是一个深接口的经典例子。用于 I/O 的基础系统调用只有五个，且签名都很简单：</p>
+<pre><code class="language-c">int     open(const char* path, int flags, mode_t permissions);
+ssize_t read(int fd, void* buffer, size_t count);
+ssize_t write(int fd, const void* buffer, size_t count);
+off_t   lseek(int fd, off_t offset, int referencePosition);
+int     close(int fd);
+</code></pre>
+<p><code>open</code> 系统调用接受一个分层的文件名（如 <code>/a/b/c</code>），并返回一个整数形式的 <strong>文件描述符</strong> ，用于引用已打开的文件。其他参数用于指定可选信息，例如：以读或写方式打开、在文件不存在时是否创建新文件、以及新文件的访问权限。<br>
+<code>read</code> 和 <code>write</code> 系统调用在应用内存中的缓冲区与文件之间传输数据；<code>close</code> 结束对文件的访问。大多数文件以顺序方式访问，这是默认行为；但通过调用 <code>lseek</code> 改变当前访问位置，也可以实现随机访问。</p>
+<p>Unix I/O 接口的现代实现需要 <strong>数十万行代码</strong> ，用来处理诸多复杂问题，例如：</p>
+<ul>
+<li>如何在磁盘上表示文件以支持高效访问？</li>
+<li>目录如何存储？层级路径名如何被解析以定位文件？</li>
+<li>如何强制权限控制，防止一个用户修改或删除另一个用户的文件？</li>
+<li>文件访问是如何实现的？例如，中断处理程序与后台代码如何分工并安全通信？</li>
+<li>当多个文件被并发访问时，采用哪些调度策略？</li>
+<li>如何将最近访问的文件数据缓存在内存中，以减少磁盘访问次数？</li>
+<li>如何将多种不同的二级存储设备（如磁盘、闪存）整合进一个统一的文件系统？</li>
+</ul>
+<p>这些问题，以及更多问题，都由 Unix 文件系统的实现来处理； <strong>对调用系统调用的程序员来说，它们是不可见的</strong> 。多年来，Unix I/O 接口的实现发生了巨大变化，但这五个基本的内核调用却几乎没有改变。</p>
+<p>另一个深模块的例子，是 Go 或 Java 等语言中的 <strong>垃圾回收器</strong> 。这个模块甚至 <strong>没有接口</strong> ：它在后台悄然工作，回收未使用的内存。将垃圾回收加入系统，实际上还 <strong>缩小</strong> 了整体接口，因为它消除了“释放对象”的接口。实现本身极其复杂，但对使用者完全隐藏。</p>
+<h2 id="45-浅模块shallow-modules">4.5 浅模块（Shallow modules）</h2>
+<p>相对而言， <strong>浅模块</strong> 指的是： <strong>与其所提供的功能相比，其接口显得相对复杂的模块</strong> 。<br>
+例如，实现链表（linked list）的一个类就是浅的。操作链表并不需要太多代码（插入或删除一个元素通常只要几行），因此链表这种抽象并没有隐藏很多细节。链表接口的复杂度几乎和其实现的复杂度一样高。</p>
+<p>像链表这样的浅类有时是不可避免的，也可能仍然有用，但它们在对抗复杂性方面提供的“杠杆”很有限。</p>
+<p>下面是一个极端的浅方法示例，来自一门软件设计课程中的项目：</p>
+<pre><code class="language-java">private void addNullValueForAttribute(String attribute) {
+    data.put(attribute, null);
+}
+</code></pre>
+<p>从管理复杂性的角度来看，这个方法 <strong>让事情变得更糟，而不是更好</strong> 。<br>
+这个方法没有提供任何抽象，因为它的全部功能都直接暴露在接口中。比如，调用者很可能需要知道 <code>attribute</code> 会被存放在 <code>data</code> 这个变量里。思考这个接口，并不比直接思考完整实现更简单。</p>
+<p>如果这个方法被正确地写了文档，那么 <strong>文档本身可能比方法代码还要长</strong> 。甚至调用这个方法所需要敲的键，比调用者直接操作 <code>data</code> 变量还要多。这个方法引入了复杂性（以一个新的接口供开发者学习的形式），却没有提供任何相应的收益。</p>
+<hr>
+<h3 id="️-红旗浅模块red-flag-shallow-module">⚠️ 红旗：浅模块（Red Flag: Shallow Module）</h3>
+<p>浅模块的定义是： <strong>其接口相对于它所提供的功能而言过于复杂</strong> 。<br>
+浅模块在与复杂性作斗争中几乎没有帮助，因为它们带来的好处（不必了解其内部实现）被学习和使用其接口的成本所抵消了。 <strong>小模块往往是浅模块</strong> 。</p>
+<hr>
+<h2 id="46-类分裂症classitis">4.6 类分裂症（Classitis）</h2>
+<p>不幸的是， <strong>深类（deep classes）的价值在当今并未得到广泛认可</strong> 。<br>
+编程领域的传统智慧是：类应该“小”，而不是“深”。</p>
+<p>学生常被教导，类设计中最重要的事情是把大的类拆成小的类；对方法也是类似的建议：“任何超过 N 行的方法都应该拆成多个方法”（N 甚至可以小到 10）。<br>
+这种做法会导致大量的浅类和浅方法，从而增加系统的整体复杂性。</p>
+<p>“类应该小”的极端表现是一种我称之为 <strong>类分裂症（classitis）</strong> 的综合症，它源于一种错误的观念：“类是好东西，所以类越多越好”。<br>
+在患有类分裂症的系统中，开发者被鼓励在每个新类中尽量减少功能；如果需要更多功能，就再引入更多的类。</p>
+<p>类分裂症可能会产生 <strong>单个看起来都很简单的类</strong> ，但它会增加整个系统的复杂性。小类本身贡献的功能有限，因此必须有很多个，每一个都有自己的接口。这些接口不断累积，会在系统层面造成巨大的复杂性。</p>
+<p>小类还会导致代码风格变得冗长，因为每个类都需要大量样板代码（boilerplate）。</p>
+<h2 id="47-示例java-与-unix-io">4.7 示例：Java 与 Unix I/O</h2>
+<p>当今最显眼的类分裂症例子之一是  <strong>Java 类库</strong>。<br>
+Java 语言本身并不要求大量小类，但在 Java 编程社区中却形成了一种类分裂症文化。</p>
+<p>例如，多年来，Java 开发者为了打开一个文件并读取序列化对象，需要创建三个不同的对象：</p>
+<pre><code class="language-java">FileInputStream fileStream =
+    new FileInputStream(fileName);
+BufferedInputStream bufferedStream =
+    new BufferedInputStream(fileStream);
+ObjectInputStream objectStream =
+    new ObjectInputStream(bufferedStream);
+</code></pre>
+<p><code>FileInputStream</code> 只提供非常基础的 I/O：它不能进行缓冲 I/O，也不能读写序列化对象。<br>
+<code>BufferedInputStream</code> 在 <code>FileInputStream</code> 之上增加了缓冲能力，<br>
+<code>ObjectInputStream</code> 又在其之上增加了读写序列化对象的能力。</p>
+<p>在上述代码中，一旦文件被打开，<code>fileStream</code> 和 <code>bufferedStream</code> 就再也不会被使用，后续所有操作都通过 <code>objectStream</code> 进行。</p>
+<p>特别令人恼火（而且容易出错）的是： <strong>缓冲必须通过显式创建 <code>BufferedInputStream</code> 来请求</strong> ；如果开发者忘记创建这个对象，就不会有缓冲，I/O 性能会很差。</p>
+<p>Java 开发者可能会辩解说，并不是所有人都希望对文件 I/O 使用缓冲，因此不应该把缓冲机制内建进基础机制中。他们可能认为，把缓冲机制单独拆出来，让用户自行选择是否使用，是更好的设计。</p>
+<p><strong>提供选择当然是好事，但接口应该被设计成让“常见情况”尽可能简单。</strong><br>
+几乎所有文件 I/O 的用户都会希望有缓冲，因此缓冲应该是默认提供的。对于少数不需要缓冲的情况，库可以提供关闭缓冲的机制。</p>
+<p>任何用于关闭缓冲的机制，都应该在接口中被清晰地隔离出来（例如，通过为 <code>FileInputStream</code> 提供不同的构造函数，或者通过一个禁用/替换缓冲机制的方法），从而让大多数开发者甚至都不需要意识到缓冲机制的存在。</p>
+<p>相比之下，Unix 系统调用的设计者就让常见情况变得非常简单。<br>
+例如，他们认识到顺序 I/O 是最常见的使用方式，于是将其作为默认行为。随机访问仍然可以通过 <code>lseek</code> 系统调用轻松实现，但只进行顺序访问的开发者完全不需要知道这个机制的存在。</p>
+<p>如果一个接口有很多功能，但大多数开发者只需要了解其中的一小部分，那么这个接口的 <strong>有效复杂度</strong> 就只是那些常用功能的复杂度。</p>
+<h2 id="48-结论">4.8 结论</h2>
+<p>通过将模块的接口与其实现分离，我们可以把实现的复杂性隐藏在系统的其他部分之外。<br>
+模块的使用者只需要理解接口所提供的抽象。</p>
+<p>在设计类和其他模块时， <strong>最重要的问题是让它们变得“深”</strong> ：<br>
+也就是说，让它们拥有 <strong>简单的接口，却隐藏大量的复杂实现</strong> ，从而为常见使用场景提供简洁的接口，同时仍然提供强大的功能。</p>
+<p>这样做，才能最大化被隐藏起来的复杂性。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#41-%E6%A8%A1%E5%9D%97%E5%8C%96%E8%AE%BE%E8%AE%A1modular-design">4.1 模块化设计（Modular design）</a></li>
+<li><a href="#42-%E6%8E%A5%E5%8F%A3%E4%B8%AD%E5%8C%85%E5%90%AB%E4%BB%80%E4%B9%88">4.2 接口中包含什么？</a></li>
+<li><a href="#43-%E6%8A%BD%E8%B1%A1abstractions">4.3 抽象（Abstractions）</a>
+<ul>
+<li><a href="#44-%E6%B7%B1%E6%A8%A1%E5%9D%97deep-modules">4.4 深模块（Deep modules）</a></li>
+</ul>
+</li>
+<li><a href="#45-%E6%B5%85%E6%A8%A1%E5%9D%97shallow-modules">4.5 浅模块（Shallow modules）</a>
+<ul>
+<li><a href="#%EF%B8%8F-%E7%BA%A2%E6%97%97%E6%B5%85%E6%A8%A1%E5%9D%97red-flag-shallow-module">⚠️ 红旗：浅模块（Red Flag: Shallow Module）</a></li>
+</ul>
+</li>
+<li><a href="#46-%E7%B1%BB%E5%88%86%E8%A3%82%E7%97%87classitis">4.6 类分裂症（Classitis）</a></li>
+<li><a href="#47-%E7%A4%BA%E4%BE%8Bjava-%E4%B8%8E-unix-io">4.7 示例：Java 与 Unix I/O</a></li>
+<li><a href="#48-%E7%BB%93%E8%AE%BA">4.8 结论</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

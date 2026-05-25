@@ -1,0 +1,632 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="“专门化”往往会带来复杂性。过度专门化，可能是软件复杂度最大的来源之一。相反，更通用的代码通常会更简单、更干净，也更容易理解。
+这个原则适用于软件设计中的很多层面。
+例如，在设计类或方法这样的模块时，构建“深层 API（deep API）”..." />
+  <meta property="og:title" content="读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深 - 小马的世界">
+  <meta property="og:description" content="“专门化”往往会带来复杂性。过度专门化，可能是软件复杂度最大的来源之一。相反，更通用的代码通常会更简单、更干净，也更容易理解。
+这个原则适用于软件设计中的很多层面。
+例如，在设计类或方法这样的模块时，构建“深层 API（deep API）”..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/BIrsLkGP5S/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深 - 小马的世界">
+  <meta name="twitter:description" content="“专门化”往往会带来复杂性。过度专门化，可能是软件复杂度最大的来源之一。相反，更通用的代码通常会更简单、更干净，也更容易理解。
+这个原则适用于软件设计中的很多层面。
+例如，在设计类或方法这样的模块时，构建“深层 API（deep API）”...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/BIrsLkGP5S/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-05-25 · 22 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>“专门化”往往会带来复杂性。过度专门化，可能是软件复杂度最大的来源之一。相反，更通用的代码通常会更简单、更干净，也更容易理解。<br>
+这个原则适用于软件设计中的很多层面。<br>
+例如，在设计类或方法这样的模块时，构建“深层 API（deep API）”的最佳方式之一，就是让它尽可能通用。因为通用 API 往往能够隐藏更多实现细节。<br>
+而在编写具体代码时，简化代码最有效的方法之一，则是消除各种“特殊情况（special cases）”，让处理普通情况的代码，也能够自然覆盖边界情况。<br>
+消除特殊情况不仅能降低复杂度，还能提高代码效率——这一点我们会在第20章进一步讨论。</p>
+<h2 id="61-让类适度通用">6.1 让类“适度通用”</h2>
+<p>在设计一个新类时，你最常面临的决策之一，就是：这个类应该做成“通用型（general-purpose）”，还是“专用型（special-purpose）”。有些人会认为，你应该采用通用化方案：实现一种能够解决广泛问题的机制，而不仅仅是满足当前需求。这样一来，这套机制未来可能还能被用于一些你现在尚未预料到的场景，从而节省后续开发时间。这种通用化思路，其实和第3章中提到的“投资思维”是一致的——前期多投入一点时间，未来节省更多时间。</p>
+<p>但另一方面，我们也知道：预测软件系统未来的需求，其实非常困难。因此，一个通用化方案，可能会包含很多最终根本用不到的能力。更进一步地说，如果你把一个东西做得“过于通用”，它甚至可能无法很好地解决你眼前真正的问题。因此，也有人主张：应该专注于当前需求，只构建你现在明确需要的东西，并针对当前使用方式进行专门化设计。如果未来出现新的用途，再通过重构把它逐渐通用化即可。这种专用化思路，则更符合软件开发中的“渐进式开发（incremental development）”。</p>
+<p>刚开始教授软件设计课程时，我其实更倾向于第二种方法——先做成专用的。</p>
+<p>但在几次教学之后，我改变了看法。</p>
+<p>在 reviewing 学生项目时，我发现：通用型类几乎总是比专用型类更优秀。</p>
+<p>尤其让我意外的是：</p>
+<ul>
+<li>通用接口反而更简单</li>
+<li>抽象层次更深</li>
+<li>实现代码更少</li>
+</ul>
+<p>即使你最终只是以“专用方式”使用这个类，采用通用化设计通常依然更省工作量。而如果未来还能复用这个类，那么通用化方案节省的时间会更多。但即便这个类未来完全不会复用，通用化设计通常仍然更好。</p>
+<p>根据我的经验，最佳平衡点是：</p>
+<blockquote>
+<p>用“适度通用（somewhat general-purpose）”的方式来实现新模块。</p>
+</blockquote>
+<p>这里“适度通用”的意思是：</p>
+<ul>
+<li>模块的“功能实现”应该围绕当前需求</li>
+<li>但它的“接口设计”不应该只绑定当前场景</li>
+</ul>
+<p>换句话说：</p>
+<p>接口应该足够通用，从而支持多种使用方式；但同时，它又必须足够容易使用，能够很好满足当前需求，而不是为了未来假想场景牺牲现在的可用性。</p>
+<p>这里“适度（somewhat）”这个词非常重要。</p>
+<p>不要走火入魔，把东西设计得过度通用，最后反而难以解决当前真正的问题。</p>
+<h1 id="62-示例文本编辑器中的文本存储">6.2 示例：文本编辑器中的文本存储</h1>
+<p>让我们来看一个软件设计课程中的例子。学生们需要实现一个简单的 GUI 文本编辑器。</p>
+<p>这个编辑器需要：</p>
+<ul>
+<li>显示文件内容</li>
+<li>支持用户定位光标、点击、输入并编辑文件</li>
+<li>支持同一个文件的多窗口同时查看</li>
+<li>支持多级撤销（undo）与重做（redo）</li>
+</ul>
+<p>每个学生项目里，都有一个负责管理底层文本数据的类。</p>
+<p>这个文本类通常会提供：</p>
+<ul>
+<li>将文件加载到内存</li>
+<li>读取和修改文本</li>
+<li>将修改后的内容写回文件</li>
+</ul>
+<p>等功能。</p>
+<p>很多学生团队，都为这个文本类设计了“专用 API”。因为他们知道：这个类会被用于交互式编辑器。于是他们直接围绕编辑器功能来设计 API。</p>
+<p>例如：</p>
+<ul>
+<li>用户按 Backspace 时，删除光标左边字符</li>
+<li>用户按 Delete 时，删除光标右边字符</li>
+</ul>
+<p>因此，有些团队会直接在文本类中设计这样的接口：</p>
+<pre><code class="language-cpp">void backspace(Cursor cursor);
+void delete(Cursor cursor);
+</code></pre>
+<p>这里：</p>
+<ul>
+<li><code>Cursor</code> 是一个专门表示光标位置的类型</li>
+<li>每个方法都接收一个光标位置参数</li>
+</ul>
+<p>编辑器还需要支持文本选择（selection），并允许复制或删除选中内容。于是学生们又定义了一个 <code>Selection</code> 类，并在删除时这样使用：</p>
+<pre><code class="language-cpp">void deleteSelection(Selection selection);
+</code></pre>
+<p>学生们大概认为：如果文本类的方法直接对应用户可见功能，那么 UI 实现会更简单。但实际上，这种“专门化”几乎没有带来什么收益。相反，它大幅增加了开发者的认知负担。最终，文本类里塞满了大量“浅层方法（shallow methods）”。每个方法都只服务于一个特定 UI 操作。很多方法（例如 <code>delete</code>）甚至只在一个地方被调用。结果就是：开发 UI 的人，必须学习大量文本类接口。这种做法，还导致了 UI 与文本类之间的信息泄漏（information leakage）。</p>
+<p>例如：</p>
+<ul>
+<li>“Selection”</li>
+<li>“Backspace 键”</li>
+</ul>
+<p>这些本来属于 UI 层的概念，直接渗透进了文本类内部。这增加了开发者在理解系统时的认知负担。后续每新增一个用户界面操作，文本类里都必须新增一个对应方法。于是，开发 UI 的人，往往也不得不深入修改文本类。</p>
+<p>而类设计的一个重要目标，本来应该是：</p>
+<blockquote>
+<p>让每个类都能够独立演进。</p>
+</blockquote>
+<p>但这种“专门化设计”却把 UI 类和文本类死死耦合在了一起。</p>
+<h1 id="63-更通用的-api">6.3 更通用的 API</h1>
+<p>更好的做法，是让文本类变得更加通用。它的 API 应该只围绕“基础文本能力”来设计，而不是直接体现那些更高层的 UI 操作。</p>
+<p>例如，只需要两个方法，就足以支持文本修改：</p>
+<pre><code class="language-cpp">void insert(Position position, String newText);
+void delete(Position start, Position end);
+</code></pre>
+<p>第一个方法：</p>
+<ul>
+<li>在任意位置插入任意字符串</li>
+</ul>
+<p>第二个方法：</p>
+<ul>
+<li>删除 <code>[start, end)</code> 区间内的所有字符</li>
+</ul>
+<p>也就是说：</p>
+<ul>
+<li>删除从 <code>start</code> 开始</li>
+<li>到 <code>end</code> 之前</li>
+<li>的所有字符</li>
+</ul>
+<p>这里还使用了更通用的 <code>Position</code> 类型，而不是 <code>Cursor</code>。</p>
+<p>因为：</p>
+<ul>
+<li><code>Cursor</code> 是 UI 层里的概念</li>
+<li><code>Position</code> 则只是文本中的一个位置</li>
+</ul>
+<p>后者更加抽象，也更加通用。</p>
+<p>文本类还应该提供一些基础的位置操作能力，例如：</p>
+<pre><code class="language-cpp">Position changePosition(Position position, int numChars);
+</code></pre>
+<p>这个方法会返回一个新的位置：</p>
+<ul>
+<li>如果 <code>numChars &gt; 0</code>，则向后移动</li>
+<li>如果 <code>numChars &lt; 0</code>，则向前移动</li>
+</ul>
+<p>并且当需要跨行时，它会自动跳转到上一行或下一行。</p>
+<p>有了这些通用 API，Delete 键的行为就可以这样实现：</p>
+<pre><code class="language-cpp">text.delete(cursor, text.changePosition(cursor, 1));
+</code></pre>
+<p>而 Backspace 则可以这样实现：</p>
+<pre><code class="language-cpp">text.delete(text.changePosition(cursor, -1), cursor);
+</code></pre>
+<p>使用这种通用 API 后，实现 UI 功能的代码，确实会比原来稍微长一点。但新的代码更直观、更清晰。</p>
+<p>例如：</p>
+<p>开发 UI 的人，其实真正关心的是：</p>
+<blockquote>
+<p>“Backspace 到底删除了哪些字符？”</p>
+</blockquote>
+<p>在新的实现方式里，这一点是一眼可见的。而旧方案中：开发者必须：</p>
+<ul>
+<li>跳进文本类</li>
+<li>查看 <code>backspace</code> 方法实现</li>
+<li>阅读文档或源码</li>
+</ul>
+<p>才能确认其行为。</p>
+<p>而且，从整体代码量来看，通用 API 的方案反而更少。因为：它用少量通用方法，替代了大量专用方法。采用这种通用接口的文本类，还可以被用于很多“编辑器之外”的场景。例如，你可能想实现一个工具：</p>
+<blockquote>
+<p>把文件中所有某个字符串，都替换成另一个字符串。</p>
+</blockquote>
+<p>在这种场景下：</p>
+<p>像 <code>backspace</code>、<code>delete</code> 这种编辑器专用接口，其实几乎没有价值。</p>
+<p>但通用文本类已经具备了大部分所需能力。你只需要再补充一个搜索方法：</p>
+<pre><code class="language-cpp">Position findNext(Position start, String string);
+</code></pre>
+<p>它会：</p>
+<ul>
+<li>从 <code>start</code> 开始</li>
+<li>查找下一个匹配字符串的位置</li>
+</ul>
+<p>当然，真正的文本编辑器通常本来也需要“查找/替换”功能，因此文本类里大概率本来就会有这个接口。</p>
+<h2 id="64-通用性会带来更好的信息隐藏">6.4 通用性会带来更好的信息隐藏</h2>
+<p>通用化设计，能够更干净地分离：</p>
+<ul>
+<li>文本类</li>
+<li>用户界面类</li>
+</ul>
+<p>从而实现更好的“信息隐藏（information hiding）”。文本类不再需要知道 UI 的具体行为。例如，它不需要知道：</p>
+<ul>
+<li>Backspace 键如何工作</li>
+<li>UI 如何处理选择区域</li>
+</ul>
+<p>这些细节，现在都被封装在 UI 层内部。因此，新增 UI 功能时，也不再需要修改文本类。与此同时，通用接口还降低了认知负担。开发 UI 的人，只需要学习少量简单方法，并能在各种场景中复用。原始设计中的 <code>backspace</code> 方法，其实是一种“错误抽象（false abstraction）”。它看起来像是在隐藏“到底删除了哪些字符”但实际上：UI 开发者恰恰必须知道这些细节。因此，UI 开发者最终还是会去阅读 <code>backspace</code> 的实现代码，以确认它的精确行为。把 <code>backspace</code> 放进文本类里，并没有真正隐藏复杂性。它只是让 UI 开发者更难获得自己真正需要的信息。</p>
+<p>软件设计中，一个非常重要的问题是：</p>
+<blockquote>
+<p>谁需要知道什么？以及什么时候需要知道？</p>
+</blockquote>
+<p>如果某些细节对调用方非常重要，那么最好的方式往往不是“隐藏它”，而是：</p>
+<ul>
+<li>明确表达它</li>
+<li>让它尽可能显而易见</li>
+</ul>
+<p>就像修改后的实现方式那样。</p>
+<h2 id="65-问问你自己这些问题">6.5 问问你自己这些问题</h2>
+<p>识别一个干净、通用的类设计，比真正创造一个这样的设计更容易。下面这些问题可以问问自己，它们能帮助你为一个接口在“通用用途”和“专用用途”之间找到合适的平衡。</p>
+<h3 id="什么是能够覆盖我当前所有需求的最简单接口">什么是能够覆盖我当前所有需求的最简单接口？</h3>
+<p>如果你减少了 API 中的方法数量，而没有削弱它的整体能力，那么你大概率是在创造更加通用的方法。</p>
+<p>专用的文本 API 至少有三个删除文本的方法：</p>
+<ul>
+<li><code>backspace</code></li>
+<li><code>delete</code></li>
+<li><code>deleteSelection</code></li>
+</ul>
+<p>而更通用的 API 只有一个删除文本的方法，却能覆盖这三种用途。</p>
+<p>只有在每个方法本身仍然简单的前提下，减少方法数量才是有意义的；如果为了减少方法数量，你不得不引入大量额外参数，那么你可能并没有真正简化事情。</p>
+<h3 id="这个方法会在多少种场景下被使用">这个方法会在多少种场景下被使用？</h3>
+<p>如果一个方法是为某一种特定用途设计的，例如 <code>backspace</code> 方法，那么这是一个危险信号，说明它可能过于专用了。看看你是否能够用一个通用方法替换多个专用方法。</p>
+<h3 id="这个-api-对我当前的需求来说是否容易使用">这个 API 对我当前的需求来说是否容易使用？</h3>
+<p>这个问题能够帮助你判断：你是否在让 API 变得简单和通用这件事上走得太远了。如果为了将一个类用于当前目的，你不得不编写大量额外代码，那么这就是一个危险信号，说明这个接口没有提供正确的功能。</p>
+<p>例如，针对文本类的一种做法，是围绕“单字符操作”来设计它：</p>
+<ul>
+<li><code>insert</code> 插入一个字符</li>
+<li><code>delete</code> 删除一个字符</li>
+</ul>
+<p>这个 API 同时具备简单性和通用性。然而，它并不特别适合用于文本编辑器；高层代码中会出现大量循环，用来插入或删除一段字符。因此，对于大规模字符操作来说，这种“单字符”的方式也会比较低效。所以，更好的做法是：让文本类原生支持“字符范围”的操作。</p>
+<h2 id="66-将专用性向上推以及向下推">6.6 将专用性向上推（以及向下推！）</h2>
+<p>大多数软件系统都不可避免地包含一些专用代码。例如，应用程序会为用户提供特定功能；这些功能通常都具有很强的专用性。因此，通常不可能彻底消除专用性。不过，专用代码应该与通用代码清晰地分离。一种做法，是将专用代码在软件栈中向上或向下推。</p>
+<p>一种分离专用代码的方法，是把它向上推。应用程序最上层的类负责提供具体功能，因此它们必然会针对这些功能进行专门化。但是，这种专门化不应该继续向下渗透到用于实现这些功能的底层类中。我们在本章前面的编辑器示例中已经看到过这一点。</p>
+<p>原始的学生实现中，像 Backspace 键行为这样的用户界面细节，被泄漏进了文本类的实现中。而改进后的文本 API，则把所有专用性都向上推到了用户界面代码中，只在文本类中保留通用代码。</p>
+<p>有时候，最好的做法则是把专用性向下推。设备驱动（device driver）就是一个例子。操作系统通常必须支持数百甚至数千种不同类型的设备，例如各种不同类型的二级存储设备。每一种设备类型都有自己专用的命令集。为了防止这些设备特性泄漏到操作系统主体代码中，操作系统会定义一组通用接口，例如：</p>
+<ul>
+<li>“读取一个 block”</li>
+<li>“写入一个 block”</li>
+</ul>
+<p>任何二级存储设备都必须实现这些通用操作。对于每一种设备，都由一个设备驱动模块利用该设备自身的专用能力，来实现这一通用接口。这种做法把专用性向下压进了设备驱动中，因此操作系统核心部分在编写时，不需要了解任何具体设备特性。这种方式还使新增设备变得更加容易：只要某个设备具备实现驱动接口所需的能力，它就可以被加入系统，而无需修改主操作系统。</p>
+<h1 id="67-示例编辑器的-undo-机制">6.7 示例：编辑器的 Undo 机制</h1>
+<p>在 GUI 编辑器项目中，其中一个需求是支持多级 undo/redo。不仅要支持文本本身的修改，还要支持：</p>
+<ul>
+<li>选区（selection）的变化</li>
+<li>插入光标（insertion cursor）的变化</li>
+<li>视图（view）的变化</li>
+</ul>
+<p>例如：如果用户选中一段文本、删除它、滚动到文件中的另一个位置，然后执行 undo，那么编辑器必须恢复到执行这些操作之前的状态。这包括：</p>
+<ul>
+<li>恢复被删除的文本</li>
+<li>再次选中这些文本</li>
+<li>同时让被选中的文本在窗口中可见</li>
+</ul>
+<p>一些学生项目把整个 undo 机制都实现为文本类的一部分。文本类维护了一个“所有可撤销修改”的列表。每当文本发生变化时，它都会自动向这个列表中添加条目。对于选区、插入光标以及视图的变化，用户界面代码会调用文本类中的额外方法，而这些方法随后会把对应变化加入 undo 列表。当用户请求 undo 或 redo 时，用户界面代码会调用文本类中的某个方法，由该方法处理 undo 列表中的条目。对于与文本相关的条目，它会更新文本类内部状态；对于与其他内容相关的条目，例如选区，则文本类会再回调用户界面代码来执行 undo 或 redo。</p>
+<p>这种做法导致文本类中出现了一组非常别扭的功能。undo/redo 的核心，本质上是一个通用机制：</p>
+<ul>
+<li>管理已经执行过的一系列动作</li>
+<li>在 undo/redo 时遍历这些动作</li>
+</ul>
+<p>这个核心被放在了文本类中，同时还夹杂着一些专用处理逻辑，用来实现文本、选区等特定对象的 undo/redo。而针对选区和光标的专用 undo handler，与文本类中的其他内容实际上毫无关系；它们导致了文本类与用户界面之间的信息泄漏，同时还要求两个模块之间增加额外的方法，用于来回传递 undo 信息。</p>
+<p>如果未来系统中新增一种可撤销对象，那么文本类也必须跟着修改，包括新增只服务于该对象的方法。此外，通用的 undo 核心，与文本类中的通用文本能力其实也没有太大关系。</p>
+<p>这些问题可以通过如下方式解决：把 undo/redo 中真正通用的核心部分抽取出来，放入一个独立的类中：</p>
+<pre><code class="language-cpp">public class History {
+    public interface Action {
+        public void redo();
+        public void undo();
+    }
+}
+</code></pre>
+<pre><code class="language-cpp">History() {...}
+
+void addAction(Action action) {...}
+void addFence() {...}
+
+void undo() {...}
+void redo() {...}
+</code></pre>
+<p>在这个设计中，<code>History</code> 类负责管理一组实现了 <code>History.Action</code> 接口的对象。每个 <code>History.Action</code> 表示一个单独操作，例如：</p>
+<ul>
+<li>插入文本</li>
+<li>光标位置变化</li>
+</ul>
+<p>并且它提供了能够 undo/redo 该操作的方法。</p>
+<p><code>History</code> 类并不知道：</p>
+<ul>
+<li>action 中存储了什么信息</li>
+<li>它们是如何实现 undo/redo 的</li>
+</ul>
+<p><code>History</code> 只是维护一个历史列表，用来描述应用生命周期中发生过的所有操作。当用户请求 undo 或 redo 时，它就在列表中向前或向后遍历，并调用对应 action 的 undo/redo 方法。<code>History.Action</code> 是专用对象，每个对象只理解某一种特定的可撤销操作。它们定义在 <code>History</code> 类之外，而是放在理解对应操作的模块中实现。</p>
+<p>例如，文本类可能会实现：</p>
+<ul>
+<li><code>UndoableInsert</code></li>
+<li><code>UndoableDelete</code></li>
+</ul>
+<p>用于描述文本插入和删除。每当文本类插入文本时，它会创建一个新的 <code>UndoableInsert</code> 对象，用于描述这次插入，并调用 <code>History.addAction</code> 把它加入历史列表。编辑器的用户界面代码则可能会创建：</p>
+<ul>
+<li><code>UndoableSelection</code></li>
+<li><code>UndoableCursor</code></li>
+</ul>
+<p>用于描述选区和插入光标的变化。<code>History</code> 类还允许把多个 action 分组。例如：用户执行一次 undo 时，可以同时：</p>
+<ul>
+<li>恢复被删除文本</li>
+<li>重新选中这些文本</li>
+<li>恢复插入光标位置</li>
+</ul>
+<p>为了实现分组，<code>History</code> 类使用了 fence。fence 是放在历史列表中的标记，用于分隔相关 action 的组。每次调用 <code>History.redo</code> 时，它会沿着历史列表向后遍历并撤销 action，直到遇到下一个 fence 为止。fence 的放置由更高层代码决定，通过调用 <code>History.addFence</code> 完成。这种设计把 undo 功能拆分成了三个部分，并分别在不同位置实现：</p>
+<ul>
+<li>用于管理、分组 action，并执行 undo/redo 的通用机制 （由 <code>History</code> 类实现）</li>
+<li>各种具体 action 的实现（由多个类实现，每个类只理解少量 action 类型）</li>
+<li>action 分组策略（由高层用户界面代码实现，以保证整体应用行为正确）</li>
+</ul>
+<p>这三个部分都可以在不了解其他部分实现细节的情况下独立开发。<code>History</code> 类并不知道正在被 undo 的到底是什么类型的 action；<code>History.Action</code> 可以被用于各种不同的应用场景。每个 action 类只理解一种 action；而 <code>History</code> 类和 action 类都不需要知道 action 分组策略。</p>
+<p>这里最关键的设计决策，是将 undo 机制中的通用部分，与专用部分分离开来。具体来说：</p>
+<ul>
+<li>为通用部分创建独立的类</li>
+<li>把专用部分向下推入 <code>History.Action</code> 的子类中</li>
+</ul>
+<p>一旦这样做之后，其余设计就会自然成形。</p>
+<p>注意：<br>
+这里所说的“将通用代码与专用代码分离”，是针对同一个机制内部而言的。例如，专用的 undo 代码（例如撤销一次文本插入）应当与通用的 undo 代码（例如管理历史列表）分离。不过，把某个机制中的专用代码，与另一个机制中的通用代码组合在一起，有时反而是合理的。文本类就是一个例子：它实现的是一个通用的文本管理机制，但其中也包含了与 undo 相关的专用代码。这些 undo 代码之所以是专用的，是因为它们只处理“文本修改”的 undo 操作。把这些代码放进 <code>History</code> 类中的通用 undo 基础设施里，并不合理；但把它们放进文本类中则是合理的，因为它们与其他文本功能密切相关。</p>
+<h2 id="68-消除代码中的特殊情况">6.8 消除代码中的特殊情况</h2>
+<p>到目前为止，我讨论的专用化，主要是在类和方法设计的语境下。另一种形式的专用化，则出现在方法体中的“特殊情况（special case）”。特殊情况会导致代码里充满 <code>if</code> 判断，使代码变得难以理解，并且容易产生 bug。因此，应当尽可能消除特殊情况。最好的做法是：以一种能够自动处理边界情况的方式来设计“正常情况”，从而不需要额外代码/</p>
+<p>在文本编辑器项目中，学生们需要实现一个用于选择文本以及复制、删除选中文本的机制。大多数学生会在实现中加入一个状态变量，用来表示当前是否存在选区。他们之所以这样做，大概是因为，当屏幕上没有选区时，把这种情况单独表示出来，看上去很自然。然而，这种做法会导致实现中出现大量针对“无选区”情况的检查与特殊处理。实际上，可以通过消除“无选区”这一特殊情况，来简化选区处理代码。具体做法是，始终让 selection 存在。</p>
+<p>当屏幕上没有可见选区时，可以在内部使用一个“空 selection”来表示：它的起始位置和结束位置相同。采用这种方式后，selection 管理代码就不再需要检查“无选区”。当复制 selection 时：如果 selection 为空，那么会在新位置插入 0 个字节；只要实现正确，就不需要把“0 字节”作为特殊情况来检查。类似地，删除 selection 的代码也应该能够在不加入特殊情况判断的前提下处理空 selection。</p>
+<p>考虑 selection 位于单行中的情况。删除 selection 时：</p>
+<ul>
+<li>取出 selection 之前的那部分行内容</li>
+<li>再拼接上 selection 之后的那部分内容</li>
+<li>形成新的行</li>
+</ul>
+<p>如果 selection 为空，那么这个过程会重新生成原始行。</p>
+<p>第10章将讨论异常（exception）。异常会产生更多特殊情况，以及如何减少必须处理这些特殊情况的位置。</p>
+<h2 id="69-结论">6.9 结论</h2>
+<p>不必要的专用化——无论是以专用类、专用方法，还是代码中的特殊情况形式出现——都是软件复杂度的重要来源。专用化不可能被彻底消除；但通过良好的设计，你应当能够显著减少它，并将专用代码与通用代码分离。<br>
+这样会带来：</p>
+<ul>
+<li>更深的类</li>
+<li>更好的信息隐藏</li>
+<li>更简单、更直观的代码</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#61-%E8%AE%A9%E7%B1%BB%E9%80%82%E5%BA%A6%E9%80%9A%E7%94%A8">6.1 让类“适度通用”</a></li>
+</ul>
+</li>
+<li><a href="#62-%E7%A4%BA%E4%BE%8B%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%87%E6%9C%AC%E5%AD%98%E5%82%A8">6.2 示例：文本编辑器中的文本存储</a></li>
+<li><a href="#63-%E6%9B%B4%E9%80%9A%E7%94%A8%E7%9A%84-api">6.3 更通用的 API</a>
+<ul>
+<li><a href="#64-%E9%80%9A%E7%94%A8%E6%80%A7%E4%BC%9A%E5%B8%A6%E6%9D%A5%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F">6.4 通用性会带来更好的信息隐藏</a></li>
+<li><a href="#65-%E9%97%AE%E9%97%AE%E4%BD%A0%E8%87%AA%E5%B7%B1%E8%BF%99%E4%BA%9B%E9%97%AE%E9%A2%98">6.5 问问你自己这些问题</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%83%BD%E5%A4%9F%E8%A6%86%E7%9B%96%E6%88%91%E5%BD%93%E5%89%8D%E6%89%80%E6%9C%89%E9%9C%80%E6%B1%82%E7%9A%84%E6%9C%80%E7%AE%80%E5%8D%95%E6%8E%A5%E5%8F%A3">什么是能够覆盖我当前所有需求的最简单接口？</a></li>
+<li><a href="#%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E4%BC%9A%E5%9C%A8%E5%A4%9A%E5%B0%91%E7%A7%8D%E5%9C%BA%E6%99%AF%E4%B8%8B%E8%A2%AB%E4%BD%BF%E7%94%A8">这个方法会在多少种场景下被使用？</a></li>
+<li><a href="#%E8%BF%99%E4%B8%AA-api-%E5%AF%B9%E6%88%91%E5%BD%93%E5%89%8D%E7%9A%84%E9%9C%80%E6%B1%82%E6%9D%A5%E8%AF%B4%E6%98%AF%E5%90%A6%E5%AE%B9%E6%98%93%E4%BD%BF%E7%94%A8">这个 API 对我当前的需求来说是否容易使用？</a></li>
+</ul>
+</li>
+<li><a href="#66-%E5%B0%86%E4%B8%93%E7%94%A8%E6%80%A7%E5%90%91%E4%B8%8A%E6%8E%A8%E4%BB%A5%E5%8F%8A%E5%90%91%E4%B8%8B%E6%8E%A8">6.6 将专用性向上推（以及向下推！）</a></li>
+</ul>
+</li>
+<li><a href="#67-%E7%A4%BA%E4%BE%8B%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84-undo-%E6%9C%BA%E5%88%B6">6.7 示例：编辑器的 Undo 机制</a>
+<ul>
+<li><a href="#68-%E6%B6%88%E9%99%A4%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5">6.8 消除代码中的特殊情况</a></li>
+<li><a href="#69-%E7%BB%93%E8%AE%BA">6.9 结论</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

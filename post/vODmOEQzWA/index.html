@@ -1,0 +1,564 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>源码理解Autoware Freespace Planner - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="源码理解Autoware Freespace Planner - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="在 lane driving 场景里，路径规划大多是沿着车道中心线、参考路线、行为决策结果往下做，问题虽然复杂，但“路”本身是明确的。
+停车场景不是这样。你可能需要：
+
+倒车入库
+在狭窄区域多把挪车
+从一个姿态精确切到另一个姿态
+在没有明确..." />
+  <meta property="og:title" content="源码理解Autoware Freespace Planner - 小马的世界">
+  <meta property="og:description" content="在 lane driving 场景里，路径规划大多是沿着车道中心线、参考路线、行为决策结果往下做，问题虽然复杂，但“路”本身是明确的。
+停车场景不是这样。你可能需要：
+
+倒车入库
+在狭窄区域多把挪车
+从一个姿态精确切到另一个姿态
+在没有明确..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/vODmOEQzWA/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="源码理解Autoware Freespace Planner - 小马的世界">
+  <meta name="twitter:description" content="在 lane driving 场景里，路径规划大多是沿着车道中心线、参考路线、行为决策结果往下做，问题虽然复杂，但“路”本身是明确的。
+停车场景不是这样。你可能需要：
+
+倒车入库
+在狭窄区域多把挪车
+从一个姿态精确切到另一个姿态
+在没有明确...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/vODmOEQzWA/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          源码理解Autoware Freespace Planner
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-04-12 · 16 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>在 lane driving 场景里，路径规划大多是沿着车道中心线、参考路线、行为决策结果往下做，问题虽然复杂，但“路”本身是明确的。</p>
+<p>停车场景不是这样。你可能需要：</p>
+<ul>
+<li>倒车入库</li>
+<li>在狭窄区域多把挪车</li>
+<li>从一个姿态精确切到另一个姿态</li>
+<li>在没有明确 lane 的自由空间里避障</li>
+</ul>
+<p>这时问题就变成了：给定当前位姿、目标位姿、占据栅格地图和车辆转向约束，怎样找到一条无碰撞、满足车辆运动学、并且允许换向的可执行机动路径。</p>
+<p>当然，Free space planner不止适合于停车领域，而是任何在需要精确地改变车辆姿态的情况下都可以使用。</p>
+<p>从代码层面看，这个任务被拆成两层：</p>
+<ul>
+<li><code>autoware_freespace_planner</code> 负责节点调度、状态管理和轨迹分段发布。</li>
+<li><code>autoware_freespace_planning_algorithms</code> 负责真正的搜索、碰撞检测和路径恢复。</li>
+</ul>
+<p>这个模块不是一次性生成一条从起点开到终点的完整停车轨迹，而是先搜索一条允许前进、倒车、再前进的机动路径，再把它拆成若干段单方向轨迹，要求车辆每到一个换向点先停稳，再继续下一段。<br>
+使用的主要算法有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>b</mi><mi>r</mi><mi>i</mi><mi>d</mi><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">Hybrid A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>R</mi><mi>T</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">RRT*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∗</span></span></span></span></p>
+<h2 id="节点层在做什么">节点层在做什么</h2>
+<p><code>autoware_freespace_planner</code> 的核心是<br>
+<code>src/autoware_freespace_planner/freespace_planner_node.cpp</code>。</p>
+<p>这个节点订阅四类输入：</p>
+<ul>
+<li><code>~/input/route</code></li>
+<li><code>~/input/occupancy_grid</code></li>
+<li><code>~/input/odometry</code></li>
+<li><code>~/input/scenario</code></li>
+</ul>
+<p>然后发布：</p>
+<ul>
+<li><code>~/output/trajectory</code></li>
+<li><code>is_completed</code></li>
+<li>以及几路调试话题</li>
+</ul>
+<p>虽然输入里有 <code>route</code>，但当前实现并没有把 route 当作一条要跟踪的参考线去使用。<code>onRoute()</code> 只是把消息里的 <code>goal_pose</code> 取出来，更新内部目标，然后把停车周期重新开始。</p>
+<p>再往下看 <code>onTimer()</code>，整个节点的工作方式就清楚了。它的主循环大意如下：</p>
+<pre><code class="language-cpp">if (!parking_scenario_active) {
+  reset();
+  return;
+}
+
+updateData();
+if (!isDataReady()) return;
+
+if (is_completed_) {
+  publish_stop_trajectory();
+  return;
+}
+
+current_pose_ = odom_-&gt;pose.pose;
+
+if (!reset_in_progress_ &amp;&amp; isPlanRequired()) {
+  publish_stop_trajectory_if_needed();
+  reset();
+  reset_in_progress_ = true;
+}
+
+if (reset_in_progress_ &amp;&amp; ego_is_stopped()) {
+  planTrajectory();
+  reset_in_progress_ = false;
+}
+
+updateTargetIndex();
+publish_current_partial_trajectory();
+</code></pre>
+<p>它先判断场景是否激活，再判断数据是否齐全，再决定要不要重规划。如果要重规划，也不是立刻算，而是先让车停住，等速度真的降下来之后再重新生成轨迹。</p>
+<h2 id="何时会触发重新规划">何时会触发重新规划</h2>
+<p><code>isPlanRequired()</code> 的条件并不多</p>
+<p>第一种情况最简单：当前根本没有轨迹，那当然要规划。</p>
+<p>第二种情况是当前轨迹上出现了障碍物，而且这个障碍物持续存在了一段时间，超过 <code>th_obstacle_time_sec</code>。这里的实现需要多说一句，因为它检查的不是整条完整机动路径，而是当前正在执行的那一段 <code>partial_trajectory_</code>。</p>
+<p>代码会先找到车辆在当前段上的最近点，然后只截取“从当前位置到当前分段终点”的这一截，交给算法层的 <code>hasObstacleOnTrajectory()</code> 去做碰撞判断。也就是说，节点只关心眼下这段是否还能走，不会提前担心后面那一段倒车路径会不会遇到新障碍。</p>
+<p>第三种情况是车辆明显偏离了当前轨迹，超过 <code>th_course_out_distance_m</code>。这个判断也比较朴素：当前车位姿到轨迹最近点的二维距离。</p>
+<p><code>onTimer()</code> 在发现需要重规划时，首先做的是发布 stop trajectory，然后把 <code>reset_in_progress_</code> 置为 <code>true</code>。此后节点会持续检查 <code>odom_buffer_</code>，只有当这段时间里的速度都低于 <code>th_stopped_velocity_mps</code>，才真正调用 <code>planTrajectory()</code>。</p>
+<p>停车轨迹往往会涉及前进和倒车切换。如果车辆还处在运动中，规划器突然给出一条方向、曲率、甚至分段边界都不同的新轨迹，控制器未必能优雅处理。停车场景又是低速场景，时间预算通常没那么紧，于是系统更偏向保守做法：先把状态收敛到“车已停住”，再开始下一次规划。</p>
+<h2 id="机动路径先算出来但输出时要按换向点切开">机动路径先算出来，但输出时要按换向点切开</h2>
+<p>读这部分源码之前，我对 freespace planning 最大的误解，是以为算法层吐出什么，节点层就原样发什么。实际上完全不是这样。</p>
+<p>算法层返回的是 <code>PlannerWaypoints</code>。每个 waypoint 带一个 <code>is_back</code> 标志，表示这一小段是前进还是倒车。节点层在 <code>utils::create_trajectory()</code> 里把它们转成 <code>Trajectory</code> 时，会统一赋一个常速 <code>waypoints_velocity / 3.6</code>，然后根据 <code>is_back</code> 决定速度是正还是负。</p>
+<p>于是完整轨迹里自然会出现这样的情况：</p>
+<ul>
+<li>前面一段速度为正</li>
+<li>中间某个点之后速度变成负</li>
+<li>再往后可能又变回正</li>
+</ul>
+<p>这条轨迹在“搜索意义”上是完整的，但在“控制意义”上并不适合直接下发。于是 <code>utils::get_reversing_indices()</code> 会扫描整条轨迹，只要相邻两个点的速度符号发生变化，就把这个位置记下来，作为换向边界。</p>
+<p>后面节点层真正发布时，只会取 <code>prev_target_index_</code> 到 <code>target_index_</code> 之间的那一段，也就是当前方向一致的这一截 <code>partial_trajectory_</code>。当车辆停住且靠近当前分段终点之后，<code>updateTargetIndex()</code> 才会把目标切到下一个换向点。</p>
+<p><code>utils::get_partial_trajectory()</code> 里还有两个小处理，很能说明设计意图：</p>
+<ul>
+<li>分段首点的速度会被改成第二个点的速度符号</li>
+<li>分段尾点的速度会被强制设成 0</li>
+</ul>
+<p>首点这样处理，是为了避免切段边界上遗留错误的速度符号；尾点强制为 0，则是为了明确要求车辆在分段结束时停稳，给下一次切段或者下一次规划创造稳定的起点。</p>
+<p>读到这里，再回头看节点里的 <code>is_completed_</code>、<code>target_index_</code>、<code>reversing_indices_</code> 这些成员变量，整个结构就顺了。</p>
+<h2 id="算法层的底座">算法层的底座</h2>
+<p><code>autoware_freespace_planning_algorithms</code> 里最值得先读的是 <code>abstract_algorithm.cpp</code>。</p>
+<p>因为无论选 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span> 还是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>R</mi><mi>T</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">RRT*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∗</span></span></span></span>，真正把这套东西变成“能在车上跑”的，是这层公共底座。</p>
+<h3 id="unknown-在这里直接算障碍">Unknown 在这里直接算障碍</h3>
+<p><code>setMap()</code> 会把 occupancy grid 转成内部的障碍表。逻辑很简单：</p>
+<ul>
+<li><code>cost &lt; 0</code> 算障碍</li>
+<li><code>cost &gt;= obstacle_threshold</code> 算障碍</li>
+</ul>
+<p>这意味着 unknown cell 在这里是不可走的。它不是“暂时未知，先试试”，而是“保守处理，直接封掉”。</p>
+<p>对停车场景来说，这个选择是合理的。</p>
+<h3 id="所有搜索都先回到-costmap-的局部坐标系">所有搜索都先回到 costmap 的局部坐标系</h3>
+<p>节点层传进来的起点和终点，最终都会先通过 <code>global2local()</code> 转到 costmap 的局部坐标系。后面的离散化、碰撞检测、路径搜索，基本都发生在这个局部平面里。</p>
+<p>这样做的好处很实际：你可以把地图、索引、车辆 footprint 这些逻辑都统一在一个平面世界里处理，不必在搜索过程中反复考虑全局坐标变换。</p>
+<h3 id="碰撞检测不是每次都拿车框去扫格子">碰撞检测不是每次都“拿车框去扫格子”</h3>
+<p><code>computeCollisionIndexes()</code> 会针对每个离散朝向，把车辆矩形 footprint 采样成一组栅格索引，提前缓存下来。运行时如果要判断某个 <code>(x, y, theta)</code> 是否碰撞，只需要把这一组 footprint 索引平移到当前位置去查表。</p>
+<p>更妙的是，它前面还加了一层 EDT 剪枝。</p>
+<p><code>computeEDTMap()</code> 会为整张地图算 Euclidean Distance Transform，得到每个栅格到最近障碍物的距离。真正进入 <code>detectCollision()</code> 时，先看这个位置离最近障碍有多远：</p>
+<ul>
+<li>如果远到超过车辆最大外接尺度，那肯定安全，直接返回 <code>false</code></li>
+<li>如果近到小于车辆最小内接尺度，那几乎肯定碰撞，直接返回 <code>true</code></li>
+<li>只有落在两者之间的灰区，才真的去遍历 footprint 覆盖的栅格</li>
+</ul>
+<p>这一段实现看起来不花哨，但非常有效。它把最贵的逐栅格检测留给了真正有必要的情况。</p>
+<p>如果把它压成伪代码，大概就是这样：</p>
+<pre><code class="language-cpp">if (detectBoundaryExit(base_index)) return true;
+
+const auto obstacle_edt = getObstacleEDT(base_index).distance;
+if (obstacle_edt &gt; vehicle.max_dimension) return false;
+if (obstacle_edt &lt; vehicle.min_dimension) return true;
+
+for (auto cell : precomputed_footprint(theta)) {
+  if (is_obstacle(cell + base_index.xy)) return true;
+}
+return false;
+</code></pre>
+<p>很多人看 freespace planning 时，注意力都放在 A* 的启发式或者 RRT* 的采样策略上。但如果没有这层足够快、足够稳定的碰撞底座，上层算法很快就会变成纸上谈兵。</p>
+<h3 id="车辆尺寸在这里会被保守放大">车辆尺寸在这里会被保守放大</h3>
+<p>节点初始化算法对象之前，会先按 <code>vehicle_shape_margin_m</code> 把车长、车宽和后悬做一轮扩张。若你选的是 <code>rrtstar</code>，构造函数里还会再叠一层 <code>rrtstar.margin</code>。</p>
+<p>也就是说，$RRT* $实际使用的碰撞车模，往往会比 $ A* $更保守一点。</p>
+<p>这也是调参时一个很容易忽略的点。有时候你以为是采样参数的问题，结果只是碰撞模型已经被放大得太保守了。</p>
+<h2 id="默认的-hybrid-a">默认的 Hybrid A*</h2>
+<p>默认参数文件 <code>config/freespace_planner.param.yaml</code> 里，<code>planning_algorithm</code> 设的是 <code>astar</code>。所以大多数情况下，真正跑起来的是 <code>AstarSearch</code>。</p>
+<p>Autoware 这里的 $A* $不是平面上的普通 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span>，而是典型的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>b</mi><mi>r</mi><mi>i</mi><mi>d</mi><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">Hybrid A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span>：搜索状态包含 <code>x</code>、<code>y</code> 和离散后的 <code>theta</code>。换句话说，它搜索的是三维状态格，而不是二维占据栅格。</p>
+<p>它的扩展不是“朝八邻域走一步”，而是通过 <code>kinematic_bicycle_model::getPose()</code> 用运动学自行车模型推下一状态。给出当前位姿、轴距、转角和前进或倒车的距离，算法会按车模推演出下一个位姿。</p>
+<p>这意味着，搜索图上的边从一开始就带着车辆非完整约束，而不是最后再拿一条栅格路径去做平滑。</p>
+<p><code>expandNodes()</code> 的结构如下</p>
+<pre><code class="language-cpp">for (steering_index in [-N, ..., +N]) {
+  next_pose = bicycle_model(current_pose, steering, distance);
+  next_index = pose2index(next_pose);
+
+  if (out_of_range || occupied || detectCollision(next_index)) continue;
+  if (long_arc_has_intermediate_collision) continue;
+
+  move_cost = current.gc
+            + length_cost
+            + steering_change_cost
+            + obstacle_cost
+            + near_goal_lateral_cost
+            + direction_switch_cost;
+
+  total_cost = move_cost + estimateCost(next_pose, next_index);
+  update_openlist_if_better(...);
+}
+</code></pre>
+<p>很多文章会把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>b</mi><mi>r</mi><mi>i</mi><mi>d</mi><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">Hybrid A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span> 讲成“多了个朝向维度的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span>”。从源码中我们可以知道，它远不止如此。这里的节点扩展、碰撞检查、代价设计和启发式都已经非常工程化。</p>
+<h3 id="启发式不是一个而是两个下界叠在一起">启发式不是一个，而是两个下界叠在一起</h3>
+<p><code>AstarSearch::estimateCost()</code> 用到两种启发式信息。</p>
+<p>第一种是 <code>col_free_distance_map_</code>。<code>setCollisionFreeDistanceMap()</code> 会从目标位置出发，在二维自由栅格上做一轮类似 Dijkstra 的传播。它忽略朝向，只关心“在不穿障碍物的前提下，从这个位置到目标位置至少还要走多远”。这个量比单纯的欧氏距离更贴近障碍物结构。</p>
+<p>第二种是 Reeds-Shepp distance。它考虑了车辆最小转弯半径、位置和朝向，也允许前进和倒车，因此是一个很自然的 car-like 终端距离下界。</p>
+<p>代码没有在这两个启发式之间二选一，而是取它们的较大值，再乘 <code>distance_heuristic_weight</code>。也就是：</p>
+<pre><code class="language-cpp">double total_cost = col_free_distance_map_[indexToId(index)];
+total_cost = std::max(total_cost, calcReedsSheppDistance(pose, goal_pose_, avg_turning_radius_));
+return distance_heuristic_weight * total_cost;
+</code></pre>
+<p>这个写法很聪明。障碍物形状复杂时，二维传播距离更有用；终端姿态要求更严格时，Reeds-Shepp 下界更有用。取两者较大值，相当于把启发式收紧了。</p>
+<h3 id="它找的不是最短路径而是更像能开的停车机动">它找的不是最短路径，而是更像“能开的停车机动”</h3>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span> 里的 <code>g</code> 代价不只是长度。你还能在代码里看到这些偏好：</p>
+<ul>
+<li>弯得太多要加惩罚</li>
+<li>倒车要加惩罚</li>
+<li>频繁切换方向要加惩罚</li>
+<li>太贴近障碍物要加惩罚</li>
+<li>接近目标时横向没对齐也要加惩罚</li>
+</ul>
+<p>这会让控制不会只追求几何最短，而会更偏向于一条控制起来舒服、离障碍物别太近、终点姿态也更顺的停车机动。</p>
+<h3 id="步长还是自适应的">步长还是自适应的</h3>
+<p>如果打开 <code>adapt_expansion_distance</code>，扩展距离不是固定值，而会综合考虑离目标还有多远、离障碍物有多近，在 <code>min_expansion_dist_</code> 和 <code>max_expansion_dist_</code> 之间自适应调整。</p>
+<p>这带来的直观效果是：空旷地方步子可以大一点，搜索更快；接近障碍物或目标时步子收小一点，结果更细。</p>
+<p>同时代码还会对较长弧段插中间检查点，防止一步跨过去直接漏掉碰撞。</p>
+<h3 id="终点判定也不是必须和-goal_pose-完全重合">终点判定也不是“必须和 goal_pose 完全重合”</h3>
+<p><code>isGoal()</code> 用的是一个带容差的判定方式。只要当前位置落在目标的纵向、横向和朝向容差范围内，就可以认为已经到达。这样做比“必须完全重合”实用得多，也更符合停车问题的实际需求。</p>
+<h2 id="rrt-在这里更像一个备选方案而不是默认主力">RRT* 在这里更像一个备选方案，而不是默认主力</h2>
+<p><code>rrtstar.cpp</code> 和 <code>rrtstar_core.cpp</code> 也很值得看，但它们在整个模块里的位置，我更愿意理解成“另一条设计路径”。</p>
+<p>这套 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>R</mi><mi>T</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">RRT*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∗</span></span></span></span> 不是教科书里纯二维几何版的$ RRT*$。它的状态空间同样包含 <code>x</code>、<code>y</code> 和 <code>yaw</code>，距离度量、插值和连边有效性检查都依赖 <code>ReedsSheppStateSpace</code>。换句话说，它在做的是 car-like configuration space 上的采样规划。</p>
+<p><code>rrtstar_core::RRTStar::extend()</code> 的主干也很干净：</p>
+<pre><code class="language-cpp">x_rand = informed ? sample_in_ellipse() : sample_uniform();
+x_nearest = findNearestNode(x_rand);
+x_new = interpolate_child2parent(x_nearest-&gt;pose, x_rand, mu_);
+
+if (!isValidPath(x_new, x_nearest)) return;
+
+neighbors = findNeighborNodes(x_new);
+best_parent = getBestParentNode(x_new, x_nearest, neighbors);
+node_new = addNewNode(x_new, best_parent);
+
+if (node_reconnect = getReconnectTargetNode(node_new, neighbors)) {
+  reconnect(node_new, node_reconnect);
+}
+
+if (isValidPath(goal, node_new)) {
+  reached_nodes_.push_back(node_new);
+  update_best_goal_parent();
+}
+</code></pre>
+<p>整套流程没有什么隐藏机关，就是采样、延申、找更优父节点、重连、检查能否连到 goal。</p>
+<p>有意思的是它做了几处很工程化的取舍。</p>
+<p>第一，邻域半径没有按论文里那样随样本数收缩，而是固定使用一个尺度。源码注释里也写得很直白：因为这里用的是 Reeds-Shepp 距离，不再是简单欧氏空间，照搬论文里的收缩半径并不好设计。</p>
+<p>第二，<code>neighbor_radius</code> 这个参数在实现里其实一人分饰两角：既影响从最近节点向随机样本推进时迈多大一步，也影响查邻居时的范围。它不只是“邻域大小”，也是树的增长节奏。</p>
+<p>第三，如果已经找到一条可行解，并且开了 <code>use_informed_sampling</code>，采样区域会缩到一个椭圆内，也就是 informed RRT* 的经典做法。不过这里的椭圆是基于二维欧氏下界构造的，而不是直接对 Reeds-Shepp 代价做解析采样。这个取舍在 <code>rrtstar.md</code> 里也有解释：欧氏下界虽然没那么紧，但好采样，而且仍然是 admissible 的。</p>
+<p>从结果上说，我能理解为什么默认配置还是选择 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>b</mi><mi>r</mi><mi>i</mi><mi>d</mi><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">Hybrid A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span>。停车场景里，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span> 的结果更稳定、更规整，也更容易通过代价项把“贴障要少一点”“换向别太频繁”这些偏好写进去。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>R</mi><mi>T</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">RRT*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∗</span></span></span></span> 当然有它的价值，尤其是在更大范围、更开放的空间里，但在这份实现里，它更像一条备用路线。</p>
+<h2 id="读完代码之后我觉得最值得记住的几个事实">读完代码之后，我觉得最值得记住的几个事实</h2>
+<p>第一，<code>freespace_planner</code> 不是单纯的 path solver，而是一个停车机动执行器。它知道什么时候该规划，什么时候该停，什么时候该切下一段。</p>
+<p>第二，算法层的输出不是最终给控制器的输出。搜索层先给出一条完整机动路径，节点层再把它切成若干段单方向轨迹逐段发布。</p>
+<p>第三，replanning 的默认策略是保守的。不是边开边丝滑换轨，而是先停住，再算下一条。</p>
+<p>第四，真正让这套系统能跑起来的，不只是 $A* $或 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>R</mi><mi>R</mi><mi>T</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">RRT*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∗</span></span></span></span> 的大框架，而是 <code>AbstractPlanningAlgorithm</code> 那层很扎实的地图处理、坐标转换、EDT 和碰撞检测。</p>
+<p>第五，默认主力算法仍然是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>b</mi><mi>r</mi><mi>i</mi><mi>d</mi><mi>A</mi><mo>∗</mo></mrow><annotation encoding="application/x-tex">Hybrid A*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">b</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">d</span><span class="mord mathdefault">A</span><span class="mord">∗</span></span></span></span>，而且这份实现已经不是“教科书级别的简化版”，而是一套把车模、启发式、惩罚项和执行需求揉在一起的工程版本。</p>
+<h2 id="如果你准备继续深挖建议按这个顺序读源码">如果你准备继续深挖，建议按这个顺序读源码</h2>
+<p>我自己的阅读顺序是这样的，体验还不错：</p>
+<p>先看 <code>planning/autoware_freespace_planner/src/autoware_freespace_planner/freespace_planner_node.cpp</code>，搞清楚节点层到底在调度什么；再看 <code>utils.cpp</code>，把 reversing index、partial trajectory、stop trajectory 这些细节吃透。接着去看 <code>planning/autoware_freespace_planning_algorithms/src/abstract_algorithm.cpp</code>，理解地图、碰撞和 EDT；最后再进入 <code>astar_search.cpp</code> 和 <code>rrtstar_core.cpp</code>。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%8A%82%E7%82%B9%E5%B1%82%E5%9C%A8%E5%81%9A%E4%BB%80%E4%B9%88">节点层在做什么</a></li>
+<li><a href="#%E4%BD%95%E6%97%B6%E4%BC%9A%E8%A7%A6%E5%8F%91%E9%87%8D%E6%96%B0%E8%A7%84%E5%88%92">何时会触发重新规划</a></li>
+<li><a href="#%E6%9C%BA%E5%8A%A8%E8%B7%AF%E5%BE%84%E5%85%88%E7%AE%97%E5%87%BA%E6%9D%A5%E4%BD%86%E8%BE%93%E5%87%BA%E6%97%B6%E8%A6%81%E6%8C%89%E6%8D%A2%E5%90%91%E7%82%B9%E5%88%87%E5%BC%80">机动路径先算出来，但输出时要按换向点切开</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E5%B1%82%E7%9A%84%E5%BA%95%E5%BA%A7">算法层的底座</a>
+<ul>
+<li><a href="#unknown-%E5%9C%A8%E8%BF%99%E9%87%8C%E7%9B%B4%E6%8E%A5%E7%AE%97%E9%9A%9C%E7%A2%8D">Unknown 在这里直接算障碍</a></li>
+<li><a href="#%E6%89%80%E6%9C%89%E6%90%9C%E7%B4%A2%E9%83%BD%E5%85%88%E5%9B%9E%E5%88%B0-costmap-%E7%9A%84%E5%B1%80%E9%83%A8%E5%9D%90%E6%A0%87%E7%B3%BB">所有搜索都先回到 costmap 的局部坐标系</a></li>
+<li><a href="#%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E4%B8%8D%E6%98%AF%E6%AF%8F%E6%AC%A1%E9%83%BD%E6%8B%BF%E8%BD%A6%E6%A1%86%E5%8E%BB%E6%89%AB%E6%A0%BC%E5%AD%90">碰撞检测不是每次都“拿车框去扫格子”</a></li>
+<li><a href="#%E8%BD%A6%E8%BE%86%E5%B0%BA%E5%AF%B8%E5%9C%A8%E8%BF%99%E9%87%8C%E4%BC%9A%E8%A2%AB%E4%BF%9D%E5%AE%88%E6%94%BE%E5%A4%A7">车辆尺寸在这里会被保守放大</a></li>
+</ul>
+</li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E7%9A%84-hybrid-a">默认的 Hybrid A*</a>
+<ul>
+<li><a href="#%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E8%80%8C%E6%98%AF%E4%B8%A4%E4%B8%AA%E4%B8%8B%E7%95%8C%E5%8F%A0%E5%9C%A8%E4%B8%80%E8%B5%B7">启发式不是一个，而是两个下界叠在一起</a></li>
+<li><a href="#%E5%AE%83%E6%89%BE%E7%9A%84%E4%B8%8D%E6%98%AF%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E8%80%8C%E6%98%AF%E6%9B%B4%E5%83%8F%E8%83%BD%E5%BC%80%E7%9A%84%E5%81%9C%E8%BD%A6%E6%9C%BA%E5%8A%A8">它找的不是最短路径，而是更像“能开的停车机动”</a></li>
+<li><a href="#%E6%AD%A5%E9%95%BF%E8%BF%98%E6%98%AF%E8%87%AA%E9%80%82%E5%BA%94%E7%9A%84">步长还是自适应的</a></li>
+<li><a href="#%E7%BB%88%E7%82%B9%E5%88%A4%E5%AE%9A%E4%B9%9F%E4%B8%8D%E6%98%AF%E5%BF%85%E9%A1%BB%E5%92%8C-goal_pose-%E5%AE%8C%E5%85%A8%E9%87%8D%E5%90%88">终点判定也不是“必须和 goal_pose 完全重合”</a></li>
+</ul>
+</li>
+<li><a href="#rrt-%E5%9C%A8%E8%BF%99%E9%87%8C%E6%9B%B4%E5%83%8F%E4%B8%80%E4%B8%AA%E5%A4%87%E9%80%89%E6%96%B9%E6%A1%88%E8%80%8C%E4%B8%8D%E6%98%AF%E9%BB%98%E8%AE%A4%E4%B8%BB%E5%8A%9B">RRT* 在这里更像一个备选方案，而不是默认主力</a></li>
+<li><a href="#%E8%AF%BB%E5%AE%8C%E4%BB%A3%E7%A0%81%E4%B9%8B%E5%90%8E%E6%88%91%E8%A7%89%E5%BE%97%E6%9C%80%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E5%87%A0%E4%B8%AA%E4%BA%8B%E5%AE%9E">读完代码之后，我觉得最值得记住的几个事实</a></li>
+<li><a href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E5%87%86%E5%A4%87%E7%BB%A7%E7%BB%AD%E6%B7%B1%E6%8C%96%E5%BB%BA%E8%AE%AE%E6%8C%89%E8%BF%99%E4%B8%AA%E9%A1%BA%E5%BA%8F%E8%AF%BB%E6%BA%90%E7%A0%81">如果你准备继续深挖，建议按这个顺序读源码</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

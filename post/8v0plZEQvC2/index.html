@@ -1,0 +1,444 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【4-18】利益相关者管理 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【4-18】利益相关者管理 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+利益相关者是对项目结果有兴趣的人和团体。..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【4-18】利益相关者管理 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+利益相关者是对项目结果有兴趣的人和团体。..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/8v0plZEQvC2/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【4-18】利益相关者管理 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+利益相关者是对项目结果有兴趣的人和团体。...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/8v0plZEQvC2/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【4-18】利益相关者管理
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-11-27 · 16 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>利益相关者是对项目结果有兴趣的人和团体。内部的利益相关者可能包括产品团队、法律团队、工程团队或任何其他业务单位。利益相关者也可能是公司外部的，包括用户、客户、供应商、监管机构等。</p>
+<p>找出项目中关键利益相关者的最佳时机是在尽可能早的时候。最糟糕的时机是在你准备发布时，因为此时可能会出现一个重要的人物，第一次真正审视你的项目，并要求进行重大更改。在这种情况下，提前咨询这个关键利益相关者会更为妥当。</p>
+<h2 id="利益相关者管理的真正目标">利益相关者管理的真正目标</h2>
+<p>作为技术负责人，为什么需要管理利益相关者？为何要识别他们，并定期提供详细更新？是为了与他们保持良好关系吗？这种关系确实很重要，但这并不是主要目标。</p>
+<p>利益相关者管理的重点在于项目成功，通过确保每个人都在同一页面上进行协作。许多项目失败的原因在于参与者对项目的目标和执行方式有不同的看法。这意味着，当工程团队宣布项目完成时，商业利益相关者往往会表示所开发的内容并不符合业务需求。</p>
+<p>利益相关者管理涉及各种方法，以确保对项目有重要发言权的人都知道项目的进展情况、了解新的风险和变更，并且意识到对项目变更的关键应对措施且不持异议。这只是一个帮助项目成功的工具，确保每个人对成功的定义达成共识。</p>
+<p>我参与的一个项目涉及多个团队，项目负责人与所有团队成员每周发送长篇状态更新，并在聊天中发布更新。然而，似乎每个人的方向都不同，真正的重点除了完成分配的工程任务外并不明确。最终，这个项目看起来像个失败，让每个人都感到不快。</p>
+<p>在另一个类似复杂的项目中，目标更为明确，更新内容较少，但项目感觉更为团结。在我们交付时，商业利益相关者送给工程团队一瓶香槟以示感谢。这个项目与之前项目的不同之处在于，项目负责人与产品团队和商业利益相关者进行了更多的沟通。</p>
+<p>良好的利益相关者管理高度依赖协作。在成功的项目中，技术负责人在电子邮件和书面更新方面进行了较少的“正式”利益相关者管理。他们所做的是与业务利益相关者进行面对面和视频交流。而且，技术负责人对业务领域足够熟悉，以至于在工程风险可能意味着需要改变工作范围时，能够明智地寻求业务的意见。”</p>
+<h2 id="利益相关者类型">利益相关者类型</h2>
+<p>对于大多数工程项目，利益相关者通常可分为以下几类：</p>
+<ul>
+<li><strong>客户：</strong> 项目产出的用户。对于构建B2C（面向消费者）产品的工程团队来说，这些是最终用户。对于B2B（企业对企业）项目，他们是产品的用户。对于内部项目——通常由平台团队构建——这些是内部团队。</li>
+<li><strong>业务利益相关者：</strong> 公司内部的非技术组，与项目有直接利益关系的部门，如法律、市场营销、客户支持、财务、运营等。我认为良好的启动会议是必要的，以便工程团队明确所有业务利益相关者，这在“项目管理”部分有详细讨论。为什么？如果某位业务利益相关者没有参与进来，可能会导致项目延误。</li>
+<li><strong>外部利益相关者：</strong> 对项目感兴趣的其他公司的团队，如供应商，或合作伙伴组织中的其他工程团队。</li>
+<li><strong>产品利益相关者：</strong> 与产品经理紧密配合的产品经理、设计师、数据科学家和其他技术团队。大多数与业务利益相关者和工程团队合作。</li>
+<li><strong>工程利益相关者：</strong> 内部工程团队，是项目的上下游依赖关系，稍后会详细说明。</li>
+</ul>
+<h3 id="按依赖类型对利益相关者进行分类">按依赖类型对利益相关者进行分类</h3>
+<p>将利益相关者分入以下类别可以成为一个有用的思维模型。可以将其想象成一条流动的河流，各个团队在上下游不同位置构建坝。<br>
+上游依赖是您所依赖的团队，他们必须完成特定任务，以便您的团队可以开展工作，从而推动项目的完成。<br>
+下游依赖是依赖您工作的团队。下游团队是在您的团队之后，他们的工作必须在您的工作完成之后才能继续进行。</p>
+<p>战略利益相关者是您希望保持沟通的人或团队，他们通常可以帮助打通上游依赖。</p>
+<p>这种分类有助于明确在特定情况下与哪些利益相关者沟通。例如：</p>
+<ul>
+<li>当对您的API进行更改时，应将此更改通知依赖于该API的下游依赖。</li>
+<li>当您需要使用另一个团队拥有的API时，他们就是上游依赖。请联系他们并确认该API不会有重大更改，并且他们知道您正在基于此构建新功能。</li>
+<li>一位国家市场经理可能对您的项目特别感兴趣，因为他们希望在功能推出时启动一项活动。他们是战略利益相关者，因此应将此人加入更新邮件中，并在发生任何延迟时保持他们的知情。</li>
+</ul>
+<h2 id="找出你的利益相关者">找出你的利益相关者</h2>
+<p>作为一名技术负责人，了解你的主要利益相关者是至关重要的，因为不知情可能会在项目中引发浪费和延误。我有过这样的亲身经历。在一个项目中，我的团队忘记与一个“我们需要修改其服务的工程团队”分享工程计划——请求反馈（RFC）。当我们开始进行这一修改时，该工程团队因我们的做法和他们的系统不相符而阻止了此项工作。最终我们找到了解决方案，但由于不知道该团队是利益相关者，项目因此延误了两周。</p>
+<p>在另一个案例中，我看到一个工程团队为了一个项目工作了一个月，结果法律部门出乎意料地介入并阻止了项目。尽管法律部门本应参与，但他们并没有被告知。他们审查了提议的变更，认为该项目风险过高，不愿意改变这一判断，因此项目被取消。如果工程团队能早些让法律团队参与，他们本可以避免很多不必要的工作。</p>
+<p>那么，如何找出你的利益相关者呢？这个问题在拥有数十个甚至数百个工程团队以及大量产品/设计/数据和业务人员的大型公司中尤其重要。有两种方法可以找到利益相关者：一种是艰难的方式，如上所述，另一种是简单的方式：</p>
+<p><strong>直接询问！</strong> 咨询确定的是利益相关者的人，了解还有谁可能是利益相关者。例如：</p>
+<ul>
+<li>询问你的产品对应者哪些业务同事可能对项目感兴趣。</li>
+<li>与数据科学人员交谈，因为他们通常会与其他数据科学家协作，以确保实验不重叠。</li>
+<li>向有经验的技术负责人询问他们在之前的项目中识别的利益相关者团队。是否有其中一些团队也可能是你的利益相关者？</li>
+</ul>
+<p>查看架构变更和代码。通过了解哪些代码部分和服务将在你的项目中被修改，通常可以找到工程利益相关者。联系负责这些代码和服务的团队。</p>
+<p>在修改服务时，上游和下游利益相关者的概念非常有用。因为常见的冲突是某个工程团队修改服务，导致下游用户受到影响。通过及早识别下游用户作为关键利益相关者，可以避免这种情况。这样工程团队可以更早地获得反馈，并修改计划，以免破坏该团队的工作。</p>
+<p><strong>识别“常见利益相关者”。</strong> 有一些团队可以安全地假设对你的项目感兴趣。在中型和大型公司中，这些团队通常包括：</p>
+<ul>
+<li>工程</li>
+<li>产品</li>
+<li>设计/用户体验</li>
+<li>数据科学</li>
+<li>安全和合规</li>
+<li>基础设施、运维、服务可靠性</li>
+<li>法律</li>
+<li>市场/增长/用户获取</li>
+<li>客户支持/帮助台</li>
+<li>运营</li>
+<li>销售/业务拓展</li>
+<li>财务<br>
+列出你公司中常见的利益相关者，然后确定他们是否对你的项目感兴趣。</li>
+</ul>
+<h2 id="保持沟通畅通">保持沟通畅通</h2>
+<p>“利益相关者管理”是一个华丽的术语，指的是确保所有需要了解您团队正在进行的事情的人都了解这些信息。糟糕的利益相关者管理会让关键人物和团队错失沟通，导致挫折、投诉以及项目延误。一旦您识别了您的利益相关者，确保他们不会对您的团队所做的决策感到意外是非常重要的。 由于通常有多个利益相关者，逐一沟通实际上并不有效，以小组形式更新利益相关者会更高效。</p>
+<p>我观察到有三种常见方式来保持利益相关者的更新：</p>
+<ol>
+<li>会议：定期或临时会议。在会议中，项目负责人分享进展、已做出的决策、遇到的阻碍，并邀请利益相关者提供意见。</li>
+<li>非同步更新：例如电子邮件或聊天消息。内容与会议上的一致，但节省时间。缺点是利益相关者可能会错过消息，且在会议中更容易集中注意力。</li>
+<li>混合形式。当预期利益相关者有重要意见时，可以组织会议。里程碑演示和重大项目变更可能需要这种方式。否则，建议使用非同步沟通。</li>
+</ol>
+<p>了解您组织的文化是非常重要的；技术负责人和产品团队是如何向利益相关者更新信息的？利益相关者是否偏好某种格式的更新？如果是这样，那么在您负责的前几个项目中使用熟悉的格式可能会更为合理。</p>
+<p>关于项目进展的主动书面沟通总是很有用。我见过的一种有效方法是定期发送更新电子邮件，内容包括进展、风险及其缓解措施、时间表变更以及对截止日期的信心。以下是一个更新电子邮件的示例：</p>
+<p>电子邮件的一大优点是它充当了“主”状态更新，并在与利益相关者的会议及其他沟通中作为有用的参考。对于那些要求多或对项目发表很多意见的利益相关者，会议可能是必要的。然而，作为技术负责人，尽量让利益相关者将定期状态更新电子邮件视为‘真实来源’，将使确保所有利益相关者在同一页面上变得更加容易。</p>
+<h2 id="问题利益相关者">问题利益相关者</h2>
+<p>作为项目负责人，您将遇到问题利益相关者。那么，“问题”到底指的是什么呢？这取决于他们是下游、上游还是战略利益相关者：</p>
+<ul>
+<li>上游问题利益相关者是您依赖的团队或个人，但是他们却被视为不可靠，或者在“合作”或“信任”上有问题。</li>
+<li>下游问题利益相关者通常会不断询问您何时准备好，并试图给您和您的团队施加压力。</li>
+<li>战略问题利益相关者则会不断寻求更新，或者对新出现的挑战进行指责。</li>
+</ul>
+<p>在每种情况下，最大的问题往往是沟通和信任。以下是一些适用于上述所有群体的改进方法。</p>
+<ul>
+<li>
+<p>面对面沟通<br>
+与其通过聊天或电子邮件沟通，不如考虑与问题利益相关者面对面交谈。可以进行视频通话，或在工作场所见面，阐明您的观察结果。讨论可以改变什么以改善情况。例如，如果一个上游利益相关者不断询问您的团队是否可以更早交付一个里程碑，请向他们说明目前的进展和剩余的工作，反馈被催促并没有帮助，并达成更好的合作协议。</p>
+</li>
+<li>
+<p>保持透明，进行教育<br>
+对于上游利益相关者和战略利益相关者——这两者通常都很不耐烦——解释需要做什么、原因，以及您目前的进展。面对面的会议是最容易做到这一点的方式。更新电子邮件是另一个保持透明和提供教育的方式。定期、诚实的进展更新有助于缓解紧张情绪，这也是我钟爱这种做法的原因之一。如果您撰写这些更新，有很大可能性只需将问题利益相关者添加到邮件列表中即可解决问题。</p>
+</li>
+<li>
+<p>请求支持<br>
+有时，直接沟通和更透明的做法并不能奏效。如果您觉得无计可施，请寻求管理链或项目领导链的帮助。向拥有比您更高权限的人请求帮助和建议。</p>
+</li>
+</ul>
+<h2 id="学习与利益相关者的互动">学习与利益相关者的互动</h2>
+<p>如果你能够妥善管理利益相关者，就能减少因某个未被告知的利益相关者而产生的意外延误风险。然而，如果你只专注于管理利益相关者，你将错过与项目相关的人的一个重要环节：向他们学习！</p>
+<p>作为技术负责人，你可能会与不同团队和各种学科的利益相关者进行互动。这是一个绝佳的学习机会。探讨他们的专业领域、学科以及他们在业务中的角色。如我们在第五部分中所述，了解业务是高级员工的基本要求。技术负责人有机会通过日常与利益相关者的合作，在工作中学习。</p>
+<p>以下是一些与利益相关者合作并向他们学习的有效方法：</p>
+<ul>
+<li>询问他们的业务职责。他们负责什么，他们的领域如何为公司做出贡献，他们团队的目标是什么，最近有取得哪些胜利？</li>
+<li>询问他们所面临的挑战。他们遇到的困难问题是什么，即使与正在合作的项目无关？从分享他们最大挑战的人那儿可以学到很多。</li>
+<li>询问他们在合作项目之外的工作。他们参与了哪些其他项目？他们最后一次贡献的产品是什么？</li>
+<li>进行闲聊。更深入地了解他们作为个人，特别是在长时间的合作中。他们在加入公司之前做了什么？他们的爱好是什么？你们在工作或生活中是否有共同的兴趣？</li>
+<li>考虑一起喝咖啡或吃午餐。在某些情况下，利用午餐的机会来交流，了解更多关于他们的事可以非常简单。</li>
+<li>询问是否可以偶尔旁听他们的团队会议。作为技术负责人，旁听其他团队的会议有两个主要好处。首先，你可以获得如何主持此类会议的新想法，并观察会议中的动态。其次，你可能会听到许多你不完全理解的内容。这是一个了解其他团队的工作、意义以及扩展知识和理解的机会。</li>
+</ul>
+<p>向利益相关者学习的好处在于，这能让你在工作中更好地处理与他们的关系。当你理解他们的工作、领域和挑战时，更容易产生共鸣，并以他们能理解的方式表达你的项目的细节。</p>
+<p>在面对面交流中，向利益相关者学习要比在远程环境中容易得多。在远程工作的情况下，说清楚你的意图并安排更集中的会议是非常重要的。以下是一位软件工程师和工程经理约翰·克里凯特的有效做法：</p>
+<p>如果你在远程工作，可以给他们发送邀请。我发的内容是这样的：</p>
+<p>‘嗨，X——我是约翰，我最近加入了[机构]，很希望能见到你，了解更多关于你所在业务领域的情况。如果你有空，我非常感谢你抽出15分钟的时间。 我已经在你的日历上找了一个空档，但如果不方便，请提出其他建议。非常感谢，——约翰’</p>
+<p>可以适当添加业务领域或项目名称等细节。到目前为止，没有人拒绝过我！大多数人也乐于接受这个小聚会的延时或提供更长的时间。</p>
+<p>我在通话时确保按时到达，并准备好一些问题来帮助推进谈话。通常这些问题是：</p>
+<ul>
+<li>你的团队在做什么？</li>
+<li>你目前最大的挑战是什么？</li>
+<li>我或我加入的团队能帮到你什么？”</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85%E7%AE%A1%E7%90%86%E7%9A%84%E7%9C%9F%E6%AD%A3%E7%9B%AE%E6%A0%87">利益相关者管理的真正目标</a></li>
+<li><a href="#%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85%E7%B1%BB%E5%9E%8B">利益相关者类型</a>
+<ul>
+<li><a href="#%E6%8C%89%E4%BE%9D%E8%B5%96%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB">按依赖类型对利益相关者进行分类</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%BE%E5%87%BA%E4%BD%A0%E7%9A%84%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85">找出你的利益相关者</a></li>
+<li><a href="#%E4%BF%9D%E6%8C%81%E6%B2%9F%E9%80%9A%E7%95%85%E9%80%9A">保持沟通畅通</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85">问题利益相关者</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85%E7%9A%84%E4%BA%92%E5%8A%A8">学习与利益相关者的互动</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

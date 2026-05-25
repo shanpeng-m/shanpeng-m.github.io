@@ -1,0 +1,393 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件设计的哲学【5】信息隐藏（以及泄露） - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件设计的哲学【5】信息隐藏（以及泄露） - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="5.1 信息隐藏
+实现深模块最重要的技术之一是信息隐藏（information hiding）。这一技术最早由 David Parnas 在一篇经典论文中提出。其基本思想是：每个模块应封装少量知识，这些知识代表设计决策。这些知识嵌入在模块的..." />
+  <meta property="og:title" content="读书笔记-软件设计的哲学【5】信息隐藏（以及泄露） - 小马的世界">
+  <meta property="og:description" content="5.1 信息隐藏
+实现深模块最重要的技术之一是信息隐藏（information hiding）。这一技术最早由 David Parnas 在一篇经典论文中提出。其基本思想是：每个模块应封装少量知识，这些知识代表设计决策。这些知识嵌入在模块的..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/IrigO-7vK2/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件设计的哲学【5】信息隐藏（以及泄露） - 小马的世界">
+  <meta name="twitter:description" content="5.1 信息隐藏
+实现深模块最重要的技术之一是信息隐藏（information hiding）。这一技术最早由 David Parnas 在一篇经典论文中提出。其基本思想是：每个模块应封装少量知识，这些知识代表设计决策。这些知识嵌入在模块的...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/IrigO-7vK2/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件设计的哲学【5】信息隐藏（以及泄露）
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-02-15 · 17 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="51-信息隐藏">5.1 信息隐藏</h2>
+<p>实现深模块最重要的技术之一是信息隐藏（information hiding）。这一技术最早由 David Parnas 在一篇经典论文中提出。其基本思想是：每个模块应封装少量知识，这些知识代表设计决策。这些知识嵌入在模块的实现中，但不会出现在其接口中，因此对其他模块不可见。</p>
+<p>隐藏在模块中的信息通常包括关于如何实现某种机制的细节。以下是一些可能被隐藏在模块内部的信息示例：</p>
+<ul>
+<li>如何在 B 树中存储信息，以及如何高效地访问它。</li>
+<li>如何识别文件中每个逻辑块所对应的物理磁盘块。</li>
+<li>如何实现 TCP 网络协议。</li>
+<li>如何在多核处理器上调度线程。</li>
+<li>如何解析 JSON 文档。</li>
+</ul>
+<p>被隐藏的信息包括与该机制相关的数据结构和算法。它也可以包括更低层次的细节，例如页大小，还可以包括更高层次、更抽象的概念，例如一种假设——大多数文件都很小。</p>
+<p>信息隐藏通过两种方式降低复杂性。首先，它简化了模块的接口。接口反映的是模块功能的一个更简单、更抽象的视图，并隐藏了细节；这减少了使用该模块的开发者的认知负担。例如，使用 B 树类的开发者无需担心树中节点的理想分支因子是多少，或者如何保持树的平衡。其次，信息隐藏使系统更容易演进。如果某条信息被隐藏，那么在包含该信息的模块之外，就不会有对该信息的依赖，因此与该信息相关的设计变更只会影响那个模块。例如，如果 TCP 协议发生变化（例如引入一种新的拥塞控制机制），那么需要修改的是协议的实现，但使用 TCP 发送和接收数据的更高层代码不需要做任何修改。</p>
+<p>在设计新模块时，你应该仔细思考哪些信息可以隐藏在该模块中。如果你能够隐藏更多信息，你也应该能够简化模块的接口，而这会使模块更“深”。</p>
+<p>注意：通过在类中将变量和方法声明为 private 来隐藏它们，并不等同于信息隐藏。私有元素确实有助于实现信息隐藏，因为它们使这些项无法从类外部直接访问。然而，关于这些私有项的信息仍然可能通过公共方法（例如 getter 和 setter 方法）暴露出来。一旦发生这种情况，这些变量的性质和用法就和它们是 public 时一样暴露。</p>
+<p>信息隐藏的最佳形式是信息完全隐藏在模块内部，使其对模块的使用者来说既无关也不可见。不过，部分信息隐藏也有价值。例如，如果某个功能或某条信息只被类的一小部分使用者所需要，并且通过单独的方法访问，因此在最常见的使用场景中不可见，那么该信息在很大程度上是被隐藏的。这样的信息比对类的每一个使用者都可见的信息所产生的依赖更少。</p>
+<h2 id="52-信息泄露">5.2 信息泄露</h2>
+<p>信息隐藏的对立面是信息泄露（information leakage）。当某个设计决策体现在多个模块中时，就会发生信息泄露。这会在模块之间产生依赖关系：对该设计决策的任何修改都需要对所有相关模块进行更改。如果某条信息体现在某个模块的接口中，那么根据定义，它已经被泄露；因此，更简单的接口往往与更好的信息隐藏相关。然而，即使某条信息没有出现在模块的接口中，也可能发生信息泄露。假设两个类都了解某种特定文件格式（例如一个类读取该格式的文件，另一个类写入该格式的文件）。即使这两个类都没有在其接口中暴露该信息，它们仍然依赖于该文件格式：如果格式发生变化，这两个类都需要被修改。像这样的“后门式”泄露比通过接口的泄露更为隐蔽，也更为有害，因为它不明显。</p>
+<p>信息泄露是软件设计中最重要的危险信号之一。作为软件设计者，你可以学习的最佳技能之一，就是对信息泄露保持高度敏感。如果你在类之间发现信息泄露，问问自己：“我如何重组这些类，使这条特定的知识只影响一个类？”如果受影响的类相对较小，并且与被泄露的信息紧密相关，那么将它们合并为一个类可能是合理的。另一种可能的方法是将该信息从所有受影响的类中抽离出来，并创建一个新类来封装这条信息。不过，只有在你能够找到一个简单的接口来抽象细节时，这种方法才会有效；如果新类通过接口暴露了大部分知识，那么它就不会提供太多价值（你只是用通过接口的泄露取代了后门式泄露）。</p>
+<h2 id="53-时间分解">5.3 时间分解</h2>
+<p>信息泄露的一个常见原因是我称之为“时间分解”（temporal decomposition）的设计风格。在时间分解中，系统的结构对应于操作发生的时间顺序。考虑一个应用程序，它以某种特定顺序特定格式读取文件，修改文件内容，然后再次写出文件。采用时间分解（temporal decomposition）的方式，这个应用可能会被拆分为三个类：一个负责读取文件，另一个负责执行修改，第三个负责写出新版本。读取文件和写文件这两个步骤都需要了解文件格式，因此会导致信息泄露。解决办法是将读写文件的核心机制合并到一个类中。这个类将在应用的读取和写入阶段都会被使用。</p>
+<p>人们很容易陷入时间分解的陷阱，因为在编写代码时，操作必须发生的顺序往往会占据你的注意力。然而，大多数设计决策在应用生命周期的不同时间都会体现出来；因此，时间分解往往会导致信息泄露。<br>
+顺序通常确实很重要，因此它会在应用中的某个地方得到体现。然而，除非模块结构本身符合信息隐藏的原则（例如不同阶段使用的是完全不同的信息），否则不应在模块结构中体现这种顺序。在设计模块时，应关注完成每项任务所需要的知识，而不是任务发生的顺序。</p>
+<blockquote>
+<p><strong>信息泄露</strong></p>
+<p>当相同的知识在多个地方被使用时，就会发生信息泄露，例如两个不同的类都理解某种特定类型文件的格式。</p>
+</blockquote>
+<h2 id="54-示例http-服务器">5.4 示例：HTTP 服务器</h2>
+<p>为了说明信息隐藏中的问题，我们来看一个在软件设计课程中，由学生实现 HTTP 协议时所做的设计决策。观察他们做得好的地方以及出现问题的地方都是有帮助的。<br>
+HTTP 是 Web 浏览器用来与 Web 服务器通信的一种机制。当用户在 Web 浏览器中点击链接或提交表单时，浏览器会使用 HTTP 通过网络向 Web 服务器发送请求。一旦服务器处理了该请求，它会向浏览器发送响应；响应通常包含一个新的网页用于显示。HTTP 协议规定了请求和响应的格式，这两者都是以文本形式表示的。图 5.1 展示了一个描述表单提交的示例 HTTP 请求。课程中的学生被要求实现一个或多个类，使 Web 服务器能够方便地接收传入的 HTTP 请求并发送响应。</p>
+<blockquote>
+<p><strong>时间分解</strong></p>
+<p>在时间分解中，执行顺序会反映在代码结构中：在不同时间发生的操作被放在不同的方法或类中。如果相同的知识在执行的不同阶段被使用，它就会被编码到多个地方，从而导致信息泄露。</p>
+</blockquote>
+<pre><code>Method  URL  Parameter(s)  Protocol Version
+POST /comments/create?photo_id=246 HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html, /
+Accept-Language: en-us
+Accept-Charset: ISO-8859-1, utf-8
+Content-Length: 40
+Headers
+comment=What+a+cute+baby%21&amp;priority=low  Body
+</code></pre>
+<p>图 5.1：HTTP 协议中的一个 POST 请求由通过 TCP 套接字发送的文本组成。每个请求包含一个初始行、一组以空行结束的头部，以及一个可选的主体。初始行包含请求类型（POST 用于提交表单数据）、表示某个操作的 URL（/comments/create）以及可选参数（photo_id 的值为 246），以及发送方使用的 HTTP 协议版本。每一行头部都由一个名称（例如 Content-Length）及其对应的值组成。在这个请求中，主体包含额外的参数（comment 和 priority）。</p>
+<p>解析代码在两个类中被重复实现。这种方法还为调用者带来了额外的复杂性：调用者必须按照特定顺序调用两个不同类中的两个方法，才能接收一个请求。</p>
+<p>由于这两个类共享了大量信息，更好的做法是将它们合并为一个类，既负责读取请求，也负责解析请求。这提供了更好的信息隐藏，因为它将关于请求格式的所有知识隔离在一个类中，同时也为调用者提供了更简单的接口（只需调用一个方法）。</p>
+<p>这个例子说明了软件设计中的一个普遍主题：通过让类稍微大一点，往往可以改进信息隐藏。这样做的一个原因是将与某项特定能力相关的所有代码（例如解析 HTTP 请求）集中到一起，使得生成的类包含与该能力相关的全部内容。增加类大小的第二个原因是提升接口的抽象层次；例如，与其为计算的三个步骤分别提供三个独立的方法，不如提供一个执行完整计算的单一方法。这可以带来更简单的接口。上述两个好处在前文关于 HTTP 请求的例子中都适用：合并类将所有与解析 HTTP 请求相关的代码集中在一起，并将两个对外可见的方法替换为一个。合并后的类比原来的类更“深”。</p>
+<p>当然，将类做得更大这一概念也可能被走得过头（例如为整个应用只使用一个类）。第 9 章将讨论在什么条件下将代码拆分为多个更小的类才是合理的。</p>
+<h2 id="56-示例http-参数处理">5.6 示例：HTTP 参数处理</h2>
+<p>在服务器接收到一个 HTTP 请求之后，服务器需要从请求中访问某些信息。处理图 5.1 中请求的代码可能需要知道 photo_id 参数的值。参数可以在请求的第一行中指定（图 5.1 中的 photo_id），或者有时在主体中指定（图 5.1 中的 comment 和 priority）。每个参数都有一个名称和一个值。参数的值使用一种称为 URL 编码的特殊编码方式；例如，在图 5.1 中，“+”用于表示空格字符，“%21”用于表示“!”。为了处理请求，服务器需要获取参数的值，并将其转换为未编码的形式。</p>
+<p>大多数学生项目在参数处理方面做出了两个不错的选择。首先，他们认识到服务器应用并不关心是否在请求的头部行还是请求体中指定参数，因此他们将这种区别对调用者隐藏，并将来自两个位置的参数合并在一起。其次，他们隐藏了 URL 编码的知识：HTTP 解析器在将参数值返回给 Web 服务器之前会对其进行解码，因此图 5.1 中的 comment 参数的值将以 “What a cute baby!” 的形式返回，而不是 “What+a+cute+baby%21”。在这两种情况下，信息隐藏为使用 HTTP 模块的代码提供了更简单的 API。</p>
+<p>然而，大多数学生使用的参数返回接口过于“浅”，这导致了信息隐藏机会的丧失。大多数项目使用一个类型为 HTTPRequest 的对象来保存解析后的 HTTP 请求，并且 HTTPRequest 类具有一个如下所示的单一方法来返回参数：</p>
+<pre><code class="language-java">public Map&lt;String, String&gt; getParams() {
+    return this.params;
+}
+</code></pre>
+<p>该方法不是返回单个参数，而是返回用于内部存储所有参数的 Map 的引用。这个方法是浅的，并且暴露了 HTTPRequest 类用于存储参数的内部表示。对该表示的任何更改都会导致接口的改变，从而需要修改所有调用者。当实现被修改时，变化通常涉及关键数据结构表示的改变（例如为了提高性能）。因此，尽可能避免暴露内部数据结构是很重要的。这种做法还会给调用者带来更多工作：调用者必须首先调用 getParams，然后再调用另一个方法从 Map 中获取特定参数。最后，调用者还必须意识到他们不应修改 getParams 返回的 Map，因为那会影响 HTTPRequest 的内部状态。</p>
+<p>下面是一个更好的参数获取接口：</p>
+<pre><code class="language-java">public String getParameter(String name) { ... }
+public int getIntParameter(String name) { ... }
+</code></pre>
+<p>getParameter 返回一个字符串形式的参数值。与上面的 getParams 相比，它提供了一个稍微更“深”的接口；更重要的是，它隐藏了参数的内部表示。getIntParameter 将 HTTP 请求中字符串形式的参数值转换为整数（例如图 5.1 中的 photo_id 参数）。这使调用者不必单独进行字符串到整数的转换，并且将该机制对调用者隐藏。如果需要，还可以为其他数据类型定义额外的方法，例如 getDoubleParameter。（如果所请求的参数不存在，或者无法转换为所需类型，这些方法都会抛出异常；上面的代码中省略了异常声明。）</p>
+<h2 id="57-示例http-响应中的默认值">5.7 示例：HTTP 响应中的默认值</h2>
+<p>HTTP 项目还需要提供对生成 HTTP 响应的支持。学生在这一方面最常见的错误是默认值设置不当。每个 HTTP 响应必须指定一个 HTTP 协议版本；有一个团队要求调用者在创建响应对象时显式指定该版本。然而，响应版本必须与请求对象中的版本相对应，并且在发送响应时请求对象已经作为参数传入（它指示响应应发送到哪里）。因此，让 HTTP 类自动提供响应版本更为合理。调用者不太可能知道应指定哪个版本，如果调用者指定了一个值，很可能会导致 HTTP 库与调用者之间的信息泄露。HTTP 响应还包含一个 Date 头部，用于指定响应发送的时间；HTTP 库也应为此提供一个合理的默认值。</p>
+<p>默认值说明了一个原则：接口的设计应使常见情况尽可能简单。默认值也是部分信息隐藏的一个例子：在正常情况下，调用者不需要知道默认项的存在。在少数需要覆盖默认值的情况下，调用者才需要了解该值，并可以调用一个特殊方法来修改它。</p>
+<p>在可能的情况下，类应在未被显式要求时就“做正确的事情”。默认值就是一个例子。第 26 页的 Java I/O 示例以一种消极的方式说明了这一点。文件 I/O 中的缓冲是如此普遍且有益，以至于没有人应该必须显式请求它，甚至无需意识到它的存在；I/O 类应自动做正确的事情并自动提供它。最好的特性是那些你甚至不知道它们存在就已经得到的特性。</p>
+<blockquote>
+<p><strong>过度暴露（Overexposure）</strong></p>
+<p>如果某个常用功能的 API 迫使用户了解其他很少使用的功能，那么这会增加那些不需要这些罕见功能的用户的认知负担。</p>
+</blockquote>
+<h2 id="58-类内部的信息隐藏">5.8 类内部的信息隐藏</h2>
+<p>本章中的示例主要关注类的对外可见 API 层面的信息隐藏，但信息隐藏也可以应用于系统的其他层级，例如类内部。尝试在类内部设计私有方法，使每个方法封装某些信息或能力，并将其对类的其他部分隐藏。此外，尽量减少每个实例变量被使用的地方数量。有些变量可能需要在类中广泛访问，但其他变量可能只在少数几个地方使用；如果你能够减少某个变量被使用的位置数量，你就可以消除类内部的依赖关系并降低其复杂性。</p>
+<h2 id="59-走得太远">5.9 走得太远</h2>
+<p>信息隐藏只有在被隐藏的信息在模块外部不需要时才有意义。如果模块外部需要该信息，那么你就不能隐藏它。假设某个模块的性能受某些配置参数影响，并且该模块的不同使用方式需要不同的参数设置。在这种情况下，必须在模块接口中暴露这些参数，以便能够适当地进行调优。作为软件设计者，你的目标应是最小化模块外部所需的信息量；例如，如果一个模块可以自动调整其配置，那就比暴露配置参数更好。但重要的是要识别哪些信息在模块外部是需要的，并确保将其暴露出来。</p>
+<h2 id="510-结论">5.10 结论</h2>
+<p>信息隐藏与深模块密切相关。如果一个模块隐藏了大量信息，这往往会增加该模块所提供的功能，同时减少其接口。这会使模块更“深”。相反，如果一个模块没有隐藏太多信息，那么它要么没有太多功能，要么具有复杂的接口；无论哪种情况，该模块都是“浅”的。</p>
+<p>在将系统分解为模块时，尽量不要受到运行时操作顺序的影响；那会将你引向时间分解的道路，从而导致信息泄露和浅模块。相反，应思考完成应用任务所需的不同知识片段，并设计每个模块来封装其中一个或少数几个知识片段。这将产生一个具有深模块的清晰而简洁的设计。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#51-%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F">5.1 信息隐藏</a></li>
+<li><a href="#52-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2">5.2 信息泄露</a></li>
+<li><a href="#53-%E6%97%B6%E9%97%B4%E5%88%86%E8%A7%A3">5.3 时间分解</a></li>
+<li><a href="#54-%E7%A4%BA%E4%BE%8Bhttp-%E6%9C%8D%E5%8A%A1%E5%99%A8">5.4 示例：HTTP 服务器</a></li>
+<li><a href="#56-%E7%A4%BA%E4%BE%8Bhttp-%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86">5.6 示例：HTTP 参数处理</a></li>
+<li><a href="#57-%E7%A4%BA%E4%BE%8Bhttp-%E5%93%8D%E5%BA%94%E4%B8%AD%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC">5.7 示例：HTTP 响应中的默认值</a></li>
+<li><a href="#58-%E7%B1%BB%E5%86%85%E9%83%A8%E7%9A%84%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F">5.8 类内部的信息隐藏</a></li>
+<li><a href="#59-%E8%B5%B0%E5%BE%97%E5%A4%AA%E8%BF%9C">5.9 走得太远</a></li>
+<li><a href="#510-%E7%BB%93%E8%AE%BA">5.10 结论</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

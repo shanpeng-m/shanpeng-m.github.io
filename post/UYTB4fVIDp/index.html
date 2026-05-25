@@ -1,0 +1,511 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件设计的哲学【7】不同层，不同抽象 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件设计的哲学【7】不同层，不同抽象 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="软件系统是由多层组成的，高层使用低层提供的能力。
+在一个设计良好的系统中，每一层都会提供一种不同于其上下层的抽象；如果你跟踪一个操作在层之间通过方法调用不断向上、向下流动的过程，你会发现抽象会随着每一次方法调用而发生变化。
+例如：
+
+
+在文..." />
+  <meta property="og:title" content="读书笔记-软件设计的哲学【7】不同层，不同抽象 - 小马的世界">
+  <meta property="og:description" content="软件系统是由多层组成的，高层使用低层提供的能力。
+在一个设计良好的系统中，每一层都会提供一种不同于其上下层的抽象；如果你跟踪一个操作在层之间通过方法调用不断向上、向下流动的过程，你会发现抽象会随着每一次方法调用而发生变化。
+例如：
+
+
+在文..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/UYTB4fVIDp/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件设计的哲学【7】不同层，不同抽象 - 小马的世界">
+  <meta name="twitter:description" content="软件系统是由多层组成的，高层使用低层提供的能力。
+在一个设计良好的系统中，每一层都会提供一种不同于其上下层的抽象；如果你跟踪一个操作在层之间通过方法调用不断向上、向下流动的过程，你会发现抽象会随着每一次方法调用而发生变化。
+例如：
+
+
+在文...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/UYTB4fVIDp/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件设计的哲学【7】不同层，不同抽象
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-05-26 · 16 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>软件系统是由多层组成的，高层使用低层提供的能力。</p>
+<p>在一个设计良好的系统中，每一层都会提供一种不同于其上下层的抽象；如果你跟踪一个操作在层之间通过方法调用不断向上、向下流动的过程，你会发现抽象会随着每一次方法调用而发生变化。</p>
+<p>例如：</p>
+<ul>
+<li>
+<p>在文件系统中，最上层实现的是“文件”这一抽象。文件由一个可变长度的字节数组构成，可以通过读取和写入不同长度的字节区间来更新。文件系统中的下一层实现的是内存中的固定大小磁盘块缓存；调用者可以假设，频繁使用的 block 会保留在内存中，从而能够被快速访问。最底层则由设备驱动组成，它们负责在二级存储设备与内存之间搬运 block。</p>
+</li>
+<li>
+<p>在 TCP 这样的网络传输协议中，最上层提供的抽象是：一种能够可靠地把字节流从一台机器传送到另一台机器的机制。这一层建立在更低层之上，而低层负责在机器之间以“尽力而为（best-effort）”的方式传输有大小限制的数据包：大多数 packet 都能够成功送达，但有些 packet 可能会丢失，或者乱序到达。</p>
+</li>
+</ul>
+<p>如果系统中相邻层拥有相似的抽象，那么这是一个危险信号，说明类的拆分方式可能存在问题。</p>
+<p>本章将讨论：</p>
+<ul>
+<li>这种情况是如何出现的</li>
+<li>它会带来哪些问题</li>
+<li>如何通过重构来消除这些问题</li>
+</ul>
+<h2 id="71-pass-through-方法">7.1 Pass-through 方法</h2>
+<p>当相邻层具有相似抽象时，这个问题通常会表现为“pass-through method”的形式。</p>
+<p>所谓 pass-through method，是指一个方法除了调用另一个方法之外几乎什么都不做，而被调用方法的签名与当前方法相同或几乎相同。</p>
+<p>例如，在一个实现 GUI 文本编辑器的学生项目中，有一个类几乎完全由 pass-through method 组成。</p>
+<p>下面是其中一部分代码：</p>
+<pre><code class="language-java">public class TextDocument ... {
+    private TextArea textArea;
+    private TextDocumentListener listener;
+    ...
+
+    public Character getLastTypedCharacter() {
+        return textArea.getLastTypedCharacter();
+    }
+
+    public int getCursorOffset() {
+        return textArea.getCursorOffset();
+    }
+
+    public void insertString(String textToInsert,
+            int offset) {
+        textArea.insertString(textToInsert, offset);
+    }
+
+    public void willInsertString(String stringToInsert,
+            int offset) {
+        if (listener != null) {
+            listener.willInsertString(this,
+                    stringToInsert, offset);
+        }
+    }
+    ...
+}
+</code></pre>
+<h3 id="危险信号pass-through-method">危险信号：Pass-Through Method</h3>
+<p>pass-through method 指的是一个方法除了把参数传递给另一个方法之外，不做任何事情；而且通常它拥有与被调用方法相同的 API。</p>
+<p>这通常意味着这些类之间并不存在清晰的职责划分。</p>
+<p>15 个 public 方法中，有 13 个都是 pass-through method。pass-through method 会让类变得更浅（shallower）：它们增加了类接口的复杂度，从而增加系统复杂度，但却没有增加系统整体功能。在前面展示的四个方法中，只有最后一个真正做了一点事情，而即便如此，它的功能也非常简单：只是检查了一个变量是否有效。</p>
+<p>pass-through method 还会在类之间制造依赖关系：如果 <code>TextArea</code> 中 <code>insertString</code> 方法的签名发生变化，那么 <code>TextDocument</code> 中的 <code>insertString</code> 方法也必须随之修改。</p>
+<p>pass-through method 表明：类之间的职责划分存在混乱。</p>
+<p>在前面的例子中，<code>TextDocument</code> 类提供了 <code>insertString</code> 方法，但真正负责文本插入功能的实现却完全位于 <code>TextArea</code> 中。</p>
+<p>这通常是一个糟糕的设计：某项功能的接口，应当与实现该功能的代码位于同一个类中。</p>
+<p>当你看到一个类把方法 pass-through 给另一个类时，可以思考下面这个问题：</p>
+<blockquote>
+<p>“这两个类分别到底负责哪些功能与抽象？”</p>
+</blockquote>
+<p>你很可能会发现。这些类之间的职责出现了重叠。解决办法是重构这些类，使每个类都拥有清晰且一致的职责集合。</p>
+<p>其中一种是，直接把底层类暴露给高层类的调用者，从而让高层类彻底不再负责该功能。</p>
+<p>另一种方式是，重新分配类之间的功能。</p>
+<p>最后，如果这些类实在无法解耦，那么最好的方案是，把它们合并。</p>
+<p>在前面的例子中，共有三个职责相互缠绕的类：</p>
+<ul>
+<li><code>TextDocument</code></li>
+<li><code>TextArea</code></li>
+<li><code>TextDocumentListener</code></li>
+</ul>
+<p>学生最终通过：</p>
+<ul>
+<li>在类之间移动方法</li>
+<li>并把三个类压缩为两个类</li>
+</ul>
+<p>来消除了这些 pass-through method。而新的两个类，其职责划分也更加清晰。</p>
+<h2 id="72-什么时候接口重复是可以接受的">7.2 什么时候接口重复是可以接受的？</h2>
+<p>拥有相同签名的方法，并不一定是坏事。关键在于：每个新增的方法，都必须提供重要的新功能。<br>
+pass-through method 之所以糟糕，是因为它们没有提供任何新功能。</p>
+<p>有一种情况中：方法调用另一个拥有相同签名的方法，反而是有意义的。这种方法称为 dispatcher（分发器）。</p>
+<p>dispatcher 是一种方法：它利用自己的参数，从多个方法中选择一个进行调用；随后，它会把大部分甚至全部参数传递给被选中的方法。dispatcher 的签名通常与它所调用的方法签名相同。即便如此，dispatcher 仍然提供了有价值的功能：</p>
+<p>它负责决定：</p>
+<blockquote>
+<p>哪一个方法应该执行当前任务。</p>
+</blockquote>
+<p>例如：当 Web 服务器收到来自浏览器的 HTTP 请求时，它会调用一个 dispatcher。这个 dispatcher 会检查请求中的 URL，并选择某个特定方法来处理请求。有些 URL 可能会通过读取磁盘文件来处理；另一些 URL 则可能通过执行 PHP 或 JavaScript 程序来处理。</p>
+<p>dispatch 过程本身可能非常复杂。</p>
+<p>通常，它由一组规则驱动，而这些规则会与传入 URL 进行匹配。只要每个方法都提供了有价值且不同的功能，那么多个方法拥有相同签名就是合理的。dispatcher 所调用的方法就具备这一特点。</p>
+<p>另一个例子是：</p>
+<p>操作系统中具有多种实现的接口，例如磁盘驱动。每个 driver 都为不同类型的磁盘提供支持，但它们拥有相同接口。当多个方法提供同一接口的不同实现时，它能够降低认知负担。一旦你已经学会使用其中一个方法，那么使用其他方法也会更容易，因为你不需要重新学习新的接口。这类方法通常位于同一层，并且它们提供的是相同抽象的不同实现。</p>
+<h2 id="73-decorator">7.3 Decorator</h2>
+<p>Decorator 设计模式（也被称为 “wrapper”）是一种会鼓励跨层 API 重复的模式。Decorator 对象接收一个已有对象，并在其基础上扩展功能；它提供与底层对象相同或相似的 API，而它自身的方法则会调用底层对象的方法。</p>
+<p>在第 4 章 Java I/O 的例子中，<code>BufferedInputStream</code> 类就是一个 decorator：给定一个 <code>InputStream</code> 对象后，它提供了带有 buffering 能力的同一套 API。</p>
+<p>例如：当调用它的 <code>read</code> 方法读取单个字符时，它实际上会调用底层 <code>InputStream</code> 的 <code>read</code> 方法来读取一个更大的 block，并把额外读取到的字符保存下来，以满足后续的 <code>read</code> 调用。</p>
+<p>另一个例子出现在窗口系统中：一个 <code>Window</code> 类实现的是一种不能滚动的简单窗口；而 <code>ScrollableWindow</code> 类则通过增加水平和垂直滚动条来 decorate <code>Window</code> 类。</p>
+<p>Decorator 的动机，是把某个类中的专用扩展，从更加通用的核心中分离出来。然而，decorator 类通常都很浅（shallow）：它们会引入大量样板代码（boilerplate），但新增功能却很少。Decorator 类中通常包含大量 pass-through method。</p>
+<p>Decorator 模式很容易被过度使用：每增加一个小功能，就创建一个新类。这样会导致大量 shallow class 的爆炸式增长，就像 Java I/O 的例子那样。在创建 decorator 类之前，可以考虑下面这些替代方案：</p>
+<ul>
+<li>是否可以直接把新功能加入到底层类中，而不是创建 decorator 类？</li>
+</ul>
+<p>如果这个新功能本身相对通用，或者它在逻辑上与底层类密切相关，又或者大多数使用底层类的场景都会使用这个新功能，那么这样做是合理的。例如：几乎所有创建 Java <code>InputStream</code> 的人，都会再创建一个 <code>BufferedInputStream</code>；而 buffering 本来就是 I/O 的天然组成部分，因此这些类本应被合并。</p>
+<ul>
+<li>如果这个新功能是针对某个特定 use case 的，那么是否可以把它直接合并进 use case 中，而不是单独创建一个类？</li>
+<li>是否可以把新功能并入一个已有 decorator，而不是创建新的 decorator？</li>
+</ul>
+<p>这样会得到一个更深（deeper）的 decorator 类，而不是多个浅层 decorator。</p>
+<ul>
+<li>最后，问问自己：</li>
+<li>新功能是否真的需要“包装”已有功能？</li>
+<li>是否可以把它实现为一个独立类，而不依赖于 base class？</li>
+<li>在窗口系统的例子中，scrollbar 很可能就可以独立于主窗口实现，而无需包装原有全部功能。</li>
+</ul>
+<p>有时候 wrapper 的确是合理的。一种情况是：系统使用了一个外部类，而该类的 interface 无法修改，但它在当前应用中又必须符合另一套 interface。在这种情况下，可以使用 wrapper class 在两个 interface 之间进行转换。不过，这种情况比较少见；通常都会存在比 wrapper 更好的方案。</p>
+<h2 id="74-interface-与-implementation">7.4 Interface 与 Implementation</h2>
+<p>“不同层，不同抽象（different layer, different abstraction）”这一原则的另一个应用是：一个类的 interface 通常应当与其 implementation 不同。也就是说：内部实现所使用的表示方式，应当不同于 interface 中出现的抽象。如果两者拥有相似抽象，那么这个类很可能不够深（deep）。</p>
+<p>例如：在第 6 章讨论的文本编辑器项目中，大多数团队都把文本模块实现为“按行存储文本”：每一行文本被单独存储。一些团队还围绕“行”来设计文本类 API，例如：</p>
+<ul>
+<li><code>getLine</code></li>
+<li><code>putLine</code></li>
+</ul>
+<p>然而，这会让文本类变得浅且难用。在高层用户界面代码中，经常需要：</p>
+<ul>
+<li>在一行中间插入文本（例如用户输入时）</li>
+<li>删除跨越多行的文本区间</li>
+</ul>
+<p>如果文本类采用“按行”的 API，那么调用者就不得不：</p>
+<ul>
+<li>拆分行</li>
+<li>合并行</li>
+</ul>
+<p>来实现用户界面操作。这些代码不仅复杂，而且会分散并重复出现在用户界面实现中。当文本类提供“按字符”的 interface 时，会容易使用得多。例如：</p>
+<ul>
+<li>一个 <code>insert</code> 方法，可以在文本中的任意位置插入任意字符串（其中可能包含换行）</li>
+<li>一个 <code>delete</code> 方法，可以删除两个任意位置之间的文本</li>
+</ul>
+<p>在内部，文本仍然是按行表示的。但“按字符”的 interface 把：</p>
+<ul>
+<li>行拆分</li>
+<li>行合并</li>
+</ul>
+<p>这些复杂性封装在了文本类内部。这样会让文本类变得更深，并简化使用该类的高层代码。在这种做法中：文本 API 与内部“按行存储”的机制有着明显区别；而这种区别，正体现了该类所提供的价值。</p>
+<h2 id="75-pass-through-变量">7.5 Pass-through 变量</h2>
+<p>另一种跨层 API 重复的形式，是 pass-through variable。所谓 pass-through variable，是指：一个变量被沿着很长的方法调用链不断向下传递。</p>
+<p>下面是一个来自数据中心服务（datacenter service）的例子。某个命令行参数描述了用于安全通信的证书（certificate）。这些信息实际上只会被底层方法 <code>m3</code> 使用；<code>m3</code> 会调用一个库方法来打开 socket。然而，这个变量却被一路传递经过了从 <code>main</code> 到 <code>m3</code> 之间的所有方法。<code>cert</code> 变量出现在所有中间方法的签名中。</p>
+<p>pass-through variable 会增加复杂度，因为：它迫使所有中间方法都必须知道这个变量的存在，即便这些方法根本不会使用它。此外，如果后来系统新增了一个变量（例如系统最初不支持 certificate，但后来决定增加支持），那么你可能不得不修改大量 interface 和方法，以便把该变量沿着所有相关路径继续向下传递。</p>
+<p>消除 pass-through variable 往往并不容易。一种做法是：</p>
+<p>检查最上层方法与最底层方法之间，是否已经共享某个对象。在 datacenter service 示例中，也许已经存在一个对象，其中保存了其他网络通信信息，并且 <code>main</code> 与 <code>m3</code> 都能够访问它。如果是这样，那么 <code>main</code> 可以把 certificate 信息保存在这个对象中，这样它就不需要再通过所有中间方法传递给 <code>m3</code>。</p>
+<p>不过，如果存在这样一个共享对象，那么它本身也可能成为 pass-through variable。（否则 <code>m3</code> 是如何访问到它的呢？）另一种做法是把信息保存在 global variable 中。这样就不需要在方法之间逐层传递信息。但是 global variable 几乎总会带来其他问题。</p>
+<p>例如：global variable 会让你无法在同一个进程中创建两个相互独立的系统实例，因为它们对 global variable 的访问会互相冲突。</p>
+<p>在生产环境中，你可能觉得自己不太可能需要多个实例；但在测试中，多实例往往非常有用。我最常使用的解决方案，引入一个 context object。context 用于保存应用程序中的所有“全局状态”：也就是那些原本会成为 pass-through variable 或 global variable 的内容。</p>
+<p>大多数应用程序都会在全局状态中包含多个变量，例如：</p>
+<ul>
+<li>配置选项（configuration options）</li>
+<li>共享子系统</li>
+<li>性能计数器（performance counters）</li>
+</ul>
+<p>系统的每个实例拥有一个 context object。这样，就能够让同一个进程中同时存在多个系统实例，并且每个实例拥有自己的 context。</p>
+<p>遗憾的是，context 很可能会在很多地方被使用，因此它本身也可能变成 pass-through variable。为了减少需要知道 context 存在的方法数量，可以把对 context 的引用保存在系统中大多数主要对象内部。</p>
+<p>当创建新对象时，创建方法会从自己的对象中取得 context 引用，并把它传递给新对象的构造函数。</p>
+<p>采用这种方式后，context 在系统中几乎随处可用，但它只会作为显式参数出现在 constructor 中。context object 能够统一处理所有系统级全局信息，并消除 pass-through variable 的需求。如果需要新增一个变量，只需把它加入 context object；除了 context 的 constructor 和 destructor 之外，现有代码都不需要修改。</p>
+<p>context 还使系统全局状态更容易识别与管理，因为所有内容都集中保存在一个地方。它对于测试也非常方便：测试代码可以通过修改 context 中的字段，来改变应用程序的全局配置。如果系统使用的是 pass-through variable，那么实现这样的修改会困难得多。</p>
+<p>不过，context 远不是理想方案。保存在 context 中的变量，会继承 global variable 的大部分缺点。</p>
+<p>例如某个变量为什么存在、在哪里被使用，可能并不明显。如果缺乏约束，context 很容易变成一个巨大的“数据垃圾袋（grab-bag）”，从而在系统各处制造隐式依赖关系。context 还可能带来线程安全问题。避免问题的最好方式，是让 context 中的变量保持 immutable（不可变）。遗憾的是到目前为止，我还没有找到比 context 更好的方案。</p>
+<h2 id="76-结论">7.6 结论</h2>
+<p>系统中新增的每一项设计基础设施——例如：</p>
+<ul>
+<li>interface</li>
+<li>argument</li>
+<li>function</li>
+<li>class</li>
+<li>definition</li>
+</ul>
+<p>都会增加复杂度，因为开发者必须学习这些元素。因此，一个设计元素若想在复杂度上带来“净收益”，它必须消除一些“如果没有这个设计元素，本来会存在的复杂度”。否则，还不如根本不要引入这个设计元素。</p>
+<p>例如一个 class 可以通过封装功能来降低复杂度，使 class 的使用者无需了解这些功能内部实现。“different layer, different abstraction（不同层，不同抽象）”这一原则，本质上就是上述思想的一个应用。如果不同层拥有相同抽象，例如：</p>
+<ul>
+<li>pass-through method</li>
+<li>decorator</li>
+</ul>
+<p>那么很可能意味着这些额外基础设施，并没有提供足够收益来抵消它们自身带来的复杂度。</p>
+<p>pass-through argument 会迫使多个方法都必须知道它们的存在（从而增加复杂度），但却没有提供额外功能。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#71-pass-through-%E6%96%B9%E6%B3%95">7.1 Pass-through 方法</a>
+<ul>
+<li><a href="#%E5%8D%B1%E9%99%A9%E4%BF%A1%E5%8F%B7pass-through-method">危险信号：Pass-Through Method</a></li>
+</ul>
+</li>
+<li><a href="#72-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%8E%A5%E5%8F%A3%E9%87%8D%E5%A4%8D%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%8E%A5%E5%8F%97%E7%9A%84">7.2 什么时候接口重复是可以接受的？</a></li>
+<li><a href="#73-decorator">7.3 Decorator</a></li>
+<li><a href="#74-interface-%E4%B8%8E-implementation">7.4 Interface 与 Implementation</a></li>
+<li><a href="#75-pass-through-%E5%8F%98%E9%87%8F">7.5 Pass-through 变量</a></li>
+<li><a href="#76-%E7%BB%93%E8%AE%BA">7.6 结论</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

@@ -1,0 +1,525 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【4-17】投入生产 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【4-17】投入生产 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为技术负责人，您需要快速而可靠地将团队..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【4-17】投入生产 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为技术负责人，您需要快速而可靠地将团队..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/v-_zV9UpHJ/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【4-17】投入生产 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+作为技术负责人，您需要快速而可靠地将团队...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/v-_zV9UpHJ/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【4-17】投入生产
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-11-27 · 27 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>作为技术负责人，您需要快速而可靠地将团队的工作投入生产。但这一过程是如何实现的，您应该遵循哪些原则呢？这取决于几个因素：环境、正在开发的产品的成熟度、故障造成的成本以及快速推进与保持可靠性哪个更为重要。</p>
+<h2 id="生产交付的极端情况">生产交付的极端情况</h2>
+<p>让我们从生产交付的两个“极端”开始讨论：YOLO交付和通过多个阶段的严格验证。</p>
+<p>外部黑客马拉松‘你只活一次’（YOLO）的方法常用于许多原型、侧项目以及不稳定的产品，例如alpha/beta版本。这也是一些紧急变化进入生产的方式。其理念很简单，就是在生产中进行更改，并检查其是否有效。</p>
+<p>YOLO交付的例子包括：</p>
+<ul>
+<li>通过SSH登录到生产服务器 → 打开编辑器（例如vim） → 在文件中进行更改 → 保存文件和/或重启服务器 → 查看更改是否生效。</li>
+<li>修改源代码文件 → 在没有代码审核的情况下强制合并此更改 → 推送服务的新部署。</li>
+<li>登录到生产数据库 → 执行生产查询以修复数据问题（例如，修改存在问题的记录） → 希望这样能解决问题。</li>
+</ul>
+<p>YOLO发布通常适用于：</p>
+<ul>
+<li>侧项目</li>
+<li>没有客户的早期初创公司</li>
+<li>工程实践差的中型公司</li>
+<li>在没有明确定义事故处理流程的地方解决紧急事件</li>
+</ul>
+<p>随着软件产品的发展和越来越多客户的依赖，代码更改需要在生产之前经过额外的验证。让我们再看一个极端：一个团队极度专注于尽可能地将零缺陷交付到生产中。</p>
+<p>经过多个阶段的彻底验证这种方法适用于拥有众多重要客户的成熟产品，因为一个小错误可能会引发重大问题。如果错误可能导致客户损失资金或转向竞争对手的产品，就会采用这种严格的方法。设定多个验证层，旨在更准确地模拟现实情况，包括：</p>
+<ol>
+<li>本地验证。为软件工程师提供工具以发现明显的问题。</li>
+<li>CI 验证。在每个拉取请求上进行单元测试和代码格式检查等自动化测试。</li>
+<li>部署到测试环境之前的自动化。在部署到下一个环境之前，进行更昂贵的测试，如集成测试或端到端测试。</li>
+<li>测试环境 #1。进行更多自动化测试，如冒烟测试。质量保证工程师可能会手动使用产品，进行手动测试和探索性测试。</li>
+<li>测试环境 #2。一个环境，部分真实用户（如公司内部用户或付费测试者）使用产品。此环境与监控系统相结合，一旦发现回归迹象，发布将会暂停。</li>
+<li>预生产环境。在该环境中运行最终的验证集。这通常意味着需要进行另一组自动测试和手动测试。</li>
+<li>分阶段发布。小范围用户先体验变化，团队监控关键指标的健康状况并检查客户反馈。分阶段发布策略取决于所做更改的风险程度。</li>
+<li>全量发布。随着分阶段发布的扩大，最终会将变化推送给所有客户。</li>
+<li>发布后。在生产环境中出现问题时，会设置监控和警报，并与客户建立反馈机制。如果出现问题，将根据标准的值班流程处理。我们在第五部分“可靠的软件系统”中对此流程进行了更深入的讨论。</li>
+</ol>
+<p>重量级发布流程适用于：</p>
+<ul>
+<li>高度监管的行业，如医疗、航空或汽车。</li>
+<li>电信提供商，通常需要对变更进行六个月的彻底测试，然后再将重大变更交付给客户。</li>
+<li>银行，因错误可能造成财务损失。</li>
+<li>拥有遗留代码库且自动化测试较少的传统公司。这些企业希望保持高质量，不惜通过增加验证阶段来放慢发布速度。”</li>
+</ul>
+<h2 id="典型的发布流程">典型的发布流程</h2>
+<p>不同公司在向生产环境发布时通常会采取不同的步骤。以下是典型方法的总结，突显了流程的多样性：</p>
+<h3 id="初创企业">初创企业</h3>
+<p>初创企业通常进行较少的质量检查。这些公司往往优先考虑快速推进和快速迭代，常常在没有太多保障的情况下进行。这在他们尚未拥有客户的情况下是合理的。随着客户的到来，团队需要找到“避免回归和发布漏洞的方法”。</p>
+<p>初创企业通常规模较小，无法投资于自动化，因此大多数进行手动质量保证（QA）——包括创始人担任“最终”测试者，某些地方则聘请专职的质量保证人员。随着公司找到产品市场契合点，投资于自动化的情况变得更加普遍。在那些招聘强大工程人才的科技初创企业中，这些团队可以从第一天起就实施自动化测试。</p>
+<h3 id="传统公司">传统公司</h3>
+<p>这些公司通常更依赖于质量保证团队。尽管在更传统的公司中有时会存在自动化，但他们通常依赖大型质量保证团队来验证所构建的内容。使用分支工作也很常见，基于主干的开发比较少见。<br>
+代码通常按周计划推送到生产环境，或者更少频率，在质量保证团队验证功能之后。<br>
+进行阶段性和用户验收测试（UAT）环境是更常见的，批量变更在不同环境之间的发布也更为普遍。在推进发布到下一个阶段之前，通常需要得到质量保证团队、产品经理或项目经理的批准。</p>
+<h3 id="大型科技公司">大型科技公司</h3>
+<p>这些公司通常在与可靠交付相关的基础设施和自动化方面进行大量投资。这些投资通常包括能够快速运行并提供快速反馈的自动化测试、灰度发布、功能标记和阶段性发布。<br>
+这些公司旨在达到高质量标准，但在质量检查完成后也希望立即发布，通常在主干上进行开发。鉴于某些地方每天可能在主干上进行超过100次更改，处理合并冲突的工具变得非常重要。有关大型科技公司质量保证的更多细节，请参见文章《大型科技公司如何进行质量保证》。</p>
+<h3 id="meta的核心产品">Meta的核心产品</h3>
+<p>作为产品和工程团队的Facebook值得单独提及，因为该组织采用了一种少有其他公司能做到的复杂而有效的方法。<br>
+这个Meta产品的自动化测试数量比许多人想象的要少，但另一方面，Facebook拥有卓越的自动化灰度发布功能，代码通过四个环境进行逐步发布，从自动化的测试环境开始，经过所有员工都在使用的环境，再到一个较小地理区域的测试市场，最后到所有用户。在每个阶段，如果指标异常，发布会自动停止。</p>
+<h2 id="原则与工具">原则与工具</h2>
+<p>在负责地将变更发布到生产环境时，有哪些值得遵循的原则和方法？请考虑以下几点：</p>
+<h3 id="开发环境">开发环境</h3>
+<p>使用本地或隔离的开发环境。工程师应该能够在自己的本地机器上，或在一个独特的隔离环境中进行更改。开发者通常在本地环境中工作。然而，像Meta这样的公司正在转向为每位工程师提供远程服务器。根据我在《探秘Facebook的工程文化》中的描述：<br>
+绝大多数开发者使用远程服务器，而不是本地开发。从2019年左右起，所有的Web和后端开发都是远程进行的，没有代码被本地复制，Nuclide帮助实现了这一工作流程。在后台，Nuclide最初使用虚拟机(VM)，后来转向按需实例——类似于今日GitHub Codespaces的方式，早在GitHub推出Codespaces之前几年就已开始。<br>
+移动开发仍主要在本地机器上进行，因为在远程环境中进行此类开发相比Web和后端会面临工具方面的挑战。</p>
+<p>需进行本地验证。编写代码后，进行本地测试以确保其按预期工作。</p>
+<h3 id="测试与验证">测试与验证</h3>
+<p>考虑边缘情况并进行测试。你的代码变更需要考虑哪些不常见的情况？哪些现实世界的使用场景未被考虑到？<br>
+<strong>在最终确定变更之前，列出边缘情况。</strong> 如果可能的话，考虑编写自动化测试。至少要进行手动测试。编制一份非常规边缘情况的清单是质量保证(QA)工程师或测试人员非常有帮助的任务。</p>
+<p><strong>编写自动化测试以验证你的更改。</strong> 在手动验证更改后，使用自动化测试对其进行验证。如果遵循像测试驱动开发(TDD)这样的开发方法，则可以反其道而行之，先编写自动化测试，然后确认你的代码变更是否通过测试。</p>
+<p><strong>另一个视角：代码审查。</strong> 在完成代码更改后，提交一个拉取请求，让有上下文的其他人查看你的代码更改。写清晰、简洁的变更描述，说明测试了哪些边缘情况，并进行代码审查。</p>
+<p><strong>确保所有自动化测试通过，尽量减少回归风险。</strong> 在推送代码之前，运行代码库中所有现有测试。通常，这是通过CI/CD系统（持续集成/持续部署）自动完成的。</p>
+<h3 id="监控-值班及事件管理">监控、值班及事件管理</h3>
+<p><strong>为与你的变更相关的关键产品特性配置监控。</strong> 你如何知道你的变更是否破坏了自动化测试未检查的内容？如果没有监控系统，你将无法得知。因此，确保为变更编写了健康指标，或使用其他可用指标。</p>
+<p>例如，在Uber，大多数代码更改都是作为实验推出的，并定义了一组预期改善或不影响的指标。其中一个被要求保持不变的指标是成功乘车的客户百分比。如果这一指标在代码变更后下降，就会触发警报，相关团队需要调查是否影响了用户体验。</p>
+<p><strong>确保有值班机制，具备足够的上下文来应对可能出现的问题。</strong> 在变更发布到生产环境后，某些缺陷可能会在之后才显现出来。因此，建立一个值班轮换机制，可以让有能力响应健康警报、客户反馈和客户支持的工程师值班是很好的做法。</p>
+<p>确保值班安排合理，让值班同事对如何缓解故障有足够的上下文。在大多数情况下，团队会有运行手册，详细说明如何确认和缓解故障。许多团队还会进行值班培训，有些团队还会进行值班情况模拟，以帮助团队成员做好准备。</p>
+<p><strong>创建无责备的事件处理文化。</strong> 这是一个团队通过事件学习和改进的环境。我并不是说要遵循所有这些想法，但考虑为何不实施这些步骤是一个很好的练习。我们将在第五部分《可靠软件系统》中进一步探讨这个主题。</p>
+<h2 id="附加验证层">附加验证层</h2>
+<p>一些公司为将可靠代码交付到生产环境增加了额外的验证层。以下是其中10个安全网：</p>
+<h3 id="1独立的部署环境设置独立的环境来测试代码变更是发布过程中常见的安全网">1：独立的部署环境设置独立的环境来测试代码变更是发布过程中常见的安全网。</h3>
+<p>在代码进入生产环境之前，它会先部署到这些环境中，通常被称为测试、用户验收测试（UAT）、预生产（pre-prod）等。在有质量保证（QA）团队的公司中，QA通常会在这个环境中对变更进行验证，并寻找回归问题。一些环境用于执行自动化测试，如端到端测试、冒烟测试或负载测试。这些环境的维护成本较高，不仅需要资源，机器必须在运行中以确保环境可用，而且还需要保持数据的最新状态。这些环境需要填充从生产环境生成或导入的数据。</p>
+<h3 id="2动态创建测试部署环境维护部署环境往往会产生大量的开销">2：动态创建测试/部署环境维护部署环境往往会产生大量的开销。</h3>
+<p>这在进行数据迁移时尤为明显，因为所有测试环境中的数据都需要进行更新。更好的开发体验包括投资于自动化以创建测试环境，包括填充其所包含的数据。这为更高效的自动化测试、变更的更容易验证以及更加符合使用案例的自动化创造了机会。与此同时，建立这样的测试环境可能需要 significant 的投资。作为技术负责人，您需要为构建这样的解决方案或购买和集成供应商解决方案提供商业案例。例如，一些云开发环境供应商提供创建这些环境的方法。我们在第五部分“软件工程”中将更多地讨论云开发环境。</p>
+<h3 id="3专职质量保证qa团队许多公司为减少缺陷而选择的一项投资是雇佣qa团队这通常负责手动和探索性测试产品">3：专职质量保证（QA）团队许多公司为减少缺陷而选择的一项投资是雇佣QA团队，这通常负责手动和探索性测试产品。</h3>
+<p>大多数QA团队还会编写自动化测试，例如端到端测试。我的观点是，QA团队专注于手动测试是有价值的。在高效的团队中，QA通常会成为领域专家，或者人们会编写自动化测试，通常两者兼而有之：</p>
+<ul>
+<li>QA是领域专家：QA人员帮助工程师预见边缘案例，并对新边缘案例和意外行为进行探索性测试。</li>
+<li>QA亲自参与自动化测试：QA人员逐渐转变为QA工程师，以及手动测试人员。他们开始参与测试的自动化，并在塑造自动化策略方面发表意见，以加快将代码变更导入生产环境的速度。</li>
+</ul>
+<p>我在2013年与微软的专职QA工程师合作。当时，这个角色被称为软件开发工程师测试（SDET），这些工程师在编写自动化测试的同时，带来了真正的测试思维。如需了解SDET角色在微软的发展历程，请参阅我的文章《微软如何进行质量保证》。</p>
+<h3 id="4探索性测试大多数工程师擅长测试他们的变更以验证其是否按预期工作并考虑边缘案例">4：探索性测试大多数工程师擅长测试他们的变更，以验证其是否按预期工作，并考虑边缘案例。</h3>
+<p>但如何测试零售用户如何使用产品呢？这就是探索性测试派上用场的地方。</p>
+<p>探索性测试涉及模拟客户将如何使用产品，以揭示边缘案例。良好的探索性测试需要对用户的同理心、对产品的理解以及模拟使用案例的工具。在拥有专职QA团队的公司中，通常是他们进行探索性测试。在没有QA团队的地方，通常由工程师负责，或者公司可能会招募专门从事探索性测试的供应商。</p>
+<h3 id="5金丝雀发布这个术语源自煤矿里的金丝雀这个做法是矿工们带着一只笼中的金丝雀进入煤矿以探测有毒气体">5：金丝雀发布这个术语源自“煤矿里的金丝雀”，这个做法是矿工们带着一只笼中的金丝雀进入煤矿，以探测有毒气体。</h3>
+<p>由于金丝雀对有毒气体的耐受性低于人类，因此如果它停止鸣叫或昏厥，便是有毒气体存在的警告信号，矿工们必须撤离。如今，金丝雀测试意味着将代码更改推出到一小部分用户中，然后监控此次部署的健康信号，以观察是否存在异常。实施金丝雀发布的一个常见方法是使用负载均衡器将流量引导到新版本的代码，或者将新版本的代码部署到单个节点。</p>
+<h3 id="6-功能标志与实验控制变更推出的另一种方式是通过代码中的功能标志将其隐藏">6: 功能标志与实验控制变更推出的另一种方式是通过代码中的功能标志将其隐藏。</h3>
+<p>然后可以为一部分用户启用该功能标志，以执行代码的新版本。功能标志的实现相对简单，想象中的一个功能“Zeno”的代码可能类似如下：<code>if( featureFlags.isEnabled(“Zeno_Feature_Flag”)) {// 执行新代码} else {// 执行旧代码}</code> 功能标志是一种常用的实验手段，将用户分成两个组：实验组（处理组）和对照组（未参与实验者）。这两个组会有不同的体验，工程团队和数据科学团队会评估和比较结果。功能标志的一个主要缺点是积压问题。在大型代码库中，常会看到许多功能标志未在功能推出后被移除而“污染”代码库。大多数团队会通过添加日历事件或创建工单来提醒移除标志来解决这个问题，而一些公司则开发了自动化工具来检测和移除过时的标志。例如，Uber开源的Piranha工具就是一个这样的例子。</p>
+<h3 id="7-分阶段推出分阶段推出涉及逐步发布变更并在每个阶段评估结果">7: 分阶段推出分阶段推出涉及逐步发布变更，并在每个阶段评估结果。</h3>
+<p>它通常定义了获得新功能的用户基础的百分比，或者该功能应推出的地区，或者两者兼具。一个分阶段推出计划可能如下所示：</p>
+<ul>
+<li>
+<p>第1阶段：在新西兰推出10%（用于验证变更的小市场）</p>
+</li>
+<li>
+<p>第2阶段：在新西兰推出50%</p>
+</li>
+<li>
+<p>第3阶段：在新西兰推出100%</p>
+</li>
+<li>
+<p>第4阶段：全球推出10%</p>
+</li>
+<li>
+<p>第5阶段：全球推出25%</p>
+</li>
+<li>
+<p>第6阶段：全球推出50%</p>
+</li>
+<li>
+<p>第7阶段：全球推出99%（仅留下非常小的“对照”组以进行更多验证）</p>
+</li>
+<li>
+<p>第8阶段：全球推出100%</p>
+</li>
+</ul>
+<p>在每个推出阶段之间，会设定继续的标准。这通常定义为没有发生意外的回归，并且预期的变更在业务指标上发生（或不发生）。金丝雀发布本质上是一种更简单的分阶段推出，进行金丝雀测试通常比分阶段推出过程更快。</p>
+<h3 id="8-多租户一种日益流行的方法是将生产环境视为唯一的代码部署环境包括在生产环境中进行测试">8: 多租户一种日益流行的方法是将生产环境视为唯一的代码部署环境，包括在生产环境中进行测试。</h3>
+<p>尽管在生产环境中测试听起来很冒险，但如果采用多租户的方法，这并非如此。在本文中，Uber描述了从分阶段环境，经过带有影子流量的测试沙盒，到租户基础路由的历程。多租户的核心思想是将租户上下文与请求一同传播。接收请求的服务可以判断这是生产请求、测试租户请求还是测试版租户请求等。服务内置了支持多租户的逻辑，可以根据不同的租户在处理或路由请求时采取不同的方式。例如，接收到测试租户请求的支付系统可能会模拟支付，而不是进行实际的支付请求。</p>
+<h3 id="9-自动回滚提高可靠性的一种有效方法是使任何被怀疑会破坏某些功能的代码更改自动回滚">9: 自动回滚提高可靠性的一种有效方法是使任何被怀疑会破坏某些功能的代码更改自动回滚。</h3>
+<p>这是Booking.com使用的方法；任何降低关键指标的实验都会被关闭并回滚更改。在那些投资于多阶段自动推出和自动回滚的公司中，工程师很少会担心破坏生产环境，能够更快速且自信地进行工作。</p>
+<h3 id="10-自动推出与回滚将自动回滚与分阶段推出和多个测试环境结合起来的做法是meta在其核心产品中独特实施的方法">10: 自动推出与回滚将自动回滚与分阶段推出和多个测试环境结合起来的做法，是Meta在其核心产品中独特实施的方法。</h3>
+<p>需要注意的是，尽管团队普遍使用这里提到的一些方法，但同时使用所有方法的情况较为罕见。有些方法相互抵消；例如，如果实施了多租户，那么多个测试环境的必要性就大大降低，而生产环境中的测试已经在进行。</p>
+<h2 id="采取务实的风险">采取务实的风险</h2>
+<p>在某些情况下，你可能希望比正常情况下更快地推进，并愿意承担更多风险。以下是一些务实的方法来实现这一目标。</p>
+<p>首先，明确哪些流程或工具是绝对不能省略的。是否可以在不进行任何测试的情况下强制降落？是否可以在没有人审核的情况下更改代码库？是否可以在未经过测试的情况下更改生产数据库？</p>
+<p>每个团队或公司都需决定哪些流程是不能被跳过的。如果在一家拥有众多依赖用户的成熟公司中出现这个问题，我会慎重考虑是否要打破规则，因为这可能会造成比好处更多的害处。如果你决定为了更快的进度而绕过规则，那么我建议首先获得团队成员的支持。</p>
+<p>在发布风险较大的更改时，提前通知相关利益相关者。偶尔，你会发布一个测试不够充分的更改，这使得该更改变得风险更高。告知可能在出现异常时提醒你的人是一个好习惯。值得通知的利益相关者包括：</p>
+<ul>
+<li>团队成员</li>
+<li>依赖于你团队的值班工程师，以及你依赖的团队</li>
+<li>客户支持团队</li>
+<li>能访问业务指标的商业利益相关者，如果某些趋势朝错误方向发展，他们能及时通知你</li>
+</ul>
+<p>制定一个易于执行的回滚计划。如果更改导致问题，如何快速恢复？即使在快速推进的情况下，也要有一个简单易行的计划。这一点在数据更改和配置更改中尤为重要。</p>
+<p>在Facebook的早期阶段，回滚计划通常会添加到版本变更中。根据《Inside Facebook’s Engineering Culture》一书中的描述：“早期的工程师分享了他们的经验，说明人们如何在版本变更中添加回滚计划，以指示如何撤销更改，因为这一过程常常是必要的。随着时间的推移，这种做法在测试工具的改进中得到了增强。”</p>
+<p>在发布风险较大的更改后，检查客户反馈。在进行风险更大的更改后，检查论坛、评论和客户支持工单等客户反馈渠道。主动检查这些渠道，寻找因已推出更改而出现问题的客户。</p>
+<p>跟踪事故并衡量其影响。你知道在过去一个月或三个月中你的产品发生了多少次故障吗？客户经历了什么？商业影响如何？</p>
+<p>如果这些问题的答案是“不知道”，那么你就像是在盲目操作，不清楚系统的可靠性。考虑改变你的方式，以跟踪和衡量故障并积累影响数据。你需要这些数据，才能在更可靠的发布流程中做出调整。同时，这些数据也适用于错误预算。</p>
+<p>使用错误预算来决定是否可以进行风险较大的部署。开始衡量你系统的服务级别指标（SLIs）和服务级别目标（SLOs），或者衡量系统处于降级或停机状态的时间。</p>
+<p>接下来，定义一个错误预算。这是对用户而言，暂时服务降级可接受的量。只要这个错误预算没有超出，就可以进行更具风险的部署——那些更可能破坏服务的部署。然而，一旦错误预算用尽，所有被认为是风险较大的部署都要暂停。</p>
+<h2 id="额外考虑事项">额外考虑事项</h2>
+<p>在本章中，我们没有详细讨论任何成熟产品和公司在发布到生产环境的过程中必须解决的某些部分。这些考虑包括：</p>
+<p>安全实践。谁有权对系统进行更改，这些更改如何记录以便审计？如何对代码更改进行安全审计，以降低漏洞进入系统的风险？遵循了哪些安全编码实践，并如何鼓励或强制执行这些实践？</p>
+<p>配置管理。许多系统的更改都是配置更改。如何存储配置，以及如何签署和跟踪配置更改？</p>
+<p>角色和职责。发布过程中存在哪些角色？例如，谁负责部署系统？在批量部署的情况下，谁负责跟进问题并给予部署的批准？</p>
+<p>规章制度。在高度监管的领域工作时，发布变更可能包括与监管机构合作并遵循严格的规则。这可能意味着发布的速度 deliberately 慢下来。监管要求可能包括法律法规，如GDPR（通用数据保护条例）、PCI DSS（支付卡行业数据安全标准）、HIPAA（健康保险可携带性与责任法）、FERPA（家庭教育权利和隐私法）、FCRA（公平信用报告法）、与美国联邦机构合作时的508条款、SOX合规（萨班斯－奥克斯利法案，金融领域重要）、在欧盟内开发政府项目时的欧洲无障碍法案、特定国家的隐私法以及其他许多法规。</p>
+<h2 id="选择一种方法">选择一种方法</h2>
+<p>我们已经探讨了许多与可靠地将产品交付生产相关的潜在方法。那么，如何决定选择哪一种方法呢？有几个因素值得考虑。</p>
+<p>您愿意在现代工具上投入多少，以便进行更多的迭代？在讨论各种方法的权衡之前，请诚实地评估您、您的团队或公司愿意在工具上进行多少投资。</p>
+<p>我们讨论的许多方法都涉及实施工具。这些工具大部分可以通过供应商进行集成，但有些必须购买。在注重可靠性的公司中，平台团队或SRE团队可能会提供大量支持。在小公司中，您可能需要为投资工具的必要性进行辩护。</p>
+<p>您的业务实际能承受多大的错误预算？如果一个bug影响了几个客户，影响大吗？业务是损失数百万美元，还是客户只是略微不满但在问题快速修复后不会流失？</p>
+<p>对于像私营银行这样的企业，资金流动中的bug可能会造成巨额损失。而对于Facebook这样的产品，快速修复的用户界面bug则不会造成太大影响。这就是为什么Facebook的产品在自动化测试方面的投入少于许多其他科技公司的原因，也是Meta没有为纯软件团队设置专门QA职能的原因。</p>
+<p>您应该以多快的迭代速度为目标作为最低要求？工程师越快将代码部署到生产环境，就越快获得反馈。在许多情况下，更快的迭代会导致更高的质量，因为工程师将较小和较低风险的变更推送到生产环境。</p>
+<p>根据DORA指标（即DevOps研究和评估指标），顶尖表现者每天会进行多次按需部署。对于顶尖表现者，代码提交到最终达到生产环境的时间，即变更的交付时间，少于一天。我不太喜欢仅关注DORA指标，因为我认为它们并没有提供完整的工程卓越视角，且单纯关注这些数字可能会产生误导。然而，这些关于敏捷团队快速部署到生产的观察与我的经验相符。有关开发人员生产力的更多看法，请参阅我与Kent Beck共同撰写的这篇分两部分的文章。</p>
+<p>在大多数大型科技公司和许多高成长初创公司中，从代码提交到代码进入生产环境通常只需不到一天，通常为几个小时，并且团队可以按需每天进行多次部署。</p>
+<p>如果您拥有QA团队，那么QA职能的主要目的是什么？QA团队通常出现在那些无法承受生产环境中存在很多bug的公司，或者缺乏自动化测试能力的公司中。</p>
+<p>不过，我建议设定一个QA组织应该逐步演变的目标，以及它应该如何支持工程。如果一切顺利，QA在几年后的样子会是怎样的？他们会只进行手动测试吗？当然不会。他们会负责自动化策略，还是帮助工程团队在同一天将代码变更部署到环境中？关于允许工程师在不到一周内将产品交付生产又如何呢？</p>
+<p>要考虑长远，并设定能够实现更短迭代、更快反馈循环以及更快发现和修复问题的目标。</p>
+<p>现有有多少遗留基础设施和代码？现代化遗留系统（例如采用自动化测试、分阶段发布或自动回滚等现代化实践）可能代价高昂、耗时且困难。评估现有技术栈，判断是否值得进行现代化。有时，投资现代化可能没有多大意义。</p>
+<p>考虑投资于先进的能力。目前，一些部署能力仍被视为不常见，因为它们难以构建，包括：</p>
+<ul>
+<li>复杂的监控和告警设置，可以轻松将代码变更与关键系统指标的监控和告警配对。工程师可以轻松监控他们的变更是否影响系统健康指标。</li>
+<li>自动化的分阶段发布，带有自动回滚功能。</li>
+<li>生成动态测试环境的能力。</li>
+<li>强大的集成、端到端和负载测试能力。</li>
+<li>通过多租户方法在生产环境中进行测试。</li>
+</ul>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%94%9F%E4%BA%A7%E4%BA%A4%E4%BB%98%E7%9A%84%E6%9E%81%E7%AB%AF%E6%83%85%E5%86%B5">生产交付的极端情况</a></li>
+<li><a href="#%E5%85%B8%E5%9E%8B%E7%9A%84%E5%8F%91%E5%B8%83%E6%B5%81%E7%A8%8B">典型的发布流程</a>
+<ul>
+<li><a href="#%E5%88%9D%E5%88%9B%E4%BC%81%E4%B8%9A">初创企业</a></li>
+<li><a href="#%E4%BC%A0%E7%BB%9F%E5%85%AC%E5%8F%B8">传统公司</a></li>
+<li><a href="#%E5%A4%A7%E5%9E%8B%E7%A7%91%E6%8A%80%E5%85%AC%E5%8F%B8">大型科技公司</a></li>
+<li><a href="#meta%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BA%A7%E5%93%81">Meta的核心产品</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8E%9F%E5%88%99%E4%B8%8E%E5%B7%A5%E5%85%B7">原则与工具</a>
+<ul>
+<li><a href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">开发环境</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E4%B8%8E%E9%AA%8C%E8%AF%81">测试与验证</a></li>
+<li><a href="#%E7%9B%91%E6%8E%A7-%E5%80%BC%E7%8F%AD%E5%8F%8A%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86">监控、值班及事件管理</a></li>
+</ul>
+</li>
+<li><a href="#%E9%99%84%E5%8A%A0%E9%AA%8C%E8%AF%81%E5%B1%82">附加验证层</a>
+<ul>
+<li><a href="#1%E7%8B%AC%E7%AB%8B%E7%9A%84%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE%E7%8B%AC%E7%AB%8B%E7%9A%84%E7%8E%AF%E5%A2%83%E6%9D%A5%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%E5%8F%98%E6%9B%B4%E6%98%AF%E5%8F%91%E5%B8%83%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AE%89%E5%85%A8%E7%BD%91">1：独立的部署环境设置独立的环境来测试代码变更是发布过程中常见的安全网。</a></li>
+<li><a href="#2%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E7%BB%B4%E6%8A%A4%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E5%BE%80%E5%BE%80%E4%BC%9A%E4%BA%A7%E7%94%9F%E5%A4%A7%E9%87%8F%E7%9A%84%E5%BC%80%E9%94%80">2：动态创建测试/部署环境维护部署环境往往会产生大量的开销。</a></li>
+<li><a href="#3%E4%B8%93%E8%81%8C%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81qa%E5%9B%A2%E9%98%9F%E8%AE%B8%E5%A4%9A%E5%85%AC%E5%8F%B8%E4%B8%BA%E5%87%8F%E5%B0%91%E7%BC%BA%E9%99%B7%E8%80%8C%E9%80%89%E6%8B%A9%E7%9A%84%E4%B8%80%E9%A1%B9%E6%8A%95%E8%B5%84%E6%98%AF%E9%9B%87%E4%BD%A3qa%E5%9B%A2%E9%98%9F%E8%BF%99%E9%80%9A%E5%B8%B8%E8%B4%9F%E8%B4%A3%E6%89%8B%E5%8A%A8%E5%92%8C%E6%8E%A2%E7%B4%A2%E6%80%A7%E6%B5%8B%E8%AF%95%E4%BA%A7%E5%93%81">3：专职质量保证（QA）团队许多公司为减少缺陷而选择的一项投资是雇佣QA团队，这通常负责手动和探索性测试产品。</a></li>
+<li><a href="#4%E6%8E%A2%E7%B4%A2%E6%80%A7%E6%B5%8B%E8%AF%95%E5%A4%A7%E5%A4%9A%E6%95%B0%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%93%85%E9%95%BF%E6%B5%8B%E8%AF%95%E4%BB%96%E4%BB%AC%E7%9A%84%E5%8F%98%E6%9B%B4%E4%BB%A5%E9%AA%8C%E8%AF%81%E5%85%B6%E6%98%AF%E5%90%A6%E6%8C%89%E9%A2%84%E6%9C%9F%E5%B7%A5%E4%BD%9C%E5%B9%B6%E8%80%83%E8%99%91%E8%BE%B9%E7%BC%98%E6%A1%88%E4%BE%8B">4：探索性测试大多数工程师擅长测试他们的变更，以验证其是否按预期工作，并考虑边缘案例。</a></li>
+<li><a href="#5%E9%87%91%E4%B8%9D%E9%9B%80%E5%8F%91%E5%B8%83%E8%BF%99%E4%B8%AA%E6%9C%AF%E8%AF%AD%E6%BA%90%E8%87%AA%E7%85%A4%E7%9F%BF%E9%87%8C%E7%9A%84%E9%87%91%E4%B8%9D%E9%9B%80%E8%BF%99%E4%B8%AA%E5%81%9A%E6%B3%95%E6%98%AF%E7%9F%BF%E5%B7%A5%E4%BB%AC%E5%B8%A6%E7%9D%80%E4%B8%80%E5%8F%AA%E7%AC%BC%E4%B8%AD%E7%9A%84%E9%87%91%E4%B8%9D%E9%9B%80%E8%BF%9B%E5%85%A5%E7%85%A4%E7%9F%BF%E4%BB%A5%E6%8E%A2%E6%B5%8B%E6%9C%89%E6%AF%92%E6%B0%94%E4%BD%93">5：金丝雀发布这个术语源自“煤矿里的金丝雀”，这个做法是矿工们带着一只笼中的金丝雀进入煤矿，以探测有毒气体。</a></li>
+<li><a href="#6-%E5%8A%9F%E8%83%BD%E6%A0%87%E5%BF%97%E4%B8%8E%E5%AE%9E%E9%AA%8C%E6%8E%A7%E5%88%B6%E5%8F%98%E6%9B%B4%E6%8E%A8%E5%87%BA%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%98%AF%E9%80%9A%E8%BF%87%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E5%8A%9F%E8%83%BD%E6%A0%87%E5%BF%97%E5%B0%86%E5%85%B6%E9%9A%90%E8%97%8F">6: 功能标志与实验控制变更推出的另一种方式是通过代码中的功能标志将其隐藏。</a></li>
+<li><a href="#7-%E5%88%86%E9%98%B6%E6%AE%B5%E6%8E%A8%E5%87%BA%E5%88%86%E9%98%B6%E6%AE%B5%E6%8E%A8%E5%87%BA%E6%B6%89%E5%8F%8A%E9%80%90%E6%AD%A5%E5%8F%91%E5%B8%83%E5%8F%98%E6%9B%B4%E5%B9%B6%E5%9C%A8%E6%AF%8F%E4%B8%AA%E9%98%B6%E6%AE%B5%E8%AF%84%E4%BC%B0%E7%BB%93%E6%9E%9C">7: 分阶段推出分阶段推出涉及逐步发布变更，并在每个阶段评估结果。</a></li>
+<li><a href="#8-%E5%A4%9A%E7%A7%9F%E6%88%B7%E4%B8%80%E7%A7%8D%E6%97%A5%E7%9B%8A%E6%B5%81%E8%A1%8C%E7%9A%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%B0%86%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E8%A7%86%E4%B8%BA%E5%94%AF%E4%B8%80%E7%9A%84%E4%BB%A3%E7%A0%81%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E5%8C%85%E6%8B%AC%E5%9C%A8%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">8: 多租户一种日益流行的方法是将生产环境视为唯一的代码部署环境，包括在生产环境中进行测试。</a></li>
+<li><a href="#9-%E8%87%AA%E5%8A%A8%E5%9B%9E%E6%BB%9A%E6%8F%90%E9%AB%98%E5%8F%AF%E9%9D%A0%E6%80%A7%E7%9A%84%E4%B8%80%E7%A7%8D%E6%9C%89%E6%95%88%E6%96%B9%E6%B3%95%E6%98%AF%E4%BD%BF%E4%BB%BB%E4%BD%95%E8%A2%AB%E6%80%80%E7%96%91%E4%BC%9A%E7%A0%B4%E5%9D%8F%E6%9F%90%E4%BA%9B%E5%8A%9F%E8%83%BD%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%94%B9%E8%87%AA%E5%8A%A8%E5%9B%9E%E6%BB%9A">9: 自动回滚提高可靠性的一种有效方法是使任何被怀疑会破坏某些功能的代码更改自动回滚。</a></li>
+<li><a href="#10-%E8%87%AA%E5%8A%A8%E6%8E%A8%E5%87%BA%E4%B8%8E%E5%9B%9E%E6%BB%9A%E5%B0%86%E8%87%AA%E5%8A%A8%E5%9B%9E%E6%BB%9A%E4%B8%8E%E5%88%86%E9%98%B6%E6%AE%B5%E6%8E%A8%E5%87%BA%E5%92%8C%E5%A4%9A%E4%B8%AA%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E7%BB%93%E5%90%88%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%81%9A%E6%B3%95%E6%98%AFmeta%E5%9C%A8%E5%85%B6%E6%A0%B8%E5%BF%83%E4%BA%A7%E5%93%81%E4%B8%AD%E7%8B%AC%E7%89%B9%E5%AE%9E%E6%96%BD%E7%9A%84%E6%96%B9%E6%B3%95">10: 自动推出与回滚将自动回滚与分阶段推出和多个测试环境结合起来的做法，是Meta在其核心产品中独特实施的方法。</a></li>
+</ul>
+</li>
+<li><a href="#%E9%87%87%E5%8F%96%E5%8A%A1%E5%AE%9E%E7%9A%84%E9%A3%8E%E9%99%A9">采取务实的风险</a></li>
+<li><a href="#%E9%A2%9D%E5%A4%96%E8%80%83%E8%99%91%E4%BA%8B%E9%A1%B9">额外考虑事项</a></li>
+<li><a href="#%E9%80%89%E6%8B%A9%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95">选择一种方法</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

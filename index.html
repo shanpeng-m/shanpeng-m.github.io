@@ -1,0 +1,414 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="//Pony's World" />
+</head>
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+
+    <div class="nav py-3 md:py-8 fixed w-full z-10 bg-gray-50 dark:bg-gray-700 transition-all duration-300" :class="{ 'scroll': scrolled }">
+  <div class="flex justify-end px-4">
+    <div class="w-8 h-8 flex justify-center items-center rounded-full md:hidden" @click="showMenu = !showMenu">
+      <i class="ri-close-line" v-show="showMenu"></i>
+      <i class="ri-menu-3-line" v-show="!showMenu"></i>
+    </div>
+  </div>
+  <nav class="max-w-4xl w-full mx-auto text-center flex flex-col md:flex-row justify-center md:block" :class="`${ showMenu ? 'block' : 'hidden' }`">
+    
+      <a href="/" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Home
+      </a>
+    
+      <a href="/archives" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Archives
+      </a>
+    
+      <a href="/tags" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        Tags
+      </a>
+    
+      <a href="/post/about" target="" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+        About Ma
+      </a>
+    
+    <a href="https://ma.shanpeng.im/atom.xml" target="_blank" class="py-2 md:py-1 px-4 mx-4 inline-flex transition font-semibold rounded dark:hover:bg-gray-600 hover:bg-gray-200">
+      RSS
+    </a>
+  </nav>
+</div>
+
+    <div class="max-w-4xl w-full mx-auto ">
+      
+        <header class="flex py-16 md:py-32 mt-12 flex-col md:flex-row px-4 md:px-0 animated fadeIn">
+  <div class="flex-1 order-2 md:order-1 md:pr-16">
+    <div class="text-4xl font-bold text-center md:text-left">
+      小马的世界
+    </div>
+    <div class="text-xl text-gray-500 mt-4 text-center md:text-left">
+      //Pony's World
+    </div>
+    
+      <div class="mt-8 text-center md:text-left">
+        <a
+          href="/post/about" 
+          arget="_blank"
+          class="text-sm bg-yellow-50 dark:bg-indigo-500 dark:text-gray-700 font-semibold px-4 py-2 inline-block yellow-btn transition-fast rounded"
+        >关于我｜About Me</a>
+      </div>
+    
+    
+      <div class="mt-8 flex items-center">
+        
+          <div class="text-gray-500 mr-2">
+            联系我｜Contact Me 👉
+          </div>
+        
+        
+          
+            
+              <div class="relative mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 transition-fast dark:hover:bg-gray-600 wechat">
+                <i class="ri-wechat-line"></i>
+                <img src="/media/images/custom-wechat.jpg" alt="" class="absolute left-0 w-32" style="max-width: initial; top: 100%;" >
+              </div>
+            
+          
+        
+          
+            
+              <a href="mailto:ma@shanpeng.im" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-mail-line"></i>
+              </a>
+            
+          
+        
+          
+            
+              <a href="https://github.com/shanpeng-m" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-github-line"></i>
+              </a>
+            
+          
+        
+          
+            
+              <a href="https://twitter.com/inus_pony" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-twitter-line"></i>
+              </a>
+            
+          
+        
+          
+        
+          
+        
+          
+            
+              <a href="https://www.facebook.com/shanpeng.ma.9" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-facebook-line"></i>
+              </a>
+            
+          
+        
+          
+            
+              <a href="https://telegram.me/inusturbo" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-telegram-line"></i>
+              </a>
+            
+          
+        
+          
+        
+          
+            
+              <a href="https://www.instagram.com/shanpeng.ma/" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-instagram-line"></i>
+              </a>
+            
+          
+        
+          
+        
+          
+            
+              <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=450326474&amp;site=qq&amp;menu=yes" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-qq-line"></i>
+              </a>
+            
+          
+        
+          
+            
+              <a href="https://www.linkedin.com/in/shanpeng-ma" target="_blank" class="mr-2 w-8 h-8 inline-flex items-center justify-center text-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast">
+                <i class="ri-linkedin-line"></i>
+              </a>
+            
+          
+        
+      </div>
+    
+  </div>
+  <div class="md:mx-8 flex-shrink-0 self-start rounded-full border-4 border-dotted border-transparent hover:border-yellow-50 p-2 w-32 h-32 order-1 md:order-2 mx-auto s3-dotted">
+    <img class="rounded-full object-cover" src="https://ma.shanpeng.im/images/avatar.png?v=1779752793470" alt="小马的世界" width="100%" height="100%">
+  </div>
+</header>
+      
+
+      <div class="shadow-box bg-white dark:bg-gray-600 border-gray-300 rounded-none md:rounded-lg -mx-1 md:mx-0 md:px-0">
+        
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/UYTB4fVIDp/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件设计的哲学【7】不同层，不同抽象
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-05-26</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        软件系统是由多层组成的，高层使用低层提供的能力。
+在一个设计良好的系统中，每一层都会提供一种不同于其上下层的抽象；如果你跟踪一个操作在层之间通过方法调用不断向上、向下流动的过程，你会发现抽象会随着每一次方法调用而发生变化。
+例如：
+
+
+在文...
+      </div>
+      <a href="https://ma.shanpeng.im/post/UYTB4fVIDp/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/BIrsLkGP5S/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件设计的哲学【6】通用模块越“通用”，层次就越深
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-05-25</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        “专门化”往往会带来复杂性。过度专门化，可能是软件复杂度最大的来源之一。相反，更通用的代码通常会更简单、更干净，也更容易理解。
+这个原则适用于软件设计中的很多层面。
+例如，在设计类或方法这样的模块时，构建“深层 API（deep API）”...
+      </div>
+      <a href="https://ma.shanpeng.im/post/BIrsLkGP5S/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/vODmOEQzWA/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          源码理解Autoware Freespace Planner
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-04-12</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        在 lane driving 场景里，路径规划大多是沿着车道中心线、参考路线、行为决策结果往下做，问题虽然复杂，但“路”本身是明确的。
+停车场景不是这样。你可能需要：
+
+倒车入库
+在狭窄区域多把挪车
+从一个姿态精确切到另一个姿态
+在没有明确...
+      </div>
+      <a href="https://ma.shanpeng.im/post/vODmOEQzWA/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/IrigO-7vK2/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件设计的哲学【5】信息隐藏（以及泄露）
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-02-15</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        5.1 信息隐藏
+实现深模块最重要的技术之一是信息隐藏（information hiding）。这一技术最早由 David Parnas 在一篇经典论文中提出。其基本思想是：每个模块应封装少量知识，这些知识代表设计决策。这些知识嵌入在模块的...
+      </div>
+      <a href="https://ma.shanpeng.im/post/IrigO-7vK2/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/t-0wH4yDLf/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件设计的哲学【4】模块应该是“深”的（Modules Should Be Deep）
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-01-19</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        管理软件复杂性最重要的技术之一，是在设计系统时，让开发者在任何给定时刻只需要面对系统整体复杂性的一小部分。这种方法称为模块化设计（modular design），本章将介绍其基本原则。
+4.1 模块化设计（Modular design）
+在...
+      </div>
+      <a href="https://ma.shanpeng.im/post/t-0wH4yDLf/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/GaUieP803R/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件设计的哲学【3】仅仅“能跑的代码”是不够的
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-01-19</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        （战略性编程 vs. 战术性编程）
+优秀软件设计中最重要的因素之一，是你在面对编程任务时所采用的思维方式。许多组织鼓励一种战术性思维：尽可能快地把功能做出来。然而，如果你想要一个真正好的设计，就必须采取一种更具战略性的方法，愿意投入时间来打...
+      </div>
+      <a href="https://ma.shanpeng.im/post/GaUieP803R/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/vLxZXPspLG/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件设计的哲学【2】复杂性的本质
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2026-01-19</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        本书讨论的是如何设计软件系统，以尽量降低它们的复杂性。第一步是理解敌人：到底什么是“复杂性”？如何判断一个系统是否不必要地复杂？是什么导致系统变得复杂？本章将在较高的层面上回答这些问题；后续章节将从更低的层次、以具体结构特征的形式，向你展示...
+      </div>
+      <a href="https://ma.shanpeng.im/post/vLxZXPspLG/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/SbKgfQx2vh/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          【更新中】使用git+ansible管理和同步我的dotfile
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2025-04-06</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>工作中接触Autoware比较多，看到Autoware使用ansible配置和安装各种依赖和软件，非常的方便高效，那我这种时不时的就会重装系统的，而且在Ubuntu和Mac下都有作业需求的人，是不是也可以搞一个ansible来同步和配置我的dotfile，同时用github actions进行CI/CD？正好趁着最近学习ansible和github actions，在这里记录一下我的折腾历程。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/SbKgfQx2vh/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/Nt32Utdssm/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件工程师指南【5-25】软件架构
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2025-01-13</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/Nt32Utdssm/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="p-8 border-b border-gray-200 dark:border-gray-700 flex relative overflow-hidden flex-col md:flex-row animated fadeIn">
+    
+    <div class="flex-1 order-2 md:order-1">
+      <h2 class="text-2xl font-semibold mb-4">
+        <a href="https://ma.shanpeng.im/post/MV5qm6rp3/" class="text-gray-700 dark:text-gray-200 border-b-2 border-dotted border-gray-200 dark:border-gray-400 dark:hover:border-gray-200 hover:border-gray-600 transition-all duration-100">
+          读书笔记-软件工程师指南【6-26】总结-生涯学习
+        </a>
+      </h2>
+      <div class="mb-4 text-xs text-gray-500">2025-01-12</div>
+      <div class="mb-4 text-gray-500 dark:text-gray-300">
+        <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+
+      </div>
+      <a href="https://ma.shanpeng.im/post/MV5qm6rp3/" class="btn">
+        阅读更多｜Read more
+      </a>
+    </div>
+    
+  </div>
+  
+      </div>
+
+      
+  <div class="my-4 flex justify-between px-4 md:px-0">
+    
+    
+      <a href="https://ma.shanpeng.im/page/2" class="btn btn-white">
+        下一页｜Next
+        <i class="ri-arrow-right-line ml-4"></i>
+      </a>
+    
+  </div>
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,479 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JS学习日记【3】算数 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="JS学习日记【3】算数 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="Chapter 3 算数
+使用decimal.js
+1. 为什么要使用decimal.js
+decimal.js是一个用于浮点数计算的JavaScript库，它可以解决JavaScript浮点数计算的精度问题。因为它内部采用10进制计算，所..." />
+  <meta property="og:title" content="JS学习日记【3】算数 - 小马的世界">
+  <meta property="og:description" content="Chapter 3 算数
+使用decimal.js
+1. 为什么要使用decimal.js
+decimal.js是一个用于浮点数计算的JavaScript库，它可以解决JavaScript浮点数计算的精度问题。因为它内部采用10进制计算，所..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-3-suan-shu/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="JS学习日记【3】算数 - 小马的世界">
+  <meta name="twitter:description" content="Chapter 3 算数
+使用decimal.js
+1. 为什么要使用decimal.js
+decimal.js是一个用于浮点数计算的JavaScript库，它可以解决JavaScript浮点数计算的精度问题。因为它内部采用10进制计算，所...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/js-xue-xi-ri-ji-3-suan-shu/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          JS学习日记【3】算数
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2023-06-14 · 6 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/javascript/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              JavaScript
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/QcxVK42Jgh/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              工具
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h1 id="chapter-3-算数">Chapter 3 算数</h1>
+<h2 id="使用decimaljs">使用decimal.js</h2>
+<h3 id="1-为什么要使用decimaljs">1. 为什么要使用decimal.js</h3>
+<p>decimal.js是一个用于浮点数计算的JavaScript库，它可以解决JavaScript浮点数计算的精度问题。因为它内部采用10进制计算，所以它的计算结果和我们人类的计算结果是一致的。防止了JavaScript使用2进制计算的精度问题。</p>
+<h3 id="2-如何使用decimaljs">2. 如何使用decimal.js</h3>
+<p>decimal.js的使用非常简单，只需要在页面中引入decimal.js的脚本文件即可：</p>
+<pre><code class="language-html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.2/decimal.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>然后就可以在JavaScript代码中使用Decimal对象了：</p>
+<pre><code class="language-javascript">let x = new Decimal('0.14');
+let y = new Decimal('0.29');
+console.log(x.add(d2).toNumber());  // 0.43
+</code></pre>
+<p>Decimal的方法还可以连续调用：</p>
+<pre><code class="language-javascript">let x = new Decimal('0.14');
+let y = new Decimal('0.29');
+console.log(x.add(d2).mul(100).toNumber());  // 43
+</code></pre>
+<h2 id="运算符">运算符</h2>
+<ol>
+<li>&amp;= 与运算符</li>
+<li>｜= 或运算符</li>
+<li>^= 异或运算符</li>
+<li>&amp;&amp;= 逻辑与运算符 也就是左边的值为真时，才会赋予右边的值</li>
+<li>||= 逻辑或运算符 也就是左边的值为假时，才会赋予右边的值</li>
+<li>??= 空值合并运算符 也就是左边的值为null或undefined时，才会赋予右边的值</li>
+<li>&lt;&lt;= 左移运算符</li>
+<li>
+<blockquote>
+<blockquote>
+<p>= 右移运算符</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>= 无符号右移运算符</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<h2 id="注意">注意</h2>
+<pre><code class="language-javascript">let x = 1
+let y = x
+x = 2
+console.log(y)  // 1
+
+let data1 = [1, 2, 3]
+let data2 = data1
+data1[0] = 4
+console.log(data2)  // [4, 2, 3]
+</code></pre>
+<p>这是因为数组是引用类型，而数字是值类型。值类型的变量赋值时，是将值复制一份给新的变量，而引用类型的变量赋值时，是将引用复制一份给新的变量，所以当改变其中一个变量的值时，另一个变量的值也会改变。</p>
+<h2 id="常量">常量</h2>
+<p>之前说过的使用const声明的叫常量，常量的值不能改变，但是如果常量的值是引用类型，那么引用的对象的值是可以改变的。</p>
+<pre><code class="language-javascript">const data1 = [1, 2, 3]
+data1 = [4, 5, 6]  // TypeError: Assignment to constant variable.
+data1[0] = 4
+console.log(data1)  // [4, 2, 3]
+</code></pre>
+<h2 id="解构赋值日语分割代入">解构赋值（日语：分割代入）</h2>
+<pre><code class="language-javascript">let data = [1, 2, 3]
+let [x, y, z] = data
+console.log(x)  // 1
+console.log(y)  // 2
+console.log(z)  // 3
+</code></pre>
+<p>可以使用...运算符来获取剩余的值：</p>
+<pre><code class="language-javascript">let data = [1, 2, 3, 4, 5]
+let [x, y, ...z] = data
+console.log(x)  // 1
+console.log(y)  // 2
+console.log(z)  // [3, 4, 5]
+</code></pre>
+<p>一个对象也可以使用解构赋值：</p>
+<pre><code class="language-javascript">let book = { 
+    title: 'JavaScript入门',
+     price: 1980,
+      stock: 3
+};
+let { title, price, stock } = book;
+console.log(title);  // JavaScript入门
+console.log(price);  // 1980
+console.log(stock);  // 3
+console.log(memo);   // Undefined
+</code></pre>
+<p>甚至复杂的对象也可以使用解构赋值：</p>
+<pre><code class="language-javascript">let book = { 
+    title: 'JavaScript入门',
+    price: 1980,
+    stock: 3,
+    other: {
+        publisher: '技术出版社',
+        keyword: 'JavaScript'
+    }
+};
+let { title, price, stock, other: { publisher, keyword } } = book;
+console.log(title);     // JavaScript入门
+console.log(price);     // 1980
+console.log(stock);     // 3
+console.log(publisher); // 技术出版社
+console.log(keyword);   // JavaScript
+</code></pre>
+<p>也可以给变量指定一个别名：</p>
+<pre><code class="language-javascript">let book = { 
+    title: 'JavaScript入门',
+    price: 1980,
+    stock: 3,
+    other: {
+        publisher: '技术出版社',
+        keyword: 'JavaScript'
+    }
+};
+
+let { title: name, price: cost, stock: count, other: { publisher: company, keyword: key } } = book;
+console.log(name);      // JavaScript入门
+console.log(cost);      // 1980
+console.log(count);     // 3
+console.log(company);   // 技术出版社
+console.log(key);       // JavaScript
+</code></pre>
+<h2 id="比较运算符">比较运算符</h2>
+<ol>
+<li>=== 严格相等运算符 左边的值和右边的值相等并且类型也相等时，返回true 例如：1 === 1 返回true，1 === '1' 返回false 但是 1 == '1' 返回true</li>
+<li>!== 严格不相等运算符 左边的值和右边的值不相等或者类型不相等时，返回true</li>
+<li>?: 三元运算符 如果左边的值为真，则返回中间的值，否则返回右边的值 用法类似 条件 ? 真 : 假</li>
+<li>?? 空值合并运算符 如果左边的值为null或undefined，则返回右边的值，否则返回左边的值 例如：a ?? b 等价于 a !== null &amp;&amp; a !== undefined ? a : b。null ?? 5 返回5，undefined ?? 5 返回5，0 ?? 5 返回0，false ?? 5 返回false，'' ?? 5 返回''，NaN ?? 5 返回NaN</li>
+</ol>
+<h2 id="其他运算符">其他运算符</h2>
+<ol>
+<li>delete 删除对象的属性 例如：delete book.title 表示删除book对象的title属性 但是delete book 表示删除book对象本身 但是delete只能删除对象的自有属性，不能删除继承的属性，也不能删除var声明的变量 例如：var x = 1; delete x; console.log(x) // 1 但是如果是let声明的变量，则会报错 例如：let x = 1; delete x; console.log(x) // Uncaught SyntaxError: Delete of an unqualified identifier in strict mode. 但是如果是全局变量，则可以删除 例如：var x = 1; delete window.x; console.log(x) // Uncaught ReferenceError: x is not defined</li>
+<li>in 检查对象是否包含某个属性 例如：'title' in book 返回true，'price' in book 返回true，'publisher' in book 返回false</li>
+<li>instanceof 检查对象是否是某个类的实例 例如：book instanceof Object 返回true，book instanceof Array 返回false</li>
+<li>new 创建对象 例如：new Object() 创建一个空对象，new Array() 创建一个空数组，new Date() 创建一个Date对象，new RegExp() 创建一个正则表达式对象，new Function() 创建一个函数对象</li>
+<li>typeof 检查对象的类型 例如：typeof 1 返回number，typeof '1' 返回string，typeof true 返回boolean，typeof undefined 返回undefined，typeof null 返回object，typeof {} 返回object，typeof [] 返回object，typeof new Date() 返回object，typeof new RegExp() 返回object，typeof new Function() 返回function</li>
+<li>void 无操作运算符</li>
+</ol>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li><a href="#chapter-3-%E7%AE%97%E6%95%B0">Chapter 3 算数</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8decimaljs">使用decimal.js</a>
+<ul>
+<li><a href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8decimaljs">1. 为什么要使用decimal.js</a></li>
+<li><a href="#2-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8decimaljs">2. 如何使用decimal.js</a></li>
+</ul>
+</li>
+<li><a href="#%E8%BF%90%E7%AE%97%E7%AC%A6">运算符</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意</a></li>
+<li><a href="#%E5%B8%B8%E9%87%8F">常量</a></li>
+<li><a href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E6%97%A5%E8%AF%AD%E5%88%86%E5%89%B2%E4%BB%A3%E5%85%A5">解构赋值（日语：分割代入）</a></li>
+<li><a href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6">比较运算符</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97%E7%AC%A6">其他运算符</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

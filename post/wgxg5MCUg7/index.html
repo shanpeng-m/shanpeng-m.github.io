@@ -1,0 +1,472 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件工程师指南【3-15】软件架构 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件工程师指南【3-15】软件架构 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件架构涉及设计原则和决策，这些通常是在..." />
+  <meta property="og:title" content="读书笔记-软件工程师指南【3-15】软件架构 - 小马的世界">
+  <meta property="og:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件架构涉及设计原则和决策，这些通常是在..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/wgxg5MCUg7/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件工程师指南【3-15】软件架构 - 小马的世界">
+  <meta name="twitter:description" content="下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。
+
+软件架构涉及设计原则和决策，这些通常是在...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/wgxg5MCUg7/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件工程师指南【3-15】软件架构
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2024-11-27 · 22 min read</div>
+          
+            <a href="https://ma.shanpeng.im/tag/du-shu-bi-ji/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              读书笔记
+            </a>
+          
+            <a href="https://ma.shanpeng.im/tag/YqjZAfzGz/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              中文Chinese中国語
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>下面的内容是我在作为一名程序员入职之前阅读的由Gergely Orosz写的The Software Engineer’s Guidebook。我将将阅读时得到的重要的信息总结成中文以供大家分享。</p>
+<!-- more -->
+<p>软件架构涉及设计原则和决策，这些通常是在项目的规划阶段早期做出的。这些设计决策对系统的构建方式、扩展和维护的难易程度，以及新工程师在代码库上快速上手的能力都有着巨大的影响。</p>
+<p>“软件架构”和“软件设计”这两个术语可以互换使用。我更喜欢用“架构”，因为它与建造实体建筑的实践相关。开发一项物业有两个不同的阶段：设计图纸（架构设计）和实际施工。这两个阶段是相互关联的：如果在规划阶段做出的假设在施工过程中被证明不太成立，最初的计划可以进行调整。</p>
+<p>然而，建造建筑物和软件架构之间存在一个重大差异。物业的架构设计受到物理法则的严格限制，而软件的架构设计则没有这样的约束。在软件开发中，能做和不能做的限制要模糊得多。物理法则对软件工程的约束较小：团队的技能组合、团队动态，以及技术的限制往往是更重要的考虑因素。</p>
+<h2 id="设计文档-rfc和架构文档">设计文档、RFC和架构文档</h2>
+<p>许多科技公司和初创企业在规划过程中使用设计文档，通常称为RFC（Request for Comments 请求评论），包括Uber、Airbnb、Gojek、GitLab、LinkedIn、MongoDB、Shopify、Sourcegraph、Zalando等多家公司。在这里，我使用“RFC”来指代设计文档，以强调它们是收集反馈的工具，有助于改进设计。RFC通常由工程师在开始重要工作之前为非平凡的项目创建。通常没有严格的规则；RFC的目的是共享背景信息和建议的方案、权衡取舍，并邀请反馈。</p>
+<h3 id="rfc的目标">RFC的目标</h3>
+<p>如前所述，撰写和分发RFC的总体目标是通过尽早获取关键反馈来缩短完成项目所需的时间。项目中的工程师需要决定RFC如何融入他们的工作流程。以下是几种常见的方法：</p>
+<ol>
+<li>先原型，然后撰写RFC，最后进行构建。这对于存在许多不确定性的项目非常典型，例如在新的框架上进行构建，原型可以帮助发现这些不确定性。RFC将分享一个部分完成的计划，可能存在一些缺口。团队在获取反馈后进行构建。</li>
+<li>首先撰写RFC，等待反馈，然后进行构建。对于依赖关系较多的项目，或者依赖于构建内容的团队，先收集所有利益相关者的反馈可能使进展最终更快。</li>
+<li>首先撰写RFC，然后在等待反馈的同时进行构建。对于一些复杂性项目，可能不会有太多反馈，此时可以采取这种方法。在处理问题时，实用的方法是从RFC分发开始构建。团队可以轻松地结合反馈意见，并且在需要更改时不会浪费太多时间。</li>
+<li>先构建，然后写RFC。工程师们会根据需要进行构建，随后撰写RFC来记录所作出的决定。这种情况可能是因为项目比计划中的复杂，或者是为了遵循内部关于RFC的规定。这种方法可能会变得尴尬，因为RFC被视为一种“走过程”的活动，团队并不欢迎可操作的反馈。但是，这份文档在存档方面是有用的，而且在这一阶段获得反馈仍然比在团队转向新项目后获得反馈要好。在我的经验中，这种方法相当普遍。</li>
+</ol>
+<h3 id="好处">好处</h3>
+<p>撰写RFC并分发以获取反馈有几点主要好处：</p>
+<ol>
+<li>澄清你的思路。你是否曾经匆忙编码一个解决方案，结果在半途中意识到自己走错了方向？如果当初你能明确自己想要做的事情，就可以避免这种情况。设计文档迫使你以一种对自己和他人都有意义的方式解释你的思路。</li>
+<li>更快获得重要反馈。如果你只是直接编码实现解决方案，然后再向团队展示，通常会得到一些反馈，这反而会增加额外的工作量。例如，一个队友可能会指出遗漏的边界情况，或者产品经理可能会说你解决了错误的用例。在编码开始之前，有一个能让人们提供反馈的文档，有助于减少误解和额外的工作量。</li>
+<li>拓展你的想法。如果你不创建设计文档，其他工程师要理解你的思路只能通过与你直接交谈。如果五位工程师想要了解你构建系统的方法，他们都需要花时间找你沟通。而通过将计划写下来，他们可以自行阅读并向你提出问题。</li>
+<li>促进写作文化。如果队友们看到你的设计文档带来了价值，他们更有可能也为自己的项目做同样的事情。这对大家来说都是一次胜利，包括你，因为共享文档通常会带来更好的反馈和更快的进展。</li>
+</ol>
+<h3 id="审查rfc">审查RFC</h3>
+<p>审查RFC显然是获取其中反馈的关键。获取反馈的最常见方式包括：</p>
+<ol>
+<li>异步反馈：通过文档中的评论进行反馈。Google、GitHub和Uber都采用这种方式来收集反馈。</li>
+<li>同步反馈：组织会议深入讨论RFC。在线零售巨头亚马逊更倾向于这种流程。</li>
+<li>混合方式：将文档分发以收集异步反馈。如果项目复杂性较高或评论较多，则召集会议。</li>
+</ol>
+<p>最佳格式取决于项目的性质。对于影响二十个团队、需要所有团队提供反馈的项目，需要与仅由你们团队和一个合作团队使用的服务采取不同的方式。</p>
+<p>不要忘记RFC流程的真正目标。这个目标是通过尽早获取反馈来缩短项目交付所需的时间。问问自己哪种方法可以节省最多时间。</p>
+<h3 id="架构文档">架构文档</h3>
+<p>架构文档与RFC略有不同，它们的主要目的是记录已做出的决策，而不是像RFC那样寻求反馈。架构文档有几种流行的格式，每个公司通常都有自己偏爱的格式。</p>
+<p>其中，ADR（Architecture Design Record架构设计记录）可能是最受欢迎的格式，它是为与Git配合使用而创建的Markdown文件，结构简单。</p>
+<p>C4模型是一种更为详尽的软件架构图示方法，定义了四个层次的图示使用：上下文、容器、组件和代码。它由独立顾问和作者西蒙·布朗(Simon Brown)创建。</p>
+<p>Arc42是一种带有主观模板的方法，包含12个部分，例如“上下文和范围”、“解决方案策略”、“构件视图”和“横切概念”。</p>
+<h2 id="原型制作和概念验证">原型制作和概念验证</h2>
+<p>如何构建一个按预期运作的复杂系统？一种方法是进行充分的规划。另一种常被低估的选择是，不从规划开始，而是先展示它如何运作，并快速制作一个粗略的原型以便进行演示。</p>
+<p>复杂项目的问题在于存在许多未知数，规划阶段通常会针对这些未知数进行辩论。构建原型可以解决一些未知数，并展示出某种方法可能足够有效。</p>
+<p>我记得参加过一个项目，负责设计一个新的复杂支付系统，以替代两个现有的支付系统。这个项目涉及大约10个工程团队。最初，所有团队各自制定自己的方案。在两个月内，产生并流传了数百页的请求为变更（RFC）。但是，项目并没有就如何进行达成一致。</p>
+<p>随后，团队改变了策略，召集了每个团队的一名代表，这个新团队用两周的时间原型制作了一个简单的方案。期间没有计划文档，也没有征求意见；大家只是聚在一起编写代码，通过原型展示想法。</p>
+<p>在两周内，团队构建了一个原型，并解决了许多冲突和未知的问题。尽管这个原型后期被舍弃，但它为不同系统之间的归属和相互沟通提供了基础。</p>
+<h3 id="原型设计用于探索">原型设计用于探索</h3>
+<p>我认为许多优秀软件工程师是伟大的软件“架构师”，他们会构建一次性原型来证明一个观点并展示他们的想法。毕竟，思考具体代码要比抽象想法要高效得多。</p>
+<p>当面临许多未知因素或动态变化时，可以将原型视为探索的工具。这对那些信息不足以制定高可信度计划的问题来说是一个绝佳选择。例如，如果你需要与第三方API集成，但不确定如何进行，可以构建一个一次性原型，进行第三方API调用，并提供可能的实现建议。</p>
+<p>我会说，如果你无法原型化架构想法，那说明你已不再亲自参与开发，或者这个想法过于复杂。否则，你应该能够通过原型展示它的工作原理！</p>
+<h3 id="建造时要有随时可以丢弃的意图">建造时要有随时可以丢弃的意图</h3>
+<p>构建一次性概念验证，并明确表示这些不是用于生产的。原型设计的目的是为了证明某个方案是可行的，然后在验证后开始正式构建。在构建一个概念验证以展示给他人时，你会学到很多，并且能够就某个具体而明确的主题进行富有成效的对话。</p>
+<p>明确指出所构建的只是一次性产品，可以更快推进项目，因此不需要进行代码评审、自动化测试或其他后续可维护的代码。说实话，你根本不需要这些，因为它是一次性的！</p>
+<p>任何概念验证都有一个危险，就是某个高层，比如产品经理，看了觉得不错，要求将其发布。但是，原型只是临时拼凑而成，根本没有应用生产代码的实践。在这种状态下发布是个坏主意！在这种情况下，要坚守立场，拒绝发布原型。应该从头开始构建一个正式版本。拥有一个可工作的原型，这并不是如此困难。</p>
+<p>如果在交付原型时面临过大压力，可以故意在非生产性技术上构建原型。这意味着，如果你的团队在后台使用Go，可以用Node.js来编写原型，这显然只用于原型开发，因此不会投入生产。</p>
+<p>为了开发更好的架构方法，可以利用原型制作来构建概念验证。你这样做得越多，你的工作效率就会越高，构建的架构也会变得更加出色。</p>
+<h2 id="领域驱动设计">领域驱动设计</h2>
+<p>领域驱动设计（DDD）强调从创建一个商业领域模型入手，以理解业务领域的运作方式。例如，在构建支付系统时，应首先理解支付领域、业务规则以及支付领域的背景。“领域驱动设计”这一术语是由埃里克·埃文斯在他的著作《领域驱动设计：解决软件核心复杂性》中提出的。其组成部分包括：</p>
+<ul>
+<li>
+<p><strong>标准词汇</strong> 第一步是确保参与设计的每个人都能使用相同的语言。DDD称之为‘普遍语言’。为了建立这个共享词汇，应该与业务领域的专家坐下来，定义要使用的术语和行话。这看似简单，但软件工程师和支付合规专家可能会有很大的不同，即使是‘进行支付’这样看似明确的术语也可能存在不同的理解。</p>
+</li>
+<li>
+<p><strong>上下文</strong> 将复杂的领域拆分成更小的部分，DDD将这些部分称为‘边界上下文’。每个上下文都有自己的标准词汇。例如，在设计支付系统时，可以将上下文分为入职、支付、提现和结算。每个上下文可以独立建模，并进一步细分。</p>
+</li>
+<li>
+<p><strong>实体</strong> 实体是特定于其身份的事物，并具有生命周期。许多命名的事物，例如系统的组成部分、人员和地点，通常都是实体。例如，在支付系统中，一个会计条目就是一个实体。</p>
+</li>
+<li>
+<p><strong>值对象</strong> 描述实体，并且是不可变的，意味着它们不会改变。例如，会计条目的货币就是一个值对象。</p>
+</li>
+<li>
+<p><strong>聚合</strong> 是将多个实体作为一个整体处理的集合。</p>
+</li>
+<li>
+<p><strong>领域事件</strong> 是发生的事情，其他领域部分应该了解，并可能对此做出反应。领域事件有助于使触发器及其反应更加明确。例如，当一笔支付进入支付系统时，账户余额将增加支付的金额。然而，在引入像PaymentMadeEvent这样的领域事件后，这种曾经隐性的逻辑变得显而易见：账户现在对PaymentMadeEvents做出反应，而不是监视到达的Payment对象。”</p>
+</li>
+</ul>
+<p>我在软件工程项目中运用领域驱动设计（DDD）原则所看到的最大好处是，它迫使软件工程师理解商业背景。工程师需要与业务人员沟通，让他们描述自己的业务如何运作。由于共享的词汇（见上文），所构建的软件将与“现实世界”更加接近。</p>
+<p>采用DDD方法的一些好处包括：</p>
+<ul>
+<li>工程师与业务之间的误解减少。许多软件项目由于工程师构建的内容与业务期望不同而延误。通过DDD，从一开始就与业务相关者进行充分沟通，从而大大减少误解的可能性。</li>
+<li>更好地掌控商业复杂性。商业规则可能出乎意料地复杂，DDD帮助捕捉并简化这些复杂性，通过设定边界上下文（Bounded Contexts）来加以管理。</li>
+<li>更具可读性的代码。得益于明确定义的共享词汇，代码变得更加清晰。类和变量名称更加一致且更易于理解，整体上代码也会更加整洁。</li>
+<li>更好的可维护性。由于代码更容易理解且词汇定义明确。</li>
+<li>更容易扩展和扩容。当新的业务用例需要被添加时，可以先将扩展插入到现有的领域模型中。一旦进行了逻辑扩展，在代码层面实施变化就会更容易。通过添加大量新的业务用例来扩展代码库的过程会更加简单和整洁。</li>
+</ul>
+<h2 id="可交付的软件架构">可交付的软件架构</h2>
+<p>我与许多经验丰富的软件工程师交谈过，他们对自己的架构改进理念在推广过程中遭遇的反对表示沮丧。那么，如何才能将有价值的想法落地到生产环境中呢？</p>
+<h3 id="明确商业目标">明确商业目标</h3>
+<p>先退一步，考虑这次变更的商业目标是什么。它将如何帮助你的产品或公司？这个变更会改善哪些商业指标，比如收入、成本、用户流失率、开发者生产力或其他业务关心的项目？一旦你对商业影响有了初步的理解，便能更容易地为优先推进这一变更进行辩护。</p>
+<p>如果这个商业影响远小于正在进行的项目，可以问自己，花时间在一个相对低影响的项目上是否切合实际。当然，如果这些小影响的项目能够帮助工程团队，那自然是明智的选择。但当更高影响的项目存在时，合理的做法是将小影响的工作放在一旁，或安排在其他项目之间进行。</p>
+<h3 id="获得利益相关者的支持">获得利益相关者的支持</h3>
+<p>在进行架构变更时，通常需要得到其他团队、高级及以上工程师，甚至有时还需要商业同事的支持。因此，您需要展示自己的想法，并赢得关键人物的支持。实现这一目标的几种方法包括：</p>
+<ul>
+<li>与关键人员会面，描述您的方法。这种方式相对耗时，而且之后很难回归到具体细节。</li>
+<li>撰写一份提案，分发给其他人，收集意见，并让他们对您的想法表示认可。这个方法更具规模性，使得决策更少模糊。</li>
+<li>先记录下您的想法，然后再与对您的想法“犹豫不决”的关键人物交谈。随后，在这些对话之后更新您的提案。这是一种混合方法，通常能够有效获得支持。<br>
+一种被低估的让关键人员同意书面提案的方法是在您撰写提案之前，寻求他们的意见。因此，花时间向少数选定的利益相关者展示您的想法。可以使用白板展示您的创意，征求反馈，并将其融入您的文档中。然后，告诉这些人他们的意见已被考虑，这样他们几乎肯定会支持您的方法。早期的支持也可能使您更容易赢得其他人的认可。</li>
+</ul>
+<p>在寻求支持的过程中，不要忘记您的工作的目标是支持业务，但您可能会收到一些反馈，认为这项工作不会实现这个目标。不要忽视这些反馈：有时不采取某种行动反而是对业务的正确选择。这不是个人问题。</p>
+<h3 id="打破决策瘫痪">打破决策瘫痪</h3>
+<p>在某些时候，架构决策可能会陷入僵局，因为团队在选择路径时出现分歧。以下是一些打破僵局的方法：</p>
+<p><strong>明确能力要求。</strong> 这些要求决定了结果，而不是实施方式。它们可以是需要遵守的系统级约束，如预期延迟或可接受的一致性要求。同时，它们也可以是用户体验方面的约束，例如响应时间不超过500毫秒，或者商业约束，例如双重收费不可接受。将这些要求列出后，您可以通过能力要求的视角来检视建议的解决方案。在提出解决方案之前，明确这些要求，可以消除解决方案偏见，避免在理解问题之前便进入“解决方案模式”。</p>
+<p><strong>在讨论之前指定决策者。</strong> 事先约定在发生冲突时的决策者，这样可以在进入讨论之前做出决定，因为在冲突过程中引入决策者往往会造成摩擦，质疑他们的公正性。例如，如果某个参与者将自己的经理拉来担任决策者，该经理可能会偏向于支持其团队成员。</p>
+<p><strong>谁来进行编码，是决定胜负的关键。</strong> 最简单也最公平的方式是将决定留给进行编码的人。毕竟，他们还需要承担解决方案的维护负担。</p>
+<p><strong>制作原型。</strong> 当事情陷入停滞时，可以先构建您想法的原型。这一定能推动事情的进展，人们会谈论原型而非僵局。</p>
+<p><strong>获得来自产品负责人支持。</strong> 产品经理对为企业构建正确的解决方案有着重要的利益，无论是短期的，还是长期的可维护性成本。产品赞助是防止僵局发生的一种非常有效的方式，但大多数软件工程师并没有充分利用这一点！</p>
+<h3 id="正确地推广变更">正确地推广变更</h3>
+<p>一旦变更完成，务必花足够的时间进行适当的推广，因为如果您在推广过程中不够细致，就更可能出现问题。</p>
+<p><strong>量化推广的具体含义。</strong> 找到能够指示新架构是否如预期运行的指标。这可以是“旧”系统与新系统的使用情况比较、性能指标、业务指标等。</p>
+<p><strong>制定推广计划。</strong> 明确推广的各个阶段。您将如何验证某一推广阶段是否“健康”，以便决定何时可以开始下一个阶段？</p>
+<p><strong>定义合适的‘熟成时间’。</strong> 在进行重大变更时，要花时间验证系统的各个部分是否如预期工作。在项目成功之前，要留出足够的时间让新系统在生产环境中“熟成”。同时，确保在熟成阶段测量关键系统健康指标。</p>
+<p><strong>制定回滚计划。</strong> 如果在推广过程中出现问题，如何撤回变更？如果推广中包含对数据或数据结构的更改，这将更加棘手。</p>
+<p><strong>进行‘预演’练习。</strong> 如果推广失败，可能的原因有哪些？绘制出可能的场景，然后找出如何检测这些失败并防止其发生的方法。</p>
+<h3 id="在软件工程中任何决定都不是最终的">在软件工程中，任何决定都不是最终的</h3>
+<p>毫无疑问，你会遇到一些争议，理智的做法是让步，支持一个你并不完全认同的方法。这个结果可能并不像听起来那么糟糕。在软件领域，任何决定都不是最终的！</p>
+<p>几乎每一个决定都可以在后期被推翻，包括技术变化、架构方法和新增的业务规则。推翻一个决定的成本各不相同，有的可能会非常昂贵。因此，只要这个决定相对容易推翻，那么选择一个方案总比陷入僵局要好！</p>
+<p>带有回滚计划的架构变化相对容易推翻，如果它们没有按预期工作。对于涉及迁移的改变，应该有办法迁回原来的状态。</p>
+<p>“当你推翻一个决定时，务必要总结出为什么这个方法没有奏效的经验教训，并与相关人员分享，通常以文档的形式进行分发。可以通过电子邮件发送、通过聊天分享，或者在会议上呈现。</p>
+<p>即使一个团队决定采用某种架构方法，并且已实施并推广该方法，也没有什么能阻止人们在之后引入不同的方法，带来新的优势和劣势。毕竟，这正是软件系统根据不断变化的业务需求和现实世界进行演变的方式。</p>
+<p><strong>反思你的架构决策</strong><br>
+当一个项目完成后，团队通常会进行回顾，讨论哪些方面做得好，哪些方面可以改进，以及下次将会有什么不同。</p>
+<p>你上次反思你的架构决策是什么时候？一个问题是，新架构需要时间来“沉淀”和证明自身的有效性。此外，要了解一种方法的有效性，你需要亲自参与，以观察工程师在维护和扩展架构时的表现。</p>
+<p>你需要给新发布的架构足够的时间，以观察这些决策在更长时间内的效果。然后，你需要有动力从用户那里收集反馈。</p>
+<p>这并不总是容易的。以下是一些激励来源，促使你努力收集有关系统（因此也包括架构）实际表现的反馈：</p>
+<ul>
+<li><strong>共享你的经验教训</strong> 承诺分享你对架构的理解和学习。</li>
+<li><strong>绩效评估/晋升</strong> 你的管理层将如何知道你在某个系统上的工作有多大帮助？收集反馈可以让你的工作获得更多的认可。</li>
+<li><strong>帮助他人分享你的经验教训</strong> 你可能会指导设计类似系统的工程师。回过头来收集反馈，反思你的设计决策是如何实施的，以及哪些方面可以做得更好。</li>
+</ul>
+<p>在收集关于你工作的反馈时，可能会让人倾向于只关注积极的方面。听到你的工作受到好评是好的，但这并没有像有效的批评那样帮助你作为软件工程师成长。在收集反馈的过程中，找出你的架构决策在哪些方面未达预期，并在这些宝贵的经验教训上继续发展。主动进行这样的反思的工程师太少了！</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3-rfc%E5%92%8C%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3">设计文档、RFC和架构文档</a>
+<ul>
+<li><a href="#rfc%E7%9A%84%E7%9B%AE%E6%A0%87">RFC的目标</a></li>
+<li><a href="#%E5%A5%BD%E5%A4%84">好处</a></li>
+<li><a href="#%E5%AE%A1%E6%9F%A5rfc">审查RFC</a></li>
+<li><a href="#%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3">架构文档</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E5%88%B6%E4%BD%9C%E5%92%8C%E6%A6%82%E5%BF%B5%E9%AA%8C%E8%AF%81">原型制作和概念验证</a>
+<ul>
+<li><a href="#%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1%E7%94%A8%E4%BA%8E%E6%8E%A2%E7%B4%A2">原型设计用于探索</a></li>
+<li><a href="#%E5%BB%BA%E9%80%A0%E6%97%B6%E8%A6%81%E6%9C%89%E9%9A%8F%E6%97%B6%E5%8F%AF%E4%BB%A5%E4%B8%A2%E5%BC%83%E7%9A%84%E6%84%8F%E5%9B%BE">建造时要有随时可以丢弃的意图</a></li>
+</ul>
+</li>
+<li><a href="#%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1">领域驱动设计</a></li>
+<li><a href="#%E5%8F%AF%E4%BA%A4%E4%BB%98%E7%9A%84%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84">可交付的软件架构</a>
+<ul>
+<li><a href="#%E6%98%8E%E7%A1%AE%E5%95%86%E4%B8%9A%E7%9B%AE%E6%A0%87">明确商业目标</a></li>
+<li><a href="#%E8%8E%B7%E5%BE%97%E5%88%A9%E7%9B%8A%E7%9B%B8%E5%85%B3%E8%80%85%E7%9A%84%E6%94%AF%E6%8C%81">获得利益相关者的支持</a></li>
+<li><a href="#%E6%89%93%E7%A0%B4%E5%86%B3%E7%AD%96%E7%98%AB%E7%97%AA">打破决策瘫痪</a></li>
+<li><a href="#%E6%AD%A3%E7%A1%AE%E5%9C%B0%E6%8E%A8%E5%B9%BF%E5%8F%98%E6%9B%B4">正确地推广变更</a></li>
+<li><a href="#%E5%9C%A8%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%AD%E4%BB%BB%E4%BD%95%E5%86%B3%E5%AE%9A%E9%83%BD%E4%B8%8D%E6%98%AF%E6%9C%80%E7%BB%88%E7%9A%84">在软件工程中，任何决定都不是最终的</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>

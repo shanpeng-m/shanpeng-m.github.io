@@ -1,0 +1,347 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>读书笔记-软件设计的哲学【3】仅仅“能跑的代码”是不够的 - 小马的世界</title>
+<link rel="shortcut icon" href="https://ma.shanpeng.im/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/media/css/tailwind.css">
+<link rel="stylesheet" href="https://ma.shanpeng.im/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="读书笔记-软件设计的哲学【3】仅仅“能跑的代码”是不够的 - 小马的世界 - Atom Feed" href="https://ma.shanpeng.im/atom.xml">
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0N4K7FPFJJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-0N4K7FPFJJ');
+  </script>
+    
+
+  <meta name="description" content="（战略性编程 vs. 战术性编程）
+优秀软件设计中最重要的因素之一，是你在面对编程任务时所采用的思维方式。许多组织鼓励一种战术性思维：尽可能快地把功能做出来。然而，如果你想要一个真正好的设计，就必须采取一种更具战略性的方法，愿意投入时间来打..." />
+  <meta property="og:title" content="读书笔记-软件设计的哲学【3】仅仅“能跑的代码”是不够的 - 小马的世界">
+  <meta property="og:description" content="（战略性编程 vs. 战术性编程）
+优秀软件设计中最重要的因素之一，是你在面对编程任务时所采用的思维方式。许多组织鼓励一种战术性思维：尽可能快地把功能做出来。然而，如果你想要一个真正好的设计，就必须采取一种更具战略性的方法，愿意投入时间来打..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://ma.shanpeng.im/post/GaUieP803R/" />
+  <meta property="og:image" content="https://ma.shanpeng.im/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="读书笔记-软件设计的哲学【3】仅仅“能跑的代码”是不够的 - 小马的世界">
+  <meta name="twitter:description" content="（战略性编程 vs. 战术性编程）
+优秀软件设计中最重要的因素之一，是你在面对编程任务时所采用的思维方式。许多组织鼓励一种战术性思维：尽可能快地把功能做出来。然而，如果你想要一个真正好的设计，就必须采取一种更具战略性的方法，愿意投入时间来打...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ma.shanpeng.im/post/GaUieP803R/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://ma.shanpeng.im/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://ma.shanpeng.im" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      小马的世界
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          读书笔记-软件设计的哲学【3】仅仅“能跑的代码”是不够的
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2026-01-19 · 13 min read</div>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <p>（战略性编程 vs. 战术性编程）</p>
+<p>优秀软件设计中最重要的因素之一，是你在面对编程任务时所采用的思维方式。许多组织鼓励一种战术性思维：尽可能快地把功能做出来。然而，如果你想要一个真正好的设计，就必须采取一种更具战略性的方法，愿意投入时间来打造干净的设计并修复问题。本章将讨论为什么战略性方法能够产出更好的设计，而且从长期来看，成本反而更低。</p>
+<h2 id="31-战术性编程tactical-programming">3.1 战术性编程（Tactical programming）</h2>
+<p>大多数程序员在进行软件开发时，都会采用一种我称之为战术性编程的思维方式。在这种方式下，你的主要目标是让某个东西尽快工作起来，比如实现一个新功能或修复一个 bug。乍一看，这似乎完全合理：还有什么比“写出能工作的代码”更重要呢？然而，战术性编程几乎不可能产生一个良好的系统设计。</p>
+<p>战术性编程的问题在于它目光短浅。当你以战术方式编程时，你的目标是尽可能快地完成当前任务，也许还面临着紧迫的截止期限。因此，你并不会把为未来做规划当成优先事项。你不会花太多时间去寻找最优设计，只想尽快让东西跑起来。你会对自己说：只要能更快完成当前任务，增加一点复杂性、引入一两个临时性的“补丁式方案（kludge）”是可以接受的。</p>
+<p>系统正是这样变得复杂的。正如前一章所讨论的，复杂性是渐进累积的：不是某一个具体问题导致系统变复杂，而是几十个、上百个小问题的不断堆积。如果你采用战术性编程，每一个任务都会引入一些复杂性。每一个复杂点单独看起来都像是为了尽快完成任务而做出的合理妥协，但这些复杂性会迅速累积，尤其是在所有人都采取战术性编程的情况下。</p>
+<p>很快，其中一些复杂性就会开始引发问题，你会开始后悔当初走的那些捷径。但你会对自己说：与其回头重构已有代码，不如先把下一个功能做出来。重构在长期来看可能有帮助，但它肯定会拖慢当前进度。于是你会寻找快速补丁来绕过遇到的问题，而这又会制造更多复杂性，进而需要更多补丁。很快，代码就变成了一团糟；但此时问题已经严重到需要花费数月时间才能清理干净。你的项目计划无法承受这样的延迟，而修复一两个问题看起来也不会带来明显改善，于是你只能继续以战术方式编程。</p>
+<p>如果你曾长期参与过一个大型软件项目，我相信你一定见过战术性编程带来的后果。一旦踏上这条路，就很难回头。</p>
+<p>几乎每个软件开发组织中，都会至少有一名把战术性编程发挥到极致的开发者——我称之为 <strong>“战术龙卷风（tactical tornado）”</strong> 。战术龙卷风是一位高产的程序员，产出代码的速度远超他人，但完全以战术方式工作。在实现一个快速功能方面，没有人能比战术龙卷风更快。在一些组织中，管理层甚至把他们当作英雄。然而，战术龙卷风身后往往留下一片废墟。真正需要在未来与这些代码打交道的工程师，很少会把他们视为英雄。通常，其他工程师必须花时间清理战术龙卷风留下的烂摊子，这使得他们看起来比战术龙卷风“进展更慢”——但他们才是真正的英雄。</p>
+<h2 id="32-战略性编程strategic-programming">3.2 战略性编程（Strategic programming）</h2>
+<p>成为一名优秀的软件设计师的第一步，是意识到：仅仅能工作的代码是不够的。为了更快完成当前任务而引入不必要的复杂性，是不可接受的。最重要的是系统的长期结构。任何系统中的大部分代码，都是通过不断扩展已有代码写出来的，因此，作为开发者，你最重要的职责，是为这些未来的扩展铺平道路。</p>
+<p>因此，你不应该把“写出能跑的代码”作为首要目标——当然，代码必须能跑。你的首要目标应该是打造一个优秀的设计，而这个设计顺带能跑。这就是战略性编程。</p>
+<p>战略性编程需要一种投资型思维。与其选择最快完成当前项目的路径，不如投入时间来改进系统设计。这些投入在短期内会让你慢一点，但从长期来看，它们会让你更快。</p>
+<p>有些投入是主动型的。例如：为每一个新类多花一点时间，找到一个简单而清晰的设计；不要只实现第一个想到的方案，而是尝试几个替代设计，选择最干净的那个。设想系统未来可能需要发生的几种变化，并确保你的设计能轻松应对这些变化。撰写高质量的文档，也是主动投资的一个例子。</p>
+<p>另一些投入是被动型的。无论你在前期投入多少，设计决策中都不可避免会存在错误。随着时间推移，这些错误会逐渐显现出来。当你发现设计问题时，不要忽视它，也不要简单地打补丁，而是多花一点时间把它修好。如果你采用战略性编程，就会持续对系统设计进行小幅改进。这与战术性编程正好相反，后者是在不断加入一些在未来引发问题的小复杂点。</p>
+<h2 id="33-应该投入多少">3.3 应该投入多少？</h2>
+<p>那么，合适的投入量是多少？一次性进行巨大的前期投入（例如试图一开始就设计整个系统）是行不通的——这正是瀑布模型，而我们已经知道它不可行。理想的设计，是随着你对系统理解的加深，一点一点地浮现出来的。因此，最佳方法是持续进行小规模的投入。</p>
+<p>我建议将大约 10–20% 的总开发时间用于这种“设计投资”。这个比例足够小，不会对进度造成显著影响；同时又足够大，能够在长期内产生明显收益。你的初期项目可能会比纯战术方式多花 10–20% 的时间，但这些额外时间会换来更好的设计，并且你通常在几个月内就能开始感受到收益。不久之后，你的开发速度会比战术性编程至少快 10–20%。到了那时，这些投入几乎是“免费的”——你正在享受过去投资带来的红利。</p>
+<p>战略性编程节省下来的时间，足以覆盖未来投资的成本。你会很快收回最初投资的代价，图 3.1 展示的正是这一现象。</p>
+<p>相反，如果你采用战术性编程，你的第一个项目可能会快 10–20% 完成；但随着复杂性的累积，你的开发速度会逐渐下降。不久之后，你的编程速度就会比原来慢 10–20%。你很快就会“还清”一开始省下的全部时间，并且在系统的整个生命周期中，你的开发速度都会慢于当初采用战略性方法的情况。如果你从未在严重退化的代码库中工作过，去问问那些经历过的人吧；他们会告诉你，糟糕的代码质量至少会让开发速度降低 20%。</p>
+<p>技术债（technical debt） 这个术语，常被用来描述战术性编程带来的问题。采用战术性编程，相当于向未来“借时间”：现在开发更快，但以后会更慢。和金融债务一样，你最终偿还的总成本往往会超过最初借到的收益；不同的是，技术债几乎永远无法被彻底还清——你会一直为它付出代价。</p>
+<p><strong>战略曲线和战术曲线的交叉点在哪里？</strong> 换句话说，战略性编程需要多久才能收回成本？不幸的是，作者并不知道有任何相关的数据，也很难设计出能够令人信服地回答这个问题的对照实验。作者的个人观点是，回本时间大致在 6–18 个月 之间。</p>
+<p>这与开发者的记忆特性密切相关：当一段代码写完几个月后，开发者已经忘记了当初写代码时的大部分背景信息；如果代码本身很复杂，开发速度就会显著下降。这些额外成本会很快抵消战略性编程带来的任何初期损失。再次强调，这只是作者的个人观点，并没有数据支持。</p>
+<h2 id="34-初创公司与投入">3.4 初创公司与投入</h2>
+<p>在某些环境中，存在着强烈的力量与战略性方法对抗。例如，早期初创公司通常承受着巨大的压力，需要尽快发布第一个版本。在这种情况下，即便是 10–20% 的投入，也可能看起来难以承受。因此，许多初创公司采取战术性方式：在设计上投入很少精力，在问题出现后更少进行清理。他们通常会这样为自己辩解：如果公司成功了，未来就有足够的资金雇更多工程师来清理这些问题。</p>
+<p>如果你身处一家正朝这个方向发展的公司，你需要意识到：一旦代码库变成“意大利面”，几乎不可能再被修好。你很可能在产品的整个生命周期中持续支付高昂的开发成本。此外，好（或坏）设计的影响来得非常快，因此战术性方法甚至未必能加快你第一个产品的发布速度。</p>
+<p>另一个需要考虑的重要因素是：一家公司的成功，很大程度上取决于工程师的质量。降低开发成本的最佳方式，是雇佣优秀的工程师：他们的成本并不比普通工程师高很多，但生产力却高得多。然而，优秀工程师非常在意良好的设计。如果你的代码库一团糟，名声很快就会传开，这会让你更难招聘到优秀人才。结果是，你更可能只能招到水平一般的工程师，这将进一步推高未来成本，并可能让系统结构退化得更加严重。</p>
+<p>Facebook 是一家鼓励战术性编程的初创公司典型案例。多年来，该公司的口号是 “快速行动，打破常规（Move fast and break things）”。刚毕业的新工程师被鼓励立刻进入公司的代码库；工程师在入职第一周就向生产环境提交代码是很常见的事情。积极的一面是，Facebook 建立了“赋能员工”的声誉，工程师拥有极大的自主权，几乎没有规则和限制阻碍他们行动。</p>
+<p>Facebook 作为一家公司取得了巨大的成功，但其代码库也因战术性方法而遭受了严重问题：大量代码不稳定、难以理解、缺乏注释和测试，维护起来十分痛苦。随着时间推移，公司意识到这种文化不可持续，最终将口号改为 “在稳固的基础设施上快速行动（Move fast with solid infrastructure）”，鼓励工程师更多地投资于良好设计。至于 Facebook 是否能成功清理多年战术性编程积累的问题，目前仍有待观察。</p>
+<p>公平地说，Facebook 的代码质量可能并不比普通初创公司差多少；战术性编程在初创公司中非常普遍，Facebook 只是一个特别显眼的例子。</p>
+<p>幸运的是，在硅谷，采用战略性方法取得成功同样是可能的。Google 和 VMware 与 Facebook 成长于同一时期，但这两家公司更强调战略性编程：高度重视代码质量和良好设计，构建了能够可靠解决复杂问题的复杂软件系统。它们强大的技术文化在硅谷广为人知，很少有公司能在争夺顶尖技术人才方面与之竞争。</p>
+<p>这些例子表明：公司采用哪种方式都可能成功；然而，在一家重视软件设计、拥有干净代码库的公司工作，显然要愉快得多。</p>
+<h2 id="35-总结">3.5 总结</h2>
+<p>良好的设计并非免费得来。它需要持续不断的投入，才能防止小问题累积成大问题。幸运的是，良好设计最终会为自己买单，而且通常比你想象得更早。</p>
+<p>关键在于持续一致地采用战略性方法，并把“投入”当作今天要做的事，而不是明天。当项目进入冲刺阶段时，很容易选择把清理工作推迟到冲刺结束之后；但这是一个危险的滑坡。因为当前冲刺之后，几乎肯定还会有下一个、再下一个。一旦开始推迟设计改进，这种拖延就会变成常态，团队文化也会逐渐滑向战术性方式。</p>
+<p>你拖得越久，设计问题就会变得越大，解决方案也越令人生畏，于是更容易被继续拖延。最有效的方法，是让每一位工程师都持续进行小规模的、对良好设计的投入。</p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+        
+
+        
+          <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.1/dist/disqusjs.css">
+<script type="application/javascript" src="https://unpkg.com/disqusjs@1.1/dist/disqus.js"></script>
+
+<div id="disqus_thread"></div>
+
+<script type="application/javascript">
+
+var options = {
+  shortname: 'mas-world',
+  apikey: 'YG8mZDStxobqmwNFwY04dJ1X16wMK2kaE7oQhDjcqkBo6eZlH8k86jABHHWnHGNO',
+}
+if ('https://disqus.com/api/') {
+  options.api = 'https://disqus.com/api/'
+}
+var dsqjs = new DisqusJS(options)
+
+</script>
+
+        
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#31-%E6%88%98%E6%9C%AF%E6%80%A7%E7%BC%96%E7%A8%8Btactical-programming">3.1 战术性编程（Tactical programming）</a></li>
+<li><a href="#32-%E6%88%98%E7%95%A5%E6%80%A7%E7%BC%96%E7%A8%8Bstrategic-programming">3.2 战略性编程（Strategic programming）</a></li>
+<li><a href="#33-%E5%BA%94%E8%AF%A5%E6%8A%95%E5%85%A5%E5%A4%9A%E5%B0%91">3.3 应该投入多少？</a></li>
+<li><a href="#34-%E5%88%9D%E5%88%9B%E5%85%AC%E5%8F%B8%E4%B8%8E%E6%8A%95%E5%85%A5">3.4 初创公司与投入</a></li>
+<li><a href="#35-%E6%80%BB%E7%BB%93">3.5 总结</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://ma.shanpeng.im/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://ma.shanpeng.im/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+    
+  
+</body>
+
+</html>
